@@ -83,7 +83,7 @@
   }
 }
 
-.scrollActive .sectionIn img {
+:global(.scroll-active) .sectionIn img {
   transform: scale(1.1) rotate(-2deg);
   filter: grayscale(0%);
 }
@@ -122,7 +122,7 @@
   }
 }
 
-.scrollActive .hoverText h2 {
+:global(.scroll-active) .hoverText h2 {
   opacity: 1;
   transform: scale(1);
 }
@@ -154,11 +154,11 @@
   }
 
   /* Optional: Dim inactive cards as they scroll past using :has */
-  .sectionRow:has(.scrollActive) .sectionCol {
+  .sectionRow:has(:global(.scroll-active)) .sectionCol {
     opacity: 0.3;
   }
 
-  .sectionRow .sectionCol.scrollActive {
+  .sectionRow .sectionCol:global(.scroll-active) {
     opacity: 1;
   }
 }

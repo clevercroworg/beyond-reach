@@ -27,9 +27,9 @@ const Offerings = () => {
         
         ScrollTrigger.create({
           trigger: el,
-          start: "top 55%", // When top of card reaches slightly above middle of screen
-          end: "bottom 45%", // When bottom of card leaves middle
-          toggleClass: styles.scrollActive, // Apply active hover class
+          start: "top 60%", // When top of card reaches slightly above middle of screen
+          end: "bottom 40%", // When bottom of card leaves middle
+          toggleClass: "scroll-active", // Use global class name
         });
       });
     });
