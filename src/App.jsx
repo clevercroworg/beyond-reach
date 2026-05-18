@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
+import Work from './components/Work';
 import Offerings from './components/Offerings';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
@@ -20,6 +21,7 @@ function App() {
       <main>
         <Hero />
         <Marquee />
+        <Work />
         <Offerings />
         <Testimonials />
       </main>

@@ -280,12 +280,17 @@
     width: 100%;
     padding: 0;
     border: none;
+    flex-direction: column; /* Restore vertical stack */
+    align-items: center;
+    gap: 0.5rem;
+    max-height: 0;
   }
 
   .dropdownActive {
     padding: 1rem 0 0 0;
     margin-top: 0;
     border: none;
+    max-height: 400px; /* Allow enough height for vertical stack */
   }
 
   .subLink {

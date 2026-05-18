@@ -1,0 +1,181 @@
+.workSection {
+  background-color: var(--bg-primary);
+  padding: 6rem 2rem;
+  color: var(--text-primary);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.animatedHeading {
+  font-family: var(--font-heading);
+  font-size: 8vw;
+  line-height: 0.9;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cycler {
+  position: relative;
+  height: 1em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cycleWord {
+  position: absolute;
+  top: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  font-weight: bold;
+}
+
+.activeWord {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.inactiveWord {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.staticHeading {
+  font-weight: normal;
+  /* Applying a slightly different typography style for the second line */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+  color: transparent;
+  margin-top: -0.1em;
+}
+
+.filterRow {
+  margin-top: 2rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.mediaContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.imagePlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Hide image when hovering card so video shows underneath */
+.card:hover .imagePlaceholder {
+  opacity: 0;
+}
+
+.clientOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: #fff;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card:hover .clientOverlay {
+  opacity: 1;
+}
+
+.cardInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.cardClientText {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* MOBILE */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .animatedHeading {
+    font-size: 12vw;
+  }
+  
+  .clientOverlay {
+    font-size: 1.5rem;
+  }
+}
