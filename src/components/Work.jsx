@@ -86,7 +86,7 @@ const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
 };
 
 const Work = () => {
-  const headerRef = useRef(null);
+  const containerRef = useRef(null);
   const cycleWords = ["STRATEGY", "CREATIVE", "WEBSITES", "CONTENT"];
   const [currentWord, setCurrentWord] = React.useState(0);
 
@@ -97,9 +97,44 @@ const Work = () => {
     return () => clearInterval(interval);
   }, [cycleWords.length]);
 
+  useEffect(() => {
+    // Mount entrance animation
+    const ctx = gsap.context(() => {
+      // Animate heading
+      gsap.from(`.${styles.animatedHeading}`, {
+        y: 100,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power4.out",
+        delay: 0.2 // allow page transition to start
+      });
+
+      // Animate filter row
+      gsap.from(`.${styles.filterRow}`, {
+        y: 20,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        delay: 0.6
+      });
+
+      // Animate cards staggering in
+      gsap.from(`.${styles.card}`, {
+        y: 80,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+        delay: 0.4
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className={styles.workSection} id="work">
-      <div className={styles.header} ref={headerRef}>
+    <section className={styles.workSection} id="work" ref={containerRef}>
+      <div className={styles.header}>
         <div className={styles.animatedHeading}>
           <div className={styles.cycler}>
             {cycleWords.map((word, i) => (

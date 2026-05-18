@@ -1,12 +1,12 @@
 .workSection {
   background-color: var(--bg-primary);
-  padding: 6rem 2rem;
+  padding: 12rem 2rem 6rem; /* Extra top padding to clear the navbar */
   color: var(--text-primary);
 }
 
 .header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem; /* More space below header */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@
 .animatedHeading {
   font-family: var(--font-heading);
   font-size: 8vw;
-  line-height: 0.9;
+  line-height: 1; /* Reset to 1 to prevent clipping */
   letter-spacing: 2px;
   text-transform: uppercase;
   display: flex;
@@ -25,7 +25,7 @@
 
 .cycler {
   position: relative;
-  height: 1em;
+  height: 1.1em; /* Increased height to prevent clipping of bold letters */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -45,7 +45,7 @@
 }
 
 .inactiveWord {
-  transform: translateY(100%);
+  transform: translateY(110%);
   opacity: 0;
 }
 
@@ -54,7 +54,7 @@
   /* Applying a slightly different typography style for the second line */
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
   color: transparent;
-  margin-top: -0.1em;
+  margin-top: 0.1em; /* Space between the two lines */
 }
 
 .filterRow {
