@@ -8,7 +8,9 @@ const Footer = () => {
       <div className={styles.topSection}>
         <div className={styles.brandBlock}>
           <p className={styles.tagline}>Redefining boundaries, welcome to</p>
-          <h2 className={styles.logo}>BEYOND<br/>REACH</h2>
+          <h2 className={styles.logo}>
+            <span style={{ fontWeight: 'bold' }}>BEYOND</span><br/><span style={{ fontWeight: 'normal' }}>REACH</span>
+          </h2>
         </div>
         <div className={styles.contactBlock}>
           <p className={styles.description}>

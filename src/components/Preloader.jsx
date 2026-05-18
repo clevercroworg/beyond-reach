@@ -117,6 +117,10 @@ const Preloader = ({ onComplete }) => {
       {/* Bottom curtain half */}
       <div className={styles.curtainBottom} ref={curtainBottomRef}>
         <div className={styles.bottomCredit}>
+          <div className={styles.logoWrapper}>
+            <div className={styles.logoWord} style={{ fontWeight: 'bold' }}>BEYOND</div>
+            <div className={styles.logoWord} style={{ fontWeight: 'normal' }}>REACH</div>
+          </div>
           <div className={styles.creditBox}>
             <div className={styles.creditLogo}>BR</div>
             <div className={styles.creditText}>

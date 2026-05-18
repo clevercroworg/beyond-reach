@@ -122,7 +122,9 @@ const Menu = ({ isOpen, onClose }) => {
       </div>
 
       <div className={styles.topBar}>
-        <div className={styles.logo}>BEYOND REACH</div>
+        <div className={styles.logo}>
+          <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
+        </div>
       </div>
 
       <div className={styles.menuContent}>
