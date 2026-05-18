@@ -81,7 +81,7 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .title {
-    font-size: 12vw; /* Scaled down perfectly so 14-character phrases fit on one line */
+    font-size: 16vw; /* Significantly bigger and punchier on mobile */
   }
   
   .wordCycler {

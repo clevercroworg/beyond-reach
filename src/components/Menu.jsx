@@ -11,7 +11,11 @@ const Menu = ({ isOpen, onClose }) => {
 
   const menuItems = [
     { name: "WORK", image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" },
-    { name: "SERVICES", image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80" },
+    { 
+      name: "SOLUTION", 
+      image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
+      subItems: ["Resorts", "Home Stay", "Wellness", "Spa & Retreats", "Events", "Yachts"]
+    },
     { name: "ABOUT", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80" },
     { name: "CONTACT", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" }
   ];
@@ -79,6 +83,7 @@ const Menu = ({ isOpen, onClose }) => {
         ease: "power4.inOut"
       });
       gsap.set(linksRef.current, { y: 150, opacity: 0, skewY: 10 });
+      setHoveredItem(null); // Reset dropdowns on close
     }
   }, [isOpen]);
 
@@ -123,20 +128,41 @@ const Menu = ({ isOpen, onClose }) => {
       <div className={styles.menuContent}>
         <nav className={styles.navBlock}>
           {menuItems.map((item, index) => (
-            <div key={index} className={styles.linkContainer}>
-              <a 
-                href={`#${item.name.toLowerCase()}`} 
-                className={styles.menuLink}
-                ref={el => linksRef.current[index] = el}
-                onMouseEnter={() => handleMouseEnter(item.name)}
-                onMouseLeave={handleMouseLeave}
-                onClick={onClose}
-              >
-                <div className={styles.linkInner}>
-                  <span className={styles.primaryText}>{item.name}</span>
-                  <span className={styles.hoverTextClone}>{item.name}</span>
+            <div 
+              key={index} 
+              className={styles.menuItemWrapper}
+              onMouseEnter={() => handleMouseEnter(item.name)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <div className={styles.linkContainer}>
+                <a 
+                  href={`#${item.name.toLowerCase()}`} 
+                  className={styles.menuLink}
+                  ref={el => linksRef.current[index] = el}
+                  onClick={!item.subItems ? onClose : undefined}
+                >
+                  <div className={styles.linkInner}>
+                    <span className={styles.primaryText}>{item.name}</span>
+                    <span className={styles.hoverTextClone}>{item.name}</span>
+                  </div>
+                </a>
+              </div>
+              
+              {/* Dropdown for subItems (Solutions) */}
+              {item.subItems && (
+                <div className={`${styles.dropdown} ${hoveredItem === item.name ? styles.dropdownActive : ''}`}>
+                  {item.subItems.map((subItem, subIdx) => (
+                    <a 
+                      key={subIdx} 
+                      href="#solution" 
+                      className={styles.subLink}
+                      onClick={onClose}
+                    >
+                      {subItem}
+                    </a>
+                  ))}
                 </div>
-              </a>
+              )}
             </div>
           ))}
         </nav>

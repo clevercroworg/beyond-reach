@@ -89,7 +89,10 @@ const Hero = () => {
               <span 
                 key={i} 
                 className={styles.cycleWord}
-                style={{ opacity: i === 0 ? 1 : 0 }}
+                style={{ 
+                  opacity: i === 0 ? 1 : 0,
+                  fontSize: word === 'OTA DEPENDENCY' ? '0.75em' : '1em'
+                }}
               >
                 {word}
               </span>
