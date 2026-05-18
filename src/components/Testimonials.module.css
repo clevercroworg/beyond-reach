@@ -120,13 +120,14 @@
   }
   
   .heading {
-    font-size: 3.5rem;
-    margin-bottom: 3rem;
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
   }
   
   .grid {
     grid-template-columns: 1fr;
-    gap: 1px;
+    gap: 1rem; /* Tiny elegant gap between stacked cards on mobile */
   }
   
   .card {
