@@ -144,18 +144,18 @@
   }
   .footerLeft {
     text-align: left;
-    max-width: 45%;
+    max-width: 50%;
   }
   .footerRight {
     text-align: right;
-    max-width: 45%;
+    max-width: 50%;
   }
   .smallText {
-    font-size: 0.55rem;
+    font-size: 0.7rem;
     margin-bottom: 0.15rem;
     letter-spacing: 0.5px;
   }
   .boldText {
-    font-size: 0.85rem;
+    font-size: 1.1rem;
   }
 }

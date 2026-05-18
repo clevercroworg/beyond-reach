@@ -114,12 +114,12 @@ const Hero = () => {
 
       <div className={styles.heroFooter} ref={footerRef}>
         <div className={styles.footerLeft}>
-          <p className={styles.smallText}>BEYOND REACH© AGENCY</p>
-          <p className={styles.boldText}>REDEFINING BOUNDARIES</p>
+          <p className={styles.smallText}>BEYOND REACH</p>
+          <p className={styles.boldText}>CREATIVE AGENCY</p>
         </div>
         <div className={styles.footerRight}>
-          <p className={styles.smallText}>ESTABLISHED 2026</p>
-          <p className={styles.boldText}>GLOBAL PRODUCTION</p>
+          <p className={styles.smallText}>EST. 2026</p>
+          <p className={styles.boldText}>GLOBAL TEAM</p>
         </div>
       </div>
     </section>
