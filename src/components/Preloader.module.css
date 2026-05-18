@@ -103,17 +103,17 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  opacity: 0.4; /* Subtle, low-key presence */
+  opacity: 0.15; /* Substantially lowered visibility */
 }
 
 .creditBox {
   display: flex;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .creditLogo {
-  background-color: var(--accent-color);
-  color: #000;
+  background-color: rgba(255, 255, 255, 0.05); /* Dark grey instead of bright green */
+  color: rgba(255, 255, 255, 0.4);
   font-family: var(--font-heading);
   font-size: 1.5rem;
   padding: 0.75rem 1.2rem;
@@ -132,12 +132,12 @@
 .creditYear {
   font-family: var(--font-heading);
   font-size: 0.9rem;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.6);
   margin: 0;
 }
 
 .creditDesc {
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.3);
   margin: 0;
 }

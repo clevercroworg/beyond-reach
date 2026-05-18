@@ -33,7 +33,7 @@
   font-size: 7.5vw; /* Responsive huge logo, slightly scaled down to fit single line */
   line-height: 0.85;
   margin: 0;
-  letter-spacing: -2px;
+  letter-spacing: 0px;
   white-space: nowrap;
 }
 
