@@ -6,7 +6,7 @@ import styles from './Offerings.module.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const Offerings = () => {
-  const mobileWrappersRef = useRef([]);
+  const cardsRef = useRef([]);
 
   const items = [
     { title: "Resorts", img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80" },
@@ -20,16 +20,16 @@ const Offerings = () => {
   useEffect(() => {
     let mm = gsap.matchMedia();
     
-    // Only apply ScrollTrigger animations on mobile
+    // On mobile, trigger the "hover" effect when scrolling
     mm.add("(max-width: 768px)", () => {
-      mobileWrappersRef.current.forEach((el) => {
+      cardsRef.current.forEach((el) => {
         if (!el) return;
         
         ScrollTrigger.create({
           trigger: el,
-          start: "top 60%", // Triggers when the top of the element hits 60% of viewport
-          end: "bottom 40%",
-          toggleClass: styles.mobileActive,
+          start: "top 55%", // When top of card reaches slightly above middle of screen
+          end: "bottom 45%", // When bottom of card leaves middle
+          toggleClass: styles.scrollActive, // Apply active hover class
         });
       });
     });
@@ -43,39 +43,21 @@ const Offerings = () => {
         <h2>OUR OFFERINGS</h2>
       </div>
 
-      {/* Desktop Grid Layout (Hidden on Mobile) */}
-      <div className={`${styles.sectionRow} ${styles.desktopOnly}`}>
+      <div className={styles.sectionRow}>
         {items.map((item, index) => (
-          <div className={styles.sectionCol} key={`desktop-${index}`}>
+          <div 
+            className={styles.sectionCol} 
+            key={index}
+            ref={el => cardsRef.current[index] = el}
+          >
             <div className={styles.sectionBlock}>
               <div className={styles.sectionIn}>
                 <img src={item.img} alt={item.title} />
               </div>
             </div>
-            {/* Hover text is now contained WITHIN the column so it doesn't bleed */}
+            {/* Hover text is contained WITHIN the column */}
             <div className={styles.hoverText}>
               <h2>{item.title}</h2>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Mobile Scroll Layout (Hidden on Desktop) */}
-      <div className={`${styles.mobileList} ${styles.mobileOnly}`}>
-        {items.map((item, index) => (
-          <div 
-            className={styles.mobileWrapper} 
-            key={`mobile-${index}`}
-            ref={el => mobileWrappersRef.current[index] = el}
-          >
-            <div className={styles.mobileImageWrapper}>
-              <img src={item.img} alt={item.title} className={styles.mobileImg} />
-            </div>
-            <div className={styles.mobileHeaderWrapper}>
-              <div className={styles.mobileTextMover}>
-                <h2 className={styles.mobileTitle}>{item.title}</h2>
-                <h2 className={styles.mobileTitleAction}>SEE PROJECT</h2>
-              </div>
             </div>
           </div>
         ))}

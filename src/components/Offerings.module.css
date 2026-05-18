@@ -18,24 +18,19 @@
   text-align: center;
 }
 
-/* =========================================
-   DESKTOP GRID
-   ========================================= */
-.desktopOnly {
-  display: flex;
-}
-.mobileOnly {
-  display: none;
-}
-
 .sectionRow {
+  display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  transition: opacity 250ms linear;
 }
 
-.sectionRow:hover .sectionCol {
-  opacity: 0.1;
+/* Dim all cards when row is hovered (desktop) */
+@media (hover: hover) {
+  .sectionRow:hover .sectionCol {
+    opacity: 0.1;
+  }
 }
 
 .sectionCol {
@@ -46,8 +41,11 @@
   transition: opacity 250ms linear;
 }
 
-.sectionRow .sectionCol:hover {
-  opacity: 1;
+/* Brighten hovered/active card */
+@media (hover: hover) {
+  .sectionRow .sectionCol:hover {
+    opacity: 1;
+  }
 }
 
 .sectionBlock {
@@ -73,19 +71,24 @@
   width: 100%;
   height: 600px; 
   object-fit: cover;
-  transition: transform 250ms linear;
-  filter: grayscale(20%);
+  transition: transform 400ms ease-out, filter 400ms ease-out;
+  filter: grayscale(40%); /* Initial state: partially grayscale */
 }
 
-.sectionCol:hover .sectionIn img {
-  transform: scale(1.1) rotate(-3deg);
+/* Apply image effect on desktop hover OR mobile scroll active */
+@media (hover: hover) {
+  .sectionCol:hover .sectionIn img {
+    transform: scale(1.1) rotate(-2deg);
+    filter: grayscale(0%);
+  }
+}
+
+.scrollActive .sectionIn img {
+  transform: scale(1.1) rotate(-2deg);
   filter: grayscale(0%);
 }
 
-/* 
-  FIX: Absolute positioning INSIDE the column 
-  prevents the massive text from bleeding into other sections 
-*/
+
 .hoverText {
   position: absolute;
   top: 50%;
@@ -95,7 +98,7 @@
   text-align: center;
   z-index: 10;
   pointer-events: none;
-  mix-blend-mode: difference;
+  mix-blend-mode: difference; /* Highly stylised contrast text */
 }
 
 .hoverText h2 {
@@ -107,92 +110,55 @@
   text-transform: uppercase;
   opacity: 0;
   transform: scale(0.8);
-  transition: transform 250ms linear, opacity 250ms ease;
+  transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 300ms ease;
   margin: 0;
 }
 
-.sectionCol:hover .hoverText h2 {
+/* Reveal text on desktop hover OR mobile scroll active */
+@media (hover: hover) {
+  .sectionCol:hover .hoverText h2 {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.scrollActive .hoverText h2 {
   opacity: 1;
   transform: scale(1);
 }
 
 /* =========================================
-   MOBILE SCROLL ANIMATIONS
+   MOBILE RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
   .sectionFluidMain {
     padding: 60px 15px;
   }
-
-  .desktopOnly {
-    display: none !important;
-  }
-  .mobileOnly {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .mobileWrapper {
-    position: relative;
-    height: 50vh; /* Takes half screen */
-    width: 100%;
-    overflow: hidden;
-    border-radius: 12px;
-    transition: all 400ms ease-in-out;
-  }
-
-  .mobileImageWrapper {
-    width: 100%;
-    height: 100%;
-    background: #222;
-  }
-
-  .mobileImg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: all 400ms ease-in-out;
-  }
-
-  .mobileHeaderWrapper {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    height: 3rem; /* Height of exactly one line of text */
-    overflow: hidden;
-  }
-
-  .mobileTextMover {
-    display: flex;
-    flex-direction: column;
-    transition: transform 400ms ease-in-out;
-  }
-
-  .mobileTitle, .mobileTitleAction {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    line-height: 3rem;
-    height: 3rem;
-    margin: 0;
-    color: #fff;
-    text-transform: uppercase;
-  }
   
-  .mobileTitleAction {
-    color: var(--accent-color);
+  .headerTitle h2 {
+    font-size: 3rem;
   }
 
-  /* 
-    The .mobileActive class is toggled by GSAP ScrollTrigger 
-    when the element enters the center of the mobile viewport 
-  */
-  .mobileActive .mobileImg {
-    transform: scale(1.15); /* Zooms in like hover */
+  .sectionCol {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-bottom: 2rem; /* Give space between stacked items */
   }
 
-  .mobileActive .mobileTextMover {
-    transform: translateY(-3rem); /* Slides to reveal "SEE PROJECT" */
+  .sectionIn img {
+    height: 400px; /* Shorter cards for mobile */
+  }
+
+  .hoverText h2 {
+    font-size: 18vw; /* Scale up the overlay text for mobile */
+  }
+
+  /* Optional: Dim inactive cards as they scroll past using :has */
+  .sectionRow:has(.scrollActive) .sectionCol {
+    opacity: 0.3;
+  }
+
+  .sectionRow .sectionCol.scrollActive {
+    opacity: 1;
   }
 }
