@@ -3,10 +3,10 @@ import styles from './Testimonials.module.css';
 
 const Testimonials = () => {
   const testimonials = [
-    { text: "A SOUND MIND IN A SOUND BODY", author: "ASICS", year: "2024" },
-    { text: "CONNECTING PEOPLE WITH SPORT", author: "OYSHO", year: "2023" },
-    { text: "TWICE SETS AN EXAMPLE", author: "PUMA", year: "2023" },
-    { text: "WE ARE WINNING WITH TWICE", author: "LIGA F", year: "2024" }
+    { text: "BEYOND REACH TRANSFORMED OUR STRATEGY. DIRECT BOOKINGS ARE UP 40%.", author: "THE GRAND RESORT", year: "2024" },
+    { text: "FINALLY BROKE FREE FROM OTA COMMISSIONS. THEIR SEO EXPERTISE IS UNMATCHED.", author: "VITALITY WELLNESS SPA", year: "2023" },
+    { text: "OUR YACHT CHARTERS ARE BOOKED SOLID FOR THE SEASON THROUGH ORGANIC REACH.", author: "AZURE CHARTERS", year: "2024" },
+    { text: "THEIR CAMPAIGNS ELEVATED OUR BRAND PRESENCE OVERNIGHT. INCREDIBLE ROI.", author: "SERENITY RETREATS", year: "2023" }
   ];
 
   return (
