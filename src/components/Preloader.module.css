@@ -1,0 +1,161 @@
+/* ===== PRELOADER ===== */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: all;
+}
+
+/* ===== CURTAIN HALVES ===== */
+.curtainTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #0a0e0b;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end; /* Content sits at the bottom of the top half */
+  justify-content: center;
+  will-change: transform;
+}
+
+.curtainBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #0a0e0b;
+  z-index: 2;
+  will-change: transform;
+}
+
+/* ===== CENTERED CONTENT (inside top curtain) ===== */
+.curtainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(50%); /* Push content to the visual center of the full screen */
+}
+
+/* ===== LOGO ===== */
+.logo {
+  font-family: var(--font-heading);
+  font-size: 6vw;
+  color: #fff;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.letter {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.space {
+  width: 0.3em;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  width: 300px;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent-color);
+  border-radius: 1px;
+  will-change: width;
+}
+
+.counter {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  min-width: 40px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 10vw;
+  }
+
+  .progress {
+    width: 220px;
+  }
+
+  .creditBox {
+    transform: scale(0.85);
+  }
+}
+
+/* ===== BOTTOM CREDIT BOX ===== */
+.bottomCredit {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  opacity: 0.4; /* Subtle, low-key presence */
+}
+
+.creditBox {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.creditLogo {
+  background-color: var(--accent-color);
+  color: #000;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  padding: 0.75rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.creditText {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.creditYear {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: #fff;
+  margin: 0;
+}
+
+.creditDesc {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}

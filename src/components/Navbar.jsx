@@ -4,11 +4,9 @@ import styles from './Navbar.module.css';
 const Navbar = ({ onMenuClick }) => {
   return (
     <nav className={styles.navbar}>
+      <a href="#work" className={styles.navLink}>Work</a>
       <div className={styles.logo}>BEYOND REACH</div>
-      <ul className={styles.navLinks}>
-        <li><a href="#home" className={styles.navLink}>Home</a></li>
-        <li><a href="#solution" className={styles.navLink}>Solution</a></li>
-      </ul>
+      <a href="#solution" className={styles.navLink}>Solution</a>
       <button className={styles.menuBtn} onClick={onMenuClick}>
         <span className={styles.hamburger}></span>
         MENU

@@ -6,8 +6,8 @@ const Hero = () => {
   const contentRef = useRef(null);
   const wordContainerRef = useRef(null);
 
-  // Words that cycle: REACH → LIMITS → BORDERS → REACH (loop)
-  const cycleWords = ['REACH', 'LIMITS', 'BORDERS', 'REACH'];
+  // Words that cycle through endlessly
+  const cycleWords = ['RANKINGS', 'TRAFFIC', 'CLICKS', 'ALGORITHM', 'ADS', 'OTA DEPENDENCY'];
 
   useEffect(() => {
     const content = contentRef.current;

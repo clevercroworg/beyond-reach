@@ -5,7 +5,7 @@
   width: 100%;
   padding: 2rem 4rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   z-index: 100;
   pointer-events: none; /* Let clicks pass through empty areas */
@@ -15,29 +15,36 @@
   pointer-events: auto; /* Re-enable clicks on actual elements */
 }
 
-.logo {
-  font-family: var(--font-heading);
-  font-size: 2rem;
-  letter-spacing: 1px;
-  line-height: 1;
-}
-
-.navLinks {
-  display: flex;
-  gap: 3rem;
-}
-
+/* Nav links sit at left and right edges */
 .navLink {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  position: relative;
+  position: absolute;
   transition: color 0.3s ease;
+}
+
+.navLink:first-child {
+  left: 4rem;
+}
+
+.navLink:nth-child(3) {
+  right: 4rem;
 }
 
 .navLink:hover {
   color: var(--accent-color);
+}
+
+/* Logo centered */
+.logo {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-align: center;
 }
 
 /* Bottom Menu Button */
@@ -94,12 +101,20 @@
   .navbar {
     padding: 1.5rem 1.5rem;
   }
-  
-  .navLinks {
-    display: none; /* Hide on mobile, accessed via menu */
+
+  .navLink:first-child {
+    left: 1.5rem;
   }
-  
+
+  .navLink:nth-child(3) {
+    right: 1.5rem;
+  }
+
+  .navLink {
+    font-size: 1.1rem;
+  }
+
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 }
