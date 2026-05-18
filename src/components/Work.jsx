@@ -80,7 +80,7 @@ const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
           }
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.7 }
     );
 
     if (cardRef.current) {
