@@ -45,8 +45,8 @@
 
 .text {
   font-family: 'Caveat', cursive;
-  font-size: 2.2rem; /* Reduced to look like natural handwriting */
-  color: #0f172a; /* Deep elegant slate black */
+  font-size: 1.8rem;
+  color: #0f172a;
   line-height: 1.3;
 }
 
