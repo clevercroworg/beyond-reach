@@ -5,6 +5,7 @@ import styles from './Hero.module.css';
 const Hero = () => {
   const contentRef = useRef(null);
   const wordContainerRef = useRef(null);
+  const footerRef = useRef(null);
 
   // Words that cycle through endlessly
   const cycleWords = ['RANKINGS', 'TRAFFIC', 'CLICKS', 'ALGORITHM', 'ADS', 'OTA DEPENDENCY'];
@@ -14,12 +15,21 @@ const Hero = () => {
     const wordContainer = wordContainerRef.current;
     if (!content || !wordContainer) return;
 
-    // Entry animation
+    // Entry animation for main content
     gsap.fromTo(
       content.children,
       { y: 100, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power4.out', delay: 0.5 }
     );
+
+    // Entry animation for corner text
+    if (footerRef.current) {
+      gsap.fromTo(
+        footerRef.current.children,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out', delay: 1.2 }
+      );
+    }
 
     // Word cycling animation
     const words = wordContainer.querySelectorAll(`.${styles.cycleWord}`);
@@ -100,6 +110,17 @@ const Hero = () => {
           </div>
         </h1>
         <p className={styles.subtitle}>ELEVATING EXPERIENCES.</p>
+      </div>
+
+      <div className={styles.heroFooter} ref={footerRef}>
+        <div className={styles.footerLeft}>
+          <p className={styles.smallText}>BEYOND REACH© AGENCY</p>
+          <p className={styles.boldText}>REDEFINING BOUNDARIES</p>
+        </div>
+        <div className={styles.footerRight}>
+          <p className={styles.smallText}>ESTABLISHED 2026</p>
+          <p className={styles.boldText}>GLOBAL PRODUCTION</p>
+        </div>
       </div>
     </section>
   );
