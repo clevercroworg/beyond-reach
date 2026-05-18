@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import styles from './Menu.module.css';
 
@@ -10,14 +11,15 @@ const Menu = ({ isOpen, onClose }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const menuItems = [
-    { name: "WORK", image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" },
+    { name: "WORK", path: "/work", image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" },
     { 
       name: "SOLUTION", 
+      path: "/#solution",
       image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
       subItems: ["Resorts", "Home Stay", "Wellness", "Spa & Retreats", "Events", "Yachts"]
     },
-    { name: "ABOUT", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80" },
-    { name: "CONTACT", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" }
+    { name: "ABOUT", path: "/#about", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80" },
+    { name: "CONTACT", path: "/#contact", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" }
   ];
 
   // Default images for the automated slideshow
@@ -32,7 +34,6 @@ const Menu = ({ isOpen, onClose }) => {
     let interval;
     if (isOpen && !hoveredItem) {
       interval = setInterval(() => {
-        // Wipe animation out
         gsap.to(slideImgRef.current, {
           y: "-100%", // wipe up
           opacity: 0,
@@ -40,7 +41,6 @@ const Menu = ({ isOpen, onClose }) => {
           ease: "power2.in",
           onComplete: () => {
             setSlideIndex((prev) => (prev + 1) % slideshowImages.length);
-            // Reset position and wipe in
             gsap.set(slideImgRef.current, { y: "100%" });
             gsap.to(slideImgRef.current, {
               y: "0%",
@@ -123,7 +123,9 @@ const Menu = ({ isOpen, onClose }) => {
 
       <div className={styles.topBar}>
         <div className={styles.logo}>
-          <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
+          <Link to="/" onClick={onClose} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
+          </Link>
         </div>
       </div>
 
@@ -137,8 +139,8 @@ const Menu = ({ isOpen, onClose }) => {
               onMouseLeave={handleMouseLeave}
             >
               <div className={styles.linkContainer}>
-                <a 
-                  href={`#${item.name.toLowerCase()}`} 
+                <Link 
+                  to={item.path} 
                   className={styles.menuLink}
                   ref={el => linksRef.current[index] = el}
                   onClick={!item.subItems ? onClose : undefined}
@@ -147,21 +149,21 @@ const Menu = ({ isOpen, onClose }) => {
                     <span className={styles.primaryText}>{item.name}</span>
                     <span className={styles.hoverTextClone}>{item.name}</span>
                   </div>
-                </a>
+                </Link>
               </div>
               
               {/* Dropdown for subItems (Solutions) */}
               {item.subItems && (
                 <div className={`${styles.dropdown} ${hoveredItem === item.name ? styles.dropdownActive : ''}`}>
                   {item.subItems.map((subItem, subIdx) => (
-                    <a 
+                    <Link 
                       key={subIdx} 
-                      href="#solution" 
+                      to="/#solution" 
                       className={styles.subLink}
                       onClick={onClose}
                     >
                       {subItem}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
