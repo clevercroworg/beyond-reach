@@ -46,25 +46,59 @@ const projects = [
 
 const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
   const videoRef = useRef(null);
+  const cardRef = useRef(null);
+  const [isPlaying, setIsPlaying] = React.useState(false);
 
   const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(e => console.log("Video play error:", e));
+    if (window.innerWidth > 768) {
+      setIsPlaying(true);
+      if (videoRef.current) {
+        videoRef.current.play().catch(e => console.log("Video play error:", e));
+      }
     }
   };
 
   const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      // Optional: reset to beginning
-      // videoRef.current.currentTime = 0; 
+    if (window.innerWidth > 768) {
+      setIsPlaying(false);
+      if (videoRef.current) {
+        videoRef.current.pause();
+      }
     }
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (window.innerWidth <= 768) {
+          if (entry.isIntersecting) {
+            setIsPlaying(true);
+            if (videoRef.current) videoRef.current.play().catch(e => console.log(e));
+          } else {
+            setIsPlaying(false);
+            if (videoRef.current) videoRef.current.pause();
+          }
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={styles.card} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className={styles.card} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={styles.mediaContainer}>
-        <img src={imgSrc} alt={title} className={styles.imagePlaceholder} />
+        <img 
+          src={imgSrc} 
+          alt={title} 
+          className={styles.imagePlaceholder}
+          style={{ opacity: isPlaying ? 0 : 1 }}
+        />
         <video 
           ref={videoRef} 
           src={vidSrc} 
@@ -73,7 +107,7 @@ const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
           loop 
           playsInline
         />
-        <div className={styles.clientOverlay}>
+        <div className={styles.clientOverlay} style={{ opacity: isPlaying ? 1 : 0 }}>
           <span>{client}</span>
         </div>
       </div>
@@ -149,7 +183,7 @@ const Work = () => {
           <div className={styles.staticHeading}>DRIVEN PRODUCTION</div>
         </div>
         <div className={styles.filterRow}>
-          <span>PROJECTS ( {projects.length} )</span>
+          <span>PROJECTS</span>
         </div>
       </div>
 
