@@ -1,0 +1,140 @@
+.testimonialsSection {
+  padding: 3rem 4rem; /* Drastically reduced */
+  background-color: var(--bg-secondary);
+}
+
+.heading {
+  font-size: 5rem; /* Smaller */
+  text-align: center;
+  margin-bottom: 3rem; /* Reduced */
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.quoteMark {
+  color: var(--accent-color);
+  font-family: var(--font-body);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; /* Creates gorgeous separation between the cards */
+  background-color: transparent; /* Clear the merged background */
+  border: none; /* Clear the merged outer border */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 3rem; /* Reduced */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px; /* Drastically reduced from 250px */
+  background-color: #ffffff; /* Premium white background */
+  border: 1px solid #e2e8f0; /* Crisp clean border around each separate card */
+  transition: transform 0.3s ease, background-color 0.4s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  background-color: #f8fafc; /* Sleek light slate tint on hover */
+  transform: translateY(-4px); /* Elegant interactive lift */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Deep luxury shadow for separation */
+}
+
+.text {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: #0f172a; /* Deep elegant slate black */
+  line-height: 1.1;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  color: #64748b; /* Soft elegant dark grey */
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
+.actionContainer {
+  margin-top: 3rem; /* Reduced */
+  display: flex;
+  justify-content: center;
+}
+
+/* Button Marquee Style identical to footer */
+.actionBtn {
+  border: 1px solid var(--text-primary);
+  background: transparent;
+  color: var(--text-primary);
+  padding: 1.5rem 0;
+  width: 280px;
+  overflow: hidden;
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.btnTextContainer {
+  display: flex;
+  width: 200%;
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btnLabel {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.actionBtn:hover .btnTextContainer {
+  transform: translateX(-50%);
+}
+
+.actionBtn:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  border-color: var(--accent-color);
+}
+
+.star {
+  color: var(--accent-color);
+}
+.actionBtn:hover .star {
+  color: var(--bg-primary);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .testimonialsSection {
+    padding: 4rem 1.5rem;
+  }
+  
+  .heading {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+  
+  .card {
+    padding: 2.5rem;
+    min-height: 200px;
+  }
+  
+  .text {
+    font-size: 2rem;
+  }
+}

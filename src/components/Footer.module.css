@@ -1,0 +1,267 @@
+.footer {
+  padding: 4rem 4rem 0; /* Compact height */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* TOP SECTION */
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* Align bottom to prevent overlap */
+  margin-bottom: 3rem;
+}
+
+.brandBlock {
+  max-width: 60%;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem; /* Give space between tagline and logo */
+  line-height: 1;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 10vw; /* Responsive huge logo */
+  line-height: 0.85;
+  margin: 0;
+  letter-spacing: -2px;
+}
+
+.contactBlock {
+  max-width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+/* BUTTON ANIMATION */
+.contactBtn {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  width: 200px;
+  padding: 1rem 0;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnTextContainer {
+  display: flex;
+  width: 200%; /* Double width for duplicate */
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btnLabel {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.contactBtn:hover .btnTextContainer {
+  transform: translateX(-50%);
+}
+
+.star {
+  color: var(--accent-color);
+  font-size: 1.2rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+}
+
+/* MIDDLE SECTION */
+.middleSection {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 2rem;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+}
+
+.footerLinks a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: var(--accent-color);
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.socialIcon {
+  color: var(--text-secondary);
+  display: inline-flex;
+  transition: color 0.3s ease;
+}
+
+.socialIcon:hover {
+  color: var(--text-primary);
+}
+
+/* BOTTOM SECTION - CSS GRID FOR STRICT COLUMNS */
+.bottomSection {
+  padding: 3rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Column 1: Copyright Box (Left) */
+.copyrightBox {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: max-content;
+}
+
+.boxLogo {
+  background-color: var(--accent-color);
+  color: #000;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxText {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.year {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.desc {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+/* Column 2: Legal (Center) */
+.legalBlock {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-heading);
+  text-align: center;
+}
+
+/* Column 3: Credits (Right) */
+.creditsBlock {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-heading);
+  text-align: right; /* Align to far right */
+  justify-self: end;
+}
+
+.label {
+  color: #555;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.link {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.creditNames {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+}
+
+.bottomSpacer {
+  height: 50px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .bottomSection {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 3rem;
+  }
+  .creditsBlock {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 1.5rem 0;
+  }
+
+  .topSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .brandBlock, .contactBlock {
+    max-width: 100%;
+  }
+
+  .logo {
+    font-size: 15vw;
+  }
+
+  .middleSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .footerLinks {
+    flex-wrap: wrap;
+  }
+
+  .bottomSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+}

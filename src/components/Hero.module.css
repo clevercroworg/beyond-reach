@@ -1,0 +1,89 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 1; /* Creates a stacking context so negative z-index video stays inside .hero */
+}
+
+.videoContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 14, 11, 0.6); /* Dark tint */
+}
+
+.content {
+  text-align: center;
+  z-index: 10;
+  padding: 0 4rem; /* More horizontal room for wide words like BORDERS */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 13vw;
+  line-height: 0.85;
+  margin-bottom: 2rem;
+}
+
+.title > span {
+  display: block;
+}
+
+/* Word cycler container — holds stacked words */
+.wordCycler {
+  position: relative;
+  display: block;
+  height: 1.05em; /* Tight but enough room for heavy fonts */
+  overflow: hidden;
+  line-height: 1;
+}
+
+/* Each cycling word is absolutely positioned inside the container */
+.cycleWord {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  will-change: transform, opacity;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 18vw;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+}
