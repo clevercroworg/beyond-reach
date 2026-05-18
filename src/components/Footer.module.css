@@ -257,7 +257,14 @@
   }
 
   .footerLinks {
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Keep on a single line */
+    gap: 4vw; /* Use relative spacing to fit small screens */
+    width: 100%;
+    justify-content: space-between; /* Spread evenly across the line */
+  }
+
+  .footerLinks a {
+    font-size: 5vw; /* Scale font size so all 4 items fit nicely */
   }
 
   .bottomSection {
