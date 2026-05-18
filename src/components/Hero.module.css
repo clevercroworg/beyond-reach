@@ -55,7 +55,7 @@
 .wordCycler {
   position: relative;
   display: block;
-  height: 1.1em; /* Desktop single line */
+  height: 1.1em; /* Force single line height globally */
   overflow: hidden;
   line-height: 1;
 }
@@ -66,8 +66,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* Take full container height so GSAP yPercent pushes it completely out */
   display: block;
+  white-space: nowrap; /* Prevent all words from wrapping */
   will-change: transform, opacity;
 }
 
@@ -81,14 +81,15 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .title {
-    font-size: 15vw; /* Slightly smaller to fit wider text gracefully */
+    font-size: 12vw; /* Scaled down perfectly so 14-character phrases fit on one line */
   }
   
   .wordCycler {
-    height: 2.2em; /* Accommodate two lines for wrapping phrases like OTA DEPENDENCY */
+    height: 1.1em; /* Return to normal single-line spacing */
   }
   
   .subtitle {
     font-size: 1rem;
+    margin-top: 0; /* Remove compensation gap */
   }
 }
