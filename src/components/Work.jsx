@@ -10,7 +10,7 @@ const projects = [
     title: "THE GRAND ESCAPE",
     client: "LUXURY RESORTS",
     imgSrc: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
-    vidSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+    vidSrc: "https://www.w3schools.com/html/mov_bbb.mp4"
   },
   {
     title: "OCEANIC VOYAGES",
