@@ -10,7 +10,7 @@ const projects = [
     title: "THE GRAND ESCAPE",
     client: "LUXURY RESORTS",
     imgSrc: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
-    vidSrc: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-city-traffic-at-night-11-large.mp4"
+    vidSrc: "/sample-vid.mp4"
   },
   {
     title: "OCEANIC VOYAGES",
@@ -80,7 +80,7 @@ const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
           }
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 }
     );
 
     if (cardRef.current) {
