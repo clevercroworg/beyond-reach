@@ -9,7 +9,7 @@ const Footer = () => {
         <div className={styles.brandBlock}>
           <p className={styles.tagline}>Redefining boundaries, welcome to</p>
           <h2 className={styles.logo}>
-            <span style={{ fontWeight: 'bold' }}>BEYOND</span><br/><span style={{ fontWeight: 'normal' }}>REACH</span>
+            <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
           </h2>
         </div>
         <div className={styles.contactBlock}>
@@ -70,11 +70,8 @@ const Footer = () => {
         </div>
         
         <div className={styles.creditsBlock}>
-          <span className={styles.label}>CREDITS</span>
-          <div className={styles.creditNames}>
-            <span>DESIGN BY BR</span>
-            <span>CODE BY BR</span>
-          </div>
+          <span className={styles.label}>PRIVACY</span>
+          <a href="#" className={styles.link}>PRIVACY POLICY</a>
         </div>
       </div>
       

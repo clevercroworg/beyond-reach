@@ -17,7 +17,8 @@
 }
 
 .brandBlock {
-  max-width: 60%;
+  flex: 1; /* Take up remaining space */
+  padding-right: 2rem;
 }
 
 .tagline {
@@ -29,10 +30,11 @@
 
 .logo {
   font-family: var(--font-heading);
-  font-size: 10vw; /* Responsive huge logo */
+  font-size: 7.5vw; /* Responsive huge logo, slightly scaled down to fit single line */
   line-height: 0.85;
   margin: 0;
   letter-spacing: -2px;
+  white-space: nowrap;
 }
 
 .contactBlock {
