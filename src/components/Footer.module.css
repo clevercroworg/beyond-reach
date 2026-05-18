@@ -24,7 +24,7 @@
 .tagline {
   font-size: 1.5rem;
   color: var(--text-secondary);
-  margin-bottom: 1rem; /* Give space between tagline and logo */
+  margin-bottom: 2rem; /* Give plenty of space between tagline and logo */
   line-height: 1;
 }
 
