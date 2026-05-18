@@ -43,69 +43,51 @@
   transform: translateY(50%); /* Push content to the visual center of the full screen */
 }
 
-/* ===== LOGO ===== */
-.logo {
+/* ===== LOGO AS PROGRESS BAR ===== */
+.logoContainer {
+  position: relative;
   font-family: var(--font-heading);
   font-size: 6vw;
-  color: #fff;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  display: flex;
-  overflow: hidden;
   line-height: 1;
 }
 
-.letter {
-  display: inline-block;
-  will-change: transform, opacity;
+.logoBase {
+  color: rgba(255, 255, 255, 0.15); /* Dim base text */
 }
 
-.space {
-  width: 0.3em;
+.logoFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%; /* Start empty, animated by GSAP */
 }
 
-/* ===== PROGRESS BAR ===== */
+/* ===== PROGRESS COUNTER ===== */
 .progress {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  width: 300px;
-}
-
-.progressTrack {
-  flex: 1;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 1px;
-  overflow: hidden;
-}
-
-.progressBar {
-  height: 100%;
-  width: 0%;
-  background: var(--accent-color);
-  border-radius: 1px;
-  will-change: width;
+  justify-content: center;
+  width: 100%;
 }
 
 .counter {
   font-family: var(--font-body);
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.5);
-  min-width: 40px;
-  text-align: right;
   font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
 }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
-  .logo {
+  .logoContainer {
     font-size: 10vw;
-  }
-
-  .progress {
-    width: 220px;
   }
 
   .creditBox {

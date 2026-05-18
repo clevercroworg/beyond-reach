@@ -5,8 +5,7 @@ import styles from './Preloader.module.css';
 const Preloader = ({ onComplete }) => {
   const containerRef = useRef(null);
   const logoRef = useRef(null);
-  const progressRef = useRef(null);
-  const progressBarRef = useRef(null);
+  const logoFillRef = useRef(null);
   const counterRef = useRef(null);
   const curtainTopRef = useRef(null);
   const curtainBottomRef = useRef(null);
@@ -15,10 +14,9 @@ const Preloader = ({ onComplete }) => {
   useEffect(() => {
     const container = containerRef.current;
     const logo = logoRef.current;
-    const progress = progressRef.current;
-    const progressBar = progressBarRef.current;
     const curtainTop = curtainTopRef.current;
     const curtainBottom = curtainBottomRef.current;
+    const counter = counterRef.current;
 
     // Lock body scroll during preloader
     document.body.style.overflow = 'hidden';
@@ -30,47 +28,38 @@ const Preloader = ({ onComplete }) => {
       }
     });
 
-    // Phase 1: Fade in logo letters staggered
-    const letters = logo.querySelectorAll(`.${styles.letter}`);
-    masterTL.set(letters, { y: 60, opacity: 0 });
-    masterTL.to(letters, {
-      y: 0,
-      opacity: 1,
-      duration: 0.6,
-      stagger: 0.05,
-      ease: 'power3.out',
-    }, 0.3);
-
-    // Phase 2: Progress bar fills up
-    const countObj = { val: 0 };
-    masterTL.to(countObj, {
-      val: 100,
-      duration: 2,
+    // Phase 1: Logo fills left to right with white
+    const fillObj = { width: 0 };
+    masterTL.to(fillObj, {
+      width: 100,
+      duration: 2.5,
       ease: 'power2.inOut',
       onUpdate: () => {
-        const rounded = Math.round(countObj.val);
+        const rounded = Math.round(fillObj.width);
         setCount(rounded);
-        if (progressBar) {
-          progressBar.style.width = `${rounded}%`;
+        if (logoFillRef.current) {
+          logoFillRef.current.style.width = `${fillObj.width}%`;
         }
       }
-    }, 0.8);
+    }, 0.5);
 
-    // Phase 3: After loading, scale up logo and fade out content
+    // Phase 2: Scale up logo & fade counter
     masterTL.to(logo, {
-      scale: 1.2,
+      scale: 1.15,
       opacity: 0,
-      duration: 0.5,
+      duration: 0.6,
       ease: 'power3.in',
-    }, '+=0.3');
+    }, '+=0.2');
 
-    masterTL.to(progress, {
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power2.in',
-    }, '<');
+    if (counter) {
+      masterTL.to(counter, {
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in',
+      }, '<');
+    }
 
-    // Phase 4: Curtain split — two halves wipe away to reveal site
+    // Phase 3: Curtain split
     masterTL.to(curtainTop, {
       yPercent: -100,
       duration: 0.8,
@@ -94,21 +83,16 @@ const Preloader = ({ onComplete }) => {
       {/* Top curtain half */}
       <div className={styles.curtainTop} ref={curtainTopRef}>
         <div className={styles.curtainContent}>
-          <div className={styles.logo} ref={logoRef}>
-            {'BEYOND REACH'.split('').map((char, i) => (
-              <span
-                key={i}
-                className={`${styles.letter} ${char === ' ' ? styles.space : ''}`}
-              >
-                {char === ' ' ? '\u00A0' : char}
-              </span>
-            ))}
+          <div className={styles.logoContainer} ref={logoRef}>
+            <div className={styles.logoBase}>
+              <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
+            </div>
+            <div className={styles.logoFill} ref={logoFillRef}>
+              <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
+            </div>
           </div>
 
-          <div className={styles.progress} ref={progressRef}>
-            <div className={styles.progressTrack}>
-              <div className={styles.progressBar} ref={progressBarRef}></div>
-            </div>
+          <div className={styles.progress}>
             <span className={styles.counter} ref={counterRef}>{count}%</span>
           </div>
         </div>
@@ -117,10 +101,6 @@ const Preloader = ({ onComplete }) => {
       {/* Bottom curtain half */}
       <div className={styles.curtainBottom} ref={curtainBottomRef}>
         <div className={styles.bottomCredit}>
-          <div className={styles.logoWrapper}>
-            <div className={styles.logoWord} style={{ fontWeight: 'bold' }}>BEYOND</div>
-            <div className={styles.logoWord} style={{ fontWeight: 'normal' }}>REACH</div>
-          </div>
           <div className={styles.creditBox}>
             <div className={styles.creditLogo}>BR</div>
             <div className={styles.creditText}>
