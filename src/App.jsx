@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -8,6 +8,17 @@ import Preloader from './components/Preloader';
 import Home from './pages/Home';
 import Work from './components/Work';
 import PageTransition from './components/PageTransition';
+
+// Automatically scroll to the top of the page on route transition
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -27,6 +38,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
       <Navbar onMenuClick={() => setIsMenuOpen(true)} />
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

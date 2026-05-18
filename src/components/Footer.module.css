@@ -1,15 +1,19 @@
 .footer {
-  padding: 4rem 4rem 0; /* Compact height */
   background-color: var(--bg-primary);
   color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
 }
 
 /* TOP SECTION */
 .topSection {
+  background: radial-gradient(ellipse at top left, #1a1e1c 0%, #0a0a0a 100%);
+  padding: 6rem 4rem 4rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end; /* Align bottom to prevent overlap */
-  margin-bottom: 3rem;
+  align-items: flex-end;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .brandBlock {
@@ -91,7 +95,7 @@
 
 /* MIDDLE SECTION */
 .middleSection {
-  padding: 2rem 0;
+  padding: 2rem 4rem; /* Restored horizontal padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -99,7 +103,7 @@
 
 .footerLinks {
   display: flex;
-  gap: 2rem;
+  gap: 3rem; /* Slightly increased gap for better breathing room */
   font-family: var(--font-heading);
   font-size: 2.5rem;
 }
@@ -132,7 +136,7 @@
 
 /* BOTTOM SECTION - CSS GRID FOR STRICT COLUMNS */
 .bottomSection {
-  padding: 3rem 0;
+  padding: 3rem 4rem; /* Restored horizontal padding */
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -233,10 +237,11 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: 3rem 1.5rem 0;
+    padding: 0;
   }
-
+  
   .topSection {
+    padding: 4rem 2rem 3rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 3rem;
@@ -251,6 +256,7 @@
   }
 
   .middleSection {
+    padding: 2rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
@@ -268,11 +274,13 @@
   }
 
   .bottomSection {
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 3rem;
     width: 100%;
+    box-sizing: border-box;
   }
 
   .copyrightBox {
