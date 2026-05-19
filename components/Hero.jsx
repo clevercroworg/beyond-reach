@@ -7,9 +7,12 @@ const Hero = () => {
   const contentRef = useRef(null);
   const wordContainerRef = useRef(null);
   const footerRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(false); // Default to false for SSR
 
   useEffect(() => {
+    // Check window width only after component mounts on the client
+    setIsMobile(window.innerWidth <= 768);
+    
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);

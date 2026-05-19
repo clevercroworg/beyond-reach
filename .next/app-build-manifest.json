@@ -1,39 +1,73 @@
 {
   "pages": {
-    "/resorts/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/resorts/page.css",
-      "static/chunks/app/resorts/page.js"
+    "/_not-found/page": [
+      "static/chunks/webpack-a09e5d804593d356.js",
+      "static/chunks/fd9d1056-844a5cc198651369.js",
+      "static/chunks/23-24b6e279e4ae1c8b.js",
+      "static/chunks/main-app-a2aad43d928a6d82.js",
+      "static/chunks/app/_not-found/page-7f6a09f2e4056156.js"
     ],
     "/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-    "/work/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/work/page.css",
-      "static/chunks/app/work/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+      "static/chunks/webpack-a09e5d804593d356.js",
+      "static/chunks/fd9d1056-844a5cc198651369.js",
+      "static/chunks/23-24b6e279e4ae1c8b.js",
+      "static/chunks/main-app-a2aad43d928a6d82.js",
+      "static/css/bde541af7c578c68.css",
+      "static/chunks/c15bf2b0-03795515e990ec56.js",
+      "static/chunks/582-66956b22402c4c43.js",
+      "static/chunks/138-5a5097ef2b623451.js",
+      "static/chunks/513-ec06256b4aaf95a0.js",
+      "static/chunks/app/layout-1554ffb5aef27d98.js"
     ],
     "/[propname]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/[propname]/page.js"
+      "static/chunks/webpack-a09e5d804593d356.js",
+      "static/chunks/fd9d1056-844a5cc198651369.js",
+      "static/chunks/23-24b6e279e4ae1c8b.js",
+      "static/chunks/main-app-a2aad43d928a6d82.js",
+      "static/chunks/513-ec06256b4aaf95a0.js",
+      "static/chunks/app/[propname]/page-2c365619e658739c.js"
     ],
-    "/village/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/village/page.css",
-      "static/chunks/app/village/page.js"
+    "/admin/page": [
+      "static/chunks/webpack-a09e5d804593d356.js",
+      "static/chunks/fd9d1056-844a5cc198651369.js",
+      "static/chunks/23-24b6e279e4ae1c8b.js",
+      "static/chunks/main-app-a2aad43d928a6d82.js",
+      "static/chunks/138-5a5097ef2b623451.js",
+      "static/chunks/app/admin/page-dcd70e06af8b8e69.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-a09e5d804593d356.js",
+      "static/chunks/fd9d1056-844a5cc198651369.js",
+      "static/chunks/23-24b6e279e4ae1c8b.js",
+      "static/chunks/main-app-a2aad43d928a6d82.js",
+      "static/css/923c07f5700c30ca.css",
+      "static/chunks/c15bf2b0-03795515e990ec56.js",
+      "static/chunks/582-66956b22402c4c43.js",
+      "static/chunks/120-86de2b82252f95d6.js",
+      "static/chunks/138-5a5097ef2b623451.js",
+      "static/chunks/app/page-92be15b3a6a5bc24.js"
+    ],
+    "/work/page": [
+      "static/chunks/webpack-a09e5d804593d356.js",
+      "static/chunks/fd9d1056-844a5cc198651369.js",
+      "static/chunks/23-24b6e279e4ae1c8b.js",
+      "static/chunks/main-app-a2aad43d928a6d82.js",
+      "static/css/64e2244c2959258b.css",
+      "static/chunks/c15bf2b0-03795515e990ec56.js",
+      "static/chunks/582-66956b22402c4c43.js",
+      "static/chunks/120-86de2b82252f95d6.js",
+      "static/chunks/app/work/page-79bd9eb21bf568a6.js"
+    ],
+    "/resorts/page": [
+      "static/chunks/webpack-a09e5d804593d356.js",
+      "static/chunks/fd9d1056-844a5cc198651369.js",
+      "static/chunks/23-24b6e279e4ae1c8b.js",
+      "static/chunks/main-app-a2aad43d928a6d82.js",
+      "static/css/1712b692c6eead6c.css",
+      "static/chunks/c15bf2b0-03795515e990ec56.js",
+      "static/chunks/582-66956b22402c4c43.js",
+      "static/chunks/120-86de2b82252f95d6.js",
+      "static/chunks/app/resorts/page-d245f0c0e5dd8098.js"
     ]
   }
 }
