@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Offerings.module.css';
@@ -9,12 +10,12 @@ const Offerings = () => {
   const cardsRef = useRef([]);
 
   const items = [
-    { title: "Resorts", img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80" },
-    { title: "Home Stay", img: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=800&q=80" },
-    { title: "Wellness", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" },
-    { title: "Spa & Retreats", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" },
-    { title: "Events", img: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" },
-    { title: "Yachts", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80" }
+    { title: "Resorts", slug: "/resorts", img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80" },
+    { title: "Home Stay", slug: "/home-stay", img: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=800&q=80" },
+    { title: "Wellness", slug: "/wellness", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" },
+    { title: "Spa & Retreats", slug: "/spa-retreats", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" },
+    { title: "Events", slug: "/events", img: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" },
+    { title: "Yachts", slug: "/yachts", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80" }
   ];
 
   useEffect(() => {
@@ -50,15 +51,17 @@ const Offerings = () => {
             key={index}
             ref={el => cardsRef.current[index] = el}
           >
-            <div className={styles.sectionBlock}>
-              <div className={styles.sectionIn}>
-                <img src={item.img} alt={item.title} />
+            <Link to={item.slug} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+              <div className={styles.sectionBlock}>
+                <div className={styles.sectionIn}>
+                  <img src={item.img} alt={item.title} />
+                </div>
               </div>
-            </div>
-            {/* Hover text is contained WITHIN the column */}
-            <div className={styles.hoverText}>
-              <h2>{item.title}</h2>
-            </div>
+              {/* Hover text is contained WITHIN the column */}
+              <div className={styles.hoverText}>
+                <h2>{item.title}</h2>
+              </div>
+            </Link>
           </div>
         ))}
       </div>

@@ -6,6 +6,7 @@ import Menu from './components/Menu';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import Home from './pages/Home';
+import Resorts from './pages/Resorts';
 import Work from './components/Work';
 import PageTransition from './components/PageTransition';
 
@@ -26,6 +27,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/resorts" element={<PageTransition><Resorts /></PageTransition>} />
         <Route path="/work" element={<PageTransition><Work /></PageTransition>} />
       </Routes>
     </AnimatePresence>
