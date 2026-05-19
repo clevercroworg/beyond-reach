@@ -68,25 +68,29 @@
 
 .headerTitle {
   font-family: var(--font-heading);
-  line-height: 0.95;
+  line-height: 1;
   margin-bottom: 1.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 1.2rem;
+  row-gap: 0.5rem;
 }
 
 .titlePrefix {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 2.5vw, 1.8rem);
-  letter-spacing: 2px;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  letter-spacing: normal;
   color: var(--text-primary);
-  opacity: 0.8;
-  margin-bottom: 0.8rem;
-  font-weight: 500;
+  margin-bottom: 0;
+  font-weight: normal;
+  opacity: 1;
 }
 
 .dynamicWordWrap {
-  display: block;
-  font-size: clamp(4rem, 10vw, 9rem);
+  display: inline-flex;
+  font-size: clamp(2.5rem, 6vw, 5rem);
   color: var(--accent-color);
   overflow: hidden;
   line-height: 1;

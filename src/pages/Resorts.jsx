@@ -241,7 +241,7 @@ const Resorts = () => {
           <div className={styles.headerContent}>
             <span className={styles.headerLabel}>OUR OFFERING</span>
             <h1 className={styles.headerTitle}>
-              <span className={styles.titlePrefix}>WE HELP RESORTS WITH</span>
+              <span className={styles.titlePrefix}>We help Resorts with</span>
               <span className={styles.dynamicWordWrap}>
                 <span key={words[wordIndex]} className={styles.dynamicWord}>
                   {words[wordIndex]}
