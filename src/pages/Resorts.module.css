@@ -260,46 +260,27 @@
   padding: 0 4rem;
 }
 
-/* ── Text-Only Services List ── */
-.servicesList {
-  display: flex;
-  flex-direction: column;
+/* ── Text-Only Services Grid ── */
+.simpleServicesGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2.5rem;
+  text-align: center;
+  padding: 2rem 0;
 }
 
-.serviceRow {
-  display: flex;
-  align-items: baseline;
-  gap: 2rem;
-  padding: 3.5rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  transition: padding-left 0.4s ease, opacity 0.4s ease;
-  cursor: default;
+@media (min-width: 768px) {
+  .simpleServicesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-.serviceRow:last-child {
-  border-bottom: none;
-}
-
-.serviceRow:hover {
-  padding-left: 2rem;
-  opacity: 0.7;
-}
-
-.serviceRowNum {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  color: var(--accent-color);
-  font-weight: 500;
-  letter-spacing: 2px;
-}
-
-.serviceRowName {
+.simpleServiceText {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   color: #000;
   text-transform: uppercase;
-  margin: 0;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 

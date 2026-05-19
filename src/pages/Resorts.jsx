@@ -294,20 +294,10 @@ const Resorts = () => {
          ═══════════════════════════════════ */}
       <section className={styles.servicesSection} ref={refSectionRef}>
         <div className={styles.servicesInner}>
-          <div className={styles.servicesList}>
-            {[
-              { name: 'Website Development', num: '01' },
-              { name: 'IT Services', num: '02' },
-              { name: 'Digital Marketing', num: '03' }
-            ].map((service, i) => (
-              <div 
-                key={i} 
-                className={styles.serviceRow}
-              >
-                <span className={styles.serviceRowNum}>{service.num}</span>
-                <h3 className={styles.serviceRowName}>{service.name}</h3>
-              </div>
-            ))}
+          <div className={styles.simpleServicesGrid}>
+            <div className={styles.simpleServiceText}>Website Development</div>
+            <div className={styles.simpleServiceText}>IT Services</div>
+            <div className={styles.simpleServiceText}>Digital Marketing</div>
           </div>
         </div>
       </section>
