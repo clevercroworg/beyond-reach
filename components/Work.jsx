@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Work.module.css';
@@ -33,10 +33,9 @@ const projects = [
   }
 ];
 
-const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
+const WorkCard = React.forwardRef(({ title, client, imgSrc, vidSrc, isActive }, ref) => {
   const videoRef = useRef(null);
-  const cardRef = useRef(null);
-  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   // Desktop: hover to play
   const handleMouseEnter = () => {
@@ -59,47 +58,27 @@ const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
     }
   };
 
-  // Mobile: play only when card is centered on screen
+  // Mobile: respond to isActive prop from parent
   useEffect(() => {
-    const isMobile = () => window.innerWidth <= 768;
+    if (window.innerWidth > 768) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!isMobile()) return;
-
-        if (entry.isIntersecting) {
-          // Card entered the center zone — play video
-          setIsPlaying(true);
-          if (videoRef.current) {
-            videoRef.current.currentTime = 0;
-            videoRef.current.play().catch(e => console.log(e));
-          }
-        } else {
-          // Card left the center zone — pause, reset, show static image
-          setIsPlaying(false);
-          if (videoRef.current) {
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-          }
-        }
-      },
-      {
-        // Only the middle 40% of the viewport counts as "visible"
-        // Top 30% and bottom 30% are dead zones
-        threshold: 0.5,
-        rootMargin: "-30% 0px -30% 0px"
+    if (isActive) {
+      setIsPlaying(true);
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play().catch(e => console.log(e));
       }
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    } else {
+      setIsPlaying(false);
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
     }
-
-    return () => observer.disconnect();
-  }, []);
+  }, [isActive]);
 
   return (
-    <div className={styles.card} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div className={styles.card} ref={ref} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={styles.mediaContainer}>
         <img 
           src={imgSrc} 
@@ -126,13 +105,18 @@ const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
       </div>
     </div>
   );
-};
+});
+
+WorkCard.displayName = 'WorkCard';
 
 const Work = () => {
   const containerRef = useRef(null);
+  const cardRefs = useRef([]);
   const cycleWords = ["STRATEGY", "CREATIVE", "WEBSITES", "CONTENT"];
-  const [currentWord, setCurrentWord] = React.useState(0);
+  const [currentWord, setCurrentWord] = useState(0);
+  const [activeCardIndex, setActiveCardIndex] = useState(-1);
 
+  // Word cycler
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWord((prev) => (prev + 1) % cycleWords.length);
@@ -140,19 +124,51 @@ const Work = () => {
     return () => clearInterval(interval);
   }, [cycleWords.length]);
 
+  // Mobile: scroll listener — find the SINGLE card closest to viewport center
+  const handleScroll = useCallback(() => {
+    if (window.innerWidth > 768) {
+      setActiveCardIndex(-1);
+      return;
+    }
+
+    const viewportCenter = window.innerHeight / 2;
+    let closestIdx = -1;
+    let closestDist = Infinity;
+
+    cardRefs.current.forEach((el, idx) => {
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const dist = Math.abs(cardCenter - viewportCenter);
+
+      // Only consider cards that are reasonably in view (within 40% of viewport from center)
+      if (dist < closestDist && dist < window.innerHeight * 0.35) {
+        closestDist = dist;
+        closestIdx = idx;
+      }
+    });
+
+    setActiveCardIndex(closestIdx);
+  }, []);
+
   useEffect(() => {
-    // Mount entrance animation
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run once on mount
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  // GSAP entrance animations
+  useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate heading
       gsap.from(`.${styles.animatedHeading}`, {
         y: 100,
         opacity: 0,
         duration: 1.2,
         ease: "power4.out",
-        delay: 0.2 // allow page transition to start
+        delay: 0.2
       });
 
-      // Animate filter row
       gsap.from(`.${styles.filterRow}`, {
         y: 20,
         opacity: 0,
@@ -161,7 +177,6 @@ const Work = () => {
         delay: 0.6
       });
 
-      // Animate cards staggering in
       gsap.from(`.${styles.card}`, {
         y: 80,
         opacity: 0,
@@ -198,7 +213,12 @@ const Work = () => {
 
       <div className={styles.grid}>
         {projects.map((proj, idx) => (
-          <WorkCard key={idx} {...proj} />
+          <WorkCard
+            key={idx}
+            ref={el => cardRefs.current[idx] = el}
+            {...proj}
+            isActive={idx === activeCardIndex}
+          />
         ))}
       </div>
     </section>
