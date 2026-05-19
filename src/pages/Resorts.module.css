@@ -260,31 +260,72 @@
   padding: 0 4rem;
 }
 
-/* ── Ultra-Simple Text Grid ── */
-.simpleServicesGrid {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+/* ── Word Cloud Services ── */
+.wordCloud {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem 3rem;
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.simpleServiceText {
+.cloudItem {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 4vw, 4.5rem);
-  color: #000;
   text-transform: uppercase;
-  line-height: 1.1;
+  line-height: 0.9;
   white-space: nowrap;
-  text-align: left;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: default;
+}
+
+.cloudItem:hover {
+  transform: scale(1.05);
+  color: var(--accent-color);
+}
+
+.cloudItem.huge {
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 700;
+  color: #111;
+}
+
+.cloudItem.large {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 600;
+  color: #333;
+}
+
+.cloudItem.medium {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 500;
+  color: #555;
+}
+
+.cloudItem.small {
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+  font-weight: 400;
+  color: #777;
+}
+
+.cloudItem.accent {
+  color: var(--accent-color);
+}
+
+.cloudItem.vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.cloudItem.vertical:hover {
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
-  .simpleServicesGrid {
-    grid-template-columns: max-content;
-    gap: 1.5rem 0;
-  }
-  .simpleServiceText {
-    font-size: 1.8rem;
+  .wordCloud {
+    gap: 1.5rem 1rem;
+    align-items: baseline;
   }
 }
 
