@@ -289,7 +289,7 @@ const Resorts = () => {
         <div className={styles.servicesInner}>
           <div className={styles.wordCloud}>
             <div className={`${styles.cloudItem} ${styles.huge} ${styles.cRust}`}>Digital Marketing</div>
-            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cOlive}`}>Website</div>
+            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cOlive} ${styles.vertical}`}>Website</div>
             <div className={`${styles.cloudItem} ${styles.small} ${styles.cAmber}`}>Branding</div>
             <div className={`${styles.cloudItem} ${styles.large} ${styles.cTeal}`}>SEO & Content</div>
             <div className={`${styles.cloudItem} ${styles.small} ${styles.cSlate}`}>IT Services</div>
