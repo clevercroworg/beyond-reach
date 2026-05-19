@@ -183,12 +183,12 @@ const Resorts = () => {
 
       /* ── Services section — scroll-triggered entrance ── */
       gsap.from(`.${styles.servicesContent}`, {
-        scrollTrigger: { trigger: `.${styles.servicesSection}`, start: 'top 65%' },
+        scrollTrigger: { trigger: refSectionRef.current, start: 'top 65%' },
         x: -60, opacity: 0, duration: 1, ease: 'power3.out'
       });
       gsap.from(`.${styles.serviceBlock}`, {
-        scrollTrigger: { trigger: `.${styles.servicesGrid}`, start: 'top 75%' },
-        y: 40, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out'
+        scrollTrigger: { trigger: refSectionRef.current, start: 'top 65%' },
+        y: 40, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out', delay: 0.2
       });
 
       /* Handle section */
