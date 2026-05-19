@@ -263,17 +263,22 @@
 /* ── Ultra-Simple Text Grid ── */
 .simpleServicesGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .simpleServicesGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .simpleServiceText {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2rem, 4vw, 4.5rem);
   color: #000;
   text-transform: uppercase;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 
