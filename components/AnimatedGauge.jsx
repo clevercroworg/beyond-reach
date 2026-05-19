@@ -30,41 +30,44 @@ export default function AnimatedGauge({ score }) {
     <div className="flex flex-col items-center justify-center py-6 md:py-10 relative">
       {/* Background Glow */}
       <div 
-        className="absolute w-[250px] h-[250px] top-[10%] rounded-full blur-[80px] pointer-events-none" 
+        className="absolute w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none" 
         style={{ backgroundColor: color, opacity: 0.15 }}
       ></div>
       
-      <svg viewBox={`0 0 ${radius * 2} ${radius * 2}`} className="w-full max-w-[280px] h-auto relative z-10 transform -rotate-90 filter drop-shadow-2xl">
-        {/* Track */}
-        <circle
-          stroke="#1a231d"
-          fill="transparent"
-          strokeWidth={stroke}
-          r={normalizedRadius}
-          cx={radius}
-          cy={radius}
-        />
-        {/* Fill progress */}
-        <motion.circle
-          stroke={color}
-          fill="transparent"
-          strokeWidth={stroke}
-          strokeDasharray={circumference + ' ' + circumference}
-          r={normalizedRadius}
-          cx={radius}
-          cy={radius}
-          strokeLinecap="round"
-          initial={{ strokeDashoffset: circumference }}
-          whileInView={{ strokeDashoffset }}
-          viewport={{ once: true }}
-          transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
-        />
-      </svg>
-      
-      {/* Inner Text content */}
-      <div className="absolute top-[35%] md:top-[40%] flex flex-col items-center justify-center z-20 pointer-events-none">
-        <span className="text-6xl md:text-7xl font-bold tracking-tighter" style={{ color }}>{Math.round(score)}</span>
-        <span className="text-neutral-400 text-xs tracking-widest uppercase mt-1">Audit Score</span>
+      {/* Wrapper for SVG & Center Text to guarantee perfect centering */}
+      <div className="relative w-full max-w-[280px] flex items-center justify-center">
+        <svg viewBox={`0 0 ${radius * 2} ${radius * 2}`} className="w-full h-auto relative z-10 transform -rotate-90 filter drop-shadow-2xl">
+          {/* Track */}
+          <circle
+            stroke="#1a231d"
+            fill="transparent"
+            strokeWidth={stroke}
+            r={normalizedRadius}
+            cx={radius}
+            cy={radius}
+          />
+          {/* Fill progress */}
+          <motion.circle
+            stroke={color}
+            fill="transparent"
+            strokeWidth={stroke}
+            strokeDasharray={circumference + ' ' + circumference}
+            r={normalizedRadius}
+            cx={radius}
+            cy={radius}
+            strokeLinecap="round"
+            initial={{ strokeDashoffset: circumference }}
+            whileInView={{ strokeDashoffset }}
+            viewport={{ once: true }}
+            transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
+          />
+        </svg>
+        
+        {/* Inner Text content - perfectly centered */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
+          <span className="text-6xl md:text-7xl font-bold tracking-tighter" style={{ color }}>{Math.round(score)}</span>
+          <span className="text-neutral-400 text-xs tracking-widest uppercase mt-1">Audit Score</span>
+        </div>
       </div>
 
       {/* Glowing Status Text below the graph */}

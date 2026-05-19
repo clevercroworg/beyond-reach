@@ -132,11 +132,12 @@ export default function AdminForm() {
         const data = await response.json();
         router.push(`/${data.propname}`);
       } else {
-        alert('Failed to save audit.');
+        const errData = await response.json().catch(() => ({}));
+        alert(`Failed to save audit: ${errData.error || 'Unknown server error'}`);
       }
     } catch (error) {
       console.error('Error saving client audit:', error);
-      alert('Failed to save audit. Please try again.');
+      alert(`Failed to save audit: ${error.message || 'Please try again.'}`);
     }
   };
 
@@ -260,7 +261,7 @@ export default function AdminForm() {
               <div>
                 <label className="block text-sm font-medium text-neutral-400 mb-2">Website Link</label>
                 <input 
-                  type="url" 
+                  type="text" 
                   className="w-full bg-[#0a0e0b] border border-[#2a332d] rounded-lg p-4 focus:ring-2 focus:ring-[#d1ff36] focus:border-[#d1ff36] focus:outline-none transition-all text-white placeholder-neutral-600"
                   value={formData.websiteLink}
                   onChange={(e) => handleChange(null, 'websiteLink', e.target.value)}
@@ -270,7 +271,7 @@ export default function AdminForm() {
               <div>
                 <label className="block text-sm font-medium text-neutral-400 mb-2">Google My Business Link</label>
                 <input 
-                  type="url" 
+                  type="text" 
                   className="w-full bg-[#0a0e0b] border border-[#2a332d] rounded-lg p-4 focus:ring-2 focus:ring-[#d1ff36] focus:border-[#d1ff36] focus:outline-none transition-all text-white placeholder-neutral-600"
                   value={formData.gmbLink}
                   onChange={(e) => handleChange(null, 'gmbLink', e.target.value)}
@@ -280,7 +281,7 @@ export default function AdminForm() {
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-neutral-400 mb-2">Instagram / Facebook Link</label>
                 <input 
-                  type="url" 
+                  type="text" 
                   className="w-full bg-[#0a0e0b] border border-[#2a332d] rounded-lg p-4 focus:ring-2 focus:ring-[#d1ff36] focus:border-[#d1ff36] focus:outline-none transition-all text-white placeholder-neutral-600"
                   value={formData.instagramLink}
                   onChange={(e) => handleChange(null, 'instagramLink', e.target.value)}
