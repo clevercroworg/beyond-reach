@@ -1,6 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/[propname]/page": "app/[propname]/page.js",
-  "/work/page": "app/work/page.js",
-  "/resorts/page": "app/resorts/page.js"
-}
