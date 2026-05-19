@@ -1,4 +1,4 @@
 {
-  "/[propname]/page": "app/[propname]/page.js",
-  "/admin/page": "app/admin/page.js"
+  "/page": "app/page.js",
+  "/[propname]/page": "app/[propname]/page.js"
 }

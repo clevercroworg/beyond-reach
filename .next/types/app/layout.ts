@@ -1,4 +1,4 @@
-// File: /Users/manoj/clevercrow/applications/beyond-reach/beyond-reach-audit/app/layout.jsx
+// File: D:\Beyond Reach\app\layout.jsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

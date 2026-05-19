@@ -1,8 +1,8 @@
-// File: /Users/manoj/clevercrow/applications/beyond-reach/beyond-reach-audit/app/admin/page.jsx
-import * as entry from '../../../../app/admin/page.js'
+// File: D:\Beyond Reach\app\page.jsx
+import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../app/admin/page.js')
+type TEntry = typeof import('../../../app/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
