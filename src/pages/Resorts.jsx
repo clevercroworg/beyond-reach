@@ -188,7 +188,7 @@ const Resorts = () => {
       });
       gsap.from(`.${styles.serviceBlock}`, {
         scrollTrigger: { trigger: refSectionRef.current, start: 'top 65%' },
-        y: 40, opacity: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out', delay: 0.2
+        scale: 0.95, duration: 0.6, stagger: 0.08, ease: 'power3.out'
       });
 
       /* Handle section */
@@ -313,8 +313,7 @@ const Resorts = () => {
             ].map((service, i) => (
               <div 
                 key={i} 
-                className={styles.serviceBlock}
-                style={{ gridArea: `s${i + 1}` }}
+                className={`${styles.serviceBlock} ${styles[`service${i + 1}`]}`}
               >
                 <span className={styles.serviceNum}>{service.num}</span>
                 <span className={styles.serviceName}>{service.name}</span>
