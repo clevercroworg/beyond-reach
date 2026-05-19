@@ -1,10 +1,5 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/[propname]/page": "app/[propname]/page.js",
-  "/api/clients/[id]/route": "app/api/clients/[id]/route.js",
-  "/admin/page": "app/admin/page.js",
-  "/page": "app/page.js",
-  "/api/clients/route": "app/api/clients/route.js",
-  "/work/page": "app/work/page.js",
-  "/resorts/page": "app/resorts/page.js"
+  "/page": "app/page.js"
 }
