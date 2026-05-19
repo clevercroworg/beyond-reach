@@ -270,7 +270,7 @@
 
 @media (max-width: 768px) {
   .simpleServicesGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: max-content;
   }
 }
 
