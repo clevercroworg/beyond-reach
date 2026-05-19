@@ -16,7 +16,16 @@ const Menu = ({ isOpen, onClose }) => {
       name: "SOLUTION", 
       path: "/#solution",
       image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
-      subItems: ["Hotels", "Resorts", "Homestays & Villas", "Spas & Wellness", "Clubs & Lounges", "Event Venues", "Yachts & Boat Rentals", "Tours & Activities"]
+      subItems: [
+        { label: "Hotels", path: "/hotels" },
+        { label: "Resorts", path: "/resorts" },
+        { label: "Homestays & Villas", path: "/homestays-villas" },
+        { label: "Spas & Wellness", path: "/spas-wellness" },
+        { label: "Clubs & Lounges", path: "/clubs-lounges" },
+        { label: "Event Venues", path: "/event-venues" },
+        { label: "Yachts & Boat Rentals", path: "/yachts-boats" },
+        { label: "Tours & Activities", path: "/tours-activities" }
+      ]
     },
     { name: "ABOUT", path: "/#about", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80" },
     { name: "CONTACT", path: "/#contact", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" }
@@ -158,11 +167,11 @@ const Menu = ({ isOpen, onClose }) => {
                   {item.subItems.map((subItem, subIdx) => (
                     <Link 
                       key={subIdx} 
-                      to="/#solution" 
+                      to={subItem.path} 
                       className={styles.subLink}
                       onClick={onClose}
                     >
-                      {subItem}
+                      {subItem.label}
                     </Link>
                   ))}
                 </div>
