@@ -679,7 +679,7 @@
 
   /* FAQ */
   .faqSection {
-    padding: 5rem 0;
+    padding: 3rem 0;
   }
   
   .faqInner {
@@ -702,7 +702,7 @@
    ═══════════════════════════════════════════ */
 .faqSection {
   background-color: var(--bg-primary);
-  padding: 8rem 0;
+  padding: 4rem 0;
   color: var(--text-primary);
 }
 
@@ -714,7 +714,7 @@
 
 .faqHeader {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .faqLabel {
@@ -755,7 +755,7 @@
   text-align: left;
   background: none;
   border: none;
-  padding: 2rem 0;
+  padding: 1.2rem 0;
   font-family: var(--font-heading);
   font-size: 1.25rem;
   color: var(--text-primary);
