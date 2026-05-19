@@ -309,11 +309,6 @@ const Resorts = () => {
             <div className={styles.simpleServiceText}>Analytics</div>
             <div className={styles.simpleServiceText}>CRM & Retention</div>
             <div className={styles.simpleServiceText}>Revenue Strategy</div>
-            
-            {/* Row 4 */}
-            <div className={styles.simpleServiceText}>Performance Ads</div>
-            <div className={styles.simpleServiceText}>Lead Generation</div>
-            <div className={styles.simpleServiceText}>Video Production</div>
           </div>
         </div>
       </section>
