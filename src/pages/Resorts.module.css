@@ -264,7 +264,7 @@
 .simpleServicesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6rem 2rem;
+  gap: 3rem 1.5rem;
 }
 
 @media (max-width: 768px) {
