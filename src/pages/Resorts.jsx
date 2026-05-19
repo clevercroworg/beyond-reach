@@ -288,15 +288,15 @@ const Resorts = () => {
       <section className={styles.servicesSection} ref={refSectionRef}>
         <div className={styles.servicesInner}>
           <div className={styles.wordCloud}>
-            <div className={`${styles.cloudItem} ${styles.huge}`}>Digital Marketing</div>
-            <div className={`${styles.cloudItem} ${styles.medium}`}>Website</div>
-            <div className={`${styles.cloudItem} ${styles.small}`}>Branding</div>
-            <div className={`${styles.cloudItem} ${styles.large} ${styles.accent}`}>SEO & Content</div>
-            <div className={`${styles.cloudItem} ${styles.small}`}>IT Services</div>
-            <div className={`${styles.cloudItem} ${styles.medium}`}>Social Media</div>
-            <div className={`${styles.cloudItem} ${styles.large}`}>Analytics</div>
-            <div className={`${styles.cloudItem} ${styles.huge}`}>Revenue Strategy</div>
-            <div className={`${styles.cloudItem} ${styles.medium}`}>CRM & Retention</div>
+            <div className={`${styles.cloudItem} ${styles.huge} ${styles.cRust}`}>Digital Marketing</div>
+            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cOlive}`}>Website</div>
+            <div className={`${styles.cloudItem} ${styles.small} ${styles.cAmber}`}>Branding</div>
+            <div className={`${styles.cloudItem} ${styles.large} ${styles.cTeal}`}>SEO & Content</div>
+            <div className={`${styles.cloudItem} ${styles.small} ${styles.cSlate}`}>IT Services</div>
+            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cRust}`}>Social Media</div>
+            <div className={`${styles.cloudItem} ${styles.large} ${styles.cOlive}`}>Analytics</div>
+            <div className={`${styles.cloudItem} ${styles.huge} ${styles.cSlate}`}>Revenue Strategy</div>
+            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cTeal}`}>CRM & Retention</div>
           </div>
         </div>
       </section>

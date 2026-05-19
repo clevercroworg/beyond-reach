@@ -288,30 +288,29 @@
 .cloudItem.huge {
   font-size: clamp(3.5rem, 8vw, 7rem);
   font-weight: 700;
-  color: var(--bg-primary); /* Use site's dark green/black for max contrast */
 }
 
 .cloudItem.large {
   font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 600;
-  color: #000;
 }
 
 .cloudItem.medium {
   font-size: clamp(1.8rem, 4vw, 3.5rem);
   font-weight: 500;
-  color: #333;
 }
 
 .cloudItem.small {
   font-size: clamp(1.2rem, 2.5vw, 2.2rem);
   font-weight: 400;
-  color: #555;
 }
 
-.cloudItem.accent {
-  color: var(--bg-primary); /* Neon green is unreadable on white, use dark theme color */
-}
+/* Readable Multicolor Palette */
+.cRust { color: #b45309; }
+.cOlive { color: #4d7c0f; }
+.cAmber { color: #92400e; }
+.cSlate { color: #1e293b; }
+.cTeal { color: #0f766e; }
 
 .cloudItem.vertical {
   writing-mode: vertical-rl;
