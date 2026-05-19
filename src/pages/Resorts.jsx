@@ -294,7 +294,7 @@ const Resorts = () => {
             <div className={`${styles.cloudItem} ${styles.large} ${styles.cTeal}`}>SEO & Content</div>
             <div className={`${styles.cloudItem} ${styles.small} ${styles.cSlate}`}>IT Services</div>
             <div className={`${styles.cloudItem} ${styles.medium} ${styles.cRust}`}>Social Media</div>
-            <div className={`${styles.cloudItem} ${styles.large} ${styles.cOlive}`}>Analytics</div>
+            <div className={`${styles.cloudItem} ${styles.large} ${styles.cOlive} ${styles.vertical}`}>Analytics</div>
             <div className={`${styles.cloudItem} ${styles.huge} ${styles.cSlate}`}>Revenue Strategy</div>
             <div className={`${styles.cloudItem} ${styles.medium} ${styles.cTeal}`}>CRM & Retention</div>
           </div>
