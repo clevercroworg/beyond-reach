@@ -1,6 +1,10 @@
 import connectToDatabase from '@/lib/mongodb';
 import Client from '@/models/Client';
 import { notFound } from 'next/navigation';
+import AnimatedStatusCard from '@/components/AnimatedStatusCard';
+import AnimatedScoreBar from '@/components/AnimatedScoreBar';
+import AuditBackground from '@/components/AuditBackground';
+import AnimatedGauge from '@/components/AnimatedGauge';
 
 export default async function ViewAudit({ params }) {
   const { propname } = params;
@@ -11,6 +15,35 @@ export default async function ViewAudit({ params }) {
   if (!audit) {
     notFound();
   }
+
+  // Calculate Overall Health Score
+  let totalMetrics = 0;
+  let positiveMetrics = 0;
+
+  const countMetric = (val) => {
+    totalMetrics++;
+    if (['Yes', 'Fast', 'High'].includes(val)) positiveMetrics++;
+  };
+
+  countMetric(audit.gmb?.profileActive);
+  countMetric(audit.gmb?.correctPhoneNumber);
+  countMetric(audit.gmb?.websiteLinkWorking);
+  countMetric(audit.gmb?.accurateAddressPin);
+  countMetric(audit.gmb?.ownerResponses);
+
+  countMetric(audit.website?.active);
+  countMetric(audit.website?.mobileFriendly);
+  countMetric(audit.website?.directBookingEngine);
+  countMetric(audit.website?.clearServicesPage);
+  countMetric(audit.website?.highQualityGallery);
+  countMetric(audit.website?.basicSEO);
+  countMetric(audit.website?.pageLoadSpeed);
+
+  countMetric(audit.socialMedia?.activePages);
+  countMetric(audit.socialMedia?.postPerformance);
+  countMetric(audit.socialMedia?.videoReelsContent);
+
+  const healthScore = totalMetrics > 0 ? Math.round((positiveMetrics / totalMetrics) * 100) : 0;
 
   const sections = [
     {
@@ -55,22 +88,60 @@ export default async function ViewAudit({ params }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e0b] text-white font-sans selection:bg-[#d1ff36]/30 pb-20">
+    <div className="min-h-screen text-white font-sans selection:bg-[#d1ff36]/30 pb-20 relative">
+      <AuditBackground />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden border-b border-[#2a332d]">
+      <section className="relative pt-20 pb-8 px-6 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#112a1b_0%,_#0a0e0b_70%)]"></div>
         <div className="max-w-5xl mx-auto relative z-10 text-center animate-fade-in-up">
           <span className="text-[#d1ff36] font-semibold tracking-wider uppercase text-sm mb-4 block">Online Presence Audit</span>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">{audit.hotelName}</h1>
-          <p className="text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4">{audit.hotelName}</h1>
+          
+          {audit.location && (
+            <p className="text-lg text-neutral-300 mb-6 flex items-center justify-center gap-2">
+              <svg className="w-5 h-5 text-[#d1ff36]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              {audit.location}
+            </p>
+          )}
+
+          <p className="text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed mb-8">
             A comprehensive analysis of your current digital footprint, identifying critical gaps and actionable steps for revenue growth.
           </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            {audit.websiteLink && (
+              <a href={audit.websiteLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm font-medium">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                Website
+              </a>
+            )}
+            {audit.gmbLink && (
+              <a href={audit.gmbLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm font-medium">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                Google Maps
+              </a>
+            )}
+            {audit.instagramLink && (
+              <a href={audit.instagramLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-sm font-medium">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                Social Media
+              </a>
+            )}
+          </div>
         </div>
       </section>
 
-      <div className="max-w-5xl mx-auto px-6 py-20 space-y-32">
+      <div className="max-w-5xl mx-auto px-6 py-10 space-y-20">
         
+        {/* Overall Health Score Graph */}
+        <section className="bg-white/5 backdrop-blur-xl rounded-[2.5rem] border border-white/10 p-10 relative z-20 shadow-2xl overflow-hidden">
+           <AnimatedGauge score={healthScore} />
+        </section>
+
         {/* SECTION 1: Metrics Breakdown */}
         <section>
           <div className="mb-12">
@@ -84,21 +155,16 @@ export default async function ViewAudit({ params }) {
           <div className="space-y-16">
             {sections.map((section, idx) => (
               <div key={idx} className="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <div className="md:col-span-5 space-y-4">
+                <div className="md:col-span-5 space-y-4 order-2 md:order-1">
                   <h3 className="text-2xl font-semibold text-white">{section.title}</h3>
-                  <div className="p-6 bg-[#131915] rounded-2xl border border-[#2a332d]">
+                  <div className="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
                     <p className="text-neutral-300 mb-4"><strong className="text-red-400 font-medium">The Problem:</strong> {section.problem}</p>
                     <p className="text-neutral-400"><strong className="text-[#d1ff36] font-medium">Where to Improve:</strong> {section.solution}</p>
                   </div>
                 </div>
-                <div className="md:col-span-7 grid grid-cols-2 gap-4">
+                <div className="md:col-span-7 grid grid-cols-2 gap-4 order-1 md:order-2">
                   {section.metrics.map((metric, i) => (
-                    <div key={i} className="bg-[#131915] p-5 rounded-xl border border-[#2a332d] flex flex-col justify-center">
-                      <span className="text-sm text-neutral-500 mb-1">{metric.label}</span>
-                      <span className={`text-lg font-medium ${metric.value === 'No' || metric.value === 'Slow' || metric.value === 'Low' ? 'text-red-400' : 'text-white'}`}>
-                        {metric.value || '-'}
-                      </span>
-                    </div>
+                    <AnimatedStatusCard key={i} label={metric.label} value={metric.value} index={i} />
                   ))}
                 </div>
               </div>
@@ -109,12 +175,12 @@ export default async function ViewAudit({ params }) {
         {/* Missing Tracking & Local Ads Sections */}
         <section>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 bg-[#131915] rounded-3xl border border-[#2a332d]">
+            <div className="p-8 bg-white/5 backdrop-blur-md rounded-3xl border border-white/10">
               <h3 className="text-2xl font-bold mb-4">D. Tracking & Retargeting Setup</h3>
               <p className="text-neutral-300 mb-4"><strong className="text-red-400">The Problem:</strong> You are letting highly interested website visitors slip through your fingers.</p>
               <p className="text-neutral-400">Without backend tracking tools (like Meta Pixel or Google Analytics), you have no way of knowing who visited your site. This means you cannot retarget guests who looked at your rooms but left without making a reservation.</p>
             </div>
-            <div className="p-8 bg-[#131915] rounded-3xl border border-[#2a332d]">
+            <div className="p-8 bg-white/5 backdrop-blur-md rounded-3xl border border-white/10">
               <h3 className="text-2xl font-bold mb-4">E. Local Ad Visibility</h3>
               <p className="text-neutral-300 mb-4"><strong className="text-red-400">The Problem:</strong> Your property is currently invisible to travelers actively looking to book in your area right now.</p>
               <p className="text-neutral-400">Without targeted local SEO and strategic digital ads, nearby rival hotels will always sit at the top of search results, essentially stealing active, high-intent traffic directly from you.</p>
@@ -123,7 +189,7 @@ export default async function ViewAudit({ params }) {
         </section>
 
         {/* SECTION 2: Market Insights & Score */}
-        <section className="bg-gradient-to-br from-[#131915] to-[#0a0e0b] p-10 rounded-[2.5rem] border border-[#2a332d] relative overflow-hidden">
+        <section className="bg-gradient-to-br from-white/10 to-transparent backdrop-blur-2xl p-10 rounded-[2.5rem] border border-white/10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#d1ff36]/5 blur-[100px] rounded-full pointer-events-none"></div>
           
           <div className="relative z-10">
@@ -133,14 +199,17 @@ export default async function ViewAudit({ params }) {
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="space-y-2">
-                <span className="text-neutral-400">Your Visibility Score</span>
-                <div className="text-5xl font-bold text-white">{audit.onlinePresenceScore?.visibilityScore}<span className="text-2xl text-neutral-600">/100</span></div>
-              </div>
-              <div className="space-y-2">
-                <span className="text-neutral-400">Competitor's Score</span>
-                <div className="text-5xl font-bold text-white">{audit.onlinePresenceScore?.competitorScore}<span className="text-2xl text-neutral-600">/100</span></div>
-              </div>
+              <AnimatedScoreBar 
+                score={audit.onlinePresenceScore?.visibilityScore} 
+                max={100} 
+                label="Your Visibility Score" 
+              />
+              <AnimatedScoreBar 
+                score={audit.onlinePresenceScore?.competitorScore} 
+                max={100} 
+                label="Competitor's Score" 
+                inverseColors={true}
+              />
               <div className="space-y-2">
                 <span className="text-neutral-400">Estimated Lost Revenue</span>
                 <div className="text-4xl font-bold text-red-400">{audit.marketInsights?.estimatedLostRevenue}</div>
@@ -148,15 +217,15 @@ export default async function ViewAudit({ params }) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#0a0e0b]/50 p-6 rounded-2xl border border-[#2a332d]">
+              <div className="bg-black/20 p-6 rounded-2xl border border-white/5">
                 <span className="text-sm text-neutral-500 block mb-2">Monthly Search Volume</span>
                 <span className="text-xl text-white">{audit.marketInsights?.monthlySearchVolume}</span>
               </div>
-              <div className="bg-[#0a0e0b]/50 p-6 rounded-2xl border border-[#2a332d]">
+              <div className="bg-black/20 p-6 rounded-2xl border border-white/5">
                 <span className="text-sm text-neutral-500 block mb-2">Competition Level</span>
                 <span className="text-xl text-white">{audit.marketInsights?.competitionLevel}</span>
               </div>
-              <div className="bg-[#0a0e0b]/50 p-6 rounded-2xl border border-[#2a332d] md:col-span-2">
+              <div className="bg-black/20 p-6 rounded-2xl border border-white/5 md:col-span-2">
                 <span className="text-sm text-neutral-500 block mb-2">Scope of Booking Growth</span>
                 <span className="text-xl text-[#d1ff36]">{audit.marketInsights?.bookingGrowthScope}</span>
               </div>
@@ -177,7 +246,7 @@ export default async function ViewAudit({ params }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-[#131915] p-8 rounded-3xl border border-[#2a332d] hover:-translate-y-1 transition-transform duration-300">
+            <div className="bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors duration-300">
               <div className="text-[#d1ff36] font-mono text-sm mb-4">MONTHS 1–2</div>
               <h3 className="text-2xl font-bold mb-4">Phase 1: Foundation Optimization</h3>
               <p className="text-neutral-400 leading-relaxed">
@@ -185,7 +254,7 @@ export default async function ViewAudit({ params }) {
               </p>
             </div>
             
-            <div className="bg-[#131915] p-8 rounded-3xl border border-[#2a332d] hover:-translate-y-1 transition-transform duration-300">
+            <div className="bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-colors duration-300">
               <div className="text-[#d1ff36] font-mono text-sm mb-4">MONTHS 3+</div>
               <h3 className="text-2xl font-bold mb-4">Phase 2: Targeted Visibility & Paid Ads</h3>
               <p className="text-neutral-400 leading-relaxed">

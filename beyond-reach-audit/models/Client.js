@@ -4,6 +4,12 @@ const clientSchema = new mongoose.Schema({
   hotelName: { type: String, required: true },
   propname: { type: String, required: true, unique: true },
   
+  // Basic Info
+  location: { type: String },
+  websiteLink: { type: String },
+  gmbLink: { type: String },
+  instagramLink: { type: String },
+  
   // SECTION 1: What You Have
   gmb: {
     profileActive: { type: String, enum: ['Yes', 'No'] },

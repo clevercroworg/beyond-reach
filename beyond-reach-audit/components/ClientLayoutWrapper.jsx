@@ -11,10 +11,12 @@ export default function ClientLayoutWrapper({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  const isMainWebsite = ['/', '/work', '/resorts'].includes(pathname);
+
   return (
     <>
-      <Navbar onMenuClick={() => setIsMenuOpen(true)} />
-      <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+      {isMainWebsite && <Navbar onMenuClick={() => setIsMenuOpen(true)} />}
+      {isMainWebsite && <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />}
       <AnimatePresence mode="wait">
         <PageTransition key={pathname}>
           {children}
