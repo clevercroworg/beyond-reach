@@ -294,43 +294,15 @@ const Resorts = () => {
          ═══════════════════════════════════ */}
       <section className={styles.servicesSection} ref={refSectionRef}>
         <div className={styles.servicesInner}>
-          <div className={styles.servicesContent}>
-            <span className={styles.servicesLabel}>HOW WE WORK</span>
-            <h2 className={styles.servicesTitle}>
-              STRATEGY FIRST.<br />
-              EVERY <span className={styles.servicesHighlight}>CHANNEL</span> ALIGNED.
-            </h2>
-            <p className={styles.servicesDesc}>
-              At Beyond Reach, we don't work in silos. Our integrated strategy 
-              hub connects every discipline — from brand and creative to 
-              performance and analytics — into one unified growth system.
-            </p>
-            <div className={styles.servicesStats}>
-              <div className={styles.servicesStat}>
-                <span className={styles.statsNumber}>8+</span>
-                <span className={styles.statsLabel}>CORE<br/>DISCIPLINES</span>
-              </div>
-              <div className={styles.servicesDivider}></div>
-              <div className={styles.servicesStat}>
-                <span className={styles.statsNumber}>360°</span>
-                <span className={styles.statsLabel}>UNIFIED<br/>APPROACH</span>
-              </div>
-            </div>
-          </div>
           <div className={styles.servicesGrid}>
             {[
-              { name: 'Branding', num: '01', img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80' },
-              { name: 'Performance Ads', num: '02', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80' },
-              { name: 'SEO & Content', num: '03', img: 'https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&w=800&q=80' },
-              { name: 'Web & Digital', num: '04', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80' },
-              { name: 'Analytics', num: '05', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80' },
-              { name: 'Revenue Strategy', num: '06', img: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=800&q=80' },
-              { name: 'Social Media', num: '07', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=800&q=80' },
-              { name: 'CRM & Retention', num: '08', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80' }
+              { name: 'Website Development', num: '01', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80' },
+              { name: 'IT Services', num: '02', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80' },
+              { name: 'Digital Marketing', num: '03', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80' }
             ].map((service, i) => (
               <div 
                 key={i} 
-                className={`${styles.serviceBlock} ${styles[`service${i + 1}`]}`}
+                className={styles.serviceBlock}
               >
                 <div 
                   className={styles.serviceBg} 

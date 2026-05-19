@@ -247,94 +247,25 @@
 
 
 /* ═══════════════════════════════════════════
-   SECTION 3: OUR SERVICES (DARK) - BRICK WALL
+   SECTION 3: OUR SERVICES (WHITE)
    ═══════════════════════════════════════════ */
 .servicesSection {
-  background-color: var(--bg-primary);
-  padding: 8rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #fff;
+  padding: 6rem 0;
 }
 
 .servicesInner {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 4rem;
-  display: grid;
-  grid-template-columns: 450px 1fr;
-  gap: 4rem;
-  align-items: center;
 }
 
-.servicesContent {
-  order: 1;
-}
-
-.servicesDesc {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-  max-width: 400px;
-}
-
-.servicesStats {
-  display: flex;
-  gap: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.statItem {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.statsNumber {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
-  color: var(--text-primary);
-  line-height: 1;
-}
-
-.statsLabel {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  color: var(--text-secondary);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  max-width: 100px;
-  line-height: 1.4;
-}
-
-/* ── Brick-Wall Grid ── */
+/* ── 1 Column, 3 Rows Grid ── */
 .servicesGrid {
-  order: 2;
   display: grid;
-  height: 340px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 12px;
-  grid-template-areas:
-    "s1 s1 s2 s4"
-    "s3 s5 s5 s4"
-    "s6 s6 s7 s8";
-  transition: grid-template-columns 0.5s cubic-bezier(0.19, 1, 0.22, 1), 
-              grid-template-rows 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* Hover Accordion Effects (Desktop Only) */
-@media (min-width: 769px) {
-  .servicesGrid:has(.service1:hover) { grid-template-columns: 1.4fr 1.4fr 0.6fr 0.6fr; grid-template-rows: 1.5fr 0.75fr 0.75fr; }
-  .servicesGrid:has(.service2:hover) { grid-template-columns: 0.8fr 0.8fr 1.6fr 0.8fr; grid-template-rows: 1.5fr 0.75fr 0.75fr; }
-  .servicesGrid:has(.service3:hover) { grid-template-columns: 1.6fr 0.8fr 0.8fr 0.8fr; grid-template-rows: 0.75fr 1.5fr 0.75fr; }
-  .servicesGrid:has(.service4:hover) { grid-template-columns: 0.8fr 0.8fr 0.8fr 1.6fr; grid-template-rows: 1.25fr 1.25fr 0.5fr; }
-  .servicesGrid:has(.service5:hover) { grid-template-columns: 0.6fr 1.4fr 1.4fr 0.6fr; grid-template-rows: 0.75fr 1.5fr 0.75fr; }
-  .servicesGrid:has(.service6:hover) { grid-template-columns: 1.4fr 1.4fr 0.6fr 0.6fr; grid-template-rows: 0.75fr 0.75fr 1.5fr; }
-  .servicesGrid:has(.service7:hover) { grid-template-columns: 0.8fr 0.8fr 1.6fr 0.8fr; grid-template-rows: 0.75fr 0.75fr 1.5fr; }
-  .servicesGrid:has(.service8:hover) { grid-template-columns: 0.8fr 0.8fr 0.8fr 1.6fr; grid-template-rows: 0.75fr 0.75fr 1.5fr; }
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 200px);
+  gap: 1.5rem;
 }
 
 .serviceBlock {
@@ -747,30 +678,7 @@
   }
 
   .servicesInner {
-    grid-template-columns: 1fr;
     padding: 0 1.5rem;
-    gap: 2.5rem;
-  }
-
-  .servicesGrid {
-    height: auto;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, 90px);
-    grid-template-areas:
-      "s1 s1"
-      "s2 s4"
-      "s3 s4"
-      "s5 s5"
-      "s6 s6"
-      "s7 s8";
-  }
-
-  .servicesStats {
-    gap: 1.5rem;
-  }
-
-  .statsNumber {
-    font-size: 2rem;
   }
 
   .processGrid {
