@@ -193,14 +193,7 @@ const Resorts = () => {
       });
 
       /* ── Services section — scroll-triggered entrance ── */
-      gsap.from(`.${styles.servicesContent}`, {
-        scrollTrigger: { trigger: refSectionRef.current, start: 'top 65%' },
-        x: -60, opacity: 0, duration: 1, ease: 'power3.out'
-      });
-      gsap.from(`.${styles.serviceBlock}`, {
-        scrollTrigger: { trigger: refSectionRef.current, start: 'top 65%' },
-        scale: 0.95, duration: 0.6, stagger: 0.08, ease: 'power3.out'
-      });
+      /* Temporarily disabled GSAP on word cloud to debug visibility issue */
 
       /* Handle section */
       gsap.from(`.${styles.handleContent}`, {
@@ -291,25 +284,20 @@ const Resorts = () => {
       </section>
 
       {/* ═══════════════════════════════════
-          SECTION 3: SERVICES (WHITE)
+          SECTION 3: SERVICES (WORD CLOUD)
          ═══════════════════════════════════ */}
       <section className={styles.servicesSection} ref={refSectionRef}>
         <div className={styles.servicesInner}>
-          <div className={styles.simpleServicesGrid}>
-            {/* Row 1 */}
-            <div className={styles.simpleServiceText}>Website</div>
-            <div className={styles.simpleServiceText}>IT Services</div>
-            <div className={styles.simpleServiceText}>Digital Marketing</div>
-            
-            {/* Row 2 */}
-            <div className={styles.simpleServiceText}>Branding</div>
-            <div className={styles.simpleServiceText}>SEO & Content</div>
-            <div className={styles.simpleServiceText}>Social Media</div>
-            
-            {/* Row 3 */}
-            <div className={styles.simpleServiceText}>Analytics</div>
-            <div className={styles.simpleServiceText}>CRM & Retention</div>
-            <div className={styles.simpleServiceText}>Revenue Strategy</div>
+          <div className={styles.wordCloud}>
+            <div className={`${styles.cloudItem} ${styles.huge} ${styles.cRust}`}>Digital Marketing</div>
+            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cOlive} ${styles.vertical}`}>Website</div>
+            <div className={`${styles.cloudItem} ${styles.small} ${styles.cAmber}`}>Branding</div>
+            <div className={`${styles.cloudItem} ${styles.large} ${styles.cTeal}`}>SEO & Content</div>
+            <div className={`${styles.cloudItem} ${styles.small} ${styles.cSlate}`}>IT Services</div>
+            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cRust}`}>Social Media</div>
+            <div className={`${styles.cloudItem} ${styles.large} ${styles.cOlive}`}>Analytics</div>
+            <div className={`${styles.cloudItem} ${styles.huge} ${styles.cSlate}`}>Revenue Strategy</div>
+            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cTeal}`}>CRM & Retention</div>
           </div>
         </div>
       </section>

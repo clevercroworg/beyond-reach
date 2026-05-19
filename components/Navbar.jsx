@@ -1,12 +1,11 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 
 const Navbar = ({ onMenuClick }) => {
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
+  const location = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +25,7 @@ const Navbar = ({ onMenuClick }) => {
         </Link>
       </div>
       {/* If on home page, use hash. Otherwise route to home with hash */}
-      <Link href={pathname === '/' ? '#solution' : '/#solution'} className={styles.navLink}>Solution</Link>
+      <Link href={location.pathname === '/' ? '#contact' : '/#contact'} className={styles.navLink}>Get in touch</Link>
       <button className={styles.menuBtn} onClick={onMenuClick}>
         <span className={styles.hamburger}></span>
         MENU

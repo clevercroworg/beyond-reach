@@ -212,13 +212,11 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  display: flex;
-  flex-direction: row; /* Horizontal list */
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 1.5rem 2.5rem;
   width: max-content;
+  max-width: 90vw;
   max-height: 0;
   overflow: hidden;
   z-index: 20;
@@ -226,21 +224,21 @@
   visibility: hidden;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   
-  /* Creative glassmorphism pill */
+  /* Creative glassmorphism block */
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
+  border-radius: 24px;
   padding: 0 2rem;
 }
 
 .dropdownActive {
-  max-height: 80px;
+  max-height: 300px;
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
-  padding: 1rem 2.5rem;
-  margin-top: 0.5rem;
+  padding: 2rem 3rem;
+  margin-top: 1rem;
 }
 
 .subLink {
@@ -280,6 +278,7 @@
     width: 100%;
     padding: 0;
     border: none;
+    display: flex;
     flex-direction: column; /* Restore vertical stack */
     align-items: center;
     gap: 0.5rem;

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import styles from './Hero.module.css';
 
@@ -7,6 +7,13 @@ const Hero = () => {
   const contentRef = useRef(null);
   const wordContainerRef = useRef(null);
   const footerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Words that cycle through endlessly
   const cycleWords = ['RANKINGS', 'TRAFFIC', 'CLICKS', 'ALGORITHM', 'ADS', 'OTA DEPENDENCY'];
@@ -80,8 +87,8 @@ const Hero = () => {
     <section className={styles.hero} id="home">
       <div className={styles.videoContainer}>
         <video 
-          key="hero-video"
-          src="/hero-bg.mp4"
+          key={isMobile ? "mobile-video" : "desktop-video"}
+          src={isMobile ? "/mobile-bg.mp4" : "/desktop-bg.mp4"}
           autoPlay 
           loop 
           muted 
@@ -110,7 +117,7 @@ const Hero = () => {
             ))}
           </div>
         </h1>
-        <p className={styles.subtitle}>ELEVATING EXPERIENCES.</p>
+        <p className={styles.subtitle}>Data-Driven Hospitality Marketing</p>
       </div>
 
       <div className={styles.heroFooter} ref={footerRef}>
