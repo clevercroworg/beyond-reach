@@ -103,6 +103,26 @@ const portfolioProjects = [
   }
 ];
 
+/* ─── FAQ DATA ─── */
+const resortFaqs = [
+  {
+    question: 'How do you reduce our reliance on Online Travel Agencies (OTAs)?',
+    answer: 'We shift the balance of power back to your resort by building a high-converting direct booking ecosystem. This includes optimizing your website for search engines (SEO), running targeted paid media campaigns to capture high-intent travelers, and implementing urgency triggers and rate-parity strategies that incentivize guests to book directly with you rather than a third party.'
+  },
+  {
+    question: 'What digital marketing strategies yield the highest ROI for luxury resorts?',
+    answer: 'For luxury properties, visual storytelling is paramount. A combination of cinematic video content, immersive social media campaigns, and highly targeted Google Ads works best. We pair this top-of-funnel brand building with robust SEO and email retention strategies to ensure we are capturing guests at every stage of their travel planning journey.'
+  },
+  {
+    question: 'How long does it take to see an increase in direct bookings?',
+    answer: 'While paid advertising (PPC and Social Ads) can drive immediate traffic and bookings within the first 30 days, sustainable organic growth through SEO and brand positioning typically takes 3 to 6 months to mature. We build a dual-strategy roadmap that balances quick wins with long-term profitability.'
+  },
+  {
+    question: 'Do you create the video and photography content yourselves?',
+    answer: 'Yes, we are a full-service creative agency. We do not just run ads; we produce the assets that make those ads successful. Our in-house production team specializes in luxury hospitality, capturing aerial drone footage, lifestyle photography, and compelling short-form video designed specifically for modern digital platforms.'
+  }
+];
+
 /* ─── PORTFOLIO CARD ─── */
 const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
   const videoRef = useRef(null);
@@ -154,6 +174,41 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
         <h4 className={styles.pTitle}>{title}</h4>
         <span className={styles.pCategory}>{category}</span>
       </div>
+    </div>
+  );
+};
+
+/* ─── FAQ COMPONENT ─── */
+const FaqAccordion = ({ faqs }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  return (
+    <div className={styles.faqList}>
+      {faqs.map((faq, idx) => {
+        const isActive = activeIndex === idx;
+        return (
+          <div key={idx} className={styles.faqItem}>
+            <button 
+              className={`${styles.faqQuestion} ${isActive ? styles.active : ''}`}
+              onClick={() => toggleAccordion(idx)}
+            >
+              {faq.question}
+              <span className={styles.faqIcon}>+</span>
+            </button>
+            <div className={`${styles.faqAnswerWrapper} ${isActive ? styles.active : ''}`}>
+              <div className={styles.faqAnswerInner}>
+                <div className={styles.faqAnswer}>
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -355,6 +410,19 @@ const Resorts = () => {
               <PortfolioCard key={idx} {...proj} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════
+          SECTION 6: FAQ (DARK)
+         ═══════════════════════════════════ */}
+      <section className={styles.faqSection}>
+        <div className={styles.faqInner}>
+          <div className={styles.faqHeader}>
+            <span className={styles.faqLabel}>COMMON QUESTIONS</span>
+            <h2 className={styles.faqTitle}>FAQS</h2>
+          </div>
+          <FaqAccordion faqs={resortFaqs} />
         </div>
       </section>
     </div>
