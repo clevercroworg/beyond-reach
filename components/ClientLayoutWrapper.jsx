@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Menu from './Menu';
 import Footer from './Footer';
@@ -10,12 +10,18 @@ import { usePathname } from 'next/navigation';
 
 export default function ClientLayoutWrapper({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const pathname = usePathname();
+  // Only show preloader on the home page
+  const [isLoading, setIsLoading] = useState(pathname === '/');
+
+  // Scroll to top on every route change (and on refresh)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <>
-      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      {isLoading && pathname === '/' && <Preloader onComplete={() => setIsLoading(false)} />}
       <Navbar onMenuClick={() => setIsMenuOpen(true)} />
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <AnimatePresence mode="wait">
