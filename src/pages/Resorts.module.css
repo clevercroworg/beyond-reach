@@ -270,7 +270,7 @@
 
 .simpleServiceText {
   font-family: var(--font-heading);
-  font-size: clamp(0.7rem, 3vw, 4.5rem);
+  font-size: clamp(1.8rem, 4vw, 4.5rem);
   color: #000;
   text-transform: uppercase;
   line-height: 1.1;
@@ -280,7 +280,11 @@
 
 @media (max-width: 768px) {
   .simpleServicesGrid {
-    gap: 1.5rem 1rem;
+    grid-template-columns: max-content;
+    gap: 1.5rem 0;
+  }
+  .simpleServiceText {
+    font-size: 1.8rem;
   }
 }
 
