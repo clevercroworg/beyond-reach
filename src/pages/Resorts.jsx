@@ -192,13 +192,13 @@ const Resorts = () => {
       });
 
       /* ── Services section — scroll-triggered entrance ── */
-      gsap.from(`.${styles.servicesContent}`, {
+      gsap.from(`.${styles.wordCloud}`, {
         scrollTrigger: { trigger: refSectionRef.current, start: 'top 65%' },
-        x: -60, opacity: 0, duration: 1, ease: 'power3.out'
+        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
       });
-      gsap.from(`.${styles.serviceBlock}`, {
+      gsap.from(`.${styles.cloudItem}`, {
         scrollTrigger: { trigger: refSectionRef.current, start: 'top 65%' },
-        scale: 0.95, duration: 0.6, stagger: 0.08, ease: 'power3.out'
+        scale: 0.9, opacity: 0, duration: 0.6, stagger: 0.05, ease: 'back.out(1.5)'
       });
 
       /* Handle section */
@@ -296,12 +296,12 @@ const Resorts = () => {
         <div className={styles.servicesInner}>
           <div className={styles.wordCloud}>
             <div className={`${styles.cloudItem} ${styles.huge}`}>Digital Marketing</div>
-            <div className={`${styles.cloudItem} ${styles.medium} ${styles.vertical}`}>Website</div>
+            <div className={`${styles.cloudItem} ${styles.medium}`}>Website</div>
             <div className={`${styles.cloudItem} ${styles.small}`}>Branding</div>
             <div className={`${styles.cloudItem} ${styles.large} ${styles.accent}`}>SEO & Content</div>
             <div className={`${styles.cloudItem} ${styles.small}`}>IT Services</div>
             <div className={`${styles.cloudItem} ${styles.medium}`}>Social Media</div>
-            <div className={`${styles.cloudItem} ${styles.large} ${styles.vertical}`}>Analytics</div>
+            <div className={`${styles.cloudItem} ${styles.large}`}>Analytics</div>
             <div className={`${styles.cloudItem} ${styles.huge}`}>Revenue Strategy</div>
             <div className={`${styles.cloudItem} ${styles.medium}`}>CRM & Retention</div>
           </div>
