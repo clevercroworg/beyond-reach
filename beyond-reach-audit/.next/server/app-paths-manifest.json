@@ -1,6 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/admin/page": "app/admin/page.js",
   "/[propname]/page": "app/[propname]/page.js",
-  "/api/clients/route": "app/api/clients/route.js"
+  "/admin/page": "app/admin/page.js"
 }

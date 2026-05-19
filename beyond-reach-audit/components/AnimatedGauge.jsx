@@ -11,14 +11,26 @@ export default function AnimatedGauge({ score }) {
   const strokeDashoffset = circumference - (score / 100) * circumference;
 
   let color = '#ef4444'; // Red
-  if (score >= 50) color = '#eab308'; // Yellow
-  if (score >= 75) color = '#d1ff36'; // Green
+  let statusText = 'Urgent Attention Needed';
+
+  if (score >= 40) {
+    color = '#f59e0b'; // Amber
+    statusText = 'Can Be Improved';
+  }
+  if (score >= 70) {
+    color = '#eab308'; // Yellow
+    statusText = 'Good';
+  }
+  if (score >= 90) {
+    color = '#d1ff36'; // Neon Green
+    statusText = 'Best';
+  }
 
   return (
-    <div className="flex flex-col items-center justify-center py-10 relative">
+    <div className="flex flex-col items-center justify-center py-6 md:py-10 relative">
       {/* Background Glow */}
       <div 
-        className="absolute w-[250px] h-[250px] rounded-full blur-[80px] pointer-events-none" 
+        className="absolute w-[250px] h-[250px] top-[10%] rounded-full blur-[80px] pointer-events-none" 
         style={{ backgroundColor: color, opacity: 0.15 }}
       ></div>
       
@@ -50,10 +62,22 @@ export default function AnimatedGauge({ score }) {
       </svg>
       
       {/* Inner Text content */}
-      <div className="absolute flex flex-col items-center justify-center z-20">
-        <span className="text-7xl font-bold tracking-tighter" style={{ color }}>{Math.round(score)}</span>
-        <span className="text-neutral-400 text-xs tracking-widest uppercase mt-2">Audit Score</span>
+      <div className="absolute top-[35%] md:top-[40%] flex flex-col items-center justify-center z-20 pointer-events-none">
+        <span className="text-6xl md:text-7xl font-bold tracking-tighter" style={{ color }}>{Math.round(score)}</span>
+        <span className="text-neutral-400 text-xs tracking-widest uppercase mt-1">Audit Score</span>
       </div>
+
+      {/* Glowing Status Text below the graph */}
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="mt-8 text-xl md:text-2xl font-bold tracking-wider uppercase text-center relative z-20"
+        style={{ color, textShadow: `0 0 20px ${color}` }}
+      >
+        {statusText}
+      </motion.div>
     </div>
   );
 }

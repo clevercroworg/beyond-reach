@@ -602,6 +602,12 @@ video {
 .top-\[20\%\] {
   top: 20%;
 }
+.top-\[10\%\] {
+  top: 10%;
+}
+.top-\[35\%\] {
+  top: 35%;
+}
 .z-10 {
   z-index: 10;
 }
@@ -668,6 +674,9 @@ video {
 }
 .mr-3 {
   margin-right: 0.75rem;
+}
+.mt-1 {
+  margin-top: 0.25rem;
 }
 .block {
   display: block;
@@ -1154,6 +1163,10 @@ video {
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
 .font-bold {
   font-weight: 700;
 }
@@ -1549,6 +1562,10 @@ button {
     top: 1.5rem;
   }
 
+  .md\:top-\[40\%\] {
+    top: 40%;
+  }
+
   .md\:order-1 {
     order: 1;
   }
@@ -1649,6 +1666,11 @@ button {
   .md\:text-7xl {
     font-size: 4.5rem;
     line-height: 1;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 }
 
