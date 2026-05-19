@@ -192,14 +192,7 @@ const Resorts = () => {
       });
 
       /* ── Services section — scroll-triggered entrance ── */
-      gsap.from(`.${styles.wordCloud}`, {
-        scrollTrigger: { trigger: refSectionRef.current, start: 'top 65%' },
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
-      });
-      gsap.from(`.${styles.cloudItem}`, {
-        scrollTrigger: { trigger: refSectionRef.current, start: 'top 65%' },
-        scale: 0.9, opacity: 0, duration: 0.6, stagger: 0.05, ease: 'back.out(1.5)'
-      });
+      /* Temporarily disabled GSAP on word cloud to debug visibility issue */
 
       /* Handle section */
       gsap.from(`.${styles.handleContent}`, {
