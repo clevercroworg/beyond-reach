@@ -1,10 +1,10 @@
 {
   "pages": {
-    "/page": [
+    "/resorts/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+      "static/css/app/resorts/page.css",
+      "static/chunks/app/resorts/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -12,10 +12,28 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/work/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/work/page.css",
+      "static/chunks/app/work/page.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
     "/[propname]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/[propname]/page.js"
+    ],
+    "/village/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/village/page.css",
+      "static/chunks/app/village/page.js"
     ]
   }
 }
