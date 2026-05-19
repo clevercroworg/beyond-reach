@@ -16,7 +16,7 @@ const Menu = ({ isOpen, onClose }) => {
       name: "SOLUTION", 
       path: "/#solution",
       image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80",
-      subItems: ["Resorts", "Home Stay", "Wellness", "Spa & Retreats", "Events", "Yachts"]
+      subItems: ["Hotels", "Resorts", "Homestays & Villas", "Spas & Wellness", "Clubs & Lounges", "Event Venues", "Yachts & Boat Rentals", "Tours & Activities"]
     },
     { name: "ABOUT", path: "/#about", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80" },
     { name: "CONTACT", path: "/#contact", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" }
