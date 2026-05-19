@@ -295,7 +295,7 @@ const Resorts = () => {
       <section className={styles.servicesSection} ref={refSectionRef}>
         <div className={styles.servicesInner}>
           <div className={styles.simpleServicesGrid}>
-            <div className={styles.simpleServiceText}>Website Development</div>
+            <div className={styles.simpleServiceText}>Website</div>
             <div className={styles.simpleServiceText}>IT Services</div>
             <div className={styles.simpleServiceText}>Digital Marketing</div>
           </div>
