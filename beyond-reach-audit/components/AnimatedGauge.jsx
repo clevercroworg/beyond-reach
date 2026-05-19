@@ -38,7 +38,6 @@ export default function AnimatedGauge({ score }) {
           fill="transparent"
           strokeWidth={stroke}
           strokeDasharray={circumference + ' ' + circumference}
-          style={{ strokeDashoffset: circumference }} // start empty
           r={normalizedRadius}
           cx={radius}
           cy={radius}

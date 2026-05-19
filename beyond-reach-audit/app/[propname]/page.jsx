@@ -92,11 +92,11 @@ export default async function ViewAudit({ params }) {
       <AuditBackground />
       
       {/* Hero Section */}
-      <section className="relative pt-20 pb-8 px-6 overflow-hidden border-b border-white/10">
+      <section className="relative pt-20 pb-4 md:pb-8 px-6 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_#112a1b_0%,_#0a0e0b_70%)]"></div>
         <div className="max-w-5xl mx-auto relative z-10 text-center animate-fade-in-up">
           <span className="text-[#d1ff36] font-semibold tracking-wider uppercase text-sm mb-4 block">Online Presence Audit</span>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4">{audit.hotelName}</h1>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-wide mb-4">{audit.hotelName}</h1>
           
           {audit.location && (
             <p className="text-lg text-neutral-300 mb-6 flex items-center justify-center gap-2">
@@ -135,7 +135,7 @@ export default async function ViewAudit({ params }) {
         </div>
       </section>
 
-      <div className="max-w-5xl mx-auto px-6 py-10 space-y-20">
+      <div className="max-w-5xl mx-auto px-6 py-6 md:py-10 space-y-12 md:space-y-20">
         
         {/* Overall Health Score Graph */}
         <section className="bg-white/5 backdrop-blur-xl rounded-[2.5rem] border border-white/10 p-10 relative z-20 shadow-2xl overflow-hidden">
@@ -154,15 +154,21 @@ export default async function ViewAudit({ params }) {
 
           <div className="space-y-16">
             {sections.map((section, idx) => (
-              <div key={idx} className="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <div className="md:col-span-5 space-y-4 order-2 md:order-1">
-                  <h3 className="text-2xl font-semibold text-white">{section.title}</h3>
-                  <div className="p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10">
-                    <p className="text-neutral-300 mb-4"><strong className="text-red-400 font-medium">The Problem:</strong> {section.problem}</p>
-                    <p className="text-neutral-400"><strong className="text-[#d1ff36] font-medium">Where to Improve:</strong> {section.solution}</p>
+              <div key={idx} className="flex flex-col md:grid md:grid-cols-12 gap-6 md:gap-8">
+                
+                {/* Mobile Heading */}
+                <h3 className="text-2xl font-semibold text-white md:hidden tracking-wide order-1">{section.title}</h3>
+                
+                <div className="md:col-span-5 flex flex-col space-y-4 order-3 md:order-1">
+                  {/* Desktop Heading */}
+                  <h3 className="text-2xl font-semibold text-white hidden md:block tracking-wide">{section.title}</h3>
+                  <div className="p-8 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-2xl">
+                    <p className="text-neutral-300 mb-6 leading-relaxed"><strong className="text-red-400 font-medium block mb-1 text-sm uppercase tracking-wider">The Problem</strong> {section.problem}</p>
+                    <p className="text-neutral-400 leading-relaxed"><strong className="text-[#d1ff36] font-medium block mb-1 text-sm uppercase tracking-wider">Where to Improve</strong> {section.solution}</p>
                   </div>
                 </div>
-                <div className="md:col-span-7 grid grid-cols-2 gap-4 order-1 md:order-2">
+                
+                <div className="md:col-span-7 grid grid-cols-2 gap-4 order-2 md:order-2">
                   {section.metrics.map((metric, i) => (
                     <AnimatedStatusCard key={i} label={metric.label} value={metric.value} index={i} />
                   ))}
