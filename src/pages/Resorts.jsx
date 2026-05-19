@@ -290,28 +290,22 @@ const Resorts = () => {
       </section>
 
       {/* ═══════════════════════════════════
-          SECTION 3: SERVICES GRID (WHITE)
+          SECTION 3: SERVICES LIST (WHITE)
          ═══════════════════════════════════ */}
       <section className={styles.servicesSection} ref={refSectionRef}>
         <div className={styles.servicesInner}>
-          <div className={styles.servicesGrid}>
+          <div className={styles.servicesList}>
             {[
-              { name: 'Website Development', num: '01', img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80' },
-              { name: 'IT Services', num: '02', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80' },
-              { name: 'Digital Marketing', num: '03', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80' }
+              { name: 'Website Development', num: '01' },
+              { name: 'IT Services', num: '02' },
+              { name: 'Digital Marketing', num: '03' }
             ].map((service, i) => (
               <div 
                 key={i} 
-                className={styles.serviceBlock}
+                className={styles.serviceRow}
               >
-                <div 
-                  className={styles.serviceBg} 
-                  style={{ backgroundImage: `url(${service.img})` }}
-                ></div>
-                <div className={styles.serviceOverlay}></div>
-                <span className={styles.serviceNum}>{service.num}</span>
-                <span className={styles.serviceName}>{service.name}</span>
-                <div className={styles.serviceGlow}></div>
+                <span className={styles.serviceRowNum}>{service.num}</span>
+                <h3 className={styles.serviceRowName}>{service.name}</h3>
               </div>
             ))}
           </div>
