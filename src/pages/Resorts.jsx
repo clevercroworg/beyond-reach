@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Resorts.module.css';
@@ -161,6 +161,16 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
 const Resorts = () => {
   const pageRef = useRef(null);
   const refSectionRef = useRef(null);
+  
+  const words = ['STRATEGY', 'WEBSITES', 'MARKETING', 'TECHNOLOGY', 'GROWTH'];
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -230,7 +240,14 @@ const Resorts = () => {
         <div className={styles.headerInner}>
           <div className={styles.headerContent}>
             <span className={styles.headerLabel}>OUR OFFERING</span>
-            <h1 className={styles.headerTitle}>RESORTS</h1>
+            <h1 className={styles.headerTitle}>
+              <span className={styles.titlePrefix}>WE HELP RESORTS WITH</span>
+              <span className={styles.dynamicWordWrap}>
+                <span key={words[wordIndex]} className={styles.dynamicWord}>
+                  {words[wordIndex]}
+                </span>
+              </span>
+            </h1>
             <p className={styles.headerSub}>
               Elevating luxury hospitality through strategy, storytelling, and technology — 
               driving direct bookings beyond OTA dependency.

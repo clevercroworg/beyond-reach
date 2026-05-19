@@ -68,10 +68,44 @@
 
 .headerTitle {
   font-family: var(--font-heading);
-  font-size: clamp(4rem, 10vw, 9rem);
-  line-height: 0.9;
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.titlePrefix {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
+  letter-spacing: 2px;
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  opacity: 0.8;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.dynamicWordWrap {
+  display: block;
+  font-size: clamp(4rem, 10vw, 9rem);
+  color: var(--accent-color);
+  overflow: hidden;
+  line-height: 1;
+}
+
+.dynamicWord {
+  display: inline-block;
+  animation: dynamicWordIn 0.6s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes dynamicWordIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .headerSub {
