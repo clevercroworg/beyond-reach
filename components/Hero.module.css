@@ -49,6 +49,7 @@
 
 .title > span {
   display: block;
+  font-weight: 700;
 }
 
 /* Word cycler container — holds stacked words */
@@ -68,6 +69,7 @@
   width: 100%;
   display: block;
   white-space: nowrap; /* Prevent all words from wrapping */
+  font-weight: 300;
   will-change: transform, opacity;
 }
 
