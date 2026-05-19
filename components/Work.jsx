@@ -38,10 +38,12 @@ const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
   const cardRef = useRef(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
 
+  // Desktop: hover to play
   const handleMouseEnter = () => {
     if (window.innerWidth > 768) {
       setIsPlaying(true);
       if (videoRef.current) {
+        videoRef.current.currentTime = 0;
         videoRef.current.play().catch(e => console.log("Video play error:", e));
       }
     }
@@ -52,26 +54,40 @@ const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
       setIsPlaying(false);
       if (videoRef.current) {
         videoRef.current.pause();
+        videoRef.current.currentTime = 0;
       }
     }
   };
 
+  // Mobile: play only when card is centered on screen
   useEffect(() => {
+    const isMobile = () => window.innerWidth <= 768;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (window.innerWidth <= 768) {
-          if (entry.isIntersecting) {
-            setIsPlaying(true);
-            if (videoRef.current) videoRef.current.play().catch(e => console.log(e));
-          } else {
-            setIsPlaying(false);
-            if (videoRef.current) videoRef.current.pause();
+        if (!isMobile()) return;
+
+        if (entry.isIntersecting) {
+          // Card entered the center zone — play video
+          setIsPlaying(true);
+          if (videoRef.current) {
+            videoRef.current.currentTime = 0;
+            videoRef.current.play().catch(e => console.log(e));
+          }
+        } else {
+          // Card left the center zone — pause, reset, show static image
+          setIsPlaying(false);
+          if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
           }
         }
       },
-      { 
-        threshold: 0.4,
-        rootMargin: "-30% 0px -30% 0px" 
+      {
+        // Only the middle 40% of the viewport counts as "visible"
+        // Top 30% and bottom 30% are dead zones
+        threshold: 0.5,
+        rootMargin: "-30% 0px -30% 0px"
       }
     );
 
@@ -98,6 +114,7 @@ const WorkCard = ({ title, client, imgSrc, vidSrc }) => {
           muted 
           loop 
           playsInline
+          preload="metadata"
         />
         <div className={styles.clientOverlay} style={{ opacity: isPlaying ? 1 : 0 }}>
           <span>{client}</span>
