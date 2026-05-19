@@ -1,0 +1,93 @@
+.container {
+  min-height: 100vh;
+  padding: 100px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.formCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+}
+
+.gridCols2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+}
+
+.input, .select {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.input:focus, .select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.submitBtn {
+  background-color: var(--accent-color);
+  color: #000;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+  transition: opacity 0.2s;
+}
+
+.submitBtn:hover {
+  opacity: 0.8;
+}

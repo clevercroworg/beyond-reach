@@ -1,0 +1,327 @@
+.container {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.hero {
+  padding: 8rem 2rem 5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  background: radial-gradient(ellipse at top, #112a1b 0%, var(--bg-primary) 70%);
+}
+
+.heroSubtitle {
+  color: var(--accent-color);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.heroDesc {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+
+.sectionHeader {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sectionNumber {
+  background-color: rgba(209, 255, 54, 0.1);
+  color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: bold;
+}
+
+.sectionSubtitle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+.baselineGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+  .baselineGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.baselineContent h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.problemBox {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.problemBox p {
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+.problemBox p:last-child {
+  margin-bottom: 0;
+}
+
+.redText {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.greenText {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.metricCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 1.2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.metricLabel {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.metricValue {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.metricValue.negative {
+  color: #ff6b6b;
+}
+
+.missingTrackingGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .missingTrackingGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.missingCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.missingCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.missingCard p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.marketSection {
+  background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+  padding: 3rem;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.marketGridTop {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .marketGridTop {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scoreItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.scoreLabel {
+  color: var(--text-secondary);
+}
+
+.scoreValue {
+  font-size: 3.5rem;
+  font-weight: bold;
+  font-family: var(--font-heading);
+}
+
+.scoreValue span {
+  font-size: 1.5rem;
+  color: #666;
+  font-family: var(--font-body);
+}
+
+.marketGridBottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .marketGridBottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+.insightCard {
+  background-color: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.insightCard.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.insightLabel {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.insightValue {
+  font-size: 1.25rem;
+}
+
+.insightValue.accent {
+  color: var(--accent-color);
+}
+
+.phaseGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .phaseGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.phaseCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: 16px;
+  transition: transform 0.3s;
+}
+
+.phaseCard:hover {
+  transform: translateY(-5px);
+}
+
+.phaseTag {
+  color: var(--accent-color);
+  font-family: monospace;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.phaseCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.phaseCard p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.roiCard {
+  margin-top: 3rem;
+  background-color: rgba(209, 255, 54, 0.05);
+  border: 1px solid rgba(209, 255, 54, 0.2);
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.roiCard h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.roiCard p {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}

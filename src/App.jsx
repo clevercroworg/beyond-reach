@@ -21,6 +21,9 @@ const ScrollToTop = () => {
   return null;
 };
 
+import AdminForm from './pages/clients/AdminForm';
+import ViewAudit from './pages/clients/ViewAudit';
+
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
@@ -29,6 +32,8 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/resorts" element={<PageTransition><Resorts /></PageTransition>} />
         <Route path="/work" element={<PageTransition><Work /></PageTransition>} />
+        <Route path="/clients/admin" element={<PageTransition><AdminForm /></PageTransition>} />
+        <Route path="/client/:propname" element={<PageTransition><ViewAudit /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );
