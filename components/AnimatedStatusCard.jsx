@@ -2,6 +2,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const checkmarkVariants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: { 
+    pathLength: 1, 
+    opacity: 1,
+    transition: { 
+      pathLength: { type: "spring", stiffness: 100, damping: 15 },
+      opacity: { duration: 0.2 }
+    }
+  }
+};
+
+const crossVariants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: { 
+    pathLength: 1, 
+    opacity: 1,
+    transition: { 
+      pathLength: { type: "spring", stiffness: 100, damping: 15 },
+      opacity: { duration: 0.2 }
+    }
+  }
+};
+
 export default function AnimatedStatusCard({ label, value, index, light = false }) {
   const valString = String(value || '-');
   
@@ -10,65 +34,156 @@ export default function AnimatedStatusCard({ label, value, index, light = false 
   const isPositive = ['Yes', 'Fast', 'High'].includes(valString);
   const isBooleanLike = isNegative || isMedium || isPositive;
 
-  let dotColor = light ? '#64748b' : '#3f3f46';
-  let textColor = light ? '#1e293b' : '#ffffff';
-  
-  if (isNegative) { 
-    dotColor = '#ef4444';
-    textColor = '#ef4444';
-  } else if (isMedium) { 
-    dotColor = '#eab308';
-    textColor = '#eab308';
-  } else if (isPositive) { 
-    dotColor = '#10b981';
-    textColor = '#10b981';
-  }
+  let dotColor = '#738480';
+  if (isNegative) dotColor = '#ef4444';
+  else if (isMedium) dotColor = '#eab308';
+  else if (isPositive) dotColor = '#10b981';
 
-  const pulseAnimation = isBooleanLike 
-    ? { scale: [1, 2], opacity: [0.8, 0] } 
-    : {};
+  // Dynamic animated badge renderer
+  const renderBadge = () => {
+    switch (valString) {
+      case 'Yes':
+        return (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/25 shadow-[0_2px_10px_rgba(16,185,129,0.05)]">
+            <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <motion.path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={3.5} 
+                d="M5 13l4 4L19 7"
+                variants={checkmarkVariants}
+                initial="hidden"
+                animate="visible"
+              />
+            </svg>
+            <span className="font-extrabold text-xs tracking-wider uppercase">Yes</span>
+          </div>
+        );
+      case 'No':
+        return (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#ef4444]/10 text-[#ef4444] border border-[#ef4444]/25 shadow-[0_2px_10px_rgba(239,68,68,0.05)] animate-pulse">
+            <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <motion.path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={3.5} 
+                d="M6 18L18 6M6 6l12 12"
+                variants={crossVariants}
+                initial="hidden"
+                animate="visible"
+              />
+            </svg>
+            <span className="font-extrabold text-xs tracking-wider uppercase">No</span>
+          </div>
+        );
+      case 'Fast':
+        return (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/25">
+            <motion.svg 
+              className="w-5 h-5 shrink-0" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+              animate={{ x: [0, 3, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </motion.svg>
+            <span className="font-extrabold text-xs tracking-wider uppercase">Fast</span>
+          </div>
+        );
+      case 'Slow':
+        return (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#eab308]/10 text-[#eab308] border border-[#eab308]/25">
+            <motion.svg 
+              className="w-5 h-5 shrink-0" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </motion.svg>
+            <span className="font-extrabold text-xs tracking-wider uppercase">Slow</span>
+          </div>
+        );
+      case 'High':
+        return (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#10b981]/10 text-[#10b981] border border-[#10b981]/25">
+            <motion.svg 
+              className="w-5 h-5 shrink-0" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+              animate={{ y: [0, -3, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </motion.svg>
+            <span className="font-extrabold text-xs tracking-wider uppercase">High</span>
+          </div>
+        );
+      case 'Medium':
+        return (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#eab308]/10 text-[#eab308] border border-[#eab308]/25">
+            <motion.svg 
+              className="w-5 h-5 shrink-0" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </motion.svg>
+            <span className="font-extrabold text-xs tracking-wider uppercase">Medium</span>
+          </div>
+        );
+      case 'Low':
+        return (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#ef4444]/10 text-[#ef4444] border border-[#ef4444]/25">
+            <motion.svg 
+              className="w-5 h-5 shrink-0" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+              animate={{ y: [0, 3, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </motion.svg>
+            <span className="font-extrabold text-xs tracking-wider uppercase">Low</span>
+          </div>
+        );
+      default:
+        return (
+          <span className="text-xl font-bold tracking-tight text-[#192521]">
+            {valString}
+          </span>
+        );
+    }
+  };
 
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={
-        light 
-          ? "bg-white p-6 rounded-2xl border border-neutral-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col justify-center relative overflow-hidden group hover:bg-neutral-50 transition-all duration-500"
-          : "bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl p-6 rounded-2xl border border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex flex-col justify-center relative overflow-hidden group hover:from-white/20 hover:to-white/10 transition-all duration-500"
-      }
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      className="bg-white/45 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.01)] flex flex-col justify-center relative overflow-hidden group hover:bg-white/55 transition-all duration-500 text-left"
     >
-      <span className={`text-sm font-medium mb-4 relative z-10 ${light ? 'text-neutral-500' : 'text-neutral-300'}`}>{label}</span>
+      <span className="text-[10px] md:text-xs uppercase tracking-wider text-[#738480] font-bold block mb-4 relative z-10 select-none">
+        {label}
+      </span>
       <div className="relative z-10 flex items-center">
-        {isBooleanLike && (
-          <div className="relative w-5 h-5 mr-3 flex items-center justify-center">
-            {/* Core */}
-            <div className="w-2.5 h-2.5 rounded-full relative z-10" style={{ backgroundColor: dotColor }}></div>
-            
-            {/* Clean Ring for light theme / Blurry glow for dark theme */}
-            {light ? (
-              <div className="absolute inset-[1px] rounded-full border border-current opacity-25" style={{ color: dotColor }}></div>
-            ) : (
-              <>
-                {/* Intense Inner Glow */}
-                <div className="absolute inset-0 rounded-full blur-[4px]" style={{ backgroundColor: dotColor, opacity: 0.6 }}></div>
-                {/* Wide Outer Glow */}
-                <div className="absolute inset-[-6px] rounded-full blur-[8px]" style={{ backgroundColor: dotColor, opacity: 0.3 }}></div>
-              </>
-            )}
-          </div>
-        )}
-        <span className="text-xl font-bold tracking-wide" style={{ color: isBooleanLike ? textColor : (light ? '#1e293b' : '#ffffff') }}>
-          {valString}
-        </span>
+        {renderBadge()}
       </div>
       
       {/* Background ambient glow effect on hover */}
       <div 
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" 
-        style={{ background: `radial-gradient(circle at 80% 80%, ${dotColor}10 0%, transparent 70%)` }}
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" 
+        style={{ background: `radial-gradient(circle at 80% 80%, ${dotColor}0b 0%, transparent 70%)` }}
       ></div>
     </motion.div>
   );

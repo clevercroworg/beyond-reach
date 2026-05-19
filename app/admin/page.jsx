@@ -18,6 +18,7 @@ const defaultFormData = {
     accurateAddressPin: 'No',
     reviewRatingAndCount: '',
     ownerResponses: 'No',
+    uploadedImages: 'No',
   },
   website: {
     active: 'No',
@@ -35,6 +36,7 @@ const defaultFormData = {
     postPerformance: 'Low',
     brandingScore: 0,
     videoReelsContent: 'No',
+    postCreativeQuality: 'No',
   },
   onlinePresenceScore: {
     visibilityScore: 0,
@@ -47,6 +49,10 @@ const defaultFormData = {
     bookingGrowthScope: '',
     estimatedLostRevenue: '',
     recommendedAdBudget: '',
+  },
+  googleTrends: {
+    seasonVisitor: '',
+    nonSeasonSearch: '',
   },
 };
 
@@ -83,7 +89,13 @@ export default function AdminForm() {
     // Reset to default then merge in client data to ensure no missing fields
     setFormData({
       ...defaultFormData,
-      ...client
+      ...client,
+      gmb: { ...defaultFormData.gmb, ...client.gmb },
+      website: { ...defaultFormData.website, ...client.website },
+      socialMedia: { ...defaultFormData.socialMedia, ...client.socialMedia },
+      onlinePresenceScore: { ...defaultFormData.onlinePresenceScore, ...client.onlinePresenceScore },
+      marketInsights: { ...defaultFormData.marketInsights, ...client.marketInsights },
+      googleTrends: { ...defaultFormData.googleTrends, ...client.googleTrends },
     });
     setIsModalOpen(false); // Close modal on select
   };
@@ -301,6 +313,7 @@ export default function AdminForm() {
                 { label: 'Website Link Working', field: 'websiteLinkWorking' },
                 { label: 'Accurate Address/Pin', field: 'accurateAddressPin' },
                 { label: 'Owner Responses to Reviews', field: 'ownerResponses' },
+                { label: 'Uploaded Images', field: 'uploadedImages' },
               ].map((item) => (
                 <div key={item.field}>
                   <label className="block text-sm font-medium text-neutral-400 mb-2">{item.label}</label>
@@ -376,6 +389,7 @@ export default function AdminForm() {
                 { label: 'Post Performance', field: 'postPerformance', type: 'select', options: ['High', 'Medium', 'Low'] },
                 { label: 'Branding Score (Out of 10)', field: 'brandingScore', type: 'number' },
                 { label: 'Video/Reels Content', field: 'videoReelsContent', type: 'select', options: ['Yes', 'No'] },
+                { label: 'Post / Creative Quality', field: 'postCreativeQuality', type: 'select', options: ['Yes', 'No'] },
               ].map((item) => (
                 <div key={item.field}>
                   <label className="block text-sm font-medium text-neutral-400 mb-2">{item.label}</label>
@@ -470,6 +484,33 @@ export default function AdminForm() {
                   )}
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* SECTION 1: Google Trends */}
+          <section className="space-y-6">
+            <h2 className="text-2xl font-semibold text-[#d1ff36]">F. Google Trends</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-neutral-400 mb-2">Season property visitor in location is</label>
+                <input 
+                  type="text" 
+                  className="w-full bg-[#0a0e0b] border border-[#2a332d] rounded-lg p-4 text-white focus:ring-2 focus:ring-[#d1ff36] focus:outline-none placeholder-neutral-600"
+                  value={formData.googleTrends?.seasonVisitor || ''}
+                  onChange={(e) => handleChange('googleTrends', 'seasonVisitor', e.target.value)}
+                  placeholder="e.g., 9.8K searches during Peak Season"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-neutral-400 mb-2">Non season property search option</label>
+                <input 
+                  type="text" 
+                  className="w-full bg-[#0a0e0b] border border-[#2a332d] rounded-lg p-4 text-white focus:ring-2 focus:ring-[#d1ff36] focus:outline-none placeholder-neutral-600"
+                  value={formData.googleTrends?.nonSeasonSearch || ''}
+                  onChange={(e) => handleChange('googleTrends', 'nonSeasonSearch', e.target.value)}
+                  placeholder="e.g., Off-season retreat searches"
+                />
+              </div>
             </div>
           </section>
 

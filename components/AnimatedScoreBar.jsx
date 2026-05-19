@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export default function AnimatedScoreBar({ score, max = 100, label, inverseColors = false, light = false }) {
+export default function AnimatedScoreBar({ score, max = 100, label, inverseColors = false, light = false, hideMax = false }) {
   const numScore = Number(score) || 0;
   const percentage = Math.min(100, Math.max(0, (numScore / max) * 100));
   
@@ -37,7 +37,7 @@ export default function AnimatedScoreBar({ score, max = 100, label, inverseColor
       <div className="flex justify-between items-end">
         <span className={`${light ? 'text-neutral-500' : 'text-neutral-400'} font-medium`}>{label}</span>
         <span className="text-4xl font-bold tracking-tight" style={{ color }}>
-          {numScore}<span className={`text-xl ${light ? 'text-neutral-400' : 'text-neutral-600'} font-normal`}>/{max}</span>
+          {numScore}{!hideMax && <span className={`text-xl ${light ? 'text-neutral-400' : 'text-neutral-600'} font-normal`}>/{max}</span>}
         </span>
       </div>
       <div className={`h-4 rounded-full overflow-hidden relative shadow-inner ${light ? 'bg-neutral-200' : 'bg-[#1e293b]'}`}>
