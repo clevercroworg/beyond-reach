@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation';
 export default function ClientLayoutWrapper({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  
   // Only show preloader on the home page
   const [isLoading, setIsLoading] = useState(pathname === '/');
 
@@ -18,6 +19,8 @@ export default function ClientLayoutWrapper({ children }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  const isAuditRoute = pathname !== '/' && pathname !== '/resorts' && pathname !== '/work' && pathname !== '/admin' && !pathname.startsWith('/api');
 
   return (
     <>
@@ -29,7 +32,7 @@ export default function ClientLayoutWrapper({ children }) {
           {children}
         </PageTransition>
       </AnimatePresence>
-      <Footer />
+      {!isAuditRoute && <Footer />}
     </>
   );
 }
