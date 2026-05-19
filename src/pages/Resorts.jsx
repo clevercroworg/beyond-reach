@@ -290,39 +290,14 @@ const Resorts = () => {
       </section>
 
       {/* ═══════════════════════════════════
-          SECTION 3: SERVICES LIST (WHITE)
+          SECTION 3: SERVICES (WHITE)
          ═══════════════════════════════════ */}
       <section className={styles.servicesSection} ref={refSectionRef}>
         <div className={styles.servicesInner}>
           <div className={styles.simpleServicesGrid}>
-            
-            <div className={styles.serviceColumn}>
-              <h3 className={styles.serviceMainHeading}>Website</h3>
-              <ul className={styles.serviceSubList}>
-                <li>UI/UX Design</li>
-                <li>Custom Web Development</li>
-                <li>Booking Engine Integration</li>
-              </ul>
-            </div>
-
-            <div className={styles.serviceColumn}>
-              <h3 className={styles.serviceMainHeading}>IT Services</h3>
-              <ul className={styles.serviceSubList}>
-                <li>Cloud Infrastructure</li>
-                <li>Network Security</li>
-                <li>24/7 Tech Support</li>
-              </ul>
-            </div>
-
-            <div className={styles.serviceColumn}>
-              <h3 className={styles.serviceMainHeading}>Marketing</h3>
-              <ul className={styles.serviceSubList}>
-                <li>SEO & Content Strategy</li>
-                <li>Performance Ads</li>
-                <li>Social Media Management</li>
-              </ul>
-            </div>
-
+            <div className={styles.simpleServiceText}>Website Development</div>
+            <div className={styles.simpleServiceText}>IT Services</div>
+            <div className={styles.simpleServiceText}>Digital Marketing</div>
           </div>
         </div>
       </section>
