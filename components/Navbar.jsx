@@ -17,7 +17,7 @@ const Navbar = ({ onMenuClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isAuditPage = pathname !== '/' && pathname !== '/resorts' && pathname !== '/work' && pathname !== '/admin' && !pathname.startsWith('/api');
+  const hideMenuBtn = pathname === '/admin' || (pathname !== '/' && pathname !== '/resorts' && pathname !== '/work' && !pathname.startsWith('/api'));
 
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
@@ -29,7 +29,7 @@ const Navbar = ({ onMenuClick }) => {
       </div>
       {/* If on home page, use hash. Otherwise route to home with hash */}
       <Link href={pathname === '/' ? '#contact' : '/#contact'} className={styles.navLink}>Get in touch</Link>
-      {!isAuditPage && (
+      {!hideMenuBtn && (
         <button className={styles.menuBtn} onClick={onMenuClick}>
           <span className={styles.hamburger}></span>
           MENU
