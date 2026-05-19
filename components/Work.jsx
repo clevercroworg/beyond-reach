@@ -8,40 +8,28 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
-    title: "THE GRAND ESCAPE",
-    client: "LUXURY RESORTS",
+    title: "SAILO",
+    client: "SAILO CLUB",
     imgSrc: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
-    vidSrc: "/sample-vid.mp4"
+    vidSrc: "/projects/sailo-club.mp4"
   },
   {
-    title: "OCEANIC VOYAGES",
-    client: "AZURE CHARTERS",
+    title: "NAVIGATE",
+    client: "NAVIGATE AGENCY",
     imgSrc: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
-    vidSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
+    vidSrc: "/projects/navigate.mp4"
   },
   {
-    title: "ZEN WELLNESS",
-    client: "VITALITY SPA",
+    title: "YACHT CLUB INDIA",
+    client: "YACHT CLUB",
     imgSrc: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
-    vidSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+    vidSrc: "/projects/yacht-club-india.mp4"
   },
   {
-    title: "ALPINE PEAKS",
-    client: "NORDIC STAYS",
+    title: "ASHTITVA",
+    client: "ASHTITVA RESORTS",
     imgSrc: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
-    vidSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-  },
-  {
-    title: "NOCTURNAL EVENTS",
-    client: "LUMIERE NIGHTS",
-    imgSrc: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
-    vidSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
-  },
-  {
-    title: "URBAN SANCTUARY",
-    client: "THE METRO HOTEL",
-    imgSrc: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80",
-    vidSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+    vidSrc: "/projects/ashtitva.mp4"
   }
 ];
 

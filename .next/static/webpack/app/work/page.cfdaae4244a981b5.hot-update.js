@@ -1,0 +1,21 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+self["webpackHotUpdate_N_E"]("app/work/page",{
+
+/***/ "(app-pages-browser)/./components/Work.module.css":
+/*!************************************!*\
+  !*** ./components/Work.module.css ***!
+  \************************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+eval(__webpack_require__.ts("// extracted by mini-css-extract-plugin\nmodule.exports = {\"workSection\":\"Work_workSection__wJ2Bw\",\"header\":\"Work_header__k2eSx\",\"animatedHeading\":\"Work_animatedHeading__SSezE\",\"cycler\":\"Work_cycler__9Umni\",\"cycleWord\":\"Work_cycleWord__vJWZB\",\"activeWord\":\"Work_activeWord__VAtdk\",\"inactiveWord\":\"Work_inactiveWord__5oUKK\",\"staticHeading\":\"Work_staticHeading__yLBq4\",\"filterRow\":\"Work_filterRow__s7lbe\",\"grid\":\"Work_grid__pRkyw\",\"card\":\"Work_card__oz3j9\",\"mediaContainer\":\"Work_mediaContainer__HugH_\",\"imagePlaceholder\":\"Work_imagePlaceholder__5NnO_\",\"video\":\"Work_video__PrbUp\",\"clientOverlay\":\"Work_clientOverlay__YxyrW\",\"cardInfo\":\"Work_cardInfo__Z9idX\",\"cardTitle\":\"Work_cardTitle__gWb_D\",\"cardClientText\":\"Work_cardClientText__Og3LE\"};\n    if(true) {\n      // 1779192299019\n      var cssReload = __webpack_require__(/*! ./node_modules/next/dist/compiled/mini-css-extract-plugin/hmr/hotModuleReplacement.js */ \"(app-pages-browser)/./node_modules/next/dist/compiled/mini-css-extract-plugin/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"/_next/\",\"esModule\":false,\"locals\":true});\n      module.hot.dispose(cssReload);\n      \n    }\n  \nmodule.exports.__checksum = \"27b2c38a77ce\"\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwcC1wYWdlcy1icm93c2VyKS8uL2NvbXBvbmVudHMvV29yay5tb2R1bGUuY3NzIiwibWFwcGluZ3MiOiJBQUFBO0FBQ0Esa0JBQWtCO0FBQ2xCLE9BQU8sSUFBVTtBQUNqQjtBQUNBLHNCQUFzQixtQkFBTyxDQUFDLHdNQUFxRyxjQUFjLHNEQUFzRDtBQUN2TSxNQUFNLFVBQVU7QUFDaEI7QUFDQTtBQUNBO0FBQ0EseUJBQXlCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vX05fRS8uL2NvbXBvbmVudHMvV29yay5tb2R1bGUuY3NzPzRiZjUiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gZXh0cmFjdGVkIGJ5IG1pbmktY3NzLWV4dHJhY3QtcGx1Z2luXG5tb2R1bGUuZXhwb3J0cyA9IHtcIndvcmtTZWN0aW9uXCI6XCJXb3JrX3dvcmtTZWN0aW9uX193SjJCd1wiLFwiaGVhZGVyXCI6XCJXb3JrX2hlYWRlcl9fazJlU3hcIixcImFuaW1hdGVkSGVhZGluZ1wiOlwiV29ya19hbmltYXRlZEhlYWRpbmdfX1NTZXpFXCIsXCJjeWNsZXJcIjpcIldvcmtfY3ljbGVyX185VW1uaVwiLFwiY3ljbGVXb3JkXCI6XCJXb3JrX2N5Y2xlV29yZF9fdkpXWkJcIixcImFjdGl2ZVdvcmRcIjpcIldvcmtfYWN0aXZlV29yZF9fVkF0ZGtcIixcImluYWN0aXZlV29yZFwiOlwiV29ya19pbmFjdGl2ZVdvcmRfXzVvVUtLXCIsXCJzdGF0aWNIZWFkaW5nXCI6XCJXb3JrX3N0YXRpY0hlYWRpbmdfX3lMQnE0XCIsXCJmaWx0ZXJSb3dcIjpcIldvcmtfZmlsdGVyUm93X19zN2xiZVwiLFwiZ3JpZFwiOlwiV29ya19ncmlkX19wUmt5d1wiLFwiY2FyZFwiOlwiV29ya19jYXJkX19vejNqOVwiLFwibWVkaWFDb250YWluZXJcIjpcIldvcmtfbWVkaWFDb250YWluZXJfX0h1Z0hfXCIsXCJpbWFnZVBsYWNlaG9sZGVyXCI6XCJXb3JrX2ltYWdlUGxhY2Vob2xkZXJfXzVObk9fXCIsXCJ2aWRlb1wiOlwiV29ya192aWRlb19fUHJiVXBcIixcImNsaWVudE92ZXJsYXlcIjpcIldvcmtfY2xpZW50T3ZlcmxheV9fWXh5cldcIixcImNhcmRJbmZvXCI6XCJXb3JrX2NhcmRJbmZvX19aOWlkWFwiLFwiY2FyZFRpdGxlXCI6XCJXb3JrX2NhcmRUaXRsZV9fZ1diX0RcIixcImNhcmRDbGllbnRUZXh0XCI6XCJXb3JrX2NhcmRDbGllbnRUZXh0X19PZzNMRVwifTtcbiAgICBpZihtb2R1bGUuaG90KSB7XG4gICAgICAvLyAxNzc5MTkyMjk5MDE5XG4gICAgICB2YXIgY3NzUmVsb2FkID0gcmVxdWlyZShcIkQ6L0JleW9uZCBSZWFjaC9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2NvbXBpbGVkL21pbmktY3NzLWV4dHJhY3QtcGx1Z2luL2htci9ob3RNb2R1bGVSZXBsYWNlbWVudC5qc1wiKShtb2R1bGUuaWQsIHtcInB1YmxpY1BhdGhcIjpcIi9fbmV4dC9cIixcImVzTW9kdWxlXCI6ZmFsc2UsXCJsb2NhbHNcIjp0cnVlfSk7XG4gICAgICBtb2R1bGUuaG90LmRpc3Bvc2UoY3NzUmVsb2FkKTtcbiAgICAgIFxuICAgIH1cbiAgXG5tb2R1bGUuZXhwb3J0cy5fX2NoZWNrc3VtID0gXCIyN2IyYzM4YTc3Y2VcIlxuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(app-pages-browser)/./components/Work.module.css\n"));
+
+/***/ })
+
+});
