@@ -1,17 +1,19 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import ClientLayoutWrapper from '@/components/ClientLayoutWrapper'
 
 export const metadata = {
-  title: 'Beyond Reach | Audit Form',
-  description: 'Online Presence Audit Generator',
+  title: 'Beyond Reach',
+  description: 'Precision Engineering & Design',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <ClientLayoutWrapper>
+          {children}
+        </ClientLayoutWrapper>
+      </body>
     </html>
   )
 }

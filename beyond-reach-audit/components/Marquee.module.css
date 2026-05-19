@@ -1,0 +1,63 @@
+.marqueeSection {
+  background-color: #ffffff;
+  padding: 2.5rem 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.marqueeContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marqueeTrack {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0 2.5rem;
+  flex-shrink: 0;
+}
+
+.dot {
+  color: #c8c8c8;
+  font-size: 0.5rem;
+}
+
+.logoText {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: #1a1a1a;
+  opacity: 0.35;
+  transition: opacity 0.4s ease;
+  text-transform: uppercase;
+}
+
+.logoItem:hover .logoText {
+  opacity: 0.85;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .marqueeSection {
+    padding: 1.5rem 0;
+  }
+
+  .logoText {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+
+  .logoItem {
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+}
