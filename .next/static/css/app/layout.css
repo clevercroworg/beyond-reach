@@ -2323,3 +2323,150 @@ button {
   }
 }
 
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./components/Preloader.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/* ===== PRELOADER ===== */
+.Preloader_preloader__9RHhR {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: all;
+}
+
+/* ===== CURTAIN HALVES ===== */
+.Preloader_curtainTop__OAWvi {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #0a0e0b;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end; /* Content sits at the bottom of the top half */
+  justify-content: center;
+  will-change: transform;
+}
+
+.Preloader_curtainBottom__ss437 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #0a0e0b;
+  z-index: 2;
+  will-change: transform;
+}
+
+/* ===== CENTERED CONTENT (inside top curtain) ===== */
+.Preloader_curtainContent__94rEj {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(50%); /* Push content to the visual center of the full screen */
+}
+
+/* ===== LOGO AS PROGRESS BAR ===== */
+.Preloader_logoContainer__zoaBA {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 6vw;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.Preloader_logoBase__oflmR {
+  color: rgba(255, 255, 255, 0.15); /* Dim base text */
+}
+
+.Preloader_logoFill__tv3mc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%; /* Start empty, animated by GSAP */
+}
+
+/* ===== PROGRESS COUNTER ===== */
+.Preloader_progress__0fyyC {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.Preloader_counter__61w1M {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .Preloader_logoContainer__zoaBA {
+    font-size: 10vw;
+  }
+
+  .Preloader_creditBox__WQTdB {
+    transform: scale(0.85);
+  }
+}
+
+/* ===== BOTTOM CREDIT BOX ===== */
+.Preloader_bottomCredit__iEg9V {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  opacity: 0.15; /* Substantially lowered visibility */
+}
+
+.Preloader_creditBox__WQTdB {
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.Preloader_creditLogo__fBh_Z {
+  background-color: rgba(255, 255, 255, 0.05); /* Dark grey instead of bright green */
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  padding: 0.75rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Preloader_creditText__UUr8R {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Preloader_creditYear__knTjh {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.Preloader_creditDesc__KXqNF {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0;
+}
+
