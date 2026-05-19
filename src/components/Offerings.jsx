@@ -10,12 +10,14 @@ const Offerings = () => {
   const cardsRef = useRef([]);
 
   const items = [
+    { title: "Hotels", slug: "/hotels", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" },
     { title: "Resorts", slug: "/resorts", img: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80" },
-    { title: "Home Stay", slug: "/home-stay", img: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=800&q=80" },
-    { title: "Wellness", slug: "/wellness", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" },
-    { title: "Spa & Retreats", slug: "/spa-retreats", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" },
-    { title: "Events", slug: "/events", img: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" },
-    { title: "Yachts", slug: "/yachts", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80" }
+    { title: "Homestays & Villas", slug: "/homestays-villas", img: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=800&q=80" },
+    { title: "Spas & Wellness", slug: "/spas-wellness", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" },
+    { title: "Clubs & Lounges", slug: "/clubs-lounges", img: "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=800&q=80" },
+    { title: "Event Venues", slug: "/event-venues", img: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" },
+    { title: "Yachts & Boat Rentals", slug: "/yachts-boats", img: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80" },
+    { title: "Tours & Activities", slug: "/tours-activities", img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" }
   ];
 
   useEffect(() => {
