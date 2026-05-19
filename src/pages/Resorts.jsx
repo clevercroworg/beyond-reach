@@ -295,9 +295,25 @@ const Resorts = () => {
       <section className={styles.servicesSection} ref={refSectionRef}>
         <div className={styles.servicesInner}>
           <div className={styles.simpleServicesGrid}>
+            {/* Row 1 */}
             <div className={styles.simpleServiceText}>Website</div>
             <div className={styles.simpleServiceText}>IT Services</div>
             <div className={styles.simpleServiceText}>Digital Marketing</div>
+            
+            {/* Row 2 */}
+            <div className={styles.simpleServiceText}>Branding</div>
+            <div className={styles.simpleServiceText}>SEO & Content</div>
+            <div className={styles.simpleServiceText}>Social Media</div>
+            
+            {/* Row 3 */}
+            <div className={styles.simpleServiceText}>Analytics</div>
+            <div className={styles.simpleServiceText}>CRM & Retention</div>
+            <div className={styles.simpleServiceText}>Revenue Strategy</div>
+            
+            {/* Row 4 */}
+            <div className={styles.simpleServiceText}>Performance Ads</div>
+            <div className={styles.simpleServiceText}>Lead Generation</div>
+            <div className={styles.simpleServiceText}>Video Production</div>
           </div>
         </div>
       </section>
