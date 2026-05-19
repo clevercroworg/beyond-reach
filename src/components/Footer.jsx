@@ -7,15 +7,14 @@ const Footer = () => {
       {/* TOP SECTION */}
       <div className={styles.topSection}>
         <div className={styles.brandBlock}>
-          <p className={styles.tagline}>Redefining boundaries, welcome to</p>
+          <p className={styles.tagline}>Built for modern hospitality brands.</p>
           <h2 className={styles.logo}>
             <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
           </h2>
         </div>
         <div className={styles.contactBlock}>
           <p className={styles.description}>
-            We are a premium agency dedicated to offering all-encompassing services 
-            to help you stand out in the physical and digital world.
+            We help hotels, resorts, villas, spas and experience-led brands grow through strategic marketing, performance campaigns, content systems and direct booking growth.
           </p>
           <button className={styles.contactBtn}>
             <div className={styles.btnTextContainer}>

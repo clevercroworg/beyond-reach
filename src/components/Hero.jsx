@@ -109,7 +109,7 @@ const Hero = () => {
             ))}
           </div>
         </h1>
-        <p className={styles.subtitle}>ELEVATING EXPERIENCES.</p>
+        <p className={styles.subtitle}>Data-Driven Hospitality Marketing</p>
       </div>
 
       <div className={styles.heroFooter} ref={footerRef}>
