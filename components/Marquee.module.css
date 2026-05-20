@@ -48,7 +48,7 @@
 }
 
 .dot {
-  color: rgba(255, 255, 255, 0.25); /* Subtle white separator dot */
+  color: #3c434f; /* Muted gunmetal separator dot */
   font-size: 0.5rem;
 }
 
@@ -57,14 +57,13 @@
   font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 0.3em;
-  color: #ffffff; /* Crisp white logo text */
-  opacity: 0.38; /* Muted brand presence by default */
-  transition: opacity 0.4s ease;
+  color: #5c6470; /* Elegant Space Grey / Gunmetal */
+  transition: color 0.4s ease;
   text-transform: uppercase;
 }
 
 .logoItem:hover .logoText {
-  opacity: 0.95; /* Bright white highlight on user hover */
+  color: rgba(255, 255, 255, 0.85); /* Fades up to elegant silver white on hover */
 }
 
 /* Mobile Responsive */
