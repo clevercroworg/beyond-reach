@@ -112,7 +112,7 @@ export default async function ViewAudit({ params }) {
 
     const scoreVal = Number(audit.socialMedia?.brandingScore || 0);
     if (scoreVal < 7) {
-      socialWarnings.push({ label: "Branding Score", text: "Visual profile identity needs improvement." });
+      socialWarnings.push({ label: "Branding Score", text: "People need to know your property instantly." });
     }
 
     checkSocialWarning(audit.socialMedia?.postCreativeQuality, "Post / Creative Quality", "Creative post design is not up to the mark.");
@@ -549,13 +549,13 @@ export default async function ViewAudit({ params }) {
                       <thead className="sticky top-0 bg-white/80 backdrop-blur-lg z-10">
                         <tr>
                           <th className="pb-3 pt-2 text-sm font-semibold text-[#738480] uppercase tracking-wider border-b border-white/60">Ads Budget Required</th>
-                          <th className="pb-3 pt-2 text-sm font-semibold text-[#738480] uppercase tracking-wider text-right border-b border-white/60">Estimated Bookings</th>
+                          <th className="pb-3 pt-2 text-sm font-semibold text-[#738480] uppercase tracking-wider text-right border-b border-white/60">Estimated Bookings (Monthly)</th>
                         </tr>
                       </thead>
                       <tbody>
                         {audit.marketInsights.adsBudgetBookings.map((item, idx) => (
                           <tr key={idx} className="border-b border-white/30 last:border-0">
-                            <td className="py-4 text-[#192521] font-medium">{item.budget || '-'}</td>
+                            <td className="py-4 text-[#192521] font-medium">{item.budget ? `₹ ${item.budget}` : '-'}</td>
                             <td className="py-4 text-emerald-600 text-right font-bold">{item.bookings || '-'}</td>
                           </tr>
                         ))}

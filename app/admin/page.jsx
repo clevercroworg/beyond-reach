@@ -544,7 +544,7 @@ export default function AdminForm() {
               {/* Dynamic Ads Budget Bookings List */}
               <div className="md:col-span-2 space-y-4">
                 <div className="flex justify-between items-center mb-2">
-                  <label className="block text-sm font-medium text-neutral-400">Ads Budget / Estimated Bookings</label>
+                  <label className="block text-sm font-medium text-neutral-400">Ads Budget / Estimated Bookings (Monthly)</label>
                   <button type="button" onClick={() => {
                     const newList = [...(formData.marketInsights.adsBudgetBookings || []), { budget: '', bookings: '' }];
                     handleChange('marketInsights', 'adsBudgetBookings', newList);
@@ -562,7 +562,7 @@ export default function AdminForm() {
                           newList[index].budget = e.target.value;
                           handleChange('marketInsights', 'adsBudgetBookings', newList);
                         }}
-                        placeholder="Ads Budget (e.g., $1500)"
+                        placeholder="Ads Budget (e.g., 1500)"
                       />
                     </div>
                     <div className="flex-1">
@@ -575,7 +575,7 @@ export default function AdminForm() {
                           newList[index].bookings = e.target.value;
                           handleChange('marketInsights', 'adsBudgetBookings', newList);
                         }}
-                        placeholder="Estimated Bookings (e.g., 25-40)"
+                        placeholder="Estimated Bookings/Month (e.g., 25-40)"
                       />
                     </div>
                     <button type="button" onClick={() => {
