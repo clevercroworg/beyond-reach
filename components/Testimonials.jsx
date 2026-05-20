@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './Testimonials.module.css';
 
 const Testimonials = () => {
@@ -28,12 +29,12 @@ const Testimonials = () => {
       </div>
 
       <div className={styles.actionContainer}>
-        <button className={styles.actionBtn}>
-            <div className={styles.btnTextContainer}>
-              <span className={styles.btnLabel}><span className={styles.star}>★</span> WORK WITH US</span>
-              <span className={styles.btnLabel} aria-hidden="true"><span className={styles.star}>★</span> WORK WITH US</span>
-            </div>
-          </button>
+        <Link href="/contact" className={styles.actionBtn}>
+          <div className={styles.btnTextContainer}>
+            <span className={styles.btnLabel}><span className={styles.star}>★</span> WORK WITH US</span>
+            <span className={styles.btnLabel} aria-hidden="true"><span className={styles.star}>★</span> WORK WITH US</span>
+          </div>
+        </Link>
       </div>
     </section>
   );
