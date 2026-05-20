@@ -11,13 +11,32 @@ import { usePathname } from 'next/navigation';
 export default function ClientLayoutWrapper({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
   // Only show preloader on the home page
   const [isLoading, setIsLoading] = useState(pathname === '/');
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Scroll to top on every route change (and on refresh)
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    if (mounted) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, mounted]);
+
+  // Server-side & initial client hydration: render standard static layout
+  if (!mounted) {
+    return (
+      <>
+        <Navbar onMenuClick={() => setIsMenuOpen(true)} />
+        <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        <div>{children}</div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>

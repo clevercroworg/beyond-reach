@@ -3,8 +3,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './EventVenues.module.css';
+import ServicesMarquee from '@/components/ServicesMarquee';
 
-gsap.registerPlugin(ScrollTrigger);
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 /* ─── DATA ─── */
 const processSteps = [
@@ -339,23 +343,9 @@ const EventVenues = () => {
       </section>
 
       {/* ═══════════════════════════════════
-          SECTION 3: SERVICES (WORD CLOUD)
+          SECTION 3: SERVICES (MARQUEE)
          ═══════════════════════════════════ */}
-      <section className={styles.servicesSection} ref={refSectionRef}>
-        <div className={styles.servicesInner}>
-          <div className={styles.wordCloud}>
-            <div className={`${styles.cloudItem} ${styles.huge} ${styles.cRust}`}>Digital Marketing</div>
-            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cOlive} ${styles.vertical}`}>Website</div>
-            <div className={`${styles.cloudItem} ${styles.small} ${styles.cAmber}`}>Branding</div>
-            <div className={`${styles.cloudItem} ${styles.large} ${styles.cTeal}`}>SEO & Content</div>
-            <div className={`${styles.cloudItem} ${styles.small} ${styles.cSlate}`}>IT Services</div>
-            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cRust}`}>Social Media</div>
-            <div className={`${styles.cloudItem} ${styles.large} ${styles.cOlive}`}>Analytics</div>
-            <div className={`${styles.cloudItem} ${styles.huge} ${styles.cSlate}`}>Revenue Strategy</div>
-            <div className={`${styles.cloudItem} ${styles.medium} ${styles.cTeal}`}>CRM & Retention</div>
-          </div>
-        </div>
-      </section>
+      <ServicesMarquee />
 
       {/* ═══════════════════════════════════
           SECTION 4: HOW WE HANDLE (DARK)

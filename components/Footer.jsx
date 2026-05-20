@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -16,12 +17,12 @@ const Footer = () => {
           <p className={styles.description}>
             We help hotels, resorts, villas, spas and experience-led brands grow through strategic marketing, performance campaigns, content systems and direct booking growth.
           </p>
-          <button className={styles.contactBtn}>
+          <Link href="/contact" className={styles.contactBtn}>
             <div className={styles.btnTextContainer}>
               <span className={styles.btnLabel}><span className={styles.star}>★</span> CONTACT US</span>
               <span className={styles.btnLabel} aria-hidden="true"><span className={styles.star}>★</span> CONTACT US</span>
             </div>
-          </button>
+          </Link>
         </div>
       </div>
       
@@ -33,7 +34,7 @@ const Footer = () => {
           <a href="#work">WORK</a>
           <a href="#services">SERVICES</a>
           <a href="#about">ABOUT</a>
-          <a href="#contact">CONTACT</a>
+          <Link href="/contact">CONTACT</Link>
         </div>
         <div className={styles.socials}>
           <a href="#" className={styles.socialIcon}>

@@ -26,7 +26,7 @@ const Navbar = ({ onMenuClick }) => {
         </Link>
       </div>
       {/* If on home page, use hash. Otherwise route to home with hash */}
-      <Link href={pathname === '/' ? '#contact' : '/#contact'} className={styles.navLink}>Get in touch</Link>
+      <Link href="/contact" className={styles.navLink}>Get in touch</Link>
       <button className={styles.menuBtn} onClick={onMenuClick}>
         <span className={styles.hamburger}></span>
         MENU

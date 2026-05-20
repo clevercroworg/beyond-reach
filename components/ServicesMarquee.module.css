@@ -1,0 +1,110 @@
+.servicesMarqueeSection {
+  position: relative;
+  width: 100%;
+  background-color: #000000; /* Luxury deep black background */
+  padding: 6rem 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Marquee Tracks */
+.marqueeWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.marqueeRow {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  user-select: none;
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 5rem;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+/* Left-to-Right track animation */
+.trackLeft {
+  animation: scrollLeft 45s linear infinite;
+  animation-play-state: running;
+}
+
+/* Right-to-Left track animation */
+.trackRight {
+  animation: scrollRight 45s linear infinite;
+  animation-play-state: running;
+}
+
+.marqueeRow:hover .marqueeTrack {
+  animation-play-state: paused;
+}
+
+/* Minimalist subtle grey marquee item styling */
+.marqueeItem {
+  font-family: var(--font-heading), 'Formula Condensed', 'Inter', sans-serif;
+  font-size: clamp(3rem, 6.5vw, 6.5rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.18); /* Subtle charcoal/grey color on black background */
+  text-transform: capitalize;
+  letter-spacing: -2px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+.marqueeItem:hover {
+  color: rgba(255, 255, 255, 0.85); /* Fades up to highly readable elegant silver grey on hover */
+  transform: translateY(-6px) scale(1.04);
+  text-shadow: 0 12px 35px rgba(255, 255, 255, 0.05);
+}
+
+/* Keyframes for seamless loops */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .servicesMarqueeSection {
+    padding: 4.5rem 0;
+  }
+  .marqueeWrapper {
+    gap: 1.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .servicesMarqueeSection {
+    padding: 3.5rem 0;
+  }
+  .marqueeWrapper {
+    gap: 1.2rem;
+  }
+  .marqueeTrack {
+    gap: 2.5rem;
+  }
+}

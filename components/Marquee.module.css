@@ -1,8 +1,30 @@
 .marqueeSection {
-  background-color: #ffffff;
+  background-color: #000000; /* Deep luxury black background */
   padding: 2.5rem 0;
   overflow: hidden;
   position: relative;
+}
+
+/* Elegant left/right fade-out overlays blending into the black background */
+.marqueeSection::before,
+.marqueeSection::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marqueeSection::before {
+  left: 0;
+  background: linear-gradient(to right, #000000 10%, rgba(0, 0, 0, 0));
+}
+
+.marqueeSection::after {
+  right: 0;
+  background: linear-gradient(to left, #000000 10%, rgba(0, 0, 0, 0));
 }
 
 .marqueeContainer {
@@ -26,7 +48,7 @@
 }
 
 .dot {
-  color: #c8c8c8;
+  color: rgba(255, 255, 255, 0.25); /* Subtle white separator dot */
   font-size: 0.5rem;
 }
 
@@ -35,14 +57,14 @@
   font-size: 1.6rem;
   font-weight: 400;
   letter-spacing: 0.3em;
-  color: #1a1a1a;
-  opacity: 0.35;
+  color: #ffffff; /* Crisp white logo text */
+  opacity: 0.38; /* Muted brand presence by default */
   transition: opacity 0.4s ease;
   text-transform: uppercase;
 }
 
 .logoItem:hover .logoText {
-  opacity: 0.85;
+  opacity: 0.95; /* Bright white highlight on user hover */
 }
 
 /* Mobile Responsive */

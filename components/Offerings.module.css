@@ -1,164 +1,304 @@
 .sectionFluidMain {
   position: relative;
   display: block;
-  overflow: hidden;
   width: 100%;
-  padding: 100px 40px;
+  padding: 140px 80px;
   background-color: var(--bg-primary);
+  overflow: hidden;
 }
 
 .headerTitle {
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subHeading {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-color); /* Signature brand neon-lime */
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.8rem;
+  display: inline-block;
 }
 
 .headerTitle h2 {
   font-family: var(--font-heading);
-  font-size: 5rem;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
   color: var(--text-primary);
-  text-align: center;
-}
-
-.sectionRow {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-  transition: opacity 250ms linear;
-}
-
-/* Dim all cards when row is hovered (desktop) */
-@media (hover: hover) {
-  .sectionRow:hover .sectionCol {
-    opacity: 0.1;
-  }
-}
-
-.sectionCol {
-  position: relative;
-  width: 100%;
-  flex: 0 0 50%;
-  max-width: 50%;
-  transition: opacity 250ms linear;
-}
-
-/* Brighten hovered/active card */
-@media (hover: hover) {
-  .sectionRow .sectionCol:hover {
-    opacity: 1;
-  }
-}
-
-.sectionBlock {
-  position: relative;
-  display: block;
-  width: 100%;
-  overflow: hidden;
-  cursor: pointer;
-  padding: 15px;
-}
-
-.sectionIn {
-  position: relative;
-  display: block;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 0;
-  cursor: pointer;
-}
-
-.sectionIn img {
-  display: block;
-  width: 100%;
-  height: 600px; 
-  object-fit: cover;
-  transition: transform 400ms ease-out, filter 400ms ease-out;
-  filter: grayscale(40%); /* Initial state: partially grayscale */
-}
-
-/* Apply image effect on desktop hover OR mobile scroll active */
-@media (hover: hover) {
-  .sectionCol:hover .sectionIn img {
-    transform: scale(1.1) rotate(-2deg);
-    filter: grayscale(0%);
-  }
-}
-
-:global(.scroll-active) .sectionIn img {
-  transform: scale(1.1) rotate(-2deg);
-  filter: grayscale(0%);
-}
-
-
-.hoverText {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-  z-index: 10;
-  pointer-events: none;
-  mix-blend-mode: difference; /* Highly stylised contrast text */
-}
-
-.hoverText h2 {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 8vw;
-  line-height: 1;
-  color: #fff;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 300ms ease;
   margin: 0;
+  letter-spacing: 0.02em;
 }
 
-/* Reveal text on desktop hover OR mobile scroll active */
-@media (hover: hover) {
-  .sectionCol:hover .hoverText h2 {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* Luxury Directory Container */
+.directoryContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08); /* Start of directory catalog */
 }
 
-:global(.scroll-active) .hoverText h2 {
-  opacity: 1;
-  transform: scale(1);
+/* Individual Row Panel */
+.offeringRow {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
+}
+
+.rowLink {
+  display: grid;
+  grid-template-columns: 140px 320px 1fr 140px; /* Perfectly aligned layout columns */
+  align-items: center;
+  padding: 3.2rem 2.5rem; /* Generous luxury vertical space */
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  position: relative;
+}
+
+/* Col 1: Identity (Index & Luxury Line Art SVG) */
+.colIdentity {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.rowIndex {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.05em;
+  transition: color 0.4s ease;
+}
+
+.iconWrapper {
+  color: rgba(255, 255, 255, 0.25); /* Subtle dark metal grey icon outline */
+  display: flex;
+  align-items: center;
+  transition: color 0.4s ease, transform 0.4s ease, filter 0.4s ease;
+}
+
+.iconSvg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+}
+
+/* Col 2: Title & Category Subtag */
+.colTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-right: 1.5rem;
+}
+
+.rowTitle {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: 0.01em;
+  transition: color 0.4s ease;
+}
+
+.rowTagline {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45); /* Muted subtag */
+  letter-spacing: 0.15em;
+  transition: color 0.4s ease;
+}
+
+/* Col 3: Business Yield Strategy */
+.colDescription {
+  padding-right: 4rem;
+}
+
+.rowDescription {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-secondary); /* legible muted grey description text */
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Col 4: Action Column (Stable Right-Slide Arrow) */
+.colAction {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.exploreText {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.25);
+  transition: color 0.4s ease;
+}
+
+.arrowIcon {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), color 0.4s ease;
+}
+
+/* Sliding bottom lime highlight bar */
+.rowBottomBar {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 5;
 }
 
 /* =========================================
-   MOBILE RESPONSIVE
+   LUXURY HOVER SPOTLIGHT INTERACTIONS (Desktop)
    ========================================= */
+@media (hover: hover) {
+  /* Dim non-hovered catalog elements slightly when container is active */
+  .directoryContainer:hover .offeringRow {
+    opacity: 0.35;
+  }
+
+  /* Brighten focused offering element fully */
+  .directoryContainer:hover .offeringRow:hover {
+    opacity: 1;
+    background-color: rgba(19, 25, 21, 0.35); /* Translucent sleek forest-black glass shade */
+  }
+
+  .offeringRow:hover .rowIndex {
+    color: var(--accent-color); /* Light up index label in neon lime */
+  }
+
+  .offeringRow:hover .iconWrapper {
+    color: var(--accent-color); /* Highlight custom vector outline */
+    transform: scale(1.05); /* Minimal linear scale anchor, no tilt or rot! */
+    filter: drop-shadow(0 0 8px rgba(209, 255, 54, 0.35));
+  }
+
+  .offeringRow:hover .rowTitle {
+    color: #ffffff;
+  }
+
+  .offeringRow:hover .rowTagline {
+    color: var(--accent-color); /* Highlight subcategory header */
+  }
+
+  .offeringRow:hover .exploreText {
+    color: #ffffff;
+  }
+
+  .offeringRow:hover .arrowIcon {
+    transform: translateX(6px); /* Stable straight horizontal sliding click cue */
+    color: var(--accent-color);
+  }
+
+  .offeringRow:hover .rowBottomBar {
+    width: 100%; /* Fully expand bottom accent border */
+  }
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT BREAKPOINTS
+   ========================================= */
+@media (max-width: 1200px) {
+  .sectionFluidMain {
+    padding: 100px 40px;
+  }
+  .rowLink {
+    grid-template-columns: 120px 260px 1fr 120px;
+    padding: 2.8rem 1.5rem;
+  }
+  .colDescription {
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .rowLink {
+    grid-template-columns: 100px 220px 1fr 100px;
+    padding: 2.4rem 1rem;
+  }
+}
+
 @media (max-width: 768px) {
   .sectionFluidMain {
-    padding: 60px 15px;
-  }
-  
-  .headerTitle h2 {
-    font-size: 3rem;
+    padding: 70px 20px;
   }
 
-  .sectionCol {
-    flex: 0 0 100%;
-    max-width: 100%;
-    padding-bottom: 2rem; /* Give space between stacked items */
+  .headerTitle {
+    margin-bottom: 4rem;
   }
 
-  .sectionIn img {
-    height: 400px; /* Shorter cards for mobile */
+  /* Transition catalog into stacked vertical cards for mobile displays */
+  .rowLink {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2.5rem 1rem;
+    gap: 1.2rem;
   }
 
-  .hoverText h2 {
-    font-size: 18vw; /* Scale up the overlay text for mobile */
+  .colIdentity {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
   }
 
-  /* Optional: Dim inactive cards as they scroll past using :has */
-  .sectionRow:has(:global(.scroll-active)) .sectionCol {
-    opacity: 0.3;
+  .colTitle {
+    padding-right: 0;
   }
 
-  .sectionRow .sectionCol:global(.scroll-active) {
-    opacity: 1;
+  .colDescription {
+    padding-right: 0;
+  }
+
+  .colAction {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+  }
+
+  /* Mobile Default Visual Active Elements */
+  .iconWrapper {
+    color: var(--accent-color);
+  }
+
+  .rowTagline {
+    color: var(--accent-color);
+  }
+
+  .exploreText {
+    color: #ffffff;
+  }
+
+  .arrowIcon {
+    color: var(--accent-color);
+    transform: translateX(4px);
+  }
+
+  .rowBottomBar {
+    width: 60px; /* Clean visual brand line segment anchor */
   }
 }
