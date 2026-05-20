@@ -17,7 +17,8 @@ const Navbar = ({ onMenuClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const isAuditRoute = pathname !== '/' && pathname !== '/resorts' && pathname !== '/work' && pathname !== '/admin' && !pathname.startsWith('/api');
+  const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities'];
+  const isAuditRoute = !staticRoutes.includes(pathname) && !pathname.startsWith('/api');
   const hideMenuBtn = pathname === '/admin' || isAuditRoute;
 
   return (
