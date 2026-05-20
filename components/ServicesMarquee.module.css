@@ -54,9 +54,9 @@
   font-family: var(--font-heading), 'Formula Condensed', 'Inter', sans-serif;
   font-size: clamp(3rem, 6.5vw, 6.5rem);
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.18); /* Subtle charcoal/grey color on black background */
+  color: #5c6470; /* Elegant Space Grey / Gunmetal */
   text-transform: capitalize;
-  letter-spacing: -2px;
+  letter-spacing: 0.05em; /* Small tiny bit of space between each letter */
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
