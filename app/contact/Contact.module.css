@@ -9,6 +9,12 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 100px 20px 60px 20px;
+  }
+}
+
 /* Futuristic background lights */
 .bgLight {
   position: absolute;
@@ -79,7 +85,7 @@
 }
 
 .title {
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: clamp(2rem, 8vw, 5.5rem);
   font-weight: 700;
   line-height: 1.0;
   letter-spacing: 0.06em;
@@ -654,4 +660,22 @@
 @keyframes scaleIn {
   from { transform: scale(0.6); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 480px) {
+  .copyEmailBtn {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+  }
+  .copyState {
+    align-self: flex-start;
+  }
+  .metaCard {
+    padding: 20px;
+  }
+  .successTitle {
+    font-size: 1.4rem;
+  }
 }
