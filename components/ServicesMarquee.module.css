@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   background-color: #000000; /* Luxury deep black background */
-  padding: 6rem 0;
+  padding: 4.5rem 0; /* Reduced from 6rem to make the section slightly more compact */
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@
 .marqueeWrapper {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.8rem; /* Reduced from 2.5rem to bring the 3 rows slightly closer together */
   width: 100%;
 }
 
@@ -102,19 +102,19 @@
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .servicesMarqueeSection {
-    padding: 4.5rem 0;
+    padding: 3.5rem 0;
   }
   .marqueeWrapper {
-    gap: 1.8rem;
+    gap: 1.4rem;
   }
 }
 
 @media (max-width: 640px) {
   .servicesMarqueeSection {
-    padding: 3.5rem 0;
+    padding: 2.5rem 0;
   }
   .marqueeWrapper {
-    gap: 1.2rem;
+    gap: 1rem;
   }
   .marqueeTrack {
     gap: 2.5rem;
