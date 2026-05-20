@@ -31,9 +31,9 @@ const Footer = () => {
       {/* MIDDLE SECTION */}
       <div className={styles.middleSection}>
         <div className={styles.footerLinks}>
-          <a href="#work">WORK</a>
-          <a href="#services">SERVICES</a>
-          <a href="#about">ABOUT</a>
+          <Link href="/work">WORK</Link>
+          <Link href="/#solution">SERVICES</Link>
+          <Link href="/#about">ABOUT</Link>
           <Link href="/contact">CONTACT</Link>
         </div>
         <div className={styles.socials}>
