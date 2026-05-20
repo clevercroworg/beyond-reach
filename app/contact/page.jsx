@@ -100,10 +100,6 @@ const ContactPage = () => {
         
         {/* Top Header */}
         <header className={styles.header}>
-          <div className={styles.statusWrapper}>
-            <div className={styles.statusDot}></div>
-            <span className={styles.statusText}>PORTAL ACTIVE · LIVE CONNECTION</span>
-          </div>
           <h1 className={styles.title}>CONNECT DIRECTLY</h1>
           <p className={styles.subtitle}>
             Break free from OTA dependency. Bypassing gatekeepers with secure direct communication channels and intelligent brand evaluation.
@@ -117,7 +113,7 @@ const ContactPage = () => {
           <div className={styles.leftColumn}>
             
             <div className={styles.infoCard}>
-              <h2 className={styles.cardTitle}>DIRECT BRIEFING</h2>
+              <h2 className={styles.cardTitle}>Let’s connect</h2>
               <p className={styles.cardDesc}>
                 Book a high-level private consultation directly with our brand strategy team to align growth objectives.
               </p>
@@ -158,7 +154,7 @@ const ContactPage = () => {
             <div className={styles.metaCard}>
               <div className={styles.metaItem}>
                 <span className={styles.metaLabel}>TIMEZONE</span>
-                <span className={styles.metaValue}>GMT / LONDON</span>
+                <span className={styles.metaValue}>IST (GMT +5:30)</span>
               </div>
 
               <div className={styles.metaItem}>
@@ -172,6 +168,14 @@ const ContactPage = () => {
               </div>
             </div>
 
+            {/* Office Location Address Card */}
+            <div className={styles.addressCard}>
+              <span className={styles.addressTitle}>OFFICE LOCATION</span>
+              <p className={styles.addressValue}>
+                D.No. 8-1-83B-14. Business Bay Center. Udupi – Manipal Highway, opp The mirage complex. Kunjibettu, Udupi, Karnataka 576102
+              </p>
+            </div>
+
           </div>
 
           {/* Right Column: High-Fidelity Intake Form */}
@@ -181,7 +185,7 @@ const ContactPage = () => {
               {!submitSuccess ? (
                 <form onSubmit={handleSubmit} className={styles.intakeForm}>
                   <div className={styles.formHeader}>
-                    <h2 className={styles.formTitle}>TRANSMIT BRIEFING</h2>
+                    <h2 className={styles.formTitle}>get a call from us</h2>
                     <p className={styles.formSubtitle}>Provide essential brand context to initiate evaluation</p>
                   </div>
 
@@ -289,10 +293,10 @@ const ContactPage = () => {
                     className={styles.submitBtn}
                   >
                     {isSubmitting ? (
-                      <span className={styles.loadingSpinner}>ESTABLISHING CONNECTION...</span>
+                      <span className={styles.loadingSpinner}>SUBMITTING...</span>
                     ) : (
                       <>
-                        <span>TRANSMIT BRIEFING</span>
+                        <span>submit</span>
                         <Send size={18} className={styles.sendIcon} />
                       </>
                     )}
@@ -305,9 +309,9 @@ const ContactPage = () => {
                   <div className={styles.successIconWrapper}>
                     <CheckCircle2 size={64} className={styles.successCheck} />
                   </div>
-                  <h2 className={styles.successTitle}>TRANSMISSION SUCCESSFUL</h2>
+                  <h2 className={styles.successTitle}>SUBMISSION SUCCESSFUL</h2>
                   <p className={styles.successDesc}>
-                    Briefing data successfully written to secure storage. Our digital strategy desk is initializing evaluation.
+                    Your inquiry has been successfully transmitted. Our strategy desk is initializing evaluation.
                   </p>
                   
                   <div className={styles.receiptSummary}>

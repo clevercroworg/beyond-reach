@@ -659,6 +659,33 @@
   to { transform: scale(1); opacity: 1; }
 }
 
+.addressCard {
+  background-color: rgba(19, 25, 21, 0.3);
+  border: 1px solid var(--border-color);
+  padding: 30px 40px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addressTitle {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.addressValue {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
 @media (max-width: 480px) {
   .copyEmailBtn {
     flex-direction: column;
