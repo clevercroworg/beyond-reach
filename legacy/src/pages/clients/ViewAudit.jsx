@@ -90,7 +90,7 @@ const ViewAudit = () => {
 
   return (
     <div className={styles.container}>
-      
+
       {/* Hero Section */}
       <section className={styles.hero}>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -103,7 +103,7 @@ const ViewAudit = () => {
       </section>
 
       <div className={styles.content}>
-        
+
         {/* SECTION 1: Metrics Breakdown */}
         <section>
           <div className={styles.sectionHeader}>
@@ -111,12 +111,12 @@ const ViewAudit = () => {
               <span className={styles.sectionNumber}>1</span>
               Current Digital Baseline
             </h2>
-            <p className={styles.sectionSubtitle}>Where you stand today across critical booking channels.</p>
+            <p className={styles.sectionSubtitle}>Your visibility across the channels where guests search.</p>
           </div>
 
           <div>
             {sections.map((section, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -167,7 +167,7 @@ const ViewAudit = () => {
               Market Insights & Growth Forecast
             </h2>
           </div>
-          
+
           <div className={styles.marketGridTop}>
             <div className={styles.scoreItem}>
               <span className={styles.scoreLabel}>Your Visibility Score</span>
@@ -219,7 +219,7 @@ const ViewAudit = () => {
                 We fully optimize your Google Business Profile, fix website loading bugs, clean up your contact links, and ensure your booking button is front and center to immediately capture organic demand.
               </p>
             </motion.div>
-            
+
             <motion.div whileHover={{ y: -5 }} className={styles.phaseCard}>
               <span className={styles.phaseTag}>MONTHS 3+</span>
               <h3>Phase 2: Targeted Visibility & Paid Ads</h3>

@@ -17,7 +17,8 @@ const clientSchema = new mongoose.Schema({
     websiteLinkWorking: { type: String, enum: ['Yes', 'No'] },
     accurateAddressPin: { type: String, enum: ['Yes', 'No'] },
     reviewRatingAndCount: { type: String }, // e.g., '4.1 Stars / 85 Reviews'
-    ownerResponses: { type: String, enum: ['Yes', 'No'] }
+    ownerResponses: { type: String, enum: ['Yes', 'No'] },
+    uploadedImages: { type: String, enum: ['Yes', 'No'] }
   },
   website: {
     active: { type: String, enum: ['Yes', 'No'] },
@@ -34,7 +35,8 @@ const clientSchema = new mongoose.Schema({
     postingConsistency: { type: String }, // e.g., 'Daily', 'Once a month'
     postPerformance: { type: String, enum: ['High', 'Medium', 'Low'] },
     brandingScore: { type: Number, min: 0, max: 10 },
-    videoReelsContent: { type: String, enum: ['Yes', 'No'] }
+    videoReelsContent: { type: String, enum: ['Yes', 'No'] },
+    postCreativeQuality: { type: String, enum: ['Yes', 'No'] }
   },
   onlinePresenceScore: {
     visibilityScore: { type: Number, min: 0, max: 100 },
@@ -46,8 +48,23 @@ const clientSchema = new mongoose.Schema({
     competitionLevel: { type: String, enum: ['High', 'Medium', 'Low'] },
     bookingGrowthScope: { type: String },
     estimatedLostRevenue: { type: String },
-    recommendedAdBudget: { type: String }
+    recommendedAdBudget: { type: String },
+    highIntentKeywords: [{
+      keyword: { type: String },
+      searchVolume: { type: String }
+    }],
+    adsBudgetBookings: [{
+      budget: { type: String },
+      bookings: { type: String }
+    }]
+  },
+  googleTrends: {
+    seasonVisitor: { type: String },
+    nonSeasonSearch: { type: String }
   }
 }, { timestamps: true });
 
-export default mongoose.models.Client || mongoose.model('Client', clientSchema);
+if (mongoose.models.Client) {
+  delete mongoose.models.Client;
+}
+export default mongoose.model('Client', clientSchema);

@@ -38,6 +38,8 @@ export default function ClientLayoutWrapper({ children }) {
     );
   }
 
+  const isAuditRoute = pathname !== '/' && pathname !== '/resorts' && pathname !== '/work' && pathname !== '/admin' && !pathname.startsWith('/api');
+
   return (
     <>
       {isLoading && pathname === '/' && <Preloader onComplete={() => setIsLoading(false)} />}
@@ -48,7 +50,7 @@ export default function ClientLayoutWrapper({ children }) {
           {children}
         </PageTransition>
       </AnimatePresence>
-      <Footer />
+      {!isAuditRoute && <Footer />}
     </>
   );
 }

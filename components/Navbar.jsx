@@ -17,20 +17,26 @@ const Navbar = ({ onMenuClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isAuditRoute = pathname !== '/' && pathname !== '/resorts' && pathname !== '/work' && pathname !== '/admin' && !pathname.startsWith('/api');
+  const hideMenuBtn = pathname === '/admin' || isAuditRoute;
+
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
-      <Link href="/work" className={styles.navLink}>Work</Link>
+    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`} style={isAuditRoute ? { position: 'absolute' } : {}}>
+      {!isAuditRoute && <Link href="/work" className={styles.navLink}>Work</Link>}
       <div className={styles.logo}>
-        <Link href="/" className={styles.logoLink}>
+        <Link href="/" className={styles.logoLink} style={isAuditRoute ? { color: '#111827' } : {}}>
           <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
         </Link>
       </div>
-      {/* If on home page, use hash. Otherwise route to home with hash */}
-      <Link href="/contact" className={styles.navLink}>Get in touch</Link>
-      <button className={styles.menuBtn} onClick={onMenuClick}>
-        <span className={styles.hamburger}></span>
-        MENU
-      </button>
+      {!isAuditRoute && (
+        <Link href="/contact" className={styles.navLink}>Get in touch</Link>
+      )}
+      {!hideMenuBtn && (
+        <button className={styles.menuBtn} onClick={onMenuClick}>
+          <span className={styles.hamburger}></span>
+          MENU
+        </button>
+      )}
     </nav>
   );
 };
