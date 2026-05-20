@@ -71,7 +71,7 @@ const Footer = () => {
         
         <div className={styles.creditsBlock}>
           <span className={styles.label}>PRIVACY</span>
-          <a href="#" className={styles.link}>PRIVACY POLICY</a>
+          <Link href="/privacy-policy" className={styles.link}>PRIVACY POLICY</Link>
         </div>
       </div>
       

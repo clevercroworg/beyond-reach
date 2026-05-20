@@ -65,7 +65,7 @@ export default function ClientLayoutWrapper({ children }) {
     );
   }
 
-  const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities'];
+  const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities', '/privacy-policy'];
   const isAuditRoute = !staticRoutes.includes(pathname) && !pathname.startsWith('/api');
 
   return (

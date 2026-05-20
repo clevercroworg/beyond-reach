@@ -9,6 +9,11 @@
   align-items: flex-start;
   z-index: 100;
   pointer-events: none; /* Let clicks pass through empty areas */
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.navbarHidden {
+  transform: translateY(-100%);
 }
 
 .navbar > * {

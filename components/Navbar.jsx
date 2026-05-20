@@ -6,23 +6,39 @@ import styles from './Navbar.module.css';
 
 const Navbar = ({ onMenuClick }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const pathname = usePathname() || '/';
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 50);
+
+      // Hide if scrolling down and scrolled past header zone, show if scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities'];
+  const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities', '/privacy-policy'];
   const isAuditRoute = !staticRoutes.includes(pathname) && !pathname.startsWith('/api');
   const hideMenuBtn = pathname === '/admin' || isAuditRoute;
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`} style={isAuditRoute ? { position: 'absolute' } : {}}>
+    <nav 
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${!visible ? styles.navbarHidden : ''}`} 
+      style={isAuditRoute ? { position: 'absolute' } : {}}
+    >
       {!isAuditRoute && <Link href="/work" className={styles.navLink}>Work</Link>}
       <div className={styles.logo}>
         <Link href="/" className={styles.logoLink} style={isAuditRoute ? { color: '#111827' } : {}}>
