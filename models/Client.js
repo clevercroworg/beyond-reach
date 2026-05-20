@@ -48,7 +48,15 @@ const clientSchema = new mongoose.Schema({
     competitionLevel: { type: String, enum: ['High', 'Medium', 'Low'] },
     bookingGrowthScope: { type: String },
     estimatedLostRevenue: { type: String },
-    recommendedAdBudget: { type: String }
+    recommendedAdBudget: { type: String },
+    highIntentKeywords: [{
+      keyword: { type: String },
+      searchVolume: { type: String }
+    }],
+    adsBudgetBookings: [{
+      budget: { type: String },
+      bookings: { type: String }
+    }]
   },
   googleTrends: {
     seasonVisitor: { type: String },
@@ -56,4 +64,7 @@ const clientSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-export default mongoose.models.Client || mongoose.model('Client', clientSchema);
+if (mongoose.models.Client) {
+  delete mongoose.models.Client;
+}
+export default mongoose.model('Client', clientSchema);

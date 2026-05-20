@@ -49,6 +49,8 @@ const defaultFormData = {
     bookingGrowthScope: '',
     estimatedLostRevenue: '',
     recommendedAdBudget: '',
+    highIntentKeywords: [{ keyword: '', searchVolume: '' }],
+    adsBudgetBookings: [{ budget: '', bookings: '' }],
   },
   googleTrends: {
     seasonVisitor: '',
@@ -94,7 +96,12 @@ export default function AdminForm() {
       website: { ...defaultFormData.website, ...client.website },
       socialMedia: { ...defaultFormData.socialMedia, ...client.socialMedia },
       onlinePresenceScore: { ...defaultFormData.onlinePresenceScore, ...client.onlinePresenceScore },
-      marketInsights: { ...defaultFormData.marketInsights, ...client.marketInsights },
+      marketInsights: { 
+        ...defaultFormData.marketInsights, 
+        ...client.marketInsights, 
+        highIntentKeywords: client.marketInsights?.highIntentKeywords || [{ keyword: '', searchVolume: '' }],
+        adsBudgetBookings: client.marketInsights?.adsBudgetBookings || [{ budget: '', bookings: '' }]
+      },
       googleTrends: { ...defaultFormData.googleTrends, ...client.googleTrends },
     });
     setIsModalOpen(false); // Close modal on select
@@ -153,7 +160,10 @@ export default function AdminForm() {
     }
   };
 
-  const filteredClients = clients.filter(c => c.hotelName?.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filteredClients = clients.filter(c => 
+    c.hotelName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    c.propname?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-[#0a0e0b] text-white py-24 px-6 md:px-12">
@@ -185,7 +195,7 @@ export default function AdminForm() {
                 <h2 className="text-2xl font-bold">Manage Existing Audits</h2>
                 <input 
                   type="text" 
-                  placeholder="Search by hotel name..." 
+                  placeholder="Search by hotel name or URL..." 
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="bg-[#0a0e0b] border border-[#2a332d] rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-[#d1ff36] focus:outline-none w-full md:w-64"
@@ -385,7 +395,6 @@ export default function AdminForm() {
               {[
                 { label: 'Active Pages', field: 'activePages', type: 'select', options: ['Yes', 'No'] },
                 { label: 'Total Posts', field: 'totalPosts', type: 'text', placeholder: 'e.g., 140 posts' },
-                { label: 'Posting Consistency', field: 'postingConsistency', type: 'text', placeholder: 'e.g., Once a month' },
                 { label: 'Post Performance', field: 'postPerformance', type: 'select', options: ['High', 'Medium', 'Low'] },
                 { label: 'Branding Score (Out of 10)', field: 'brandingScore', type: 'number' },
                 { label: 'Video/Reels Content', field: 'videoReelsContent', type: 'select', options: ['Yes', 'No'] },
@@ -484,6 +493,100 @@ export default function AdminForm() {
                   )}
                 </div>
               ))}
+              
+              {/* Dynamic Keywords List */}
+              <div className="md:col-span-2 space-y-4">
+                <div className="flex justify-between items-center mb-2">
+                  <label className="block text-sm font-medium text-neutral-400">High Intent Keywords</label>
+                  <button type="button" onClick={() => {
+                    const newKeywords = [...(formData.marketInsights.highIntentKeywords || []), { keyword: '', searchVolume: '' }];
+                    handleChange('marketInsights', 'highIntentKeywords', newKeywords);
+                  }} className="text-xs bg-[#d1ff36]/10 text-[#d1ff36] px-3 py-1 rounded hover:bg-[#d1ff36]/20 transition-colors">+ Add Keyword</button>
+                </div>
+                {(formData.marketInsights.highIntentKeywords || []).map((item, index) => (
+                  <div key={index} className="flex gap-4 items-start">
+                    <div className="flex-1">
+                      <input 
+                        type="text" 
+                        className="w-full bg-[#0a0e0b] border border-[#2a332d] rounded-lg p-3 text-white focus:ring-2 focus:ring-[#d1ff36] focus:outline-none placeholder-neutral-600 text-sm"
+                        value={item.keyword}
+                        onChange={(e) => {
+                          const newKeywords = [...formData.marketInsights.highIntentKeywords];
+                          newKeywords[index].keyword = e.target.value;
+                          handleChange('marketInsights', 'highIntentKeywords', newKeywords);
+                        }}
+                        placeholder="Keyword (e.g., Best resort in Miami)"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <input 
+                        type="text" 
+                        className="w-full bg-[#0a0e0b] border border-[#2a332d] rounded-lg p-3 text-white focus:ring-2 focus:ring-[#d1ff36] focus:outline-none placeholder-neutral-600 text-sm"
+                        value={item.searchVolume}
+                        onChange={(e) => {
+                          const newKeywords = [...formData.marketInsights.highIntentKeywords];
+                          newKeywords[index].searchVolume = e.target.value;
+                          handleChange('marketInsights', 'highIntentKeywords', newKeywords);
+                        }}
+                        placeholder="Search Volume (e.g., 2000)"
+                      />
+                    </div>
+                    <button type="button" onClick={() => {
+                      const newKeywords = formData.marketInsights.highIntentKeywords.filter((_, i) => i !== index);
+                      handleChange('marketInsights', 'highIntentKeywords', newKeywords);
+                    }} className="text-red-400 hover:text-red-300 p-3 bg-red-400/10 rounded-lg hover:bg-red-400/20 transition-colors">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                    </button>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Dynamic Ads Budget Bookings List */}
+              <div className="md:col-span-2 space-y-4">
+                <div className="flex justify-between items-center mb-2">
+                  <label className="block text-sm font-medium text-neutral-400">Ads Budget / Estimated Bookings</label>
+                  <button type="button" onClick={() => {
+                    const newList = [...(formData.marketInsights.adsBudgetBookings || []), { budget: '', bookings: '' }];
+                    handleChange('marketInsights', 'adsBudgetBookings', newList);
+                  }} className="text-xs bg-[#d1ff36]/10 text-[#d1ff36] px-3 py-1 rounded hover:bg-[#d1ff36]/20 transition-colors">+ Add Item</button>
+                </div>
+                {(formData.marketInsights.adsBudgetBookings || []).map((item, index) => (
+                  <div key={index} className="flex gap-4 items-start">
+                    <div className="flex-1">
+                      <input 
+                        type="text" 
+                        className="w-full bg-[#0a0e0b] border border-[#2a332d] rounded-lg p-3 text-white focus:ring-2 focus:ring-[#d1ff36] focus:outline-none placeholder-neutral-600 text-sm"
+                        value={item.budget}
+                        onChange={(e) => {
+                          const newList = [...formData.marketInsights.adsBudgetBookings];
+                          newList[index].budget = e.target.value;
+                          handleChange('marketInsights', 'adsBudgetBookings', newList);
+                        }}
+                        placeholder="Ads Budget (e.g., $1500)"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <input 
+                        type="text" 
+                        className="w-full bg-[#0a0e0b] border border-[#2a332d] rounded-lg p-3 text-white focus:ring-2 focus:ring-[#d1ff36] focus:outline-none placeholder-neutral-600 text-sm"
+                        value={item.bookings}
+                        onChange={(e) => {
+                          const newList = [...formData.marketInsights.adsBudgetBookings];
+                          newList[index].bookings = e.target.value;
+                          handleChange('marketInsights', 'adsBudgetBookings', newList);
+                        }}
+                        placeholder="Estimated Bookings (e.g., 25-40)"
+                      />
+                    </div>
+                    <button type="button" onClick={() => {
+                      const newList = formData.marketInsights.adsBudgetBookings.filter((_, i) => i !== index);
+                      handleChange('marketInsights', 'adsBudgetBookings', newList);
+                    }} className="text-red-400 hover:text-red-300 p-3 bg-red-400/10 rounded-lg hover:bg-red-400/20 transition-colors">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 

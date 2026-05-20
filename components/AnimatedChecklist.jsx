@@ -14,7 +14,24 @@ export default function AnimatedChecklist({ metrics }) {
         }
 
         const isSimpleBoolean = ['Yes', 'No', 'Fast', 'Slow', 'High', 'Low', 'Medium', '-', 'N/A'].includes(valString);
-        const isPositive = ['Yes', 'Fast', 'High'].includes(valString) || /^[0-9]/.test(valString);
+        let isPositive = ['Yes', 'Fast', 'High'].includes(valString) || /^[0-9]/.test(valString);
+        
+        let customBadgeClass = "";
+        
+        // Handle Branding Score specifics
+        if (metric.label === "Branding Score" && valString !== "Not Found") {
+          const scoreNum = parseFloat(valString.split('/')[0].trim());
+          if (scoreNum >= 9) {
+            isPositive = true;
+            customBadgeClass = "bg-emerald-500/10 text-emerald-600 border-emerald-500/20";
+          } else if (scoreNum > 5) {
+            isPositive = true;
+            customBadgeClass = "bg-yellow-500/10 text-yellow-600 border-yellow-500/30";
+          } else {
+            isPositive = false;
+            customBadgeClass = "bg-red-500/10 text-red-500 border-red-500/20";
+          }
+        }
         
         return (
           <motion.div 
@@ -23,7 +40,7 @@ export default function AnimatedChecklist({ metrics }) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="flex items-center justify-between py-3 border-b border-[#192521]/10 last:border-0"
+            className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 py-4 border-b border-[#192521]/10 last:border-0"
           >
             <div className="flex items-center gap-3">
               {/* Checklist Indicator Icon */}
@@ -50,12 +67,12 @@ export default function AnimatedChecklist({ metrics }) {
             </div>
 
             {/* Badge/Value on the right (Only if not simple state to keep checklist pure) */}
-            <div className="shrink-0">
+            <div className="shrink-0 pl-10 sm:pl-0">
               {!isSimpleBoolean && (
-                <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold border uppercase tracking-wide font-mono ${
-                  valString === "Not Found" 
+                <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-extrabold border uppercase tracking-wide font-mono text-center ${
+                  customBadgeClass || (valString === "Not Found" 
                     ? "bg-red-500/10 text-red-500 border-red-500/20" 
-                    : "bg-sky-500/15 text-[#0284C7] border-sky-500/20"
+                    : "bg-sky-500/15 text-[#0284C7] border-sky-500/20")
                 }`}>
                   {valString}
                 </span>

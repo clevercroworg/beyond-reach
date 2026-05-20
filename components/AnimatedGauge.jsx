@@ -7,21 +7,21 @@ export default function AnimatedGauge({ score, light = false }) {
   const stroke = 20;
   const normalizedRadius = radius - stroke * 2;
   const circumference = normalizedRadius * 2 * Math.PI;
-  // Offset formula for SVG dasharray
+  // Offset formula for SVG dasharray - Always calculate out of 100 visually
   const strokeDashoffset = circumference - (score / 100) * circumference;
 
   let color = '#ef4444'; // Red
   let statusText = 'Urgent Attention Needed';
 
-  if (score >= 40) {
+  if (score >= 50) {
     color = '#f59e0b'; // Amber
     statusText = 'Can Be Improved';
   }
-  if (score >= 70) {
+  if (score >= 65) {
     color = '#eab308'; // Yellow
     statusText = 'Good';
   }
-  if (score >= 90) {
+  if (score >= 70) {
     color = light ? '#0284c7' : '#00d2ff'; // Sky Blue or Electric Blue
     statusText = 'Best';
   }

@@ -45,7 +45,8 @@ export default async function ViewAudit({ params }) {
   countMetric(audit.socialMedia?.postPerformance);
   countMetric(audit.socialMedia?.videoReelsContent);
   countMetric(audit.socialMedia?.postCreativeQuality);
-  const healthScore = totalMetrics > 0 ? Math.round((positiveMetrics / totalMetrics) * 100) : 0;
+  // Calculate score directly out of 75 instead of capping it
+  const healthScore = totalMetrics > 0 ? Math.round((positiveMetrics / totalMetrics) * 75) : 0;
   const seoScore = Math.min(Math.round(healthScore * 0.35) + 30, 65);
   const lostRevenueINR = ((100 - seoScore) * 15000).toLocaleString('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
   const gmbWarnings = [];
@@ -106,17 +107,11 @@ export default async function ViewAudit({ params }) {
       socialWarnings.push({ label: "Total Posts", text: "Profile content volume needs improvement." });
     }
 
-    const consistencyVal = String(audit.socialMedia?.postingConsistency || '-');
-    const hasConsistency = consistencyVal !== '-' && consistencyVal !== '' && !consistencyVal.toLowerCase().includes('no');
-    if (!hasConsistency) {
-      socialWarnings.push({ label: "Posting Consistency", text: "Content posting schedule is not up to the mark." });
-    }
-
     checkSocialWarning(audit.socialMedia?.postPerformance, "Post Performance", "Audience engagement rate needs improvement.");
     checkSocialWarning(audit.socialMedia?.videoReelsContent, "Video/Reels Content", "Short-form video layout is not up to the mark.");
 
     const scoreVal = Number(audit.socialMedia?.brandingScore || 0);
-    if (scoreVal < 6) {
+    if (scoreVal < 7) {
       socialWarnings.push({ label: "Branding Score", text: "Visual profile identity needs improvement." });
     }
 
@@ -158,7 +153,6 @@ export default async function ViewAudit({ params }) {
       metrics: [
         { label: "Active Pages", value: audit.socialMedia?.activePages },
         { label: "Total Posts", value: audit.socialMedia?.totalPosts },
-        { label: "Posting Consistency", value: audit.socialMedia?.postingConsistency },
         { label: "Post Performance", value: audit.socialMedia?.postPerformance },
         { label: "Video/Reels Content", value: audit.socialMedia?.videoReelsContent },
         { label: "Branding Score", value: `${audit.socialMedia?.brandingScore} / 10` },
@@ -174,12 +168,37 @@ export default async function ViewAudit({ params }) {
   };
 
   return (
-    <div className="min-h-screen text-[#43524E] selection:bg-[#0284C7]/30 pb-20 relative bg-[#F0F4F1]" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className="audit-page-wrapper min-h-screen text-[#43524E] selection:bg-[#0284C7]/30 pb-20 relative bg-[#F0F4F1]" style={{ fontFamily: "'Inter', sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       <style dangerouslySetInnerHTML={{
         __html: `
-        * {
+        .audit-page-wrapper * {
           font-family: 'Inter', sans-serif !important;
+        }
+        .audit-page-wrapper h1, 
+        .audit-page-wrapper h2, 
+        .audit-page-wrapper h3, 
+        .audit-page-wrapper h4, 
+        .audit-page-wrapper h5, 
+        .audit-page-wrapper h6 {
+          text-transform: none !important;
+          letter-spacing: normal !important;
+        }
+        /* Custom Light Scrollbar for Audit Page */
+        .audit-page-wrapper ::-webkit-scrollbar {
+          width: 6px;
+          height: 6px;
+        }
+        .audit-page-wrapper ::-webkit-scrollbar-track {
+          background: transparent; 
+          border-radius: 8px;
+        }
+        .audit-page-wrapper ::-webkit-scrollbar-thumb {
+          background: rgba(115, 132, 128, 0.3);
+          border-radius: 8px;
+        }
+        .audit-page-wrapper ::-webkit-scrollbar-thumb:hover {
+          background: rgba(115, 132, 128, 0.5); 
         }
       `}} />
       <AuditBackground light={true} customBg="#F0F4F1" />
@@ -435,18 +454,45 @@ export default async function ViewAudit({ params }) {
               ))}
 
               {/* Divider and Sub-cards D & E */}
-              <div className="border-t border-white/60 pt-10">
+              <div className="border-t border-white/60 pt-10 space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="p-8 bg-white/45 backdrop-blur-md rounded-3xl border border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.01)]">
                     <h3 className="text-2xl font-bold mb-4 text-[#192521]">Tracking & Retargeting Setup</h3>
                     <p className="text-[#43524E] leading-relaxed">
-                      our Google search SEO score is <strong className="text-yellow-500">{seoScore}/100 (moderate)</strong>, meaning visitors are not finding your property when searching for your location. This needs <strong className="text-red-500">immediate attention</strong>.
+                      Your Google search SEO score is <strong className="text-yellow-500">{seoScore}/100 (moderate)</strong>, meaning visitors are not finding your property when searching for your location. This needs <strong className="text-red-500">immediate attention</strong>.
                     </p>
                   </div>
                   <div className="p-8 bg-white/45 backdrop-blur-md rounded-3xl border border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.01)] flex flex-col justify-center">
                     <span className="text-sm text-[#738480] block mb-2 font-medium uppercase tracking-wider">Ads Score (Meta/Google ads)</span>
                     <h3 className="text-3xl font-extrabold text-red-500 tracking-tight">LOW</h3>
                   </div>
+                </div>
+
+                {/* Inserted High Intent Keywords after Tracking & Retargeting Setup */}
+                <div className="bg-white/45 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.01)]">
+                  <h3 className="text-xl font-bold mb-6 text-[#192521]">High Intent Keywords</h3>
+                  {audit.marketInsights?.highIntentKeywords && audit.marketInsights.highIntentKeywords.length > 0 ? (
+                    <div className="overflow-x-auto overflow-y-auto max-h-[320px] pr-2 custom-scrollbar relative">
+                      <table className="w-full text-left border-collapse">
+                        <thead className="sticky top-0 bg-white/80 backdrop-blur-lg z-10">
+                          <tr>
+                            <th className="pb-3 pt-2 text-sm font-semibold text-[#738480] uppercase tracking-wider border-b border-white/60">Keyword</th>
+                            <th className="pb-3 pt-2 text-sm font-semibold text-[#738480] uppercase tracking-wider text-right border-b border-white/60">Search Volume</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {audit.marketInsights.highIntentKeywords.map((item, idx) => (
+                            <tr key={idx} className="border-b border-white/30 last:border-0">
+                              <td className="py-4 text-[#192521] font-medium">{item.keyword || '-'}</td>
+                              <td className="py-4 text-[#43524E] text-right font-semibold">{item.searchVolume || '-'}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : (
+                    <p className="text-[#738480] italic text-sm">No high intent keywords found.</p>
+                  )}
                 </div>
               </div>
 
@@ -489,16 +535,38 @@ export default async function ViewAudit({ params }) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white/45 backdrop-blur-md p-6 rounded-2xl border border-white/60">
-                <span className="text-sm text-[#738480] block mb-3 font-medium">Monthly Search Volume</span>
-                <p className="text-sm text-[#43524E] leading-relaxed">
-                  Based on Google Trends' monthly search volume for <strong className="text-[#192521] capitalize">{audit.location || 'your location'}</strong> is <strong className="text-[#192521]">{audit.marketInsights?.monthlySearchVolume}</strong>, we’ve updated your target location. By adjusting this setting, you could grow your revenue by up to <strong className="text-emerald-600">52%</strong>.
-                </p>
-              </div>
-              <div className="bg-white/45 backdrop-blur-md p-6 rounded-2xl border border-white/60">
+              <div className="bg-white/45 backdrop-blur-md p-6 rounded-2xl border border-white/60 md:col-span-2">
                 <span className="text-sm text-[#738480] block mb-2 font-medium">Competition Level</span>
                 <span className="text-xl text-red-500 font-bold uppercase tracking-wider">HIGH</span>
               </div>
+
+              {/* Inserted Ads Budget Bookings */}
+              <div className="bg-white/45 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.01)] md:col-span-2">
+                <h3 className="text-xl font-bold mb-6 text-[#192521]">Ads Budget & Estimated Bookings</h3>
+                {audit.marketInsights?.adsBudgetBookings && audit.marketInsights.adsBudgetBookings.length > 0 ? (
+                  <div className="overflow-x-auto overflow-y-auto max-h-[320px] pr-2 custom-scrollbar relative">
+                    <table className="w-full text-left border-collapse">
+                      <thead className="sticky top-0 bg-white/80 backdrop-blur-lg z-10">
+                        <tr>
+                          <th className="pb-3 pt-2 text-sm font-semibold text-[#738480] uppercase tracking-wider border-b border-white/60">Ads Budget Required</th>
+                          <th className="pb-3 pt-2 text-sm font-semibold text-[#738480] uppercase tracking-wider text-right border-b border-white/60">Estimated Bookings</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {audit.marketInsights.adsBudgetBookings.map((item, idx) => (
+                          <tr key={idx} className="border-b border-white/30 last:border-0">
+                            <td className="py-4 text-[#192521] font-medium">{item.budget || '-'}</td>
+                            <td className="py-4 text-emerald-600 text-right font-bold">{item.bookings || '-'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <p className="text-[#738480] italic text-sm">No ads budget projections found.</p>
+                )}
+              </div>
+
               <div className="bg-white/45 backdrop-blur-md p-6 rounded-2xl border border-white/60 md:col-span-2">
                 <span className="text-sm text-[#738480] block mb-2 font-medium">Scope of Booking Growth</span>
                 <span className="text-xl text-emerald-500 font-bold uppercase tracking-wider">POSSIBLE</span>
