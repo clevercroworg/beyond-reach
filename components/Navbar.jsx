@@ -35,26 +35,29 @@ const Navbar = ({ onMenuClick }) => {
   const hideMenuBtn = pathname === '/admin' || isAuditRoute;
 
   return (
-    <nav 
-      className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${!visible ? styles.navbarHidden : ''}`} 
-      style={isAuditRoute ? { position: 'absolute' } : {}}
-    >
-      {!isAuditRoute && <Link href="/work" className={styles.navLink}>Work</Link>}
-      <div className={styles.logo}>
-        <Link href="/" className={styles.logoLink} style={isAuditRoute ? { color: '#111827' } : {}}>
-          <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
-        </Link>
-      </div>
-      {!isAuditRoute && (
-        <Link href="/contact" className={styles.navLink}>Get in touch</Link>
-      )}
+    <>
+      <nav 
+        className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${!visible ? styles.navbarHidden : ''}`} 
+        style={isAuditRoute ? { position: 'absolute' } : {}}
+      >
+        {!isAuditRoute && <Link href="/work" className={styles.navLink}>Work</Link>}
+        <div className={styles.logo}>
+          <Link href="/" className={styles.logoLink} style={isAuditRoute ? { color: '#111827' } : {}}>
+            <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>
+          </Link>
+        </div>
+        {!isAuditRoute && (
+          <Link href="/contact" className={styles.navLink}>Get in touch</Link>
+        )}
+      </nav>
+
       {!hideMenuBtn && (
         <button className={styles.menuBtn} onClick={onMenuClick}>
           <span className={styles.hamburger}></span>
           MENU
         </button>
       )}
-    </nav>
+    </>
   );
 };
 
