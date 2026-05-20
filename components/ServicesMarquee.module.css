@@ -54,7 +54,14 @@
   font-family: var(--font-heading), 'Formula Condensed', 'Inter', sans-serif;
   font-size: clamp(3rem, 6.5vw, 6.5rem);
   font-weight: 900;
-  color: #5c6470; /* Elegant Space Grey / Gunmetal */
+  
+  /* Subtle Space Grey / Gunmetal Gradient */
+  background: linear-gradient(135deg, #8792a0 0%, #464e56 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Fallback */
+  
   text-transform: uppercase; /* Fully capitalized text */
   letter-spacing: 0.05em; /* Small tiny bit of space between each letter */
   cursor: pointer;
@@ -63,9 +70,14 @@
 }
 
 .marqueeItem:hover {
-  color: rgba(255, 255, 255, 0.85); /* Fades up to highly readable elegant silver grey on hover */
+  /* Fades up to a striking silver-white gradient on hover */
+  background: linear-gradient(135deg, #ffffff 0%, #d8e0e8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
   transform: translateY(-6px) scale(1.04);
-  text-shadow: 0 12px 35px rgba(255, 255, 255, 0.05);
+  filter: drop-shadow(0 12px 25px rgba(255, 255, 255, 0.15));
 }
 
 /* Keyframes for seamless loops */
