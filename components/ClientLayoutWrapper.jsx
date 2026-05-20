@@ -19,11 +19,38 @@ export default function ClientLayoutWrapper({ children }) {
     setMounted(true);
   }, []);
 
-  // Scroll to top on every route change (and on refresh)
+  // Smart smooth scrolling handler for cross-page and same-page hash anchors
   useEffect(() => {
-    if (mounted) {
+    if (!mounted) return;
+
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    };
+
+    // Listen to hash change events for same-page nav
+    window.addEventListener('hashchange', handleHashScroll);
+
+    // If navigated with a hash, wait for page mounting and transitions
+    const hash = window.location.hash;
+    if (hash) {
+      const timer = setTimeout(handleHashScroll, 500); // 500ms ensures Framer Motion transitions/preloader clear
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener('hashchange', handleHashScroll);
+      };
+    } else {
       window.scrollTo(0, 0);
     }
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashScroll);
+    };
   }, [pathname, mounted]);
 
   // Server-side & initial client hydration: render standard static layout
