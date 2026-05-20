@@ -35,13 +35,13 @@
 
 /* Left-to-Right track animation */
 .trackLeft {
-  animation: scrollLeft 45s linear infinite;
+  animation: scrollLeft 75s linear infinite;
   animation-play-state: running;
 }
 
 /* Right-to-Left track animation */
 .trackRight {
-  animation: scrollRight 45s linear infinite;
+  animation: scrollRight 75s linear infinite;
   animation-play-state: running;
 }
 
@@ -55,7 +55,7 @@
   font-size: clamp(3rem, 6.5vw, 6.5rem);
   font-weight: 900;
   color: #5c6470; /* Elegant Space Grey / Gunmetal */
-  text-transform: capitalize;
+  text-transform: uppercase; /* Fully capitalized text */
   letter-spacing: 0.05em; /* Small tiny bit of space between each letter */
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
