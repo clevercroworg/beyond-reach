@@ -1,0 +1,123 @@
+.termsSection {
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  padding: 160px 8% 120px 8%;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .termsSection {
+    padding: 120px 24px 80px 24px;
+  }
+}
+
+.bgLight {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(209, 255, 54, 0.04) 0%, rgba(0,0,0,0) 70%);
+  top: -20vw;
+  right: -10vw;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.backBtn:hover {
+  color: var(--accent-color);
+  transform: translateX(-4px);
+}
+
+.header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 40px;
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  margin: 0 0 20px 0;
+  color: var(--text-primary);
+}
+
+.lastUpdated {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.contentBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.bulletList {
+  margin: 10px 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bulletItem {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  list-style-type: square;
+}
+
+.highlight {
+  color: var(--accent-color);
+  font-weight: 500;
+}

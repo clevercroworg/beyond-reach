@@ -30,7 +30,7 @@ const Navbar = ({ onMenuClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities', '/privacy-policy'];
+  const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities', '/privacy-policy', '/terms-conditions'];
   const isAuditRoute = !staticRoutes.includes(pathname) && !pathname.startsWith('/api');
   const hideMenuBtn = pathname === '/admin' || isAuditRoute;
 

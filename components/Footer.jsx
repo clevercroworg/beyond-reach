@@ -66,7 +66,7 @@ const Footer = () => {
         
         <div className={styles.legalBlock}>
           <span className={styles.label}>LEGAL</span>
-          <a href="#" className={styles.link}>GENERAL TERMS</a>
+          <Link href="/terms-conditions" className={styles.link}>GENERAL TERMS</Link>
         </div>
         
         <div className={styles.creditsBlock}>

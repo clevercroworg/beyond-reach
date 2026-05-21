@@ -2,6 +2,8 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100svh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,8 +84,18 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .hero {
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+  }
+
+  .content {
+    padding: 0 1.5rem; /* Give text more horizontal width to prevent excessive wrapping height */
+  }
+
   .title {
-    font-size: 16vw; /* Significantly bigger and punchier on mobile */
+    font-size: 14vw; /* Slightly scaled down from 16vw to fit better vertically */
   }
   
   .wordCycler {
@@ -91,8 +103,8 @@
   }
   
   .subtitle {
-    font-size: 1rem;
-    margin-top: 0; /* Remove compensation gap */
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
   }
 }
 
