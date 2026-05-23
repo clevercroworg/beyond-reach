@@ -13,6 +13,11 @@ app.use(express.json());
 // MongoDB connection
 const MONGODB_URI = process.env.MONGODB_URI;
 
+if (!MONGODB_URI) {
+  console.error('Error: Please define the MONGODB_URI environment variable.');
+  process.exit(1);
+}
+
 mongoose.connect(MONGODB_URI)
   .then(() => console.log('Connected to MongoDB successfully!'))
   .catch((err) => console.error('MongoDB connection error:', err));
