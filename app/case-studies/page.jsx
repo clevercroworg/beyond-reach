@@ -56,6 +56,7 @@ const InteractivePieChart = ({ data }) => {
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   onClick={() => setSelectedIndex(index)}
+                  onTouchStart={() => setSelectedIndex(index)}
                   style={{
                     opacity: isSegmentActive ? 1 : 0.65,
                     cursor: 'pointer'
@@ -235,7 +236,7 @@ const caseStudiesData = [
   }
 ];
 
-const filterCategories = ['All', 'Event Venues', 'Yachts & Charters', 'Homestays & Villas', 'Resorts'];
+const filterCategories = ['All', 'Homestays & Villas', 'Resorts', 'Yachts & Charters', 'Event Venues'];
 
 const getCategoryForProject = (propertyType) => {
   if (propertyType.toLowerCase().includes('yacht') || propertyType.toLowerCase().includes('charter')) return 'Yachts & Charters';
