@@ -38,16 +38,98 @@
 }
 
 /* =======================================
+   TOP GLOBAL PAGE NAVBAR
+   ======================================= */
+.pageNavbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent; /* invisible navbar background */
+  border-bottom: none; /* no borders */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem; /* generous desktop padding */
+  z-index: 10;
+}
+
+.navLogo {
+  font-size: 1.45rem;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+}
+
+.navLogo a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.navLogo a:hover {
+  opacity: 0.95;
+}
+
+.logoBold {
+  font-weight: 800;
+}
+
+.logoLight {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.phoneLink {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.phoneLink:hover {
+  background: #ffffff;
+  color: #090d16;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+}
+
+.phoneIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+@media (max-width: 768px) {
+  .pageNavbar {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .navLogo {
+    font-size: 1.15rem;
+  }
+  
+  .phoneLink {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* =======================================
    PREMIUM DARK HEADER COMPONENT
    ======================================= */
 .darkHeader {
   position: relative;
   background-color: #090d16;
-  min-height: 380px;
+  min-height: 270px; /* Highly compact cinematic title banner */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
+  padding: 8rem 2rem 3.5rem; /* 8rem top padding to leave breathing room for floating transparent navbar */
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -92,73 +174,8 @@
   align-items: center;
 }
 
-.headerNavRow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  margin-bottom: 3.5rem;
-}
-
-.headerLogo {
-  font-size: 1.5rem;
-  letter-spacing: 0.15em;
-  color: #ffffff;
-}
-
-.headerLogo a {
-  color: #ffffff;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.headerLogo a:hover {
-  opacity: 0.9;
-}
-
-.logoBold {
-  font-weight: 800;
-}
-
-.logoLight {
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.phoneLink {
-  position: absolute;
-  right: 0;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.phoneLink:hover {
-  background: #ffffff;
-  color: #090d16;
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
-}
-
-.phoneIcon {
-  width: 1.2rem;
-  height: 1.2rem;
-}
-
-.headerTitleBlock {
-  text-align: center;
-}
-
 .headerTitle {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2rem, 5vw, 3.25rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   color: #ffffff;
@@ -172,25 +189,12 @@
 
 @media (max-width: 768px) {
   .darkHeader {
-    min-height: 190px;
-    padding: 2.25rem 1.5rem 1.75rem;
-  }
-  
-  .headerNavRow {
-    margin-bottom: 1.25rem;
-  }
-  
-  .headerLogo {
-    font-size: 1.2rem;
-  }
-
-  .phoneLink {
-    width: 38px;
-    height: 38px;
+    min-height: 160px; /* sleek mobile height */
+    padding: 5rem 1.5rem 2rem; /* compact vertical space for mobile layout */
   }
 
   .headerTitle {
-    font-size: 2.2rem !important;
+    font-size: 2rem !important;
   }
 }
 
@@ -747,4 +751,26 @@
 .pieLegendPercent {
   font-weight: 700;
   color: #0f172a;
+}
+
+/* Mobile-only and Desktop-only Headings */
+.mobileProjectHeader {
+  display: none;
+}
+
+.desktopProjectHeader {
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .mobileProjectHeader {
+    display: block;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.75rem;
+  }
+  
+  .desktopProjectHeader {
+    display: none;
+  }
 }

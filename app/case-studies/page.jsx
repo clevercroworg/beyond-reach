@@ -107,8 +107,8 @@ const InteractivePieChart = ({ data }) => {
 const caseStudiesData = [
   {
     id: 'ashtitva',
-    title: "ASTHITVA BENGALURU",
-    client: "ASTHITVA",
+    title: "ASHTITVA",
+    client: "ASHTITVA",
     propertyType: "Bespoke Event Venues",
     location: "Bengaluru, India",
     capacity: "7 Venues / 3,750 Guests",
@@ -282,26 +282,26 @@ export default function CaseStudiesPage() {
       <div className={styles.bgGlow}></div>
       <div className={styles.bgGlow2}></div>
 
+      {/* Top Global Navigation Bar */}
+      <nav className={styles.pageNavbar}>
+        <div className={styles.navLogo}>
+          <a href="/">
+            <span className={styles.logoBold}>BEYOND</span> <span className={styles.logoLight}>REACH</span>
+          </a>
+        </div>
+        <a href="tel:+919999999999" className={styles.phoneLink}>
+          <svg className={styles.phoneIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+        </a>
+      </nav>
+
       {/* Main Catalog Header Section */}
       <header className={styles.darkHeader}>
         <div className={styles.headerBgImage}></div>
         <div className={styles.headerOverlay}></div>
         <div className={styles.headerContainer}>
-          <div className={styles.headerNavRow}>
-            <div className={styles.headerLogo}>
-              <a href="/">
-                <span className={styles.logoBold}>BEYOND</span> <span className={styles.logoLight}>REACH</span>
-              </a>
-            </div>
-            <a href="tel:+919999999999" className={styles.phoneLink}>
-              <svg className={styles.phoneIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-            </a>
-          </div>
-          <div className={styles.headerTitleBlock}>
-            <h1 className={styles.headerTitle}>Case Studies</h1>
-          </div>
+          <h1 className={styles.headerTitle}>Case Studies</h1>
         </div>
       </header>
 
@@ -315,6 +315,11 @@ export default function CaseStudiesPage() {
               id={project.id}
               className={styles.stackedSection}
             >
+              {/* Mobile-only Project Title (Shown on top of image on mobile, hidden on desktop) */}
+              <div className={styles.mobileProjectHeader}>
+                <h3 className={styles.csClientNameText}>{project.title}</h3>
+              </div>
+
               {/* 2-Column Layout Grid */}
               <div className={styles.csMainGrid}>
                 
@@ -346,7 +351,10 @@ export default function CaseStudiesPage() {
                 {/* RIGHT COLUMN: Project Info, Location, Service Badges, and Stats */}
                 <div className={styles.rightCol}>
                   <div className={styles.headerLeftBlock}>
-                    <h3 className={styles.csClientNameText}>{project.title}</h3>
+                    {/* Desktop-only Project Title (Hidden on mobile, shown on desktop) */}
+                    <div className={styles.desktopProjectHeader}>
+                      <h3 className={styles.csClientNameText}>{project.title}</h3>
+                    </div>
                     
                     <div className={styles.metaRow}>
                       {/* Location Badge */}
