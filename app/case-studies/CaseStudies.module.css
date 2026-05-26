@@ -134,21 +134,23 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.headerBgVideo {
+.headerBgImage {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 35%;
+  background-image: url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1800&q=80');
+  background-size: cover;
+  background-position: center 35%;
+  transform: scale(1.05);
   filter: brightness(0.4) saturate(0.85);
   z-index: 0;
   transition: transform 10s ease;
 }
 
-.darkHeader:hover .headerBgVideo {
-  transform: scale(1.03);
+.darkHeader:hover .headerBgImage {
+  transform: scale(1.0);
 }
 
 .headerOverlay {
@@ -242,26 +244,127 @@
   }
 }
 
-/* 2-COLUMN MAIN LAYOUT GRID */
-.csMainGrid {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 3.5rem;
-  align-items: start;
+/* =======================================
+   VIDEO HERO BANNER (inside each card)
+   ======================================= */
+.videoHeroBanner {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: flex-end;
 }
 
-@media (max-width: 992px) {
-  .csMainGrid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+.heroBgVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.heroVideoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+
+.heroVideoContent {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 2.5rem;
+  width: 100%;
+}
+
+.heroProjectTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 1.25rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+.heroMetaRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.heroMetaDivider {
+  width: 1px;
+  height: 32px;
+  background-color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+
+.heroMetaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.heroMetaLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.heroMetaValue {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 768px) {
+  .videoHeroBanner {
+    min-height: 220px;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+  }
+
+  .heroVideoContent {
+    padding: 1.5rem;
+  }
+
+  .heroProjectTitle {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .heroMetaRow {
+    gap: 1rem;
+  }
+
+  .heroMetaValue {
+    font-size: 0.85rem;
   }
 }
 
-/* LEFT COLUMN (Visuals & Capacity) */
-.leftCol {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
+/* 2-COLUMN MAIN LAYOUT GRID */
+.csMainGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
 }
 
 .csHeroImageWrapper {

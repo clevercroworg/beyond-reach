@@ -298,14 +298,7 @@ export default function CaseStudiesPage() {
 
       {/* Main Catalog Header Section */}
       <header className={styles.darkHeader}>
-        <video
-          className={styles.headerBgVideo}
-          src="/case-studies/assets/venue-1-compressed.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
+        <div className={styles.headerBgImage}></div>
         <div className={styles.headerOverlay}></div>
         <div className={styles.headerContainer}>
           <h1 className={styles.headerTitle}>Case Studies</h1>
@@ -322,46 +315,39 @@ export default function CaseStudiesPage() {
               id={project.id}
               className={styles.stackedSection}
             >
-              {/* Mobile-only Project Title (Shown on top of image on mobile, hidden on desktop) */}
-              <div className={styles.mobileProjectHeader}>
-                <h3 className={styles.csClientNameText}>{project.title}</h3>
+              {/* Video Hero Banner — title + capacity overlaid on background video */}
+              <div className={styles.videoHeroBanner}>
+                <video
+                  className={styles.heroBgVideo}
+                  src="/case-studies/assets/venue-1-compressed.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+                <div className={styles.heroVideoOverlay}></div>
+                <div className={styles.heroVideoContent}>
+                  <h3 className={styles.heroProjectTitle}>{project.title}</h3>
+                  <div className={styles.heroMetaRow}>
+                    <div className={styles.heroMetaItem}>
+                      <span className={styles.heroMetaLabel}>PROPERTY CATEGORY</span>
+                      <span className={styles.heroMetaValue}>{project.propertyType}</span>
+                    </div>
+                    <div className={styles.heroMetaDivider}></div>
+                    <div className={styles.heroMetaItem}>
+                      <span className={styles.heroMetaLabel}>CAPACITY</span>
+                      <span className={styles.heroMetaValue}>{project.capacity}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* 2-Column Layout Grid */}
               <div className={styles.csMainGrid}>
-                
-                {/* LEFT COLUMN: Image & Capacity Card */}
-                <div className={styles.leftCol}>
-                  <div className={styles.csHeroImageWrapper}>
-                    <img 
-                      src={project.imgSrc} 
-                      alt={project.title} 
-                      className={styles.csHeroImage}
-                    />
-                  </div>
-                  
-                  {/* Property capacity card directly under the image */}
-                  <section className={styles.csCapacitySection}>
-                    <div className={styles.capacityGrid}>
-                      <div className={styles.capacityItem}>
-                        <span className={styles.capacityLabel}>PROPERTY CATEGORY</span>
-                        <span className={styles.capacityValue}>{project.propertyType}</span>
-                      </div>
-                      <div className={styles.capacityItem}>
-                        <span className={styles.capacityLabel}>ACCOMMODATION CAPACITY</span>
-                        <span className={styles.capacityValue}>{project.capacity}</span>
-                      </div>
-                    </div>
-                  </section>
-                </div>
 
-                {/* RIGHT COLUMN: Project Info, Location, Service Badges, and Stats */}
+                {/* RIGHT COLUMN: Location, Service Badges, and Stats */}
                 <div className={styles.rightCol}>
                   <div className={styles.headerLeftBlock}>
-                    {/* Desktop-only Project Title (Hidden on mobile, shown on desktop) */}
-                    <div className={styles.desktopProjectHeader}>
-                      <h3 className={styles.csClientNameText}>{project.title}</h3>
-                    </div>
                     
                     <div className={styles.metaRow}>
                       {/* Location Badge */}
