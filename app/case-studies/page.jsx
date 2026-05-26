@@ -411,22 +411,8 @@ export default function CaseStudiesPage() {
               {/* 2-Column Layout Grid */}
               <div className={styles.csMainGrid}>
 
-                {/* RIGHT COLUMN: Location, Service Badges, and Stats */}
+                {/* RIGHT COLUMN: Service Badges and Stats */}
                 <div className={styles.rightCol}>
-                  <div className={styles.headerLeftBlock}>
-                    
-                    <div className={styles.metaRow}>
-                      {/* Location Badge */}
-                      <div className={styles.locationBadge}>
-                        <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span>{project.location}</span>
-                      </div>
-                      <span className={styles.propertyTypeLabel}>Type: {project.propertyType}</span>
-                    </div>
-                  </div>
 
                   {/* Scope of Work Badges (Different Colors) */}
                   <div className={styles.servicesSection}>
