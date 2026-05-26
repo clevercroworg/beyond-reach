@@ -298,7 +298,14 @@ export default function CaseStudiesPage() {
 
       {/* Main Catalog Header Section */}
       <header className={styles.darkHeader}>
-        <div className={styles.headerBgImage}></div>
+        <video
+          className={styles.headerBgVideo}
+          src="/case-studies/assets/venue-1-compressed.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
         <div className={styles.headerOverlay}></div>
         <div className={styles.headerContainer}>
           <h1 className={styles.headerTitle}>Case Studies</h1>
