@@ -111,7 +111,7 @@ const caseStudiesData = [
     client: "ASHTITVA",
     propertyType: "Bespoke Event Venues",
     location: "Bengaluru, India",
-    capacity: "7 Venues / 3,750 Guests",
+    capacity: "3,750 Guests",
     services: ['BRANDING', 'STRATEGY', 'SEO', 'WEBSITES', 'ADS'],
     tagline: "Unified 7 premium open-air event venues across Bengaluru into a commission-free direct booking engine, bypassing aggregator portals.",
     imgSrc: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
@@ -149,7 +149,7 @@ const caseStudiesData = [
     client: "SAILO",
     propertyType: "Luxury Yacht & Charter",
     location: "Mumbai & Goa, India",
-    capacity: "12 Crewed Superyachts",
+    capacity: "12 Superyachts",
     services: ['BRANDING', 'WEBSITE', 'SEO', 'FLEET MGMT', 'ADS'],
     tagline: "Overhauled digital fleet management, indexing page-one search rankings and launching direct, high-value superyacht charter bookings.",
     imgSrc: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80",
@@ -187,7 +187,7 @@ const caseStudiesData = [
     client: "NAVIGATE",
     propertyType: "Event Venues & Spaces",
     location: "Bangalore, India",
-    capacity: "500 Guest Capacity",
+    capacity: "500 Guests",
     services: ['STRATEGY', 'ADS', 'CONTENT', 'PROGRAMMATIC'],
     tagline: "Deployed hyper-targeted programmatic ad funnels and premium visual content, scaling booking rates during off-seasons.",
     imgSrc: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80",
@@ -225,7 +225,7 @@ const caseStudiesData = [
     client: "YACHT CLUB",
     propertyType: "Homestays & Villas",
     location: "Goa & Bangalore, India",
-    capacity: "8 Luxury Sea-Villas",
+    capacity: "8 Sea-Villas",
     services: ['BOOKING SYSTEM', 'DESIGN', 'DEVELOP', 'PAYMENTS', 'ADS'],
     tagline: "Designed an elite custom 3-step villa booking portal, successfully eliminating high cart abandonment rates and middleman fees.",
     imgSrc: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
@@ -259,8 +259,22 @@ const caseStudiesData = [
   }
 ];
 
+const filterCategories = ['All', 'Event Venues', 'Yachts & Charters', 'Homestays & Villas', 'Resorts'];
+
+const getCategoryForProject = (propertyType) => {
+  if (propertyType.toLowerCase().includes('yacht') || propertyType.toLowerCase().includes('charter')) return 'Yachts & Charters';
+  if (propertyType.toLowerCase().includes('homestay') || propertyType.toLowerCase().includes('villa')) return 'Homestays & Villas';
+  if (propertyType.toLowerCase().includes('resort')) return 'Resorts';
+  return 'Event Venues';
+};
+
 export default function CaseStudiesPage() {
   const containerRef = useRef(null);
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const filteredStudies = activeFilter === 'All'
+    ? caseStudiesData
+    : caseStudiesData.filter(p => getCategoryForProject(p.propertyType) === activeFilter);
 
   // Entrance animations for the stacked rows
   useEffect(() => {
@@ -305,11 +319,26 @@ export default function CaseStudiesPage() {
         </div>
       </header>
 
+      {/* Property Type Filter Bar */}
+      <div className={styles.filterBar}>
+        <div className={styles.filterInner}>
+          {filterCategories.map((cat) => (
+            <button
+              key={cat}
+              className={`${styles.filterBtn} ${activeFilter === cat ? styles.filterBtnActive : ''}`}
+              onClick={() => setActiveFilter(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className={styles.contentWrapper}>
 
         {/* Vertical Stacked Case Studies */}
         <div>
-          {caseStudiesData.map((project) => (
+          {filteredStudies.map((project) => (
             <div 
               key={project.id} 
               id={project.id}
@@ -404,7 +433,7 @@ export default function CaseStudiesPage() {
 
               {/* Section A: Detailed Outcomes & Donut Charts */}
               <div className={styles.kpiCardGridWrapper}>
-                <span className={styles.sectionHeaderLabel}>01 // AUDIT RESULTS & BOOKING PORTALS</span>
+                <span className={styles.sectionHeaderLabel}>BOOKING PORTALS</span>
               </div>
 
               <div className={styles.analyticsGrid}>
@@ -412,7 +441,7 @@ export default function CaseStudiesPage() {
                 <InteractivePieChart data={project.pieData} />
 
                 {/* Column 2: What We Delivered Card */}
-                <div className={styles.outcomesCard}>
+                <div className={`${styles.outcomesCard} ${styles.mobileHidden}`}>
                   <h4 className={styles.outcomesTitle}>WHAT WE DELIVERED</h4>
                   <div className={styles.outcomesList}>
                     {project.bulletPoints.map((point, index) => (
