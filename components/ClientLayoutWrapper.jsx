@@ -54,10 +54,11 @@ export default function ClientLayoutWrapper({ children }) {
   }, [pathname, mounted]);
 
   // Server-side & initial client hydration: render standard static layout
+  const ssrHasOwnNavbar = pathname === '/case-studies' || pathname === '/case-study';
   if (!mounted) {
     return (
       <>
-        <Navbar onMenuClick={() => setIsMenuOpen(true)} />
+        {!ssrHasOwnNavbar && <Navbar onMenuClick={() => setIsMenuOpen(true)} />}
         <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
         <div>{children}</div>
         <Footer />
@@ -68,10 +69,13 @@ export default function ClientLayoutWrapper({ children }) {
   const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities', '/privacy-policy', '/terms-conditions', '/case-studies', '/case-study'];
   const isAuditRoute = !staticRoutes.includes(pathname) && !pathname.startsWith('/api');
 
+  // Pages with their own custom navbar — hide the global one
+  const hasOwnNavbar = pathname === '/case-studies' || pathname === '/case-study';
+
   return (
     <>
       {isLoading && pathname === '/' && <Preloader onComplete={() => setIsLoading(false)} />}
-      <Navbar onMenuClick={() => setIsMenuOpen(true)} />
+      {!hasOwnNavbar && <Navbar onMenuClick={() => setIsMenuOpen(true)} />}
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <AnimatePresence mode="wait">
         <PageTransition key={pathname}>

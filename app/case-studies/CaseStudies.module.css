@@ -594,30 +594,32 @@
   gap: 1rem;
 }
 
-.outcomeCheck {
+.outcomeStep {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d1fae5;
-  border: 1px solid #a7f3d0;
-  color: #047857;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: #ffffff;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
   flex-shrink: 0;
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
 }
 
-.checkIcon {
-  width: 14px;
-  height: 14px;
-  stroke: currentColor;
+.stepNumber {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
 }
 
 .outcomeText {
   font-size: 0.925rem;
   color: #475569;
-  line-height: 1.5;
+  line-height: 1.55;
   font-weight: 500;
 }
 

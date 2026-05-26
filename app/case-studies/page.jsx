@@ -138,9 +138,9 @@ const caseStudiesData = [
       { name: "Offline Agencies", value: 14, color: "#f43f5e" }
     ],
     bulletPoints: [
-      "Custom React 19 / Vite 8 booking portal optimized for Bengaluru event guest clusters.",
-      "Integrated dynamic slot pricing module across 7 premium venues (Teak Meadows, RR Nagar, Ullal, Muddainapalya).",
-      "Eliminated directory commissions completely, securing 14 guest rooms and absolute booking authority."
+      "Built a dedicated website with an inquiry form and venue showcase, replacing their old dependency on third-party listing sites.",
+      "Set up Google My Business profiles for all 7 venue locations, improving local search visibility across Bengaluru.",
+      "Ran targeted Google and Meta ad campaigns during wedding and corporate event seasons to drive qualified leads directly."
     ]
   },
   {
@@ -176,9 +176,9 @@ const caseStudiesData = [
       { name: "Offline Groups", value: 20, color: "#f43f5e" }
     ],
     bulletPoints: [
-      "Zero-commission yacht reservation engine capturing direct, premium charter inquiries.",
-      "Immersive UI engineering optimized for high-value transactional flows.",
-      "Organic authority expansion indexing permanent page-one results on travel keywords."
+      "Designed a clean, mobile-first website showcasing the full fleet with real photos, pricing tiers, and a WhatsApp inquiry button.",
+      "Created SEO-optimized landing pages for key search terms like 'yacht rental Mumbai' and 'boat party Goa' to capture organic traffic.",
+      "Managed paid campaigns on Instagram and Google targeting high-intent audiences in the luxury travel and celebration space."
     ]
   },
   {
@@ -214,9 +214,9 @@ const caseStudiesData = [
       { name: "Offline Groups", value: 25, color: "#f43f5e" }
     ],
     bulletPoints: [
-      "Precision programmatic geo-targeting parameters minimizing advertising budget leakages.",
-      "Cinema-grade editorial visual assets producing outstanding social engagement rates.",
-      "Advanced data-driven retargeting securing high conversions during traditional off-seasons."
+      "Produced professional photo and video content for social media, replacing the client's older phone-shot material with polished visuals.",
+      "Set up location-based Google Ads campaigns targeting event planners and couples searching for venues in Bangalore.",
+      "Ran retargeting ads on Meta to re-engage website visitors who browsed venue pages but didn't submit an inquiry."
     ]
   },
   {
@@ -252,9 +252,9 @@ const caseStudiesData = [
       { name: "Offline Groups", value: 10, color: "#f43f5e" }
     ],
     bulletPoints: [
-      "Custom three-step check-out architecture reducing booking friction by 62%.",
-      "Multi-currency dynamic pricing models supporting seamless global payments.",
-      "High-end visual asset display driving massive brand credibility and conversion volumes."
+      "Built a simple 3-step booking flow — select dates, choose a villa, and pay — cutting down the drop-off rate significantly.",
+      "Integrated Razorpay for seamless online payments with instant booking confirmations via email and SMS.",
+      "Created lifestyle photography and drone video content for each property, used across the website, Google Ads, and Instagram."
     ]
   }
 ];
@@ -418,16 +418,14 @@ export default function CaseStudiesPage() {
                 {/* Spacious Donut Card */}
                 <InteractivePieChart data={project.pieData} />
 
-                {/* Column 2: Strategic Outcomes Card */}
+                {/* Column 2: What We Delivered Card */}
                 <div className={styles.outcomesCard}>
-                  <h4 className={styles.outcomesTitle}>CAMPAIGN OUTCOMES & HIGHLIGHTS</h4>
+                  <h4 className={styles.outcomesTitle}>WHAT WE DELIVERED</h4>
                   <div className={styles.outcomesList}>
                     {project.bulletPoints.map((point, index) => (
                       <div key={index} className={styles.outcomeItem}>
-                        <div className={styles.outcomeCheck}>
-                          <svg className={styles.checkIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3.5} d="M5 13l4 4L19 7" />
-                          </svg>
+                        <div className={styles.outcomeStep}>
+                          <span className={styles.stepNumber}>{String(index + 1).padStart(2, '0')}</span>
                         </div>
                         <span className={styles.outcomeText}>{point}</span>
                       </div>
