@@ -172,22 +172,25 @@
 
 @media (max-width: 768px) {
   .darkHeader {
-    min-height: 280px;
-    padding: 3rem 1.5rem;
+    min-height: 190px;
+    padding: 2.25rem 1.5rem 1.75rem;
   }
   
   .headerNavRow {
-    justify-content: space-between;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.25rem;
   }
   
-  .phoneLink {
-    position: static;
-    display: flex;
+  .headerLogo {
+    font-size: 1.2rem;
   }
 
-  .headerLogo {
-    font-size: 1.35rem;
+  .phoneLink {
+    width: 38px;
+    height: 38px;
+  }
+
+  .headerTitle {
+    font-size: 2.2rem !important;
   }
 }
 
@@ -535,10 +538,83 @@
   display: block;
 }
 
-.singleChartWrapper {
-  max-width: 600px;
-  margin: 1.5rem auto 0;
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
   width: 100%;
+}
+
+@media (max-width: 992px) {
+  .analyticsGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.outcomesCard {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.005);
+}
+
+.outcomesTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: 100%;
+}
+
+.outcomesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.outcomeItem {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+}
+
+.outcomeCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d1fae5;
+  border: 1px solid #a7f3d0;
+  color: #047857;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.checkIcon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}
+
+.outcomeText {
+  font-size: 0.925rem;
+  color: #475569;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
 .pieChartCard {

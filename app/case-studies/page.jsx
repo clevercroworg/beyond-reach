@@ -112,7 +112,7 @@ const caseStudiesData = [
     propertyType: "Bespoke Event Venues",
     location: "Bengaluru, India",
     capacity: "7 Venues / 3,750 Guests",
-    services: ['BRANDING', 'STRATEGY', 'SEO', 'WEBSITES'],
+    services: ['BRANDING', 'STRATEGY', 'SEO', 'WEBSITES', 'ADS'],
     tagline: "Unified 7 premium open-air event venues across Bengaluru into a commission-free direct booking engine, bypassing aggregator portals.",
     imgSrc: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
     kpis: [
@@ -150,7 +150,7 @@ const caseStudiesData = [
     propertyType: "Luxury Yacht & Charter",
     location: "Mumbai & Goa, India",
     capacity: "12 Crewed Superyachts",
-    services: ['BRANDING', 'WEBSITE', 'SEO', 'FLEET MGMT'],
+    services: ['BRANDING', 'WEBSITE', 'SEO', 'FLEET MGMT', 'ADS'],
     tagline: "Overhauled digital fleet management, indexing page-one search rankings and launching direct, high-value superyacht charter bookings.",
     imgSrc: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80",
     kpis: [
@@ -226,7 +226,7 @@ const caseStudiesData = [
     propertyType: "Homestays & Villas",
     location: "Goa & Bangalore, India",
     capacity: "8 Luxury Sea-Villas",
-    services: ['BOOKING SYSTEM', 'DESIGN', 'DEVELOP', 'PAYMENTS'],
+    services: ['BOOKING SYSTEM', 'DESIGN', 'DEVELOP', 'PAYMENTS', 'ADS'],
     tagline: "Designed an elite custom 3-step villa booking portal, successfully eliminating high cart abandonment rates and middleman fees.",
     imgSrc: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
     kpis: [
@@ -346,7 +346,6 @@ export default function CaseStudiesPage() {
                 {/* RIGHT COLUMN: Project Info, Location, Service Badges, and Stats */}
                 <div className={styles.rightCol}>
                   <div className={styles.headerLeftBlock}>
-                    <span className={styles.csClientTitleLabel}>CLIENT PARTNER</span>
                     <h3 className={styles.csClientNameText}>{project.title}</h3>
                     
                     <div className={styles.metaRow}>
@@ -407,9 +406,26 @@ export default function CaseStudiesPage() {
                 <span className={styles.sectionHeaderLabel}>01 // AUDIT RESULTS & BOOKING PORTALS</span>
               </div>
 
-              <div className={styles.singleChartWrapper}>
+              <div className={styles.analyticsGrid}>
                 {/* Spacious Donut Card */}
                 <InteractivePieChart data={project.pieData} />
+
+                {/* Column 2: Strategic Outcomes Card */}
+                <div className={styles.outcomesCard}>
+                  <h4 className={styles.outcomesTitle}>CAMPAIGN OUTCOMES & HIGHLIGHTS</h4>
+                  <div className={styles.outcomesList}>
+                    {project.bulletPoints.map((point, index) => (
+                      <div key={index} className={styles.outcomeItem}>
+                        <div className={styles.outcomeCheck}>
+                          <svg className={styles.checkIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3.5} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <span className={styles.outcomeText}>{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
             </div>
