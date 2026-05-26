@@ -271,10 +271,23 @@ const getCategoryForProject = (propertyType) => {
 export default function CaseStudiesPage() {
   const containerRef = useRef(null);
   const [activeFilter, setActiveFilter] = useState('All');
+  const [filterOpen, setFilterOpen] = useState(false);
+  const filterRef = useRef(null);
 
   const filteredStudies = activeFilter === 'All'
     ? caseStudiesData
     : caseStudiesData.filter(p => getCategoryForProject(p.propertyType) === activeFilter);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (filterRef.current && !filterRef.current.contains(e.target)) {
+        setFilterOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Entrance animations for the stacked rows
   useEffect(() => {
@@ -319,18 +332,37 @@ export default function CaseStudiesPage() {
         </div>
       </header>
 
-      {/* Property Type Filter Bar */}
+      {/* Property Type Filter */}
       <div className={styles.filterBar}>
-        <div className={styles.filterInner}>
-          {filterCategories.map((cat) => (
-            <button
-              key={cat}
-              className={`${styles.filterBtn} ${activeFilter === cat ? styles.filterBtnActive : ''}`}
-              onClick={() => setActiveFilter(cat)}
-            >
-              {cat}
-            </button>
-          ))}
+        <span className={styles.filterLabel}>Filter by</span>
+        <div className={styles.filterDropdown} ref={filterRef}>
+          <button
+            className={styles.filterToggle}
+            onClick={() => setFilterOpen(!filterOpen)}
+          >
+            <span>{activeFilter}</span>
+            <svg className={`${styles.filterChevron} ${filterOpen ? styles.filterChevronOpen : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {filterOpen && (
+            <div className={styles.filterMenu}>
+              {filterCategories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`${styles.filterOption} ${activeFilter === cat ? styles.filterOptionActive : ''}`}
+                  onClick={() => { setActiveFilter(cat); setFilterOpen(false); }}
+                >
+                  {cat}
+                  {activeFilter === cat && (
+                    <svg className={styles.filterCheckIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
