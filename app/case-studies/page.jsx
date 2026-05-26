@@ -52,8 +52,10 @@ const InteractivePieChart = ({ data }) => {
                   transform={`rotate(${rotation})`}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => setHoveredIndex(hoveredIndex === index ? null : index)}
                   style={{
-                    opacity: hoveredIndex === null || isHovered ? 1 : 0.65
+                    opacity: hoveredIndex === null || isHovered ? 1 : 0.65,
+                    cursor: 'pointer'
                   }}
                 />
               );
@@ -83,8 +85,10 @@ const InteractivePieChart = ({ data }) => {
             className={styles.pieLegendItem}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
+            onClick={() => setHoveredIndex(hoveredIndex === index ? null : index)}
             style={{
-              backgroundColor: hoveredIndex === index ? '#f1f5f9' : 'transparent'
+              backgroundColor: hoveredIndex === index ? '#f1f5f9' : 'transparent',
+              cursor: 'pointer'
             }}
           >
             <div className={styles.pieLegendLeft}>
