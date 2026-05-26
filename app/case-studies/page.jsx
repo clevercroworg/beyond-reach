@@ -6,12 +6,15 @@ import styles from './CaseStudies.module.css';
 // Highly-interactive, beautifully animated Custom SVG Donut Chart component for Light Background
 const InteractivePieChart = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   
   const total = data.reduce((sum, item) => sum + item.value, 0);
   const radius = 50;
   const circumference = 2 * Math.PI * radius;
   
   let accumulatedPercent = 0;
+
+  const activeIndex = hoveredIndex !== null ? hoveredIndex : selectedIndex;
 
   return (
     <div className={styles.pieChartCard}>
@@ -35,7 +38,7 @@ const InteractivePieChart = ({ data }) => {
               const rotation = (accumulatedPercent / 100) * 360;
               accumulatedPercent += percentage;
 
-              const isHovered = hoveredIndex === index;
+              const isSegmentActive = activeIndex === index;
 
               return (
                 <circle
@@ -52,9 +55,9 @@ const InteractivePieChart = ({ data }) => {
                   transform={`rotate(${rotation})`}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  onClick={() => setHoveredIndex(hoveredIndex === index ? null : index)}
+                  onClick={() => setSelectedIndex(index)}
                   style={{
-                    opacity: hoveredIndex === null || isHovered ? 1 : 0.65,
+                    opacity: isSegmentActive ? 1 : 0.65,
                     cursor: 'pointer'
                   }}
                 />
@@ -66,13 +69,10 @@ const InteractivePieChart = ({ data }) => {
         {/* Center overlay text for glassmorphic donut */}
         <div className={styles.pieCenterText}>
           <span className={styles.pieCenterValue}>
-            {hoveredIndex !== null 
-              ? `${Math.round((data[hoveredIndex].value / total) * 100)}%` 
-              : `${Math.round((data[0].value / total) * 100)}%`
-            }
+            {`${Math.round((data[activeIndex].value / total) * 100)}%`}
           </span>
           <span className={styles.pieCenterLabel}>
-            {hoveredIndex !== null ? data[hoveredIndex].name : data[0].name}
+            {data[activeIndex].name}
           </span>
         </div>
       </div>
@@ -85,9 +85,9 @@ const InteractivePieChart = ({ data }) => {
             className={styles.pieLegendItem}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => setHoveredIndex(hoveredIndex === index ? null : index)}
+            onClick={() => setSelectedIndex(index)}
             style={{
-              backgroundColor: hoveredIndex === index ? '#f1f5f9' : 'transparent',
+              backgroundColor: activeIndex === index ? '#f1f5f9' : 'transparent',
               cursor: 'pointer'
             }}
           >
