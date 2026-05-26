@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap');
 
 /* Premium Light Theme Case Studies Scoped CSS Module with Dark Header */
 
@@ -176,9 +176,9 @@
 }
 
 .headerTitle {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: clamp(2rem, 5vw, 3.25rem);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.15em;
   color: #ffffff;
   margin: 0;
@@ -420,9 +420,9 @@
 }
 
 .heroProjectTitle {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 600;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: -0.02em;
@@ -451,18 +451,18 @@
 }
 
 .heroMetaLabel {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 500;
   color: rgba(255,255,255,0.55);
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
 
 .heroMetaValue {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
   color: #ffffff;
   letter-spacing: 0.01em;
 }
@@ -552,9 +552,9 @@
 }
 
 .capacityLabel {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.725rem;
-  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
   color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -562,9 +562,9 @@
 }
 
 .capacityValue {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: #0f172a;
   letter-spacing: -0.01em;
 }
@@ -582,9 +582,9 @@
 }
 
 .csClientTitleLabel {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #64748b;
   letter-spacing: 0.15em;
   margin-bottom: 0.4rem;
@@ -592,9 +592,9 @@
 }
 
 .csClientNameText {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: clamp(1.85rem, 3.5vw, 2.5rem);
-  font-weight: 800;
+  font-weight: 600;
   color: #0f172a;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -631,9 +631,9 @@
 }
 
 .propertyTypeLabel {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
   color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -653,9 +653,9 @@
 }
 
 .serviceBadge {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.725rem;
-  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
   padding: 0.45rem 0.9rem;
   border-radius: 9999px;
   letter-spacing: 0.05em;
@@ -732,9 +732,9 @@
 }
 
 .kpiCompactValue {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.75rem;
-  font-weight: 800;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 600;
   color: #0ea5e9;
   line-height: 1.1;
   margin-bottom: 0.2rem;
@@ -742,9 +742,9 @@
 }
 
 .kpiCompactLabel {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.675rem;
-  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
   color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -769,9 +769,9 @@
 }
 
 .sectionHeaderLabel {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
   color: #0ea5e9;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -807,9 +807,9 @@
 }
 
 .outcomesTitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
   margin-bottom: 1.5rem;
   color: #0f172a;
   border-bottom: 1px solid #e2e8f0;
@@ -846,9 +846,9 @@
 }
 
 .stepNumber {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 800;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 1;
 }
@@ -874,9 +874,9 @@
 }
 
 .sidebarTitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
   margin-bottom: 1.5rem;
   color: #0f172a;
   border-bottom: 1px solid #e2e8f0;
@@ -928,18 +928,18 @@
 }
 
 .pieCenterValue {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.75rem;
-  font-weight: 800;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 600;
   color: #0f172a;
   line-height: 1;
   letter-spacing: -0.03em;
 }
 
 .pieCenterLabel {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
   color: #64748b;
   text-transform: uppercase;
   letter-spacing: 0.04em;
