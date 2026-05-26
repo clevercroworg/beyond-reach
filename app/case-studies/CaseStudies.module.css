@@ -55,8 +55,10 @@
 }
 
 .navLogo {
+  font-family: 'Oswald', sans-serif;
   font-size: 1.45rem;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .navLogo a {
@@ -793,12 +795,12 @@
 }
 
 .kpiCompactLabel {
-  font-family: 'Oswald', sans-serif;
-  font-size: 0.825rem;
-  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: #0f172a;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   line-height: 1.25;
 }
 
@@ -821,11 +823,11 @@
 
 .sectionHeaderLabel {
   font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #0f172a;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   margin-bottom: 0.5rem;
   display: block;
 }
