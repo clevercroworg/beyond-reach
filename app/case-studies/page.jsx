@@ -204,12 +204,14 @@ export default function CaseStudiesPage() {
               <div className={styles.videoHeroBanner}>
                 <video
                   className={styles.heroBgVideo}
-                  src="/case-studies/assets/venue-1-compressed.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                />
+                >
+                  <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
+                  <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                </video>
                 <div className={styles.heroVideoOverlay}></div>
                 <div className={styles.heroLocationBadge}>
                   <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
