@@ -399,6 +399,11 @@ export default function CaseStudiesPage() {
                       <span className={styles.heroMetaLabel}>CAPACITY</span>
                       <span className={styles.heroMetaValue}>{project.capacity}</span>
                     </div>
+                    <div className={styles.heroMetaDivider}></div>
+                    <div className={styles.heroMetaItem}>
+                      <span className={styles.heroMetaLabel}>LOCATION</span>
+                      <span className={styles.heroMetaValue}>{project.location}</span>
+                    </div>
                   </div>
                 </div>
               </div>
