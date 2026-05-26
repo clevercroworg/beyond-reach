@@ -109,7 +109,7 @@ const caseStudiesData = [
     id: 'ashtitva',
     title: "ASHTITVA",
     client: "ASHTITVA",
-    propertyType: "Bespoke Event Venues",
+    propertyType: "Event Venue",
     location: "Bengaluru, India",
     capacity: "3,750 Guests",
     services: ['BRANDING', 'STRATEGY', 'SEO', 'WEBSITES', 'ADS'],
@@ -456,10 +456,6 @@ export default function CaseStudiesPage() {
               {/* Robust Statistics Divider */}
               <div className={styles.sectionDivider}></div>
 
-              {/* Section A: Detailed Outcomes & Donut Charts */}
-              <div className={styles.kpiCardGridWrapper}>
-                <span className={styles.sectionHeaderLabel}>BOOKING PORTALS</span>
-              </div>
 
               <div className={styles.analyticsGrid}>
                 {/* Spacious Donut Card */}
