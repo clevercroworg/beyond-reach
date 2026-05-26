@@ -83,12 +83,23 @@ const InteractivePieChart = ({ data }) => {
 
 import { caseStudiesData } from './caseStudiesData';
 
-const filterCategories = ['All', 'Homestays & Villas', 'Resorts', 'Yachts & Charters', 'Event Venues'];
+const filterCategories = [
+  'All',
+  'Homestays & Villas',
+  'Resorts',
+  'Heritage & Palaces',
+  'Wilderness & Adventure',
+  'Yachts & Charters',
+  'Event Venues'
+];
 
 const getCategoryForProject = (propertyType) => {
-  if (propertyType.toLowerCase().includes('yacht') || propertyType.toLowerCase().includes('charter')) return 'Yachts & Charters';
-  if (propertyType.toLowerCase().includes('homestay') || propertyType.toLowerCase().includes('villa')) return 'Homestays & Villas';
-  if (propertyType.toLowerCase().includes('resort')) return 'Resorts';
+  const type = propertyType.toLowerCase();
+  if (type.includes('yacht') || type.includes('charter')) return 'Yachts & Charters';
+  if (type.includes('palace') || type.includes('fort') || type.includes('heritage') || type.includes('royal')) return 'Heritage & Palaces';
+  if (type.includes('lodge') || type.includes('adventure') || type.includes('ski') || type.includes('exped') || type.includes('wilderness')) return 'Wilderness & Adventure';
+  if (type.includes('homestay') || type.includes('villa') || type.includes('estate') || type.includes('farm')) return 'Homestays & Villas';
+  if (type.includes('resort') || type.includes('retreat') || type.includes('county') || type.includes('inn') || type.includes('hotel')) return 'Resorts';
   return 'Event Venues';
 };
 
