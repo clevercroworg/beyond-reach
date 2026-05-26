@@ -387,6 +387,13 @@ export default function CaseStudiesPage() {
                   playsInline
                 />
                 <div className={styles.heroVideoOverlay}></div>
+                <div className={styles.heroLocationBadge}>
+                  <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span>{project.location}</span>
+                </div>
                 <div className={styles.heroVideoContent}>
                   <h3 className={styles.heroProjectTitle}>{project.title}</h3>
                   <div className={styles.heroMetaRow}>
@@ -398,11 +405,6 @@ export default function CaseStudiesPage() {
                     <div className={styles.heroMetaItem}>
                       <span className={styles.heroMetaLabel}>CAPACITY</span>
                       <span className={styles.heroMetaValue}>{project.capacity}</span>
-                    </div>
-                    <div className={styles.heroMetaDivider}></div>
-                    <div className={styles.heroMetaItem}>
-                      <span className={styles.heroMetaLabel}>LOCATION</span>
-                      <span className={styles.heroMetaValue}>{project.location}</span>
                     </div>
                   </div>
                 </div>
