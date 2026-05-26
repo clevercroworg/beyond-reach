@@ -2,9 +2,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import styles from './CaseStudies.module.css';
-import AnimatedGauge from '@/components/AnimatedGauge';
-import AnimatedScoreBar from '@/components/AnimatedScoreBar';
-import AnimatedStatusCard from '@/components/AnimatedStatusCard';
 
 // Highly-interactive, beautifully animated Custom SVG Donut Chart component for Light Background
 const InteractivePieChart = ({ data }) => {
@@ -19,9 +16,6 @@ const InteractivePieChart = ({ data }) => {
   return (
     <div className={styles.pieChartCard}>
       <h4 className={styles.sidebarTitle}>BOOKING DISTRIBUTION</h4>
-      <p className={styles.sidebarText} style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-        Direct booking volume vs OTA portals and traditional sales channels post-optimization.
-      </p>
 
       <div className={styles.pieChartWrapper}>
         <svg className={styles.pieChartSvg} viewBox="0 0 140 140">
@@ -288,15 +282,30 @@ export default function CaseStudiesPage() {
       <div className={styles.bgGlow}></div>
       <div className={styles.bgGlow2}></div>
 
+      {/* Main Catalog Header Section */}
+      <header className={styles.darkHeader}>
+        <div className={styles.headerBgImage}></div>
+        <div className={styles.headerOverlay}></div>
+        <div className={styles.headerContainer}>
+          <div className={styles.headerNavRow}>
+            <div className={styles.headerLogo}>
+              <a href="/">
+                <span className={styles.logoBold}>BEYOND</span> <span className={styles.logoLight}>REACH</span>
+              </a>
+            </div>
+            <a href="tel:+919999999999" className={styles.phoneLink}>
+              <svg className={styles.phoneIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </a>
+          </div>
+          <div className={styles.headerTitleBlock}>
+            <h1 className={styles.headerTitle}>Case Studies</h1>
+          </div>
+        </div>
+      </header>
+
       <div className={styles.contentWrapper}>
-        {/* Main Catalog Header Section */}
-        <header className={styles.header}>
-          <span className={styles.label}>CASE STUDY SHOWCASE</span>
-          <h1 className={styles.title}>OUR SELECTED WORK</h1>
-          <p className={styles.subtitle}>
-            Explore our highly-structured digital audits and business metrics. Bypassing middleman directories, eliminating OTA fees, and architecting absolute conversion dominance.
-          </p>
-        </header>
 
         {/* Vertical Stacked Case Studies */}
         <div>
@@ -329,10 +338,6 @@ export default function CaseStudiesPage() {
                       <div className={styles.capacityItem}>
                         <span className={styles.capacityLabel}>ACCOMMODATION CAPACITY</span>
                         <span className={styles.capacityValue}>{project.capacity}</span>
-                      </div>
-                      <div className={styles.capacityItem}>
-                        <span className={styles.capacityLabel}>COMMISSION SLICES</span>
-                        <span className={styles.capacityValue}>0% COMMISSION</span>
                       </div>
                     </div>
                   </section>
@@ -397,61 +402,14 @@ export default function CaseStudiesPage() {
               {/* Robust Statistics Divider */}
               <div className={styles.sectionDivider}></div>
 
-              {/* Section A: Detailed Outcomes & Digital Audits */}
-              <div className={styles.kpiCardGridWrapper} style={{ marginBottom: '1.5rem', marginTop: '1rem' }}>
+              {/* Section A: Detailed Outcomes & Donut Charts */}
+              <div className={styles.kpiCardGridWrapper}>
                 <span className={styles.sectionHeaderLabel}>01 // AUDIT RESULTS & BOOKING PORTALS</span>
               </div>
 
-              <div className={styles.analyticsGrid}>
-                {/* Column 1: Spacious Donut Card */}
+              <div className={styles.singleChartWrapper}>
+                {/* Spacious Donut Card */}
                 <InteractivePieChart data={project.pieData} />
-
-                {/* Column 2: Spacious Audit & Platform Health Card */}
-                <div className={styles.auditHealthCard}>
-                  <span className={styles.csClientTitleLabel} style={{ marginBottom: '1.5rem', display: 'block' }}>DIGITAL AUDITS & platform health</span>
-                  
-                  <div className={styles.auditBody}>
-                    {/* Score Bars Area */}
-                    <div className={styles.scoreBarsWrapper}>
-                      {project.scoreBars.map((bar, barIdx) => (
-                        <AnimatedScoreBar 
-                          key={barIdx}
-                          score={bar.score}
-                          max={bar.max}
-                          label={bar.label}
-                          light={true}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Vertical Divider line */}
-                    <div className={styles.verticalDivider}></div>
-
-                    {/* Radial Gauge Area */}
-                    <div className={styles.gaugeWrapper}>
-                      <AnimatedGauge score={project.gaugeScore} light={true} />
-                      <div className={styles.gaugeSubtitle}>
-                        {project.gaugeLabel}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Section C: Platform Stability & Vitals Footer Row */}
-              <div className={styles.statusSectionWrapper}>
-                <span className={styles.sectionHeaderLabel} style={{ marginBottom: '1.5rem', display: 'block' }}>02 // PLATFORM STABILITY & DEPLOYMENT VITALS</span>
-                <div className={styles.statusRow}>
-                  {project.statusCards.map((card, cardIdx) => (
-                    <AnimatedStatusCard 
-                      key={cardIdx}
-                      label={card.label}
-                      value={card.value}
-                      index={cardIdx}
-                      light={true}
-                    />
-                  ))}
-                </div>
               </div>
 
             </div>
