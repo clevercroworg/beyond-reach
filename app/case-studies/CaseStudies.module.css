@@ -1,0 +1,678 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Premium Light Theme Case Studies Scoped CSS Module */
+
+.pageContainer {
+  background-color: #f8fafc; /* Premium editorial light gray/blue background */
+  color: #0f172a; /* Deep high-contrast Slate 900 for default text */
+  min-height: 100vh;
+  padding: 8rem 2rem 6rem;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Elegant light glowing mesh elements */
+.bgGlow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(209, 255, 54, 0.15) 0%, transparent 70%);
+  top: -150px;
+  right: -150px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgGlow2 {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+  bottom: -200px;
+  left: -200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contentWrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Editorial Main Header */
+.header {
+  margin-bottom: 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #0ea5e9; /* Premium sky blue highlight */
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: 'Philosopher', serif;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  color: #0f172a;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: #475569; /* Slate 600 */
+  max-width: 680px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* =======================================
+   STACKED SECTIONS (FULL WIDTH SEQUENCE)
+   ======================================= */
+.stackedSection {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0; /* Light gray borders */
+  border-radius: 32px;
+  padding: 2.5rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.015), 0 1px 3px rgba(15, 23, 42, 0.01);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+}
+
+.stackedSection:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.04), 0 1px 10px rgba(15, 23, 42, 0.01);
+  border-color: #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .stackedSection {
+    padding: 1.75rem 1.25rem;
+    border-radius: 24px;
+    margin-bottom: 3rem;
+  }
+}
+
+/* 2-COLUMN MAIN LAYOUT GRID */
+.csMainGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .csMainGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* LEFT COLUMN (Visuals & Capacity) */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.csHeroImageWrapper {
+  width: 100%;
+  aspect-ratio: 1.8 / 1; /* Rounded property shape */
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  background-color: #f1f5f9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
+}
+
+.csHeroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.stackedSection:hover .csHeroImage {
+  transform: scale(1.02);
+}
+
+/* Property capacity card directly under the image */
+.csCapacitySection {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  width: 100%;
+}
+
+.capacityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .capacityGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.capacityItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.capacityLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+}
+
+.capacityValue {
+  font-family: 'Philosopher', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: 0.01em;
+}
+
+/* RIGHT COLUMN (Branding & Campaign Metrics) */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.headerLeftBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.csClientTitleLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b; /* Slate 500 */
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.csClientNameText {
+  font-family: 'Philosopher', serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.locationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: #e0f2fe; /* Light sky blue background */
+  border: 1px solid #bae6fd; /* Soft sky blue border */
+  padding: 0.5rem 1.15rem;
+  border-radius: 12px;
+  width: fit-content;
+  color: #0284c7; /* Sky blue text */
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.locationIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: #0ea5e9; /* Sky Blue Map Marker */
+}
+
+.propertyTypeLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Scope of Work Badges */
+.servicesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.badgeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.serviceBadge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-width: 1px;
+  border-style: solid;
+  transition: all 0.3s ease;
+}
+
+.serviceBadge:hover {
+  transform: translateY(-1px);
+}
+
+.badgeSky {
+  background-color: #e0f2fe;
+  border-color: #bae6fd;
+  color: #0284c7;
+}
+
+.badgePurple {
+  background-color: #f3e8ff;
+  border-color: #e9d5ff;
+  color: #7e22ce;
+}
+
+.badgeEmerald {
+  background-color: #d1fae5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+.badgeAmber {
+  background-color: #fef3c7;
+  border-color: #fde68a;
+  color: #b45309;
+}
+
+/* Compact KPI Performance Vitals */
+.rightStatsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.kpiCompactGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .kpiCompactGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kpiCompactCard {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.kpiCompactCard:hover {
+  border-color: #0ea5e9;
+  background-color: #ffffff;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.06);
+}
+
+.serviceBadge {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-width: 1px;
+  border-style: solid;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.serviceBadge:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.kpiCompactValue {
+  font-family: 'Philosopher', serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #0ea5e9;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.kpiCompactLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+
+.stackedSection:nth-child(odd) .kpiCompactValue {
+  color: #10b981;
+}
+
+/* =======================================
+   ROBUST STATS SECTIONS BELOW IMAGE
+   ======================================= */
+
+.sectionDivider {
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.kpiCardGridWrapper {
+  margin-bottom: 2rem;
+}
+
+.sectionHeaderLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0ea5e9;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* Symmetrical 2-Column Analytics Grid */
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 1024px) {
+  .analyticsGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Column 1: Spacious Donut Card */
+.pieChartCard {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.sidebarTitle {
+  font-family: 'Philosopher', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: #0f172a;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.65rem;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+}
+
+.sidebarText {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.pieChartWrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 1.5rem 0;
+}
+
+.pieChartSvg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.pieSegment {
+  fill: none;
+  stroke-width: 28;
+  transition: stroke-width 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.pieSegment:hover {
+  stroke-width: 32;
+  filter: drop-shadow(0 0 4px rgba(15, 23, 42, 0.08));
+}
+
+.pieCenterText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+  width: 90px;
+  line-height: 1.1;
+}
+
+.pieCenterValue {
+  font-family: 'Philosopher', serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.pieCenterLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+  line-height: 1.25;
+}
+
+.pieLegend {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+}
+
+.pieLegendItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #475569;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pieLegendItem:hover {
+  background-color: #f1f5f9;
+}
+
+.pieLegendLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.pieLegendBullet {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+}
+
+.pieLegendName {
+  font-weight: 600;
+}
+
+.pieLegendPercent {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Column 2: Spacious Audit & Platform Health Card */
+.auditHealthCard {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.auditBody {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+  .auditBody {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+}
+
+.scoreBarsWrapper {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  width: 100%;
+}
+
+.verticalDivider {
+  width: 1px;
+  background-color: #e2e8f0;
+  height: 120px;
+  align-self: center;
+}
+
+@media (max-width: 640px) {
+  .verticalDivider {
+    display: none;
+  }
+}
+
+.gaugeWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Scoped overrides to guarantee perfect sizing of the AnimatedGauge on case studies */
+.gaugeWrapper :global(.relative.w-full.max-w-\[160px\]),
+.gaugeWrapper :global(.relative.w-full.max-w-\[250px\]) {
+  max-width: 140px !important;
+}
+.gaugeWrapper :global(.py-6),
+.gaugeWrapper :global(.md\:py-10) {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}
+
+.gaugeSubtitle {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: -0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Section D: Platform Stability & Vitals Footer Row */
+.statusSectionWrapper {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+.statusRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .statusRow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
