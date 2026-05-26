@@ -76,34 +76,6 @@ const InteractivePieChart = ({ data }) => {
           </span>
         </div>
       </div>
-
-      {/* Legend Block */}
-      <div className={styles.pieLegend}>
-        {data.map((slice, index) => (
-          <div 
-            key={slice.name}
-            className={styles.pieLegendItem}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => setSelectedIndex(index)}
-            style={{
-              backgroundColor: activeIndex === index ? '#f1f5f9' : 'transparent',
-              cursor: 'pointer'
-            }}
-          >
-            <div className={styles.pieLegendLeft}>
-              <div 
-                className={styles.pieLegendBullet} 
-                style={{ backgroundColor: slice.color, boxShadow: `0 0 8px ${slice.color}35` }}
-              ></div>
-              <span className={styles.pieLegendName}>{slice.name}</span>
-            </div>
-            <span className={styles.pieLegendPercent}>
-              {Math.round((slice.value / total) * 100)}%
-            </span>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
