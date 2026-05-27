@@ -225,6 +225,83 @@ export const caseStudiesData = [
     ]
   },
   {
+    "id": "ashtitva",
+    "title": "ASHTITVA",
+    "client": "ASHTITVA",
+    "propertyType": "Event Venue",
+    "location": "Bengaluru, India",
+    "capacity": "3,750 Guests",
+    "services": [
+      "BRANDING",
+      "STRATEGY",
+      "SEO",
+      "WEBSITES",
+      "ADS"
+    ],
+    "tagline": "Unified 7 premium open-air event venues across Bengaluru into a commission-free direct booking engine, bypassing aggregator portals.",
+    "imgSrc": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+    "kpis": [
+      {
+        "label": "OVERALL REVENUE GENERATED",
+        "value": "₹1.5Cr+"
+      },
+      {
+        "label": "NUMBER OF BOOKINGS",
+        "value": "250+"
+      }
+    ],
+    "gaugeScore": 98,
+    "gaugeLabel": "Digital Performance Score",
+    "scoreBars": [
+      {
+        "score": 98,
+        "max": 100,
+        "label": "User Experience (UX)"
+      },
+      {
+        "score": 96,
+        "max": 100,
+        "label": "Inquiry Conversion Rate"
+      }
+    ],
+    "statusCards": [
+      {
+        "label": "React 19 & Vite 8",
+        "value": "Fast"
+      },
+      {
+        "label": "14 Guest Rooms Booking",
+        "value": "Yes"
+      },
+      {
+        "label": "Direct Leads Conversion",
+        "value": "High"
+      }
+    ],
+    "pieData": [
+      {
+        "name": "Direct Bookings",
+        "value": 68,
+        "color": "#10b981"
+      },
+      {
+        "name": "OTA Portals",
+        "value": 18,
+        "color": "#0ea5e9"
+      },
+      {
+        "name": "Offline Groups",
+        "value": 14,
+        "color": "#f43f5e"
+      }
+    ],
+    "bulletPoints": [
+      "Built a dedicated website with an inquiry form and venue showcase, replacing their old dependency on third-party listing sites.",
+      "Set up Google My Business profiles for all 7 venue locations, improving local search visibility across Bengaluru.",
+      "Ran targeted Google and Meta ad campaigns during wedding and corporate event seasons to drive qualified leads directly."
+    ]
+  },
+  {
     "id": "bangaram-island-resort",
     "title": "BANGARAM ISLAND RESORT",
     "client": "BANGARAM ISLAND RESORT",
@@ -1810,6 +1887,82 @@ export const caseStudiesData = [
     ]
   },
   {
+    "id": "navigate",
+    "title": "NAVIGATE AGENCY",
+    "client": "NAVIGATE",
+    "propertyType": "Event Venues & Spaces",
+    "location": "Bangalore, India",
+    "capacity": "500 Guests",
+    "services": [
+      "STRATEGY",
+      "ADS",
+      "CONTENT",
+      "PROGRAMMATIC"
+    ],
+    "tagline": "Deployed hyper-targeted programmatic ad funnels and premium visual content, scaling booking rates during off-seasons.",
+    "imgSrc": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80",
+    "kpis": [
+      {
+        "label": "OVERALL REVENUE GENERATED",
+        "value": "₹1.2Cr+"
+      },
+      {
+        "label": "NUMBER OF BOOKINGS",
+        "value": "480+"
+      }
+    ],
+    "gaugeScore": 88,
+    "gaugeLabel": "Digital Campaign Health",
+    "scoreBars": [
+      {
+        "score": 78,
+        "max": 100,
+        "label": "Creative CTR"
+      },
+      {
+        "score": 92,
+        "max": 100,
+        "label": "ROI Efficiency"
+      }
+    ],
+    "statusCards": [
+      {
+        "label": "Audience Target Match",
+        "value": "Yes"
+      },
+      {
+        "label": "Lead Quality Rate",
+        "value": "High"
+      },
+      {
+        "label": "Ad Load Speed",
+        "value": "Fast"
+      }
+    ],
+    "pieData": [
+      {
+        "name": "Direct Bookings",
+        "value": 60,
+        "color": "#10b981"
+      },
+      {
+        "name": "OTA Portals",
+        "value": 15,
+        "color": "#0ea5e9"
+      },
+      {
+        "name": "Offline Groups",
+        "value": 25,
+        "color": "#f43f5e"
+      }
+    ],
+    "bulletPoints": [
+      "Produced professional photo and video content for social media, replacing the client's older phone-shot material with polished visuals.",
+      "Set up location-based Google Ads campaigns targeting event planners and couples searching for venues in Bangalore.",
+      "Ran retargeting ads on Meta to re-engage website visitors who browsed venue pages but didn't submit an inquiry."
+    ]
+  },
+  {
     "id": "pepper-trail",
     "title": "PEPPER TRAIL",
     "client": "PEPPER TRAIL",
@@ -2034,6 +2187,83 @@ export const caseStudiesData = [
       "Ran high-impact Meta and Google Ads campaigns targeted at premium luxury travellers to scale direct bookings and brand inquiry conversions.",
       "Constructed commission-free direct booking integrations, synchronizing room rates and rate parity controls across booking networks.",
       "Handled premium social content curation and digital marketing, showcasing the property's 20 room inventory, guest suites, and amenities."
+    ]
+  },
+  {
+    "id": "sailo",
+    "title": "SAILO CLUB",
+    "client": "SAILO",
+    "propertyType": "Luxury Yacht & Charter",
+    "location": "Mumbai & Goa, India",
+    "capacity": "12 Superyachts",
+    "services": [
+      "BRANDING",
+      "WEBSITE",
+      "SEO",
+      "FLEET MGMT",
+      "ADS"
+    ],
+    "tagline": "Overhauled digital fleet management, indexing page-one search rankings and launching direct, high-value superyacht charter bookings.",
+    "imgSrc": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80",
+    "kpis": [
+      {
+        "label": "OVERALL REVENUE GENERATED",
+        "value": "₹85 Lakhs+"
+      },
+      {
+        "label": "NUMBER OF BOOKINGS",
+        "value": "120+"
+      }
+    ],
+    "gaugeScore": 94,
+    "gaugeLabel": "SEO Visibility Score",
+    "scoreBars": [
+      {
+        "score": 88,
+        "max": 100,
+        "label": "Booking Conversions"
+      },
+      {
+        "score": 96,
+        "max": 100,
+        "label": "Core Web Vitals"
+      }
+    ],
+    "statusCards": [
+      {
+        "label": "Rate Parity Control",
+        "value": "Yes"
+      },
+      {
+        "label": "Mobile Performance",
+        "value": "Fast"
+      },
+      {
+        "label": "Direct Leads Conversion",
+        "value": "High"
+      }
+    ],
+    "pieData": [
+      {
+        "name": "Direct Bookings",
+        "value": 58,
+        "color": "#10b981"
+      },
+      {
+        "name": "OTA Portals",
+        "value": 22,
+        "color": "#0ea5e9"
+      },
+      {
+        "name": "Offline Groups",
+        "value": 20,
+        "color": "#f43f5e"
+      }
+    ],
+    "bulletPoints": [
+      "Designed a clean, mobile-first website showcasing the full fleet with real photos, pricing tiers, and a WhatsApp inquiry button.",
+      "Created SEO-optimized landing pages for key search terms like 'yacht rental Mumbai' and 'boat party Goa' to capture organic traffic.",
+      "Managed paid campaigns on Instagram and Google targeting high-intent audiences in the luxury travel and celebration space."
     ]
   },
   {
