@@ -85,22 +85,54 @@ import { caseStudiesData } from './caseStudiesData';
 
 const filterCategories = [
   'All',
-  'Homestays & Villas',
   'Resorts',
-  'Heritage & Palaces',
-  'Wilderness & Adventure',
-  'Yachts & Charters',
-  'Event Venues'
+  'home stays',
+  'adventure and activity',
+  'Event venues'
 ];
 
 const getCategoryForProject = (propertyType) => {
   const type = propertyType.toLowerCase();
-  if (type.includes('yacht') || type.includes('charter')) return 'Yachts & Charters';
-  if (type.includes('palace') || type.includes('fort') || type.includes('heritage') || type.includes('royal')) return 'Heritage & Palaces';
-  if (type.includes('lodge') || type.includes('adventure') || type.includes('ski') || type.includes('exped') || type.includes('wilderness')) return 'Wilderness & Adventure';
-  if (type.includes('homestay') || type.includes('villa') || type.includes('estate') || type.includes('farm')) return 'Homestays & Villas';
-  if (type.includes('resort') || type.includes('retreat') || type.includes('county') || type.includes('inn') || type.includes('hotel')) return 'Resorts';
-  return 'Event Venues';
+  
+  // Resorts (includes resorts, hotels, inns, retreats, palaces, forts, heritage, royal)
+  if (
+    type.includes('resort') || 
+    type.includes('hotel') || 
+    type.includes('inn') || 
+    type.includes('retreat') || 
+    type.includes('palace') || 
+    type.includes('fort') || 
+    type.includes('heritage') || 
+    type.includes('royal')
+  ) {
+    return 'Resorts';
+  }
+  
+  // home stays (villas, estates, homestays, farms)
+  if (
+    type.includes('homestay') || 
+    type.includes('villa') || 
+    type.includes('estate') || 
+    type.includes('farm')
+  ) {
+    return 'home stays';
+  }
+  
+  // adventure and activity (lodges, adventure, ski, exped, activity, tour, wilderness)
+  if (
+    type.includes('lodge') || 
+    type.includes('adventure') || 
+    type.includes('ski') || 
+    type.includes('exped') || 
+    type.includes('activity') || 
+    type.includes('tour') || 
+    type.includes('wilderness')
+  ) {
+    return 'adventure and activity';
+  }
+  
+  // Event venues (default / event venues, yachts, charters, clubs, lounges)
+  return 'Event venues';
 };
 
 export default function CaseStudiesPage() {

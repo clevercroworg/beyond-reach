@@ -78,9 +78,15 @@ export default function ClientLayoutWrapper({ children }) {
       {!hasOwnNavbar && <Navbar onMenuClick={() => setIsMenuOpen(true)} />}
       <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       <AnimatePresence mode="wait">
-        <PageTransition key={pathname}>
-          {children}
-        </PageTransition>
+        {hasOwnNavbar ? (
+          <div key={pathname}>
+            {children}
+          </div>
+        ) : (
+          <PageTransition key={pathname}>
+            {children}
+          </PageTransition>
+        )}
       </AnimatePresence>
       {!isAuditRoute && <Footer />}
     </>
