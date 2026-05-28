@@ -120,9 +120,9 @@ const AnalyticsPod = ({ project, isSlideActive }) => {
             onMouseLeave={() => setHoveredIndex(null)}
             onClick={() => setSelectedIndex(index)}
             style={{
-              borderColor: activeIndex === index ? slice.color : 'rgba(255, 255, 255, 0.08)',
-              background: activeIndex === index ? `${slice.color}18` : 'rgba(255, 255, 255, 0.03)',
-              color: activeIndex === index ? '#ffffff' : '#94a3b8',
+              borderColor: activeIndex === index ? slice.color : 'rgba(3, 5, 8, 0.08)',
+              background: '#ffffff',
+              color: activeIndex === index ? slice.color : '#030508',
               boxShadow: activeIndex === index ? `0 4px 12px ${slice.color}25` : 'none'
             }}
           >
