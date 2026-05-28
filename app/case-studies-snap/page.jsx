@@ -296,7 +296,7 @@ const getCategoryForProject = (propertyType) => {
 };
 
 // --- PREMIUM DESKTOP CARD ---
-const DesktopPremiumCard = ({ project, isSlideActive }) => {
+const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick }) => {
   return (
     <motion.div 
       className={styles.desktopCard}
@@ -360,6 +360,26 @@ const DesktopPremiumCard = ({ project, isSlideActive }) => {
             })}
           </motion.div>
         </motion.div>
+
+        {/* Looping indicator footer inside left column */}
+        {nextProject && (
+          <div 
+            className={styles.projectLoopIndicator}
+            onClick={onNextClick}
+          >
+            <div className={styles.loopInfo}>
+              <span className={styles.loopLabel}>Next Project</span>
+              <span className={styles.loopTitle}>{nextProject.title}</span>
+            </div>
+            <div className={styles.loopLineContainer}>
+              <motion.div 
+                className={styles.loopLine}
+                animate={{ x: ["-100%", "100%"] }}
+                transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       <div className={styles.rightCol}>
@@ -386,8 +406,7 @@ const DesktopPremiumCard = ({ project, isSlideActive }) => {
 };
 
 // --- PREMIUM MOBILE CARD ---
-// Removes the Analytics Pod completely as per user request to save space and provide an un-cluttered mobile view
-const MobilePremiumCard = ({ project, isSlideActive }) => {
+const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick }) => {
   return (
     <motion.div 
       className={styles.mobileCard}
@@ -453,6 +472,26 @@ const MobilePremiumCard = ({ project, isSlideActive }) => {
         ))}
       </motion.div>
       <AnalyticsPod project={project} isSlideActive={isSlideActive} />
+
+      {/* Looping indicator footer */}
+      {nextProject && (
+        <div 
+          className={styles.projectLoopIndicator}
+          onClick={onNextClick}
+        >
+          <div className={styles.loopInfo}>
+            <span className={styles.loopLabel}>Next Project</span>
+            <span className={styles.loopTitle}>{nextProject.title}</span>
+          </div>
+          <div className={styles.loopLineContainer}>
+            <motion.div 
+              className={styles.loopLine}
+              animate={{ x: ["-100%", "100%"] }}
+              transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
+            />
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 };
@@ -464,12 +503,23 @@ export default function CaseStudiesSnapPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const filterRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [showPreloader, setShowPreloader] = useState(true);
+  const [preloaderDone, setPreloaderDone] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     handleResize(); // Initial check
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPreloader(false);
+      const doneTimer = setTimeout(() => setPreloaderDone(true), 800);
+      return () => clearTimeout(doneTimer);
+    }, 2400);
+    return () => clearTimeout(timer);
   }, []);
 
   // Filter 51 data projects sorted alphabetically
@@ -530,6 +580,52 @@ export default function CaseStudiesSnapPage() {
 
   return (
     <div className={styles.pageContainer}>
+      {/* Cinematic Typographic Preloader */}
+      <AnimatePresence>
+        {showPreloader && (
+          <motion.div 
+            className={styles.preloaderContainer}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          >
+            {/* Shutter Swipe Panels */}
+            <motion.div 
+              className={styles.preloaderSweepDark}
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 0 }}
+              exit={{ scaleY: 1 }}
+              transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+            />
+            <motion.div 
+              className={styles.preloaderSweepAccent}
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 0 }}
+              exit={{ scaleY: 1 }}
+              transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            />
+
+            <div className={styles.preloaderContent}>
+              <motion.span 
+                className={styles.preloaderLogo}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                O
+              </motion.span>
+              <motion.span 
+                className={styles.preloaderWord}
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: "auto", opacity: 1 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+              >
+                UR WORK.
+              </motion.span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Top Floating Global Navigation controls */}
       <nav className={styles.pageNavbar}>
         <div className={styles.navLogo}>
@@ -639,9 +735,19 @@ export default function CaseStudiesSnapPage() {
 
                   {/* Render tailored Premium Card based on Viewport */}
                   {isMobile ? (
-                    <MobilePremiumCard project={project} isSlideActive={isSlideActive} />
+                    <MobilePremiumCard 
+                      project={project} 
+                      isSlideActive={isSlideActive} 
+                      nextProject={filteredStudies[(idx + 1) % filteredStudies.length]}
+                      onNextClick={() => navigateToSlide((idx + 1) % filteredStudies.length)}
+                    />
                   ) : (
-                    <DesktopPremiumCard project={project} isSlideActive={isSlideActive} />
+                    <DesktopPremiumCard 
+                      project={project} 
+                      isSlideActive={isSlideActive} 
+                      nextProject={filteredStudies[(idx + 1) % filteredStudies.length]}
+                      onNextClick={() => navigateToSlide((idx + 1) % filteredStudies.length)}
+                    />
                   )}
                 </div>
               </section>
