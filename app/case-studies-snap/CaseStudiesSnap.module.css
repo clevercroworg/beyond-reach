@@ -623,7 +623,9 @@
    GLASSMORPHIC FLOATING FILTER SELECTION
    ======================================= */
 .filterDropdown {
-  position: relative;
+  position: fixed;
+  top: 5.5rem;
+  right: 3rem;
   z-index: 110;
 }
 
@@ -966,5 +968,11 @@
 
   .floatingSidebar {
     display: none; /* Hide scroll-dots on smaller viewports to make room */
+  }
+
+  .filterDropdown {
+    position: fixed;
+    top: 4.25rem;
+    right: 1.5rem;
   }
 }
