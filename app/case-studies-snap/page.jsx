@@ -17,7 +17,7 @@ const GlassDonutChart = ({ data }) => {
   const activeIndex = hoveredIndex !== null ? hoveredIndex : selectedIndex;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '1rem' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '1.25rem' }}>
       <div className={styles.donutWrapper}>
         <svg className={styles.donutSvg} viewBox="0 0 140 140">
           <g transform="translate(70, 70)">
@@ -107,9 +107,9 @@ const GlassDonutChart = ({ data }) => {
 const cardVariants = {
   hidden: { 
     opacity: 0, 
-    y: 70, 
-    rotateX: 12, // 3D structural perspective entries!
-    scale: 0.96 
+    y: 80, 
+    rotateX: 14, // 3D structural perspective fold entries!
+    scale: 0.95 
   },
   visible: { 
     opacity: 1, 
@@ -118,8 +118,8 @@ const cardVariants = {
     scale: 1,
     transition: { 
       type: "spring",
-      stiffness: 85,
-      damping: 16,
+      stiffness: 80,
+      damping: 15,
       staggerChildren: 0.08,
       delayChildren: 0.15
     } 
@@ -446,7 +446,7 @@ export default function CaseStudiesSnapPage() {
                       boxShadow: "0 25px 60px rgba(0,0,0,0.08), 0 50px 110px rgba(0,0,0,0.18)"
                     }}
                   >
-                    {/* LEFT COLUMN: BRANDING AND IDENTITY */}
+                    {/* LEFT COLUMN: BRANDING, TAGLINE AND IDENTITY */}
                     <div className={styles.leftCol}>
                       <div className={styles.identityBlock}>
                         <motion.div className={styles.locationBadge} variants={itemDownVariants}>
@@ -473,6 +473,11 @@ export default function CaseStudiesSnapPage() {
                           </div>
                         </motion.div>
                       </div>
+
+                      {/* Editorial Brand Tagline Narrative - Solving Spacing Gaps */}
+                      <motion.p className={styles.projectTagline} variants={itemUpVariants}>
+                        {project.tagline}
+                      </motion.p>
 
                       {/* Scope of Work badges */}
                       <motion.div className={styles.scopeSection} variants={itemUpVariants}>
