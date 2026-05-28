@@ -793,9 +793,15 @@
   }
 
   .analyticsSection {
-    grid-template-columns: 85px 1fr; /* Highly optimized split spacing */
-    gap: 1rem;
+    grid-template-columns: 1fr; /* Center the interactive donut chart on mobile */
+    justify-items: center;
+    justify-content: center;
+    gap: 0;
     padding: 0.85rem;
+  }
+
+  .outcomesWrapper {
+    display: none !important; /* Deliverables are hidden on mobile to maintain extreme spacing efficiency */
   }
 
   .donutWrapper {
