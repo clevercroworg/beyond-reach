@@ -247,8 +247,8 @@ const mediaVariants = {
     opacity: 1, // blooms and fades in during zoom!
     border: '1px solid rgba(255, 255, 255, 0)',
     transition: { 
-      duration: 2.6, // slower and smoother cinematic reveal!
-      ease: [0.16, 1, 0.3, 1] 
+      duration: 3.5, // slower and smoother cinematic reveal!
+      ease: [0.08, 1, 0.18, 1] 
     } 
   }
 };
@@ -549,20 +549,20 @@ export default function CaseStudiesSnapPage() {
   }, []);
 
   useEffect(() => {
-    // Stage 2: Trigger the text split & center-zooming media at 1.8s
+    // Stage 2: Trigger the text split & center-zooming media at 2.0s
     const splitTimer = setTimeout(() => {
       setIntroState('splitting');
-    }, 1800);
+    }, 2000);
 
-    // Stage 3: Reveal overlays at t = 3.3s (exactly when media hits ~75% scale of a 2.6s zoom!)
+    // Stage 3: Reveal overlays at t = 4.2s (exactly when media hits ~80% scale of a 3.5s zoom!)
     const activeTimer = setTimeout(() => {
       setIntroState('active');
-    }, 3300);
+    }, 4200);
 
-    // Stage 4: Unmount preloader logic entirely and trigger cycling at t = 4.4s (full zoom completion)
+    // Stage 4: Unmount preloader logic entirely and trigger cycling at t = 5.5s (full zoom completion)
     const doneTimer = setTimeout(() => {
       setIsInitialLoad(false);
-    }, 4400);
+    }, 5500);
 
     return () => {
       clearTimeout(splitTimer);
@@ -658,36 +658,23 @@ export default function CaseStudiesSnapPage() {
             style={{ pointerEvents: introState === 'active' ? 'none' : 'auto' }}
           >
             <div className={styles.preloaderContent}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.15em' }}>
-                <motion.span 
-                  className={styles.preloaderLogo}
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  animate={
-                    introState === 'splitting' || introState === 'active'
-                      ? { x: "-35vw", opacity: 0, scale: 0.8 }
-                      : { scale: 1, opacity: 1, x: 0 }
-                  }
-                  transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  O
-                </motion.span>
-                <motion.span 
-                  className={styles.preloaderWord}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={
-                    introState === 'splitting' || introState === 'active'
-                      ? { x: "-20vw", opacity: 0, scale: 0.8 }
-                      : { opacity: 1, x: 0, scale: 1 }
-                  }
-                  transition={{ 
-                    x: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
-                    opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 },
-                    scale: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }
-                  }}
-                >
-                  UR
-                </motion.span>
-              </div>
+              <motion.div 
+                style={{ display: 'flex', alignItems: 'center', gap: '0.15em' }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={
+                  introState === 'splitting' || introState === 'active'
+                    ? { x: "-25vw", opacity: 0, scale: 0.8 }
+                    : { opacity: 1, x: 0, scale: 1 }
+                }
+                transition={{ 
+                  x: { duration: 2.2, ease: [0.08, 1, 0.18, 1] },
+                  opacity: { duration: 1.8, ease: [0.08, 1, 0.18, 1] },
+                  scale: { duration: 1.8, ease: [0.08, 1, 0.18, 1] }
+                }}
+              >
+                <span className={styles.preloaderLogo}>O</span>
+                <span className={styles.preloaderWord}>UR</span>
+              </motion.div>
 
               {/* Center Gap for the Centered Expanding Mini Square */}
               {isInitialLoad && (
@@ -695,7 +682,7 @@ export default function CaseStudiesSnapPage() {
                   className={styles.preloaderGap}
                   initial={{ scaleX: 1, opacity: 1 }}
                   animate={introState === 'splitting' || introState === 'active' ? { scaleX: 0, opacity: 0 } : { scaleX: 1, opacity: 1 }}
-                  transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 1.5, ease: [0.08, 1, 0.18, 1] }}
                 />
               )}
 
@@ -704,13 +691,13 @@ export default function CaseStudiesSnapPage() {
                 initial={{ opacity: 0, x: 40 }}
                 animate={
                   introState === 'splitting' || introState === 'active'
-                    ? { x: "35vw", opacity: 0, scale: 0.8 }
-                    : { opacity: 1, x: 0 }
+                    ? { x: "25vw", opacity: 0, scale: 0.8 }
+                    : { opacity: 1, x: 0, scale: 1 }
                 }
                 transition={{ 
-                  opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.8 },
-                  x: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
-                  scale: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+                  x: { duration: 2.2, ease: [0.08, 1, 0.18, 1] },
+                  opacity: { duration: 1.8, ease: [0.08, 1, 0.18, 1] },
+                  scale: { duration: 1.8, ease: [0.08, 1, 0.18, 1] }
                 }}
               >
                 <span className={styles.titleSerifItalic} style={{ textTransform: 'none', color: '#38bdf8' }}>Work.</span>
