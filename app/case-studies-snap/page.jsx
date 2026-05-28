@@ -237,17 +237,17 @@ const donutPodVariants = {
 const mediaVariants = {
   initial: (isMobile) => ({ 
     scale: isMobile ? 0.22 : 0.12, 
-    opacity: 1,
+    opacity: 0, // initially pitch-black gap!
     border: '1px solid rgba(255, 255, 255, 0.25)',
     transformOrigin: 'center center',
     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' // straight corners in mini mode
   }),
   zoom: { 
     scale: 1, 
-    opacity: 1,
+    opacity: 1, // blooms and fades in during zoom!
     border: '1px solid rgba(255, 255, 255, 0)',
     transition: { 
-      duration: 1.8, 
+      duration: 2.6, // slower and smoother cinematic reveal!
       ease: [0.16, 1, 0.3, 1] 
     } 
   }
@@ -554,15 +554,15 @@ export default function CaseStudiesSnapPage() {
       setIntroState('splitting');
     }, 1800);
 
-    // Stage 3: Reveal overlays at t = 2.8s (exactly when media hits ~75% scale)
+    // Stage 3: Reveal overlays at t = 3.3s (exactly when media hits ~75% scale of a 2.6s zoom!)
     const activeTimer = setTimeout(() => {
       setIntroState('active');
-    }, 2800);
+    }, 3300);
 
-    // Stage 4: Unmount preloader logic entirely and trigger cycling at t = 3.6s
+    // Stage 4: Unmount preloader logic entirely and trigger cycling at t = 4.4s (full zoom completion)
     const doneTimer = setTimeout(() => {
       setIsInitialLoad(false);
-    }, 3600);
+    }, 4400);
 
     return () => {
       clearTimeout(splitTimer);
