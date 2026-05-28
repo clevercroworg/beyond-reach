@@ -882,9 +882,7 @@
   }
 
   .projectTagline {
-    font-size: 0.8rem;
-    margin: 1rem 0 1.25rem;
-    padding-left: 0.75rem;
+    display: none !important;
   }
 
   .metaCapsule {
