@@ -204,9 +204,9 @@
 }
 
 .phoneLink {
-  color: #34d399;
-  background: rgba(52, 211, 153, 0.08);
-  border: 1px solid rgba(52, 211, 153, 0.2);
+  color: #030508;
+  background: #ffffff;
+  border: 1px solid #ffffff;
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -214,7 +214,6 @@
   align-items: center;
   justify-content: center;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  backdrop-filter: blur(8px);
 }
 
 .phoneLink:hover {
@@ -276,34 +275,32 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(56, 189, 248, 0.04) 100%);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: #ffffff;
+  border: 1px solid #ffffff;
   padding: 0.45rem 1.15rem;
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #38bdf8; /* Glowing Sky blue */
+  color: #030508;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   box-shadow: 
-    0 4px 15px rgba(56, 189, 248, 0.1),
+    0 4px 15px rgba(0, 0, 0, 0.25),
     0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 .locationBadge:hover {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(56, 189, 248, 0.08) 100%);
+  background: #ffffff;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .locationIcon {
   width: 0.85rem;
   height: 0.85rem;
-  color: #38bdf8;
+  color: #030508;
 }
 
 /* Ultra premium editorial title */
@@ -323,7 +320,7 @@
 .projectTagline {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #cbd5e1; /* Silver grey text */
+  color: #ffffff; /* White text instead of silver/grey */
   margin: 1.5rem 0 2rem;
   padding-left: 1.25rem;
   border-left: 2px solid #38bdf8; /* thin accent sky-blue vertical divider */
@@ -337,10 +334,8 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid #ffffff;
   border-radius: 6px;
   padding: 0.75rem 1.35rem;
   width: max-content;
@@ -356,7 +351,7 @@
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: #94a3b8;
+  color: #64748b;
   margin-bottom: 0.25rem;
   text-transform: uppercase;
 }
@@ -364,7 +359,7 @@
 .metaValue {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #030508;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -372,7 +367,7 @@
 .metaDivider {
   width: 1px;
   height: 26px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(3, 5, 8, 0.15);
 }
 
 /* ==========================================================================
@@ -381,7 +376,7 @@
 
 .scopeSection {
   margin-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 1.5rem;
 }
 
@@ -389,7 +384,7 @@
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.18em;
-  color: #94a3b8;
+  color: #ffffff;
   margin-bottom: 1rem;
   text-transform: uppercase;
   display: block;
@@ -412,19 +407,17 @@
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #e2e8f0;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #030508;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .serviceBadge:hover {
-  border-color: rgba(56, 189, 248, 0.4);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: #38bdf8;
+  background: #ffffff;
   color: #38bdf8;
   transform: translateY(-2px);
 }
@@ -490,7 +483,7 @@
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: #94a3b8;
+  color: #ffffff;
   margin-top: 0.5rem;
   text-transform: uppercase;
   transition: color 0.3s ease;
@@ -564,12 +557,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(10, 15, 30, 0.6); /* dark transparent glass center ring */
+  background: #ffffff; /* White background */
   box-shadow: 
-    0 12px 36px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    0 12px 36px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(3, 5, 8, 0.08);
   width: 84px;
   height: 84px;
   top: 28px;
@@ -581,7 +574,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: 1.55rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #030508;
   line-height: 1;
 }
 
@@ -589,7 +582,7 @@
   font-size: 0.55rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: #94a3b8;
+  color: #64748b;
   margin-top: 0.2rem;
   text-transform: uppercase;
   text-align: center;
@@ -607,7 +600,7 @@
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.18em;
-  color: #94a3b8;
+  color: #ffffff;
   text-transform: uppercase;
   margin-bottom: 0.35rem;
 }
@@ -655,7 +648,7 @@
 .outcomeText {
   font-size: 0.78rem;
   line-height: 1.4;
-  color: #cbd5e1;
+  color: #ffffff;
 }
 
 /* Horizontal Interactive Legend items */
@@ -667,7 +660,7 @@
   justify-content: center;
   gap: 0.75rem;
   margin-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 1rem;
   width: 100%;
 }
@@ -679,10 +672,10 @@
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #94a3b8;
+  color: #030508;
   padding: 0.3rem 0.75rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #ffffff;
+  border: 1px solid #ffffff;
   border-radius: 0px;
   text-transform: uppercase;
   cursor: pointer;
@@ -691,8 +684,8 @@
 }
 
 .legendItem:hover {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: rgba(56, 189, 248, 0.25);
+  background: #ffffff;
+  border-color: #38bdf8;
   color: #38bdf8;
 }
 
@@ -714,11 +707,9 @@
 }
 
 .filterToggle {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  color: #030508;
   padding: 0.7rem 1.4rem;
   border-radius: 0px;
   font-size: 0.85rem;
@@ -733,35 +724,34 @@
 }
 
 .filterToggle:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: #ffffff;
+  border-color: #ffffff;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .filterChevron {
   width: 0.95rem;
   height: 0.95rem;
   transition: transform 0.3s ease;
-  color: #94a3b8;
+  color: #030508;
 }
 
 .filterChevronOpen {
   transform: rotate(180deg);
-  color: #ffffff;
+  color: #030508;
 }
 
 .filterMenu {
   position: absolute;
   top: calc(100% + 0.6rem);
   right: 0;
-  background: rgba(5, 8, 15, 0.95);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(3, 5, 8, 0.08);
   border-radius: 0px;
   width: 230px;
   padding: 0.5rem;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -771,7 +761,7 @@
 .filterOption {
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: #64748b;
   padding: 0.6rem 1rem;
   font-size: 0.82rem;
   font-weight: 500;
@@ -786,12 +776,12 @@
 }
 
 .filterOption:hover {
-  background: rgba(255, 255, 255, 0.04);
-  color: #ffffff;
+  background: rgba(3, 5, 8, 0.04);
+  color: #030508;
 }
 
 .filterOptionActive {
-  background: rgba(56, 189, 248, 0.12);
+  background: rgba(56, 189, 248, 0.08);
   color: #38bdf8;
   font-weight: 600;
 }
@@ -907,7 +897,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #94a3b8;
+  color: #ffffff;
   z-index: 10;
   position: relative;
 }
@@ -950,7 +940,7 @@
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.18em;
-  color: #94a3b8;
+  color: #ffffff;
   text-transform: uppercase;
 }
 
