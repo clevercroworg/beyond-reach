@@ -405,7 +405,7 @@
 /* DONUT CHART & OUTCOMES SPLIT */
 .analyticsSection {
   display: grid;
-  grid-template-columns: 110px 1fr;
+  grid-template-columns: 135px 1fr; /* Increased grid spacing for larger chart */
   gap: 1.5rem;
   align-items: center;
   background: rgba(15, 23, 42, 0.02);
@@ -416,8 +416,8 @@
 
 .donutWrapper {
   position: relative;
-  width: 110px;
-  height: 110px;
+  width: 135px; /* Enlarged chart wrapper */
+  height: 135px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -448,21 +448,21 @@
 
 .donutCenterValue {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.35rem; /* Enlarged center percentage value */
   font-weight: 700;
   color: #0f172a;
   line-height: 1;
 }
 
 .donutCenterLabel {
-  font-size: 0.5rem;
+  font-size: 0.6rem; /* Enhanced center text label readability */
   font-weight: 700;
   letter-spacing: 0.05em;
   color: #64748b;
   margin-top: 0.1rem;
   text-transform: uppercase;
   text-align: center;
-  max-width: 60px;
+  max-width: 85px; /* Wider spacing to prevent premature text clipping */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -805,12 +805,12 @@
   }
 
   .donutWrapper {
-    width: 85px;
-    height: 85px;
+    width: 105px; /* Slightly enlarged for improved mobile legibility */
+    height: 105px;
   }
 
   .donutCenterValue {
-    font-size: 0.95rem;
+    font-size: 1.15rem; /* Larger adaptive value for centered chart */
   }
 
   .floatingSidebar {
