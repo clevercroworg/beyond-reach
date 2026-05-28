@@ -4,8 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './CaseStudiesSnap.module.css';
 import { caseStudiesData } from '../case-studies/caseStudiesData';
 
-// Custom fully interactive SVG Donut Chart component suited for premium dark mode
-// Custom fully interactive SVG Donut Chart component suited for premium dark mode
+// Custom fully interactive SVG Donut Chart component with dynamic legend hover syncing
 const GlassDonutChart = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -18,78 +17,109 @@ const GlassDonutChart = ({ data }) => {
   const activeIndex = hoveredIndex !== null ? hoveredIndex : selectedIndex;
 
   return (
-    <div className={styles.donutWrapper}>
-      <svg className={styles.donutSvg} viewBox="0 0 140 140">
-        <g transform="translate(70, 70)">
-          {/* Track background circle */}
-          <circle
-            cx="0"
-            cy="0"
-            r={radius}
-            fill="none"
-            stroke="rgba(15, 23, 42, 0.05)"
-            strokeWidth="18"
-          />
-          {data.map((slice, index) => {
-            const percentage = (slice.value / total) * 100;
-            const strokeDashoffset = circumference - (percentage / 100) * circumference;
-            const rotation = (accumulatedPercent / 100) * 360;
-            accumulatedPercent += percentage;
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '1rem' }}>
+      <div className={styles.donutWrapper}>
+        <svg className={styles.donutSvg} viewBox="0 0 140 140">
+          <g transform="translate(70, 70)">
+            {/* Track background circle */}
+            <circle
+              cx="0"
+              cy="0"
+              r={radius}
+              fill="none"
+              stroke="rgba(15, 23, 42, 0.05)"
+              strokeWidth="18"
+            />
+            {data.map((slice, index) => {
+              const percentage = (slice.value / total) * 100;
+              const strokeDashoffset = circumference - (percentage / 100) * circumference;
+              const rotation = (accumulatedPercent / 100) * 360;
+              accumulatedPercent += percentage;
 
-            const isSegmentActive = activeIndex === index;
+              const isSegmentActive = activeIndex === index;
 
-            return (
-              <motion.circle
-                key={slice.name}
-                className={styles.donutSegment}
-                r={radius}
-                cx="0"
-                cy="0"
-                fill="none"
-                stroke={slice.color}
-                strokeWidth={isSegmentActive ? 22 : 18}
-                strokeDasharray={circumference}
-                initial={{ strokeDashoffset: circumference }}
-                animate={{ strokeDashoffset: strokeDashoffset }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                transform={`rotate(${rotation})`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setSelectedIndex(index)}
-                onTouchStart={() => setSelectedIndex(index)}
-                style={{
-                  opacity: isSegmentActive ? 1 : 0.65,
-                  cursor: 'pointer',
-                  transformOrigin: '0px 0px'
-                }}
-              />
-            );
-          })}
-        </g>
-      </svg>
-      {/* Center text indicating share */}
-      <div className={styles.donutCenter}>
-        <span className={styles.donutCenterValue}>
-          {`${Math.round((data[activeIndex].value / total) * 100)}%`}
-        </span>
-        <span className={styles.donutCenterLabel} title={data[activeIndex].name}>
-          {data[activeIndex].name}
-        </span>
+              return (
+                <motion.circle
+                  key={slice.name}
+                  className={styles.donutSegment}
+                  r={radius}
+                  cx="0"
+                  cy="0"
+                  fill="none"
+                  stroke={slice.color}
+                  strokeWidth={isSegmentActive ? 22 : 18}
+                  strokeDasharray={circumference}
+                  initial={{ strokeDashoffset: circumference }}
+                  animate={{ strokeDashoffset: strokeDashoffset }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                  transform={`rotate(${rotation})`}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={() => setSelectedIndex(index)}
+                  onTouchStart={() => setSelectedIndex(index)}
+                  style={{
+                    opacity: isSegmentActive ? 1 : 0.65,
+                    cursor: 'pointer',
+                    transformOrigin: '0px 0px'
+                  }}
+                />
+              );
+            })}
+          </g>
+        </svg>
+        {/* Center text indicating share */}
+        <div className={styles.donutCenter}>
+          <span className={styles.donutCenterValue}>
+            {`${Math.round((data[activeIndex].value / total) * 100)}%`}
+          </span>
+          <span className={styles.donutCenterLabel} title={data[activeIndex].name}>
+            {data[activeIndex].name}
+          </span>
+        </div>
+      </div>
+
+      {/* Pro Mode Interactive Legend list */}
+      <div className={styles.donutLegend}>
+        {data.map((slice, index) => (
+          <div 
+            key={slice.name} 
+            className={styles.legendItem}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            onClick={() => setSelectedIndex(index)}
+            style={{
+              borderColor: activeIndex === index ? slice.color : 'rgba(15, 23, 42, 0.04)',
+              background: activeIndex === index ? `${slice.color}0a` : 'rgba(15, 23, 42, 0.02)',
+              color: activeIndex === index ? '#0f172a' : '#475569',
+              boxShadow: activeIndex === index ? `0 2px 8px ${slice.color}15` : 'none'
+            }}
+          >
+            <span className={styles.legendDot} style={{ backgroundColor: slice.color }} />
+            <span>{slice.name}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
-// Premium, high-fidelity staggered entrance variants for central dashboard cards
+// Premium, high-fidelity 3D perspective fold entrance variants for central dashboard cards
 const cardVariants = {
-  hidden: { opacity: 0, y: 60, scale: 0.98 },
+  hidden: { 
+    opacity: 0, 
+    y: 70, 
+    rotateX: 12, // 3D structural perspective entries!
+    scale: 0.96 
+  },
   visible: { 
     opacity: 1, 
     y: 0, 
+    rotateX: 0, 
     scale: 1,
     transition: { 
-      duration: 0.8, 
-      ease: [0.16, 1, 0.3, 1],
+      type: "spring",
+      stiffness: 85,
+      damping: 16,
       staggerChildren: 0.08,
       delayChildren: 0.15
     } 
@@ -115,12 +145,12 @@ const itemUpVariants = {
 };
 
 const titleVariants = {
-  hidden: { opacity: 0, letterSpacing: "0.02em", y: 15 },
+  hidden: { opacity: 0, letterSpacing: "0.22em", y: 15 },
   visible: { 
     opacity: 1, 
-    letterSpacing: "0.08em", 
+    letterSpacing: "0.10em", 
     y: 0,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
   }
 };
 
@@ -413,7 +443,7 @@ export default function CaseStudiesSnapPage() {
                     animate={isSlideActive ? "visible" : "hidden"}
                     whileHover={{ 
                       y: -4, 
-                      boxShadow: "0 20px 50px rgba(0,0,0,0.06), 0 45px 100px rgba(0,0,0,0.15)"
+                      boxShadow: "0 25px 60px rgba(0,0,0,0.08), 0 50px 110px rgba(0,0,0,0.18)"
                     }}
                   >
                     {/* LEFT COLUMN: BRANDING AND IDENTITY */}
@@ -431,7 +461,7 @@ export default function CaseStudiesSnapPage() {
                           {project.title}
                         </motion.h3>
                         
-                        <motion.div className={styles.metaRow} variants={itemUpVariants}>
+                        <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
                           <div className={styles.metaItem}>
                             <span className={styles.metaLabel}>PROPERTY TYPE</span>
                             <span className={styles.metaValue}>{project.propertyType}</span>
@@ -448,17 +478,22 @@ export default function CaseStudiesSnapPage() {
                       <motion.div className={styles.scopeSection} variants={itemUpVariants}>
                         <span className={styles.sectionLabel}>SCOPE OF WORK</span>
                         <motion.div className={styles.badgeContainer} variants={badgeContainerVariants}>
-                          {project.services.map((service) => (
-                            <motion.span 
-                              key={service} 
-                              className={styles.serviceBadge}
-                              variants={badgeVariants}
-                              whileHover={{ y: -2, scale: 1.05 }}
-                              whileTap={{ scale: 0.98 }}
-                            >
-                              {service}
-                            </motion.span>
-                          ))}
+                          {project.services.map((service, sIdx) => {
+                            const dotColors = ['#0ea5e9', '#10b981', '#8b5cf6', '#f59e0b']; // Sky, Emerald, Violet, Amber
+                            const activeColor = dotColors[sIdx % dotColors.length];
+                            return (
+                              <motion.span 
+                                key={service} 
+                                className={styles.serviceBadge}
+                                variants={badgeVariants}
+                                whileHover={{ y: -2, scale: 1.04, boxShadow: "0 4px 12px rgba(0,0,0,0.03)" }}
+                                whileTap={{ scale: 0.98 }}
+                              >
+                                <span className={styles.badgeBullet} style={{ backgroundColor: activeColor }} />
+                                {service}
+                              </motion.span>
+                            );
+                          })}
                         </motion.div>
                       </motion.div>
                     </div>
@@ -475,6 +510,10 @@ export default function CaseStudiesSnapPage() {
                             variants={kpiCardVariants}
                             whileHover={{ y: -3, scale: 1.03 }}
                           >
+                            {/* Upward diagonal arrow for business growth trend indicator */}
+                            <svg className={styles.kpiTrendIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" style={{ transform: 'rotate(-45deg)', transformOrigin: 'center' }} />
+                            </svg>
                             <span className={styles.kpiValue}>{kpi.value}</span>
                             <span className={styles.kpiLabel}>{kpi.label}</span>
                           </motion.div>
