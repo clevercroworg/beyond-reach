@@ -931,6 +931,28 @@
   .kpiValue {
     font-size: clamp(1.2rem, 4.5vw, 1.45rem);
   }
+  .kpiTrendIcon {
+    top: clamp(0.6rem, 2vw, 0.85rem);
+    right: clamp(0.6rem, 2vw, 0.85rem);
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+  .kpiCard:first-child::after {
+    opacity: 1;
+  }
+  .kpiCard:first-child .kpiTrendIcon {
+    opacity: 1;
+    color: #0ea5e9;
+    transform: translate(2px, -2px);
+  }
+  .kpiCard:active::after {
+    opacity: 1;
+  }
+  .kpiCard:active .kpiTrendIcon {
+    opacity: 1;
+    color: #0ea5e9;
+    transform: translate(2px, -2px);
+  }
   .floatingSidebar {
     display: none;
   }

@@ -372,7 +372,7 @@ const DesktopPremiumCard = ({ project, isSlideActive }) => {
               whileHover={{ y: -3, scale: 1.03 }}
             >
               <svg className={styles.kpiTrendIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" style={{ transform: 'rotate(-45deg)', transformOrigin: 'center' }} />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
               </svg>
               <span className={styles.kpiValue}>{kpi.value}</span>
               <span className={styles.kpiLabel}>{kpi.label}</span>
@@ -444,6 +444,9 @@ const MobilePremiumCard = ({ project, isSlideActive }) => {
       <motion.div className={styles.kpiGrid} variants={kpiGridVariants}>
         {project.kpis.map((kpi, kIdx) => (
           <motion.div key={kIdx} className={styles.kpiCard} variants={kpiCardVariants}>
+            <svg className={styles.kpiTrendIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
             <span className={styles.kpiValue}>{kpi.value}</span>
             <span className={styles.kpiLabel}>{kpi.label}</span>
           </motion.div>
