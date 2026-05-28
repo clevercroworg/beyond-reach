@@ -836,13 +836,23 @@ export default function CaseStudiesSnapPage() {
                         muted
                         playsInline
                         poster={project.imgSrc}
-                        initial={idx === 0 && isInitialLoad ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' } : {}}
-                        animate={
+                        initial={
                           idx === 0 && isInitialLoad
-                            ? (introState === 'active' ? { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' } : { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' })
-                            : {}
+                            ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' }
+                            : { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' }
                         }
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        animate={
+                          idx === 0 && isInitialLoad && introState !== 'active'
+                            ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' }
+                            : (isSlideActive
+                                ? { opacity: 0.95, filter: 'brightness(0.95) saturate(1.0)' }
+                                : { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' })
+                        }
+                        transition={{
+                          delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
+                          duration: 1.0,
+                          ease: "easeInOut"
+                        }}
                         key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
                       >
                         {isMobile ? (
