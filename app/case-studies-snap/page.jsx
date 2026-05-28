@@ -862,8 +862,16 @@ export default function CaseStudiesSnapPage() {
                     <motion.div 
                       className={styles.heroVideoOverlay}
                       initial={{ opacity: 0 }}
-                      animate={idx === 0 && isInitialLoad && introState !== 'active' ? { opacity: 0 } : { opacity: 1 }}
-                      transition={{ duration: 0.8 }}
+                      animate={
+                        idx === 0 && isInitialLoad && introState !== 'active'
+                          ? { opacity: 0 }
+                          : (isSlideActive ? { opacity: 0 } : { opacity: 1 })
+                      }
+                      transition={{ 
+                        delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
+                        duration: 1.0,
+                        ease: "easeInOut"
+                      }}
                     />
                     <div className={styles.orb1} />
                     <div className={styles.orb2} />
