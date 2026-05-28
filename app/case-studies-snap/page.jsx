@@ -26,7 +26,7 @@ const GlassDonutChart = ({ data }) => {
             cy="0"
             r={radius}
             fill="none"
-            stroke="rgba(15, 23, 42, 0.06)"
+            stroke="rgba(255, 255, 255, 0.08)"
             strokeWidth="18"
           />
           {data.map((slice, index) => {
@@ -284,10 +284,19 @@ export default function CaseStudiesSnapPage() {
                 <div className={styles.stickyWrapper}>
                   {/* Diagonal Slanted background container */}
                   <div className={styles.diagonalBg}>
-                    <div 
-                      className={styles.heroBgImage}
-                      style={{ backgroundImage: `url(${project.imgSrc})` }}
-                    />
+                    {shouldRenderVideo && (
+                      <video
+                        className={styles.heroBgVideo}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        poster={project.imgSrc}
+                      >
+                        <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
+                        <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                      </video>
+                    )}
                     <div className={styles.heroVideoOverlay}></div>
                   </div>
 

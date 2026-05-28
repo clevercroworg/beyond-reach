@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap');
 
-/* Premium Light-Card Scroll Snap Layout Scoped CSS Module */
+/* Premium Dark Glassmorphic Scroll Snap Layout Scoped CSS Module */
 
 .pageContainer {
-  background-color: #05070c; /* Deep rich canvas background for high contrast */
+  background-color: #05070c; /* Deep rich canvas background */
   color: #ffffff;
   height: 100vh;
   width: 100vw;
@@ -54,7 +54,7 @@
 }
 
 /* =======================================
-   DIAGONAL SCREEN WIPES & BACKGROUNDS (IMAGES)
+   DIAGONAL SCREEN WIPES & BACKGROUNDS (MEDIA LOOPS)
    ======================================= */
 
 .diagonalBg {
@@ -76,19 +76,17 @@
   clip-path: polygon(0 0, 100% 15vh, 100% 100%, 0 100%);
 }
 
-.heroBgImage {
+.heroBgVideo {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.65; /* Increased opacity to make the property photo beautifully visible */
-  filter: saturate(1.0) brightness(0.72) contrast(1.0); /* Warmer, brighter representation of the properties */
+  object-fit: cover;
+  opacity: 0.32; /* Soft contrast with dark glassmorphic dashboard */
+  filter: saturate(0.85) brightness(0.42) contrast(1.05);
   pointer-events: none;
   z-index: 0;
-  transition: transform 0.8s ease;
 }
 
 .heroVideoOverlay {
@@ -98,15 +96,15 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, 
-    rgba(5, 7, 12, 0.45) 0%, /* Soft top vignette for brand header readability */
-    rgba(5, 7, 12, 0.15) 50%, 
-    rgba(5, 7, 12, 0.55) 100%
+    rgba(5, 7, 12, 0.7) 0%, 
+    rgba(5, 7, 12, 0.3) 40%, 
+    rgba(5, 7, 12, 0.8) 100%
   );
   z-index: 1;
 }
 
 /* =======================================
-   FLOATING GLOBAL NAVIGATION BAR (LIGHT TEXT ON DARK BG)
+   FLOATING GLOBAL NAVIGATION BAR
    ======================================= */
 .pageNavbar {
   position: fixed;
@@ -177,34 +175,35 @@
 }
 
 /* =======================================
-   PREMIUM WHITE BACKGROUND CONTENT CARD WITH ADAPTIVE DARK TEXT
+   PREMIUM DARK GLASSMORPHIC PERFORMANCE CARD
    ======================================= */
 .glassCard {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 1140px;
-  background: rgba(255, 255, 255, 0.94); /* Gorgeous solid premium white background */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(11, 15, 26, 0.42); /* Frosted dark luxury glass */
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 28px;
   padding: 2.75rem;
   box-shadow: 
-    0 15px 40px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    0 15px 40px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 3rem;
   margin-top: 1rem;
-  color: #0f172a; /* Slate 900 adaptive dark text */
+  color: #ffffff;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .glassCard:hover {
   box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 20px 50px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 /* LEFT COLUMN STRUCTURE */
@@ -222,14 +221,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(15, 23, 42, 0.05); /* Adaptive light grey badge */
-  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 0.4rem 0.85rem;
   border-radius: 100px;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.05em;
-  color: #334155; /* Slate 700 */
+  color: #e2e8f0;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
@@ -237,7 +236,7 @@
 .locationIcon {
   width: 0.9rem;
   height: 0.9rem;
-  color: #0ea5e9; /* Vibrant sky blue */
+  color: #38bdf8; /* Vibrant Sky Blue */
 }
 
 .projectTitle {
@@ -248,7 +247,10 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0 0 1rem;
-  color: #0f172a; /* Sharp Slate 900 for absolute contrast */
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .metaRow {
@@ -266,28 +268,28 @@
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #64748b; /* Slate 500 */
+  color: #64748b;
   margin-bottom: 0.25rem;
   text-transform: uppercase;
 }
 
 .metaValue {
   font-size: 0.9rem;
-  font-weight: 700;
-  color: #1e293b; /* Slate 800 */
+  font-weight: 600;
+  color: #f1f5f9;
   text-transform: uppercase;
 }
 
 .metaDivider {
   width: 1px;
   height: 24px;
-  background-color: rgba(15, 23, 42, 0.1);
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 /* SCOPE OF WORK SECTORS */
 .scopeSection {
   margin-top: auto;
-  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 1.5rem;
 }
 
@@ -295,7 +297,7 @@
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #64748b;
+  color: #475569;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   display: block;
@@ -307,50 +309,26 @@
   gap: 0.6rem;
 }
 
+/* Premium Slate Translucent Badges - Restrained and Editorial (Not Kiddy!) */
 .serviceBadge {
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 600;
   padding: 0.35rem 0.75rem;
   border-radius: 6px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  transition: all 0.25s ease;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: #cbd5e1;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.badgeSky {
-  background: rgba(14, 165, 233, 0.06);
-  border: 1px solid rgba(14, 165, 233, 0.2);
-  color: #0284c7;
-}
-.badgeSky:hover {
-  background: rgba(14, 165, 233, 0.12);
-}
-
-.badgePurple {
-  background: rgba(168, 85, 247, 0.06);
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  color: #7e22ce;
-}
-.badgePurple:hover {
-  background: rgba(168, 85, 247, 0.12);
-}
-
-.badgeEmerald {
-  background: rgba(16, 185, 129, 0.06);
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  color: #047857;
-}
-.badgeEmerald:hover {
-  background: rgba(16, 185, 129, 0.12);
-}
-
-.badgeAmber {
-  background: rgba(245, 158, 11, 0.06);
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  color: #b45309;
-}
-.badgeAmber:hover {
-  background: rgba(245, 158, 11, 0.12);
+.serviceBadge:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.05);
+  color: #38bdf8;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.1);
 }
 
 /* RIGHT COLUMN STRUCTURE */
@@ -369,8 +347,8 @@
 }
 
 .kpiCard {
-  background: rgba(15, 23, 42, 0.03); /* Light outline-filled metrics cards */
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 14px;
   padding: 1.25rem;
   display: flex;
@@ -379,16 +357,16 @@
 }
 
 .kpiCard:hover {
-  background: rgba(15, 23, 42, 0.06);
-  border-color: rgba(15, 23, 42, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
   transform: translateY(-2px);
 }
 
 .kpiValue {
   font-family: 'Oswald', sans-serif;
   font-size: clamp(1.4rem, 2vw, 1.85rem);
-  font-weight: 700;
-  color: #0f172a;
+  font-weight: 600;
+  color: #ffffff;
   letter-spacing: 0.02em;
   line-height: 1.2;
 }
@@ -405,18 +383,18 @@
 /* DONUT CHART & OUTCOMES SPLIT */
 .analyticsSection {
   display: grid;
-  grid-template-columns: 135px 1fr; /* Increased grid spacing for larger chart */
+  grid-template-columns: 135px 1fr; /* Sized for enlarged chart */
   gap: 1.5rem;
   align-items: center;
-  background: rgba(15, 23, 42, 0.02);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
   border-radius: 18px;
   padding: 1.25rem;
 }
 
 .donutWrapper {
   position: relative;
-  width: 135px; /* Enlarged chart wrapper */
+  width: 135px;
   height: 135px;
   display: flex;
   align-items: center;
@@ -448,21 +426,21 @@
 
 .donutCenterValue {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.35rem; /* Enlarged center percentage value */
+  font-size: 1.35rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #ffffff;
   line-height: 1;
 }
 
 .donutCenterLabel {
-  font-size: 0.6rem; /* Enhanced center text label readability */
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   color: #64748b;
   margin-top: 0.1rem;
   text-transform: uppercase;
   text-align: center;
-  max-width: 85px; /* Wider spacing to prevent premature text clipping */
+  max-width: 85px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -479,7 +457,7 @@
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #64748b;
+  color: #475569;
   text-transform: uppercase;
   margin-bottom: 0.25rem;
 }
@@ -491,10 +469,10 @@
 }
 
 .outcomeBullet {
-  background: rgba(16, 185, 129, 0.1);
-  color: #059669;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
   font-size: 0.65rem;
-  font-weight: 800;
+  font-weight: 700;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -508,7 +486,7 @@
 .outcomeText {
   font-size: 0.78rem;
   line-height: 1.35;
-  color: #334155; /* Slate 700 for complete readability inside white card */
+  color: #cbd5e1;
 }
 
 /* =======================================
@@ -805,12 +783,12 @@
   }
 
   .donutWrapper {
-    width: 105px; /* Slightly enlarged for improved mobile legibility */
+    width: 105px; /* Enlarged mobile chart size for perfect legibility */
     height: 105px;
   }
 
   .donutCenterValue {
-    font-size: 1.15rem; /* Larger adaptive value for centered chart */
+    font-size: 1.15rem;
   }
 
   .floatingSidebar {
