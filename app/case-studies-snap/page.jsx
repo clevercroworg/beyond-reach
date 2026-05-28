@@ -449,6 +449,7 @@ const MobilePremiumCard = ({ project, isSlideActive }) => {
           </motion.div>
         ))}
       </motion.div>
+      <AnalyticsPod project={project} isSlideActive={isSlideActive} />
     </motion.div>
   );
 };
