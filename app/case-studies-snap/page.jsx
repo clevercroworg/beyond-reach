@@ -234,6 +234,22 @@ const donutPodVariants = {
   }
 };
 
+const mediaVariants = {
+  initial: { 
+    scale: 0.15, 
+    opacity: 0,
+    transformOrigin: 'center center'
+  },
+  zoom: { 
+    scale: 1, 
+    opacity: 1,
+    transition: { 
+      duration: 1.8, 
+      ease: [0.16, 1, 0.3, 1] 
+    } 
+  }
+};
+
 const outcomeItemVariants = {
   hidden: { opacity: 0, x: -12 },
   visible: { 
@@ -518,8 +534,8 @@ export default function CaseStudiesSnapPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const filterRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [showPreloader, setShowPreloader] = useState(true);
-  const [preloaderDone, setPreloaderDone] = useState(false);
+  const [introState, setIntroState] = useState('loading'); // 'loading' | 'splitting' | 'active'
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -530,12 +546,26 @@ export default function CaseStudiesSnapPage() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPreloader(false);
-      const doneTimer = setTimeout(() => setPreloaderDone(true), 800);
-      return () => clearTimeout(doneTimer);
-    }, 2400);
-    return () => clearTimeout(timer);
+    // Stage 2: Trigger the text split & center-zooming media at 1.8s
+    const splitTimer = setTimeout(() => {
+      setIntroState('splitting');
+    }, 1800);
+
+    // Stage 3: Reveal overlays at t = 2.8s (exactly when media hits ~75% scale)
+    const activeTimer = setTimeout(() => {
+      setIntroState('active');
+    }, 2800);
+
+    // Stage 4: Unmount preloader logic entirely and trigger cycling at t = 3.6s
+    const doneTimer = setTimeout(() => {
+      setIsInitialLoad(false);
+    }, 3600);
+
+    return () => {
+      clearTimeout(splitTimer);
+      clearTimeout(activeTimer);
+      clearTimeout(doneTimer);
+    };
   }, []);
 
   // Filter 51 data projects sorted alphabetically
@@ -587,7 +617,7 @@ export default function CaseStudiesSnapPage() {
 
   // Stately Auto-Cycle Slideshow Timer
   useEffect(() => {
-    if (showPreloader || filteredStudies.length <= 1) return;
+    if (isInitialLoad || filteredStudies.length <= 1) return;
 
     const interval = setInterval(() => {
       setProgress((prev) => {
@@ -600,7 +630,7 @@ export default function CaseStudiesSnapPage() {
     }, 80);
 
     return () => clearInterval(interval);
-  }, [activeIndex, filteredStudies.length, showPreloader]);
+  }, [activeIndex, filteredStudies.length, isInitialLoad]);
 
   // Close filter dropdown on outside clicks
   useEffect(() => {
@@ -615,44 +645,42 @@ export default function CaseStudiesSnapPage() {
 
   return (
     <div className={styles.pageContainer}>
-      {/* Cinematic Typographic Preloader */}
+      {/* Cinematic Typographic Split Preloader */}
       <AnimatePresence>
-        {showPreloader && (
+        {isInitialLoad && (
           <motion.div 
             className={styles.preloaderContainer}
+            animate={introState !== 'loading' ? { backgroundColor: "rgba(3, 5, 8, 0)" } : { backgroundColor: "#030508" }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            style={{ pointerEvents: introState === 'active' ? 'none' : 'auto' }}
           >
-            {/* Shutter Swipe Panels */}
-            <motion.div 
-              className={styles.preloaderSweepDark}
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: 0 }}
-              exit={{ scaleY: 1 }}
-              transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
-            />
-            <motion.div 
-              className={styles.preloaderSweepAccent}
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: 0 }}
-              exit={{ scaleY: 1 }}
-              transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-            />
-
             <div className={styles.preloaderContent}>
               <motion.span 
                 className={styles.preloaderLogo}
                 initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                animate={
+                  introState === 'splitting' || introState === 'active'
+                    ? { x: "-30vw", opacity: 0, scale: 0.8 }
+                    : { scale: 1, opacity: 1, x: 0 }
+                }
+                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
               >
                 O
               </motion.span>
               <motion.span 
                 className={styles.preloaderWord}
                 initial={{ width: 0, opacity: 0 }}
-                animate={{ width: "auto", opacity: 1 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+                animate={
+                  introState === 'splitting' || introState === 'active'
+                    ? { x: "30vw", opacity: 0, scale: 0.8 }
+                    : { width: "auto", opacity: 1, x: 0 }
+                }
+                transition={{ 
+                  width: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 },
+                  x: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
+                  opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+                }}
               >
                 UR <span className={styles.titleSerifItalic} style={{ textTransform: 'none', color: '#38bdf8' }}>Work.</span>
               </motion.span>
@@ -751,7 +779,12 @@ export default function CaseStudiesSnapPage() {
               >
                 <div className={styles.stickyWrapper}>
                   {/* Diagonal Slanted background container */}
-                  <div className={styles.diagonalBg}>
+                  <motion.div 
+                    className={styles.diagonalBg}
+                    variants={mediaVariants}
+                    initial={idx === 0 && isInitialLoad ? "initial" : false}
+                    animate={idx === 0 && isInitialLoad && introState !== 'loading' ? "zoom" : false}
+                  >
                     {shouldRenderVideo && (
                       <video
                         className={styles.heroBgVideo}
@@ -769,13 +802,13 @@ export default function CaseStudiesSnapPage() {
                     <div className={styles.orb1} />
                     <div className={styles.orb2} />
                     <div className={styles.orb3} />
-                  </div>
+                  </motion.div>
 
                   {/* Render tailored Premium Card based on Viewport */}
                   {isMobile ? (
                     <MobilePremiumCard 
                       project={project} 
-                      isSlideActive={isSlideActive} 
+                      isSlideActive={isSlideActive && (!isInitialLoad || introState === 'active')} 
                       nextProject={filteredStudies[(idx + 1) % filteredStudies.length]}
                       onNextClick={() => navigateToSlide((idx + 1) % filteredStudies.length)}
                       progress={isSlideActive ? progress : 0}
@@ -783,7 +816,7 @@ export default function CaseStudiesSnapPage() {
                   ) : (
                     <DesktopPremiumCard 
                       project={project} 
-                      isSlideActive={isSlideActive} 
+                      isSlideActive={isSlideActive && (!isInitialLoad || introState === 'active')} 
                       nextProject={filteredStudies[(idx + 1) % filteredStudies.length]}
                       onNextClick={() => navigateToSlide((idx + 1) % filteredStudies.length)}
                       progress={isSlideActive ? progress : 0}
