@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import connectToDatabase from '@/lib/mongodb';
 import Client from '@/models/Client';
 import { notFound } from 'next/navigation';
