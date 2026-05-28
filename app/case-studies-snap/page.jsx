@@ -829,17 +829,24 @@ export default function CaseStudiesSnapPage() {
                     animate={idx === 0 && isInitialLoad && introState !== 'loading' ? "zoom" : false}
                   >
                     {shouldRenderVideo && (
-                      <video
+                      <motion.video
                         className={styles.heroBgVideo}
                         autoPlay
                         loop
                         muted
                         playsInline
                         poster={project.imgSrc}
+                        initial={idx === 0 && isInitialLoad ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' } : {}}
+                        animate={
+                          idx === 0 && isInitialLoad
+                            ? (introState === 'active' ? { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' } : { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' })
+                            : {}
+                        }
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
                       >
                         <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
                         <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
-                      </video>
+                      </motion.video>
                     )}
                     <motion.div 
                       className={styles.heroVideoOverlay}
