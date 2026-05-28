@@ -663,7 +663,7 @@ export default function CaseStudiesSnapPage() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={
                   introState === 'splitting' || introState === 'active'
-                    ? { x: "-25vw", opacity: 0, scale: 0.8 }
+                    ? { x: "-50vw", opacity: 0, scale: 0.8 }
                     : { opacity: 1, x: 0, scale: 1 }
                 }
                 transition={{ 
@@ -691,7 +691,7 @@ export default function CaseStudiesSnapPage() {
                 initial={{ opacity: 0, x: 40 }}
                 animate={
                   introState === 'splitting' || introState === 'active'
-                    ? { x: "25vw", opacity: 0, scale: 0.8 }
+                    ? { x: "50vw", opacity: 0, scale: 0.8 }
                     : { opacity: 1, x: 0, scale: 1 }
                 }
                 transition={{ 
