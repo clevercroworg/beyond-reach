@@ -248,7 +248,7 @@ const mediaVariants = {
     border: '1px solid rgba(255, 255, 255, 0)',
     transition: { 
       duration: 3.5, // slower and smoother cinematic reveal!
-      ease: [0.08, 1, 0.18, 1] 
+      ease: [0.42, 0, 0.58, 1] 
     } 
   }
 };
@@ -554,10 +554,10 @@ export default function CaseStudiesSnapPage() {
       setIntroState('splitting');
     }, 2000);
 
-    // Stage 3: Reveal overlays at t = 4.2s (exactly when media hits ~80% scale of a 3.5s zoom!)
+    // Stage 3: Reveal overlays at t = 4.8s (exactly when media hits ~85% scale of a 3.5s zoom!)
     const activeTimer = setTimeout(() => {
       setIntroState('active');
-    }, 4200);
+    }, 4800);
 
     // Stage 4: Unmount preloader logic entirely and trigger cycling at t = 5.5s (full zoom completion)
     const doneTimer = setTimeout(() => {
@@ -667,9 +667,9 @@ export default function CaseStudiesSnapPage() {
                     : { opacity: 1, x: 0, scale: 1 }
                 }
                 transition={{ 
-                  x: { duration: 2.2, ease: [0.08, 1, 0.18, 1] },
-                  opacity: { duration: 1.8, ease: [0.08, 1, 0.18, 1] },
-                  scale: { duration: 1.8, ease: [0.08, 1, 0.18, 1] }
+                  x: { duration: 3.5, ease: [0.42, 0, 0.58, 1] },
+                  opacity: { duration: 3.5, ease: [0.42, 0, 0.58, 1] },
+                  scale: { duration: 3.5, ease: [0.42, 0, 0.58, 1] }
                 }}
               >
                 <span className={styles.preloaderLogo}>O</span>
@@ -682,7 +682,7 @@ export default function CaseStudiesSnapPage() {
                   className={styles.preloaderGap}
                   initial={{ scaleX: 1, opacity: 1 }}
                   animate={introState === 'splitting' || introState === 'active' ? { scaleX: 0, opacity: 0 } : { scaleX: 1, opacity: 1 }}
-                  transition={{ duration: 1.5, ease: [0.08, 1, 0.18, 1] }}
+                  transition={{ duration: 3.5, ease: [0.42, 0, 0.58, 1] }}
                 />
               )}
 
@@ -695,9 +695,9 @@ export default function CaseStudiesSnapPage() {
                     : { opacity: 1, x: 0, scale: 1 }
                 }
                 transition={{ 
-                  x: { duration: 2.2, ease: [0.08, 1, 0.18, 1] },
-                  opacity: { duration: 1.8, ease: [0.08, 1, 0.18, 1] },
-                  scale: { duration: 1.8, ease: [0.08, 1, 0.18, 1] }
+                  x: { duration: 3.5, ease: [0.42, 0, 0.58, 1] },
+                  opacity: { duration: 3.5, ease: [0.42, 0, 0.58, 1] },
+                  scale: { duration: 3.5, ease: [0.42, 0, 0.58, 1] }
                 }}
               >
                 <span className={styles.titleSerifItalic} style={{ textTransform: 'none', color: '#38bdf8' }}>Work.</span>
