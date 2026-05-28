@@ -26,7 +26,7 @@ const GlassDonutChart = ({ data }) => {
             cy="0"
             r={radius}
             fill="none"
-            stroke="rgba(255, 255, 255, 0.08)"
+            stroke="rgba(15, 23, 42, 0.06)"
             strokeWidth="18"
           />
           {data.map((slice, index) => {

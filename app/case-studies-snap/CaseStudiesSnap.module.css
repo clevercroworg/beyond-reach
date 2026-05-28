@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@300;400;500;600;700&display=swap');
 
-/* Premium Dark Glassmorphic Scroll Snap Layout Scoped CSS Module */
+/* Premium Luxury White-Card Scroll Snap Layout Scoped CSS Module */
 
 .pageContainer {
-  background-color: #05070c; /* Deep rich canvas background */
+  background-color: #05070c; /* Deep rich canvas background for high contrast overlay */
   color: #ffffff;
   height: 100vh;
   width: 100vw;
@@ -83,8 +83,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.32; /* Soft contrast with dark glassmorphic dashboard */
-  filter: saturate(0.85) brightness(0.42) contrast(1.05);
+  opacity: 0.35; /* Darkened visual backdrop for extreme contrast with premium white card */
+  filter: saturate(0.9) brightness(0.42) contrast(1.05);
   pointer-events: none;
   z-index: 0;
 }
@@ -104,7 +104,7 @@
 }
 
 /* =======================================
-   FLOATING GLOBAL NAVIGATION BAR
+   FLOATING GLOBAL NAVIGATION BAR (LIGHT TEXT ON DARK CANVAS)
    ======================================= */
 .pageNavbar {
   position: fixed;
@@ -175,35 +175,34 @@
 }
 
 /* =======================================
-   PREMIUM DARK GLASSMORPHIC PERFORMANCE CARD
+   PREMIUM Frosted White Background Card with Elegant Shadows & Spacing
    ======================================= */
 .glassCard {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 1140px;
-  background: rgba(11, 15, 26, 0.42); /* Frosted dark luxury glass */
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.88); /* Frosted premium luminous white */
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 28px;
   padding: 2.75rem;
   box-shadow: 
-    0 15px 40px rgba(0, 0, 0, 0.38),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 30px 70px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 3rem;
   margin-top: 1rem;
-  color: #ffffff;
+  color: #0f172a; /* Slate 900 adaptive dark text */
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .glassCard:hover {
   box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.48),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.12);
+    0 35px 80px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 /* LEFT COLUMN STRUCTURE */
@@ -221,14 +220,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.05); /* Translucent slate location badge */
+  border: 1px solid rgba(15, 23, 42, 0.08);
   padding: 0.4rem 0.85rem;
   border-radius: 100px;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.05em;
-  color: #e2e8f0;
+  color: #475569; /* Slate 600 */
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
@@ -236,7 +235,7 @@
 .locationIcon {
   width: 0.9rem;
   height: 0.9rem;
-  color: #38bdf8; /* Vibrant Sky Blue */
+  color: #0ea5e9; /* Vibrant sky blue */
 }
 
 .projectTitle {
@@ -247,10 +246,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0 0 1rem;
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #0f172a; /* Sharp Slate 900 for absolute contrast */
 }
 
 .metaRow {
@@ -268,28 +264,28 @@
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: #64748b;
+  color: #64748b; /* Slate 500 */
   margin-bottom: 0.25rem;
   text-transform: uppercase;
 }
 
 .metaValue {
   font-size: 0.9rem;
-  font-weight: 600;
-  color: #f1f5f9;
+  font-weight: 700;
+  color: #1e293b; /* Slate 800 */
   text-transform: uppercase;
 }
 
 .metaDivider {
   width: 1px;
   height: 24px;
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(15, 23, 42, 0.1);
 }
 
 /* SCOPE OF WORK SECTORS */
 .scopeSection {
   margin-top: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
   padding-top: 1.5rem;
 }
 
@@ -297,7 +293,7 @@
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #475569;
+  color: #64748b;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   display: block;
@@ -309,7 +305,7 @@
   gap: 0.6rem;
 }
 
-/* Premium Slate Translucent Badges - Restrained and Editorial (Not Kiddy!) */
+/* Unified Translucent Slate Badges - Restrained and High-End Editorial (Not Kiddy!) */
 .serviceBadge {
   font-size: 0.72rem;
   font-weight: 600;
@@ -317,18 +313,18 @@
   border-radius: 6px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  color: #cbd5e1;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  color: #475569; /* Sleek Slate 600 text */
   transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .serviceBadge:hover {
-  border-color: rgba(56, 189, 248, 0.3);
-  background: rgba(56, 189, 248, 0.05);
-  color: #38bdf8;
+  border-color: rgba(15, 23, 42, 0.18);
+  background: rgba(15, 23, 42, 0.08);
+  color: #0f172a; /* Full Slate 900 contrast on hover */
   transform: translateY(-1px);
-  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.1);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
 }
 
 /* RIGHT COLUMN STRUCTURE */
@@ -347,26 +343,27 @@
 }
 
 .kpiCard {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.02); /* Light outline-filled metrics cards */
+  border: 1px solid rgba(15, 23, 42, 0.05);
   border-radius: 14px;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .kpiCard:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.04);
+  border-color: rgba(15, 23, 42, 0.08);
   transform: translateY(-2px);
 }
 
 .kpiValue {
   font-family: 'Oswald', sans-serif;
   font-size: clamp(1.4rem, 2vw, 1.85rem);
-  font-weight: 600;
-  color: #ffffff;
+  font-weight: 700;
+  color: #0f172a;
   letter-spacing: 0.02em;
   line-height: 1.2;
 }
@@ -386,9 +383,9 @@
   grid-template-columns: 135px 1fr; /* Sized for enlarged chart */
   gap: 1.5rem;
   align-items: center;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.015);
+  border: 1px solid rgba(15, 23, 42, 0.04);
+  border-radius: 20px;
   padding: 1.25rem;
 }
 
@@ -428,7 +425,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: 1.35rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #0f172a;
   line-height: 1;
 }
 
@@ -457,7 +454,7 @@
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #475569;
+  color: #64748b;
   text-transform: uppercase;
   margin-bottom: 0.25rem;
 }
@@ -469,10 +466,10 @@
 }
 
 .outcomeBullet {
-  background: rgba(16, 185, 129, 0.15);
-  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: 800;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -486,7 +483,7 @@
 .outcomeText {
   font-size: 0.78rem;
   line-height: 1.35;
-  color: #cbd5e1;
+  color: #334155; /* Slate 700 for complete readability inside white card */
 }
 
 /* =======================================
