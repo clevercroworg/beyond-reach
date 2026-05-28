@@ -295,18 +295,35 @@ const getCategoryForProject = (propertyType) => {
   return 'Event venues';
 };
 
+// Splits title into main sans-serif part and beautiful serif italic last word (e.g. "AHILYA FORT" -> "AHILYA Fort.")
+const renderSplitTitle = (title) => {
+  if (!title) return '';
+  const words = title.split(' ');
+  if (words.length <= 1) {
+    return <span className={styles.titleSerifItalic}>{title}</span>;
+  }
+  const lastWord = words[words.length - 1];
+  const mainPart = words.slice(0, words.length - 1).join(' ');
+  
+  // Format last word elegantly (e.g. FORT -> Fort.)
+  const formattedLast = lastWord.charAt(0).toUpperCase() + lastWord.slice(1).toLowerCase();
+  
+  return (
+    <>
+      <span className={styles.titleSans}>{mainPart} </span>
+      <span className={styles.titleSerifItalic}>{formattedLast}.</span>
+    </>
+  );
+};
+
 // --- PREMIUM DESKTOP CARD ---
-const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick }) => {
+const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick, progress }) => {
   return (
     <motion.div 
       className={styles.desktopCard}
       variants={cardVariants}
       initial="hidden"
       animate={isSlideActive ? "visible" : "hidden"}
-      whileHover={{ 
-        y: -4, 
-        boxShadow: "0 25px 60px rgba(0,0,0,0.6), 0 50px 110px rgba(0,0,0,0.8)"
-      }}
     >
       <div className={styles.leftCol}>
         <div className={styles.identityBlock}>
@@ -319,7 +336,7 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick }
           </motion.div>
           
           <motion.h3 className={styles.projectTitle} variants={titleVariants}>
-            {project.title}
+            {renderSplitTitle(project.title)}
           </motion.h3>
           
           <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
@@ -374,8 +391,7 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick }
             <div className={styles.loopLineContainer}>
               <motion.div 
                 className={styles.loopLine}
-                animate={{ x: ["-100%", "100%"] }}
-                transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
+                style={{ width: `${progress}%` }}
               />
             </div>
           </div>
@@ -406,7 +422,7 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick }
 };
 
 // --- PREMIUM MOBILE CARD ---
-const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick }) => {
+const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick, progress }) => {
   return (
     <motion.div 
       className={styles.mobileCard}
@@ -424,7 +440,7 @@ const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick })
         </motion.div>
         
         <motion.h3 className={styles.projectTitle} variants={titleVariants}>
-          {project.title}
+          {renderSplitTitle(project.title)}
         </motion.h3>
         
         <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
@@ -486,8 +502,7 @@ const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick })
           <div className={styles.loopLineContainer}>
             <motion.div 
               className={styles.loopLine}
-              animate={{ x: ["-100%", "100%"] }}
-              transition={{ repeat: Infinity, duration: 1.8, ease: "linear" }}
+              style={{ width: `${progress}%` }}
             />
           </div>
         </div>
@@ -505,6 +520,7 @@ export default function CaseStudiesSnapPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [showPreloader, setShowPreloader] = useState(true);
   const [preloaderDone, setPreloaderDone] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -527,6 +543,20 @@ export default function CaseStudiesSnapPage() {
     ? caseStudiesData
     : caseStudiesData.filter(p => getCategoryForProject(p.propertyType) === activeFilter);
 
+  // Clickable sidebar dots navigation helper
+  const navigateToSlide = (index) => {
+    const container = containerRef.current;
+    if (!container) return;
+    const slideHeight = container.clientHeight;
+    
+    container.scrollTo({
+      top: index * slideHeight,
+      behavior: 'smooth'
+    });
+    setActiveIndex(index);
+    setProgress(0); // Reset timer immediately on navigation!
+  };
+
   // Handle active slide tracking via container scrolling
   useEffect(() => {
     const container = containerRef.current;
@@ -539,6 +569,7 @@ export default function CaseStudiesSnapPage() {
         const index = Math.round(scrollPos / slideHeight);
         if (index !== activeIndex && index >= 0 && index < filteredStudies.length) {
           setActiveIndex(index);
+          setProgress(0); // Reset progress on scroll shift!
         }
       }
     };
@@ -554,18 +585,22 @@ export default function CaseStudiesSnapPage() {
     return () => container.removeEventListener('scroll', handleScroll);
   }, [activeIndex, filteredStudies.length]);
 
-  // Clickable sidebar dots navigation helper
-  const navigateToSlide = (index) => {
-    const container = containerRef.current;
-    if (!container) return;
-    const slideHeight = container.clientHeight;
-    
-    container.scrollTo({
-      top: index * slideHeight,
-      behavior: 'smooth'
-    });
-    setActiveIndex(index);
-  };
+  // Stately Auto-Cycle Slideshow Timer
+  useEffect(() => {
+    if (showPreloader || filteredStudies.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          navigateToSlide((activeIndex + 1) % filteredStudies.length);
+          return 0;
+        }
+        return prev + 1.25; // 80 steps over 6.4s (or adjust value to perfect 8s duration: ~1% per 80ms)
+      });
+    }, 80);
+
+    return () => clearInterval(interval);
+  }, [activeIndex, filteredStudies.length, showPreloader]);
 
   // Close filter dropdown on outside clicks
   useEffect(() => {
@@ -619,7 +654,7 @@ export default function CaseStudiesSnapPage() {
                 animate={{ width: "auto", opacity: 1 }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
               >
-                UR WORK.
+                UR <span className={styles.titleSerifItalic} style={{ textTransform: 'none', color: '#38bdf8' }}>Work.</span>
               </motion.span>
             </div>
           </motion.div>
@@ -731,6 +766,9 @@ export default function CaseStudiesSnapPage() {
                       </video>
                     )}
                     <div className={styles.heroVideoOverlay}></div>
+                    <div className={styles.orb1} />
+                    <div className={styles.orb2} />
+                    <div className={styles.orb3} />
                   </div>
 
                   {/* Render tailored Premium Card based on Viewport */}
@@ -740,6 +778,7 @@ export default function CaseStudiesSnapPage() {
                       isSlideActive={isSlideActive} 
                       nextProject={filteredStudies[(idx + 1) % filteredStudies.length]}
                       onNextClick={() => navigateToSlide((idx + 1) % filteredStudies.length)}
+                      progress={isSlideActive ? progress : 0}
                     />
                   ) : (
                     <DesktopPremiumCard 
@@ -747,6 +786,7 @@ export default function CaseStudiesSnapPage() {
                       isSlideActive={isSlideActive} 
                       nextProject={filteredStudies[(idx + 1) % filteredStudies.length]}
                       onNextClick={() => navigateToSlide((idx + 1) % filteredStudies.length)}
+                      progress={isSlideActive ? progress : 0}
                     />
                   )}
                 </div>
