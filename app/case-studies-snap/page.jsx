@@ -40,7 +40,7 @@ const AnalyticsPod = ({ project, isSlideActive }) => {
               cy="0"
               r={radius}
               fill="none"
-              stroke="rgba(15, 23, 42, 0.05)"
+              stroke="rgba(255, 255, 255, 0.08)"
               strokeWidth="18"
             />
             {data.map((slice, index) => {
@@ -120,10 +120,10 @@ const AnalyticsPod = ({ project, isSlideActive }) => {
             onMouseLeave={() => setHoveredIndex(null)}
             onClick={() => setSelectedIndex(index)}
             style={{
-              borderColor: activeIndex === index ? slice.color : 'rgba(15, 23, 42, 0.04)',
-              background: activeIndex === index ? `${slice.color}0a` : 'rgba(15, 23, 42, 0.02)',
-              color: activeIndex === index ? '#0f172a' : '#475569',
-              boxShadow: activeIndex === index ? `0 2px 8px ${slice.color}15` : 'none'
+              borderColor: activeIndex === index ? slice.color : 'rgba(255, 255, 255, 0.08)',
+              background: activeIndex === index ? `${slice.color}18` : 'rgba(255, 255, 255, 0.03)',
+              color: activeIndex === index ? '#ffffff' : '#94a3b8',
+              boxShadow: activeIndex === index ? `0 4px 12px ${slice.color}25` : 'none'
             }}
           >
             <span className={styles.legendDot} style={{ backgroundColor: slice.color }} />
@@ -236,7 +236,7 @@ const donutPodVariants = {
 
 const mediaVariants = {
   initial: { 
-    scale: 0.15, 
+    scale: 0.07, 
     opacity: 0, // initially pitch-black gap!
     border: '1px solid rgba(255, 255, 255, 0.25)',
     transformOrigin: 'center center',
@@ -355,7 +355,7 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick, 
           </motion.div>
           
           <motion.h3 className={styles.projectTitle} variants={titleVariants}>
-            {renderSplitTitle(project.title)}
+            {project.title}
           </motion.h3>
           
           <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
@@ -459,7 +459,7 @@ const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick, p
         </motion.div>
         
         <motion.h3 className={styles.projectTitle} variants={titleVariants}>
-          {renderSplitTitle(project.title)}
+          {project.title}
         </motion.h3>
         
         <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
@@ -646,6 +646,14 @@ export default function CaseStudiesSnapPage() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Automatically scroll the active dot wrapper into view within the hidden scroll container
+  useEffect(() => {
+    const activeDotEl = document.getElementById(`dot-${activeIndex}`);
+    if (activeDotEl) {
+      activeDotEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [activeIndex]);
+
   return (
     <div className={styles.pageContainer}>
       {/* Cinematic Typographic Split Preloader */}
@@ -784,7 +792,12 @@ export default function CaseStudiesSnapPage() {
           style={{ pointerEvents: !isInitialLoad || introState === 'active' ? 'auto' : 'none' }}
         >
           {filteredStudies.map((project, idx) => (
-            <div key={project.id} className={styles.dotWrapper} onClick={() => navigateToSlide(idx)}>
+            <div 
+              key={project.id} 
+              id={`dot-${idx}`}
+              className={styles.dotWrapper} 
+              onClick={() => navigateToSlide(idx)}
+            >
               <span className={styles.dotLabel}>{project.title}</span>
               <div className={`${styles.dot} ${activeIndex === idx ? styles.dotActive : ''}`} />
             </div>
