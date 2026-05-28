@@ -235,14 +235,17 @@ const donutPodVariants = {
 };
 
 const mediaVariants = {
-  initial: { 
-    scale: 0.15, 
-    opacity: 0,
-    transformOrigin: 'center center'
-  },
+  initial: (isMobile) => ({ 
+    scale: isMobile ? 0.22 : 0.12, 
+    opacity: 1,
+    border: '1px solid rgba(255, 255, 255, 0.25)',
+    transformOrigin: 'center center',
+    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' // straight corners in mini mode
+  }),
   zoom: { 
     scale: 1, 
     opacity: 1,
+    border: '1px solid rgba(255, 255, 255, 0)',
     transition: { 
       duration: 1.8, 
       ease: [0.16, 1, 0.3, 1] 
@@ -656,33 +659,61 @@ export default function CaseStudiesSnapPage() {
             style={{ pointerEvents: introState === 'active' ? 'none' : 'auto' }}
           >
             <div className={styles.preloaderContent}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.15em' }}>
+                <motion.span 
+                  className={styles.preloaderLogo}
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={
+                    introState === 'splitting' || introState === 'active'
+                      ? { x: "-35vw", opacity: 0, scale: 0.8 }
+                      : { scale: 1, opacity: 1, x: 0 }
+                  }
+                  transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  O
+                </motion.span>
+                <motion.span 
+                  className={styles.preloaderWord}
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={
+                    introState === 'splitting' || introState === 'active'
+                      ? { x: "-20vw", opacity: 0, scale: 0.8 }
+                      : { width: "auto", opacity: 1, x: 0 }
+                  }
+                  transition={{ 
+                    width: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 },
+                    x: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
+                    opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+                  }}
+                >
+                  UR
+                </motion.span>
+              </div>
+
+              {/* Center Gap for the Centered Expanding Mini Square */}
+              {isInitialLoad && (
+                <motion.div 
+                  className={styles.preloaderGap}
+                  animate={introState === 'splitting' || introState === 'active' ? { width: 0, opacity: 0 } : { width: 'auto', opacity: 1 }}
+                  transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                />
+              )}
+
               <motion.span 
-                className={styles.preloaderLogo}
-                initial={{ scale: 0.5, opacity: 0 }}
+                className={styles.preloaderWordRight}
+                initial={{ opacity: 0, x: 40 }}
                 animate={
                   introState === 'splitting' || introState === 'active'
-                    ? { x: "-30vw", opacity: 0, scale: 0.8 }
-                    : { scale: 1, opacity: 1, x: 0 }
-                }
-                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-              >
-                O
-              </motion.span>
-              <motion.span 
-                className={styles.preloaderWord}
-                initial={{ width: 0, opacity: 0 }}
-                animate={
-                  introState === 'splitting' || introState === 'active'
-                    ? { x: "30vw", opacity: 0, scale: 0.8 }
-                    : { width: "auto", opacity: 1, x: 0 }
+                    ? { x: "35vw", opacity: 0, scale: 0.8 }
+                    : { opacity: 1, x: 0 }
                 }
                 transition={{ 
-                  width: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 },
+                  opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.8 },
                   x: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
-                  opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+                  scale: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
                 }}
               >
-                UR <span className={styles.titleSerifItalic} style={{ textTransform: 'none', color: '#38bdf8' }}>Work.</span>
+                <span className={styles.titleSerifItalic} style={{ textTransform: 'none', color: '#38bdf8' }}>Work.</span>
               </motion.span>
             </div>
           </motion.div>
@@ -802,6 +833,32 @@ export default function CaseStudiesSnapPage() {
                     <div className={styles.orb1} />
                     <div className={styles.orb2} />
                     <div className={styles.orb3} />
+                    
+                    {/* Editorial wireframe corner markers during zoom reveal */}
+                    {idx === 0 && isInitialLoad && (
+                      <>
+                        <motion.div 
+                          className={`${styles.wireframeCorner} ${styles.topLeftCorner}`}
+                          animate={introState === 'active' ? { opacity: 0 } : { opacity: 0.7 }}
+                          transition={{ duration: 0.6 }}
+                        >+</motion.div>
+                        <motion.div 
+                          className={`${styles.wireframeCorner} ${styles.topRightCorner}`}
+                          animate={introState === 'active' ? { opacity: 0 } : { opacity: 0.7 }}
+                          transition={{ duration: 0.6 }}
+                        >+</motion.div>
+                        <motion.div 
+                          className={`${styles.wireframeCorner} ${styles.bottomLeftCorner}`}
+                          animate={introState === 'active' ? { opacity: 0 } : { opacity: 0.7 }}
+                          transition={{ duration: 0.6 }}
+                        >+</motion.div>
+                        <motion.div 
+                          className={`${styles.wireframeCorner} ${styles.bottomRightCorner}`}
+                          animate={introState === 'active' ? { opacity: 0 } : { opacity: 0.7 }}
+                          transition={{ duration: 0.6 }}
+                        >+</motion.div>
+                      </>
+                    )}
                   </motion.div>
 
                   {/* Render tailored Premium Card based on Viewport */}

@@ -1188,3 +1188,48 @@
     font-size: 0.9rem;
   }
 }
+
+/* ==========================================================================
+   HIGH-PRECISION WIREFRAME ALIGNMENT & CORNER MARKERS
+   ========================================================================== */
+
+.preloaderGap {
+  width: clamp(100px, 12vw, 150px);
+  height: clamp(65px, 8vw, 100px);
+  flex-shrink: 0;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.wireframeCorner {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1;
+  pointer-events: none;
+  z-index: 10;
+  user-select: none;
+}
+
+.topLeftCorner {
+  top: 12px;
+  left: 12px;
+}
+
+.topRightCorner {
+  top: 12px;
+  right: 12px;
+}
+
+.bottomLeftCorner {
+  bottom: 12px;
+  left: 12px;
+}
+
+.bottomRightCorner {
+  bottom: 12px;
+  right: 12px;
+}
+
