@@ -239,7 +239,7 @@ const mediaVariants = {
     scale: 0.07, 
     opacity: 0, // initially pitch-black gap!
     border: '1px solid rgba(255, 255, 255, 0.25)',
-    transformOrigin: 'center center',
+    transformOrigin: '50% 56.5%',
     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' // straight corners in mini mode
   },
   zoom: { 
@@ -843,9 +843,16 @@ export default function CaseStudiesSnapPage() {
                             : {}
                         }
                         transition={{ duration: 0.8, ease: "easeInOut" }}
+                        key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
                       >
-                        <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
-                        <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                        {isMobile && idx === 0 ? (
+                          <source src="/case-studies/assets/riva-beach-resort-mobile.mp4" type="video/mp4" />
+                        ) : (
+                          <>
+                            <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
+                            <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                          </>
+                        )}
                       </motion.video>
                     )}
                     <motion.div 

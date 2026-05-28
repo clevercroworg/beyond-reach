@@ -1243,6 +1243,16 @@
   .loopTitle {
     font-size: 0.9rem;
   }
+
+  .preloaderContent {
+    font-size: clamp(2.4rem, 10vw, 3.8rem) !important;
+    gap: 0.15rem !important;
+  }
+
+  .preloaderGap {
+    width: clamp(28px, 8vw, 48px) !important;
+    height: clamp(20px, 6vw, 34px) !important;
+  }
 }
 
 /* ==========================================================================
