@@ -5,6 +5,7 @@ import styles from './CaseStudiesSnap.module.css';
 import { caseStudiesData } from '../case-studies/caseStudiesData';
 
 // Custom fully interactive SVG Donut Chart component suited for premium dark mode
+// Custom fully interactive SVG Donut Chart component suited for premium dark mode
 const GlassDonutChart = ({ data }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -26,7 +27,7 @@ const GlassDonutChart = ({ data }) => {
             cy="0"
             r={radius}
             fill="none"
-            stroke="rgba(15, 23, 42, 0.06)"
+            stroke="rgba(15, 23, 42, 0.05)"
             strokeWidth="18"
           />
           {data.map((slice, index) => {
@@ -38,7 +39,7 @@ const GlassDonutChart = ({ data }) => {
             const isSegmentActive = activeIndex === index;
 
             return (
-              <circle
+              <motion.circle
                 key={slice.name}
                 className={styles.donutSegment}
                 r={radius}
@@ -46,9 +47,11 @@ const GlassDonutChart = ({ data }) => {
                 cy="0"
                 fill="none"
                 stroke={slice.color}
-                strokeWidth={isSegmentActive ? "22" : "18"}
-                strokeDasharray={`${circumference} ${circumference}`}
-                strokeDashoffset={strokeDashoffset}
+                strokeWidth={isSegmentActive ? 22 : 18}
+                strokeDasharray={circumference}
+                initial={{ strokeDashoffset: circumference }}
+                animate={{ strokeDashoffset: strokeDashoffset }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                 transform={`rotate(${rotation})`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
@@ -56,7 +59,8 @@ const GlassDonutChart = ({ data }) => {
                 onTouchStart={() => setSelectedIndex(index)}
                 style={{
                   opacity: isSegmentActive ? 1 : 0.65,
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  transformOrigin: '0px 0px'
                 }}
               />
             );
@@ -74,6 +78,107 @@ const GlassDonutChart = ({ data }) => {
       </div>
     </div>
   );
+};
+
+// Premium, high-fidelity staggered entrance variants for central dashboard cards
+const cardVariants = {
+  hidden: { opacity: 0, y: 60, scale: 0.98 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { 
+      duration: 0.8, 
+      ease: [0.16, 1, 0.3, 1],
+      staggerChildren: 0.08,
+      delayChildren: 0.15
+    } 
+  }
+};
+
+const itemDownVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { type: "spring", stiffness: 300, damping: 25 } 
+  }
+};
+
+const itemUpVariants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { type: "spring", stiffness: 260, damping: 26 } 
+  }
+};
+
+const titleVariants = {
+  hidden: { opacity: 0, letterSpacing: "0.02em", y: 15 },
+  visible: { 
+    opacity: 1, 
+    letterSpacing: "0.08em", 
+    y: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+const badgeContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { 
+      staggerChildren: 0.05 
+    }
+  }
+};
+
+const badgeVariants = {
+  hidden: { opacity: 0, scale: 0.88, y: 5 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    y: 0,
+    transition: { type: "spring", stiffness: 350, damping: 22 } 
+  }
+};
+
+const kpiGridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const kpiCardVariants = {
+  hidden: { opacity: 0, x: 25, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    scale: 1,
+    transition: { type: "spring", stiffness: 220, damping: 22 } 
+  }
+};
+
+const donutPodVariants = {
+  hidden: { opacity: 0, scale: 0.92, rotate: 3 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    rotate: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } 
+  }
+};
+
+const outcomeItemVariants = {
+  hidden: { opacity: 0, x: -12 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: { type: "spring", stiffness: 200, damping: 22 }
+  }
 };
 
 const filterCategories = [
@@ -300,26 +405,33 @@ export default function CaseStudiesSnapPage() {
                     <div className={styles.heroVideoOverlay}></div>
                   </div>
 
-                  {/* Glassmorphic Central Content Dashboard Dashboard card */}
+                  {/* Glassmorphic Central Content Dashboard card */}
                   <motion.div 
                     className={styles.glassCard}
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={isSlideActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                    transition={{ duration: 0.6, cubicBezier: [0.16, 1, 0.3, 1] }}
+                    variants={cardVariants}
+                    initial="hidden"
+                    animate={isSlideActive ? "visible" : "hidden"}
+                    whileHover={{ 
+                      y: -4, 
+                      boxShadow: "0 20px 50px rgba(0,0,0,0.06), 0 45px 100px rgba(0,0,0,0.15)"
+                    }}
                   >
                     {/* LEFT COLUMN: BRANDING AND IDENTITY */}
                     <div className={styles.leftCol}>
                       <div className={styles.identityBlock}>
-                        <div className={styles.locationBadge}>
+                        <motion.div className={styles.locationBadge} variants={itemDownVariants}>
                           <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                           </svg>
                           <span>{project.location}</span>
-                        </div>
-                        <h3 className={styles.projectTitle}>{project.title}</h3>
+                        </motion.div>
                         
-                        <div className={styles.metaRow}>
+                        <motion.h3 className={styles.projectTitle} variants={titleVariants}>
+                          {project.title}
+                        </motion.h3>
+                        
+                        <motion.div className={styles.metaRow} variants={itemUpVariants}>
                           <div className={styles.metaItem}>
                             <span className={styles.metaLabel}>PROPERTY TYPE</span>
                             <span className={styles.metaValue}>{project.propertyType}</span>
@@ -329,46 +441,48 @@ export default function CaseStudiesSnapPage() {
                             <span className={styles.metaLabel}>CAPACITY</span>
                             <span className={styles.metaValue}>{project.capacity}</span>
                           </div>
-                        </div>
+                        </motion.div>
                       </div>
 
                       {/* Scope of Work badges */}
-                      <div className={styles.scopeSection}>
+                      <motion.div className={styles.scopeSection} variants={itemUpVariants}>
                         <span className={styles.sectionLabel}>SCOPE OF WORK</span>
-                        <div className={styles.badgeContainer}>
-                          {project.services.map((service, sIdx) => {
-                            const badgeStyles = [
-                              styles.badgeSky,
-                              styles.badgePurple,
-                              styles.badgeEmerald,
-                              styles.badgeAmber
-                            ];
-                            const badgeStyle = badgeStyles[sIdx % badgeStyles.length];
-                            return (
-                              <span key={service} className={`${styles.serviceBadge} ${badgeStyle}`}>
-                                {service}
-                              </span>
-                            );
-                          })}
-                        </div>
-                      </div>
+                        <motion.div className={styles.badgeContainer} variants={badgeContainerVariants}>
+                          {project.services.map((service) => (
+                            <motion.span 
+                              key={service} 
+                              className={styles.serviceBadge}
+                              variants={badgeVariants}
+                              whileHover={{ y: -2, scale: 1.05 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              {service}
+                            </motion.span>
+                          ))}
+                        </motion.div>
+                      </motion.div>
                     </div>
 
-                    {/* RIGHT COLUMN: NUMERICAL STATS AND interactive AUDITS */}
+                    {/* RIGHT COLUMN: NUMERICAL STATS AND INTERACTIVE AUDITS */}
                     <div className={styles.rightCol}>
                       
                       {/* Compact KPI Card Row */}
-                      <div className={styles.kpiGrid}>
+                      <motion.div className={styles.kpiGrid} variants={kpiGridVariants}>
                         {project.kpis.map((kpi, kIdx) => (
-                          <div key={kIdx} className={styles.kpiCard}>
+                          <motion.div 
+                            key={kIdx} 
+                            className={styles.kpiCard}
+                            variants={kpiCardVariants}
+                            whileHover={{ y: -3, scale: 1.03 }}
+                          >
                             <span className={styles.kpiValue}>{kpi.value}</span>
                             <span className={styles.kpiLabel}>{kpi.label}</span>
-                          </div>
+                          </motion.div>
                         ))}
-                      </div>
+                      </motion.div>
 
-                      {/* interactive Analytics Split row */}
-                      <div className={styles.analyticsSection}>
+                      {/* Interactive Analytics Split row */}
+                      <motion.div className={styles.analyticsSection} variants={donutPodVariants}>
                         {isSlideActive ? (
                           <GlassDonutChart data={project.pieData} />
                         ) : (
@@ -378,16 +492,22 @@ export default function CaseStudiesSnapPage() {
                         {/* Compact outcomes list */}
                         <div className={styles.outcomesWrapper}>
                           <span className={styles.outcomeTitle}>WHAT WE DELIVERED</span>
-                          {project.bulletPoints.slice(0, 3).map((point, pIdx) => (
-                            <div key={pIdx} className={styles.outcomeItem}>
-                              <div className={styles.outcomeBullet}>
-                                <span>✓</span>
-                              </div>
-                              <span className={styles.outcomeText}>{point}</span>
-                            </div>
-                          ))}
+                          <motion.div className={styles.outcomesList} variants={badgeContainerVariants}>
+                            {project.bulletPoints.slice(0, 3).map((point, pIdx) => (
+                              <motion.div 
+                                key={pIdx} 
+                                className={styles.outcomeItem}
+                                variants={outcomeItemVariants}
+                              >
+                                <div className={styles.outcomeBullet}>
+                                  <span>✓</span>
+                                </div>
+                                <span className={styles.outcomeText}>{point}</span>
+                              </motion.div>
+                            ))}
+                          </motion.div>
                         </div>
-                      </div>
+                      </motion.div>
 
                     </div>
                   </motion.div>
