@@ -187,7 +187,7 @@
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.95);
   border-radius: 40px; /* Smooth luxury curves */
-  padding: 2.25rem 2.5rem; /* Balanced, space-saving desktop padding */
+  padding: 2rem 2.5rem; /* Compact space-saving desktop padding */
   box-shadow: 
     0 4px 30px rgba(0, 0, 0, 0.02),
     0 30px 70px rgba(15, 23, 42, 0.08),
@@ -196,9 +196,9 @@
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
   gap: 0; /* Column separation handled by padding */
-  margin-top: 0.5rem;
+  margin-top: 0;
   
-  /* Height Guard to prevent overflow clipping on standard desktop viewports */
+  /* Strict Viewport Height Guard to completely prevent vertical scrolling on desktop */
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   scrollbar-width: none;  /* Firefox */
@@ -215,7 +215,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-right: 3rem; /* Tighter column padding for visual balance */
+  padding-right: 2.75rem; /* Tighter column padding for visual balance */
 }
 
 .identityBlock {
@@ -229,42 +229,42 @@
   gap: 0.55rem;
   background: rgba(2, 132, 199, 0.06);
   border: 1px solid rgba(2, 132, 199, 0.12);
-  padding: 0.4rem 0.9rem;
+  padding: 0.38rem 0.85rem;
   border-radius: 100px;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em; /* Premium fashion tracking */
   color: #0369a1; /* Sky-700 Blue */
   text-transform: uppercase;
-  margin-bottom: 1rem; /* Compact margin */
+  margin-bottom: 0.85rem; /* Compact margin */
 }
 
 .locationIcon {
-  width: 0.85rem;
-  height: 0.85rem;
+  width: 0.82rem;
+  height: 0.82rem;
   color: #0284c7;
 }
 
 .projectTitle {
   font-family: 'Oswald', sans-serif;
-  font-size: clamp(2.1rem, 3.2vw, 2.75rem); /* Proportioned scaling */
+  font-size: clamp(1.9rem, 2.8vw, 2.5rem); /* Space-saving compact scaling */
   font-weight: 800;
   line-height: 1.1;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin: 0 0 1rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.85rem;
   color: #0f172a; /* Slate 900 */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 /* Editorial Brand Tagline Narrative - Fills Desktop Blank Spaces */
 .projectTagline {
-  font-size: 0.9rem;
-  line-height: 1.55;
+  font-size: 0.88rem;
+  line-height: 1.5;
   color: #475569; /* Slate 600 */
   font-style: italic;
-  margin: 1.25rem 0 1.5rem;
-  padding-left: 1rem;
+  margin: 1.1rem 0 1.35rem;
+  padding-left: 0.85rem;
   border-left: 2px solid rgba(14, 165, 233, 0.2); /* Sky blue accent quote bar */
   font-family: 'Inter', sans-serif;
 }
@@ -276,8 +276,8 @@
   gap: 1.5rem;
   background: rgba(15, 23, 42, 0.02);
   border: 1px solid rgba(15, 23, 42, 0.04);
-  border-radius: 16px;
-  padding: 0.75rem 1.25rem;
+  border-radius: 14px;
+  padding: 0.65rem 1.1rem;
   width: max-content;
 }
 
@@ -291,12 +291,12 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   color: #64748b; /* Slate 500 label */
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
   text-transform: uppercase;
 }
 
 .metaValue {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #1e293b; /* Slate 800 */
   text-transform: uppercase;
@@ -311,13 +311,13 @@
 
 /* SCOPE OF WORK SECTORS */
 .scopeSection {
-  margin-top: 2rem; /* Clean margin-top separation */
+  margin-top: 1.5rem; /* Clean margin-top separation */
   border-top: 1px solid rgba(15, 23, 42, 0.06);
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
 }
 
 .sectionLabel {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.15em;
   color: #64748b;
@@ -339,7 +339,7 @@
   gap: 0.5rem;
   font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.4rem 0.8rem;
+  padding: 0.38rem 0.8rem;
   border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -370,24 +370,24 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 1.5rem;
+  gap: 1.25rem; /* Space-saving compact gap */
   border-left: 1px solid rgba(15, 23, 42, 0.06); /* Vertical split divider */
-  padding-left: 3rem; /* Generous split panel alignment, matching leftCol padding */
+  padding-left: 2.75rem; /* Generous split panel alignment, matching leftCol padding */
 }
 
 /* Redesigned Clean KPI Cards with Inner Depth and Gold bottom bar */
 .kpiGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .kpiCard {
   position: relative;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(241, 245, 249, 0.6) 100%);
   border: 1px solid rgba(15, 23, 42, 0.04);
-  border-radius: 20px;
-  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  padding: 1.1rem 1.35rem; /* Compact card padding */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -409,10 +409,10 @@
 /* Business upward trend icon placeholder */
 .kpiTrendIcon {
   position: absolute;
-  top: 1.1rem;
-  right: 1.25rem;
-  width: 0.95rem;
-  height: 0.95rem;
+  top: 1rem;
+  right: 1.1rem;
+  width: 0.9rem;
+  height: 0.9rem;
   color: #64748b;
   opacity: 0.4;
   transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
@@ -426,7 +426,7 @@
 
 .kpiValue {
   font-family: 'Oswald', sans-serif;
-  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem); /* Compact dimensions */
   font-weight: 700;
   color: #0f172a;
   letter-spacing: 0.02em;
@@ -434,11 +434,11 @@
 }
 
 .kpiLabel {
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #64748b;
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
   text-transform: uppercase;
 }
 
@@ -446,12 +446,12 @@
 .analyticsSection {
   display: grid;
   grid-template-columns: 130px 1fr; /* Sized for enlarged chart */
-  gap: 1.75rem;
+  gap: 1.5rem;
   align-items: center;
   background: linear-gradient(180deg, rgba(248, 250, 252, 0.8) 0%, rgba(241, 245, 249, 0.6) 100%);
   border: 1px solid rgba(15, 23, 42, 0.05);
-  border-radius: 28px;
-  padding: 1.25rem 1.5rem;
+  border-radius: 24px;
+  padding: 1.25rem; /* Squeezed padding */
   box-shadow: 
     0 10px 30px rgba(0, 0, 0, 0.02),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
@@ -528,13 +528,13 @@
 .outcomesWrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 .outcomesList {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.45rem; /* Squeezed list gap */
 }
 
 .outcomeTitle {
@@ -543,12 +543,12 @@
   letter-spacing: 0.15em;
   color: #64748b;
   text-transform: uppercase;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
 .outcomeItem {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.55rem;
   align-items: flex-start;
 }
 
@@ -568,18 +568,20 @@
 }
 
 .outcomeText {
-  font-size: 0.76rem;
+  font-size: 0.75rem; /* Highly readable compact outcomes text size */
   line-height: 1.3;
   color: #334155; /* Slate 700 */
 }
 
-/* Interactive Donut Graph Legend (Pro Mode) - Vertical Stacking to prevent column stretch bugs */
+/* Interactive Donut Graph Legend - Spanning across the bottom to save 110px of vertical height! */
 .donutLegend {
+  grid-column: span 2; /* Spans both columns at the bottom of .analyticsSection */
   display: flex;
-  flex-direction: column; /* Vertical flex row layout on desktop */
-  align-items: stretch;
-  gap: 0.35rem;
-  margin-top: 0.75rem;
+  flex-direction: row; /* Horizontal flex container layout on desktop */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
   border-top: 1px solid rgba(15, 23, 42, 0.05);
   padding-top: 0.75rem;
   width: 100%;
@@ -589,19 +591,18 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.62rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   color: #475569;
-  padding: 0.3rem 0.5rem;
+  padding: 0.25rem 0.6rem;
   background: rgba(15, 23, 42, 0.02);
   border: 1px solid rgba(15, 23, 42, 0.04);
   border-radius: 6px;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease;
-  width: 100%; /* Fill the 130px width completely */
-  justify-content: flex-start;
+  width: auto; /* Fit content instead of filling column width */
 }
 
 .legendItem:hover {

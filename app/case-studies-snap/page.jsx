@@ -4,11 +4,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './CaseStudiesSnap.module.css';
 import { caseStudiesData } from '../case-studies/caseStudiesData';
 
-// Custom fully interactive SVG Donut Chart component with dynamic legend hover syncing
-const GlassDonutChart = ({ data }) => {
+// Custom fully interactive Analytics Pod containing SVG Donut Chart, Outcomes list and spanning Legend
+const AnalyticsPod = ({ project, isSlideActive }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
+  if (!isSlideActive) {
+    return (
+      <div className={styles.analyticsSection}>
+        <div className={styles.donutWrapper} />
+        <div className={styles.outcomesWrapper}>
+          <span className={styles.outcomeTitle}>WHAT WE DELIVERED</span>
+        </div>
+      </div>
+    );
+  }
+
+  const data = project.pieData;
   const total = data.reduce((sum, item) => sum + item.value, 0);
   const radius = 50;
   const circumference = 2 * Math.PI * radius;
@@ -17,7 +29,8 @@ const GlassDonutChart = ({ data }) => {
   const activeIndex = hoveredIndex !== null ? hoveredIndex : selectedIndex;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', gap: '1.25rem' }}>
+    <motion.div className={styles.analyticsSection} variants={donutPodVariants}>
+      {/* 1. DONUT WRAPPER (occupies first grid column) */}
       <div className={styles.donutWrapper}>
         <svg className={styles.donutSvg} viewBox="0 0 140 140">
           <g transform="translate(70, 70)">
@@ -78,7 +91,26 @@ const GlassDonutChart = ({ data }) => {
         </div>
       </div>
 
-      {/* Pro Mode Interactive Legend list */}
+      {/* 2. OUTCOMES WRAPPER (occupies second grid column) */}
+      <div className={styles.outcomesWrapper}>
+        <span className={styles.outcomeTitle}>WHAT WE DELIVERED</span>
+        <motion.div className={styles.outcomesList} variants={badgeContainerVariants}>
+          {project.bulletPoints.slice(0, 2).map((point, pIdx) => (
+            <motion.div 
+              key={pIdx} 
+              className={styles.outcomeItem}
+              variants={outcomeItemVariants}
+            >
+              <div className={styles.outcomeBullet}>
+                <span>✓</span>
+              </div>
+              <span className={styles.outcomeText}>{point}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* 3. DONUT LEGEND (spans columns 1 and 2 at the bottom) */}
       <div className={styles.donutLegend}>
         {data.map((slice, index) => (
           <div 
@@ -99,7 +131,7 @@ const GlassDonutChart = ({ data }) => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -526,32 +558,7 @@ export default function CaseStudiesSnapPage() {
                       </motion.div>
 
                       {/* Interactive Analytics Split row */}
-                      <motion.div className={styles.analyticsSection} variants={donutPodVariants}>
-                        {isSlideActive ? (
-                          <GlassDonutChart data={project.pieData} />
-                        ) : (
-                          <div className={styles.donutWrapper} />
-                        )}
-                        
-                        {/* Compact outcomes list */}
-                        <div className={styles.outcomesWrapper}>
-                          <span className={styles.outcomeTitle}>WHAT WE DELIVERED</span>
-                          <motion.div className={styles.outcomesList} variants={badgeContainerVariants}>
-                            {project.bulletPoints.slice(0, 3).map((point, pIdx) => (
-                              <motion.div 
-                                key={pIdx} 
-                                className={styles.outcomeItem}
-                                variants={outcomeItemVariants}
-                              >
-                                <div className={styles.outcomeBullet}>
-                                  <span>✓</span>
-                                </div>
-                                <span className={styles.outcomeText}>{point}</span>
-                              </motion.div>
-                            ))}
-                          </motion.div>
-                        </div>
-                      </motion.div>
+                      <AnalyticsPod project={project} isSlideActive={isSlideActive} />
 
                     </div>
                   </motion.div>
