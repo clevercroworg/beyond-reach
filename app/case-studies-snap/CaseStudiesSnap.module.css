@@ -645,9 +645,7 @@
    GLASSMORPHIC FLOATING FILTER SELECTION
    ======================================= */
 .filterDropdown {
-  position: fixed;
-  top: 5.5rem;
-  right: 3rem;
+  position: relative;
   z-index: 110;
 }
 
