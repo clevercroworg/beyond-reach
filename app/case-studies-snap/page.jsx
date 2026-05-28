@@ -56,8 +56,7 @@ const GlassDonutChart = ({ data }) => {
                 onTouchStart={() => setSelectedIndex(index)}
                 style={{
                   opacity: isSegmentActive ? 1 : 0.65,
-                  cursor: 'pointer',
-                  transformOrigin: 'center'
+                  cursor: 'pointer'
                 }}
               />
             );
