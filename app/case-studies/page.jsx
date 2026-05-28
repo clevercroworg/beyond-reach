@@ -140,6 +140,14 @@ export default function CaseStudiesPage() {
   const [activeFilter, setActiveFilter] = useState('All');
   const [filterOpen, setFilterOpen] = useState(false);
   const filterRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const filteredStudies = activeFilter === 'All'
     ? caseStudiesData
@@ -252,8 +260,18 @@ export default function CaseStudiesPage() {
                   muted
                   playsInline
                 >
-                  <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
-                  <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                  {isMobile ? (
+                    <>
+                      <source src={`/case-studies/assets/${project.id}-mobile.mp4`} type="video/mp4" />
+                      <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
+                      <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                    </>
+                  ) : (
+                    <>
+                      <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
+                      <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                    </>
+                  )}
                 </video>
                 <div className={styles.heroVideoOverlay}></div>
                 <div className={styles.heroLocationBadge}>

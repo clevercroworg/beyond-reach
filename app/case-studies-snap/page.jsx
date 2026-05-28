@@ -845,8 +845,12 @@ export default function CaseStudiesSnapPage() {
                         transition={{ duration: 0.8, ease: "easeInOut" }}
                         key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
                       >
-                        {isMobile && idx === 0 ? (
-                          <source src="/case-studies/assets/riva-beach-resort-mobile.mp4" type="video/mp4" />
+                        {isMobile ? (
+                          <>
+                            <source src={`/case-studies/assets/${project.id}-mobile.mp4`} type="video/mp4" />
+                            <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
+                            <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                          </>
                         ) : (
                           <>
                             <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
