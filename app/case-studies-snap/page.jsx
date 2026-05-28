@@ -653,7 +653,6 @@ export default function CaseStudiesSnapPage() {
         {isInitialLoad && (
           <motion.div 
             className={styles.preloaderContainer}
-            animate={introState !== 'loading' ? { backgroundColor: "rgba(3, 5, 8, 0)" } : { backgroundColor: "#030508" }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
             style={{ pointerEvents: introState === 'active' ? 'none' : 'auto' }}
@@ -721,7 +720,13 @@ export default function CaseStudiesSnapPage() {
       </AnimatePresence>
 
       {/* Top Floating Global Navigation controls */}
-      <nav className={styles.pageNavbar}>
+      <motion.nav 
+        className={styles.pageNavbar}
+        initial={{ opacity: 0 }}
+        animate={!isInitialLoad || introState === 'active' ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.8 }}
+        style={{ pointerEvents: !isInitialLoad || introState === 'active' ? 'auto' : 'none' }}
+      >
         <div className={styles.navLogo}>
           <a href="/">
             <span className={styles.logoBold}>BEYOND</span> <span className={styles.logoLight}>REACH</span>
@@ -779,18 +784,24 @@ export default function CaseStudiesSnapPage() {
             </svg>
           </a>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Floating Vertical Navigation Dots (Right Edge) */}
       {filteredStudies.length > 0 && (
-        <div className={styles.floatingSidebar}>
+        <motion.div 
+          className={styles.floatingSidebar}
+          initial={{ opacity: 0 }}
+          animate={!isInitialLoad || introState === 'active' ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{ pointerEvents: !isInitialLoad || introState === 'active' ? 'auto' : 'none' }}
+        >
           {filteredStudies.map((project, idx) => (
             <div key={project.id} className={styles.dotWrapper} onClick={() => navigateToSlide(idx)}>
               <span className={styles.dotLabel}>{project.title}</span>
               <div className={`${styles.dot} ${activeIndex === idx ? styles.dotActive : ''}`} />
             </div>
           ))}
-        </div>
+        </motion.div>
       )}
 
       {/* Main Snap Scroll Container */}
@@ -829,7 +840,12 @@ export default function CaseStudiesSnapPage() {
                         <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
                       </video>
                     )}
-                    <div className={styles.heroVideoOverlay}></div>
+                    <motion.div 
+                      className={styles.heroVideoOverlay}
+                      initial={{ opacity: 0 }}
+                      animate={idx === 0 && isInitialLoad && introState !== 'active' ? { opacity: 0 } : { opacity: 1 }}
+                      transition={{ duration: 0.8 }}
+                    />
                     <div className={styles.orb1} />
                     <div className={styles.orb2} />
                     <div className={styles.orb3} />
