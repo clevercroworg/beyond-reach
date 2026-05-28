@@ -295,12 +295,178 @@ const getCategoryForProject = (propertyType) => {
   return 'Event venues';
 };
 
+// --- PREMIUM DESKTOP CARD ---
+const DesktopPremiumCard = ({ project, isSlideActive }) => {
+  return (
+    <motion.div 
+      className={styles.desktopCard}
+      variants={cardVariants}
+      initial="hidden"
+      animate={isSlideActive ? "visible" : "hidden"}
+      whileHover={{ 
+        y: -4, 
+        boxShadow: "0 25px 60px rgba(0,0,0,0.6), 0 50px 110px rgba(0,0,0,0.8)"
+      }}
+    >
+      <div className={styles.leftCol}>
+        <div className={styles.identityBlock}>
+          <motion.div className={styles.locationBadge} variants={itemDownVariants}>
+            <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>{project.location}</span>
+          </motion.div>
+          
+          <motion.h3 className={styles.projectTitle} variants={titleVariants}>
+            {project.title}
+          </motion.h3>
+          
+          <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>PROPERTY TYPE</span>
+              <span className={styles.metaValue}>{project.propertyType}</span>
+            </div>
+            <div className={styles.metaDivider} />
+            <div className={styles.metaItem}>
+              <span className={styles.metaLabel}>CAPACITY</span>
+              <span className={styles.metaValue}>{project.capacity}</span>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.p className={styles.projectTagline} variants={itemUpVariants}>
+          {project.tagline}
+        </motion.p>
+
+        <motion.div className={styles.scopeSection} variants={itemUpVariants}>
+          <span className={styles.sectionLabel}>SCOPE OF WORK</span>
+          <motion.div className={styles.badgeContainer} variants={badgeContainerVariants}>
+            {project.services.map((service, sIdx) => {
+              const dotColors = ['#38bdf8', '#34d399', '#a78bfa', '#fbbf24'];
+              const activeColor = dotColors[sIdx % dotColors.length];
+              return (
+                <motion.span 
+                  key={service} 
+                  className={styles.serviceBadge}
+                  variants={badgeVariants}
+                  whileHover={{ y: -2, scale: 1.04, boxShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className={styles.badgeBullet} style={{ backgroundColor: activeColor }} />
+                  {service}
+                </motion.span>
+              );
+            })}
+          </motion.div>
+        </motion.div>
+      </div>
+
+      <div className={styles.rightCol}>
+        <motion.div className={styles.kpiGrid} variants={kpiGridVariants}>
+          {project.kpis.map((kpi, kIdx) => (
+            <motion.div 
+              key={kIdx} 
+              className={styles.kpiCard}
+              variants={kpiCardVariants}
+              whileHover={{ y: -3, scale: 1.03 }}
+            >
+              <svg className={styles.kpiTrendIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" style={{ transform: 'rotate(-45deg)', transformOrigin: 'center' }} />
+              </svg>
+              <span className={styles.kpiValue}>{kpi.value}</span>
+              <span className={styles.kpiLabel}>{kpi.label}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+        <AnalyticsPod project={project} isSlideActive={isSlideActive} />
+      </div>
+    </motion.div>
+  );
+};
+
+// --- PREMIUM MOBILE CARD ---
+// Removes the Analytics Pod completely as per user request to save space and provide an un-cluttered mobile view
+const MobilePremiumCard = ({ project, isSlideActive }) => {
+  return (
+    <motion.div 
+      className={styles.mobileCard}
+      variants={cardVariants}
+      initial="hidden"
+      animate={isSlideActive ? "visible" : "hidden"}
+    >
+      <div className={styles.identityBlock}>
+        <motion.div className={styles.locationBadge} variants={itemDownVariants}>
+          <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>{project.location}</span>
+        </motion.div>
+        
+        <motion.h3 className={styles.projectTitle} variants={titleVariants}>
+          {project.title}
+        </motion.h3>
+        
+        <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
+          <div className={styles.metaItem}>
+            <span className={styles.metaLabel}>TYPE</span>
+            <span className={styles.metaValue}>{project.propertyType}</span>
+          </div>
+          <div className={styles.metaDivider} />
+          <div className={styles.metaItem}>
+            <span className={styles.metaLabel}>CAPACITY</span>
+            <span className={styles.metaValue}>{project.capacity}</span>
+          </div>
+        </motion.div>
+      </div>
+
+      <motion.div className={styles.scopeSection} variants={itemUpVariants}>
+        <span className={styles.sectionLabel}>SCOPE</span>
+        <motion.div className={styles.badgeContainer} variants={badgeContainerVariants}>
+          {project.services.slice(0, 3).map((service, sIdx) => {
+            const dotColors = ['#38bdf8', '#34d399', '#a78bfa', '#fbbf24'];
+            const activeColor = dotColors[sIdx % dotColors.length];
+            return (
+              <motion.span 
+                key={service} 
+                className={styles.serviceBadge}
+                variants={badgeVariants}
+              >
+                <span className={styles.badgeBullet} style={{ backgroundColor: activeColor }} />
+                {service}
+              </motion.span>
+            );
+          })}
+        </motion.div>
+      </motion.div>
+
+      <motion.div className={styles.kpiGrid} variants={kpiGridVariants}>
+        {project.kpis.map((kpi, kIdx) => (
+          <motion.div key={kIdx} className={styles.kpiCard} variants={kpiCardVariants}>
+            <span className={styles.kpiValue}>{kpi.value}</span>
+            <span className={styles.kpiLabel}>{kpi.label}</span>
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.div>
+  );
+};
+
 export default function CaseStudiesSnapPage() {
   const containerRef = useRef(null);
   const [activeFilter, setActiveFilter] = useState('All');
   const [filterOpen, setFilterOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const filterRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Filter 51 data projects sorted alphabetically
   const filteredStudies = activeFilter === 'All'
@@ -467,101 +633,12 @@ export default function CaseStudiesSnapPage() {
                     <div className={styles.heroVideoOverlay}></div>
                   </div>
 
-                  {/* Glassmorphic Central Content Dashboard card */}
-                  <motion.div 
-                    className={styles.glassCard}
-                    variants={cardVariants}
-                    initial="hidden"
-                    animate={isSlideActive ? "visible" : "hidden"}
-                    whileHover={{ 
-                      y: -4, 
-                      boxShadow: "0 25px 60px rgba(0,0,0,0.08), 0 50px 110px rgba(0,0,0,0.18)"
-                    }}
-                  >
-                    {/* LEFT COLUMN: BRANDING, TAGLINE AND IDENTITY */}
-                    <div className={styles.leftCol}>
-                      <div className={styles.identityBlock}>
-                        <motion.div className={styles.locationBadge} variants={itemDownVariants}>
-                          <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          <span>{project.location}</span>
-                        </motion.div>
-                        
-                        <motion.h3 className={styles.projectTitle} variants={titleVariants}>
-                          {project.title}
-                        </motion.h3>
-                        
-                        <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
-                          <div className={styles.metaItem}>
-                            <span className={styles.metaLabel}>PROPERTY TYPE</span>
-                            <span className={styles.metaValue}>{project.propertyType}</span>
-                          </div>
-                          <div className={styles.metaDivider} />
-                          <div className={styles.metaItem}>
-                            <span className={styles.metaLabel}>CAPACITY</span>
-                            <span className={styles.metaValue}>{project.capacity}</span>
-                          </div>
-                        </motion.div>
-                      </div>
-
-                      {/* Editorial Brand Tagline Narrative - Solving Spacing Gaps */}
-                      <motion.p className={styles.projectTagline} variants={itemUpVariants}>
-                        {project.tagline}
-                      </motion.p>
-
-                      {/* Scope of Work badges */}
-                      <motion.div className={styles.scopeSection} variants={itemUpVariants}>
-                        <span className={styles.sectionLabel}>SCOPE OF WORK</span>
-                        <motion.div className={styles.badgeContainer} variants={badgeContainerVariants}>
-                          {project.services.map((service, sIdx) => {
-                            const dotColors = ['#0ea5e9', '#10b981', '#8b5cf6', '#f59e0b']; // Sky, Emerald, Violet, Amber
-                            const activeColor = dotColors[sIdx % dotColors.length];
-                            return (
-                              <motion.span 
-                                key={service} 
-                                className={styles.serviceBadge}
-                                variants={badgeVariants}
-                                whileHover={{ y: -2, scale: 1.04, boxShadow: "0 4px 12px rgba(0,0,0,0.03)" }}
-                                whileTap={{ scale: 0.98 }}
-                              >
-                                <span className={styles.badgeBullet} style={{ backgroundColor: activeColor }} />
-                                {service}
-                              </motion.span>
-                            );
-                          })}
-                        </motion.div>
-                      </motion.div>
-                    </div>
-
-                    {/* RIGHT COLUMN: NUMERICAL STATS AND INTERACTIVE AUDITS */}
-                    <div className={styles.rightCol}>
-                      
-                      {/* Compact KPI Card Row */}
-                      <motion.div className={styles.kpiGrid} variants={kpiGridVariants}>
-                        {project.kpis.map((kpi, kIdx) => (
-                          <motion.div 
-                            key={kIdx} 
-                            className={styles.kpiCard}
-                            variants={kpiCardVariants}
-                            whileHover={{ y: -3, scale: 1.03 }}
-                          >
-                            {/* Upward diagonal arrow for business growth trend indicator */}
-                            <svg className={styles.kpiTrendIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" style={{ transform: 'rotate(-45deg)', transformOrigin: 'center' }} />
-                            </svg>
-                            <span className={styles.kpiValue}>{kpi.value}</span>
-                            <span className={styles.kpiLabel}>{kpi.label}</span>
-                          </motion.div>
-                        ))}
-                      </motion.div>
-
-                      {/* Interactive Analytics Split row */}
-                      <AnalyticsPod project={project} isSlideActive={isSlideActive} />
-
-                    </div>
-                  </motion.div>
+                  {/* Render tailored Premium Card based on Viewport */}
+                  {isMobile ? (
+                    <MobilePremiumCard project={project} isSlideActive={isSlideActive} />
+                  ) : (
+                    <DesktopPremiumCard project={project} isSlideActive={isSlideActive} />
+                  )}
                 </div>
               </section>
             );

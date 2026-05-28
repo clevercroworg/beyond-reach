@@ -177,33 +177,57 @@
 /* =======================================
    PREMIUM Frosted Crystal White Card - Ultimate Spacing & Spacing Redesign
    ======================================= */
-.glassCard {
+.desktopCard {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 1000px; /* Golden visually balanced width */
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 40px; /* Smooth luxury curves */
-  padding: 2rem 2.5rem; /* Compact space-saving desktop padding */
+  max-width: 1000px;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 40px;
+  padding: 2.5rem 3rem;
   box-shadow: 
-    0 10px 40px rgba(0, 0, 0, 0.12),
-    0 2px 10px rgba(0, 0, 0, 0.04);
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   display: grid;
   grid-template-columns: 1.12fr 0.88fr;
-  gap: 0; /* Column separation handled by padding */
+  gap: 0;
   margin-top: 0;
-  
-  /* Strict Viewport Height Guard to completely prevent vertical scrolling on desktop */
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-  scrollbar-width: none;  /* Firefox */
-  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   transition: box-shadow 0.5s ease;
 }
 
-.glassCard::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+.desktopCard::-webkit-scrollbar {
+  display: none;
+}
+
+.mobileCard {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  padding: 1.75rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobileCard::-webkit-scrollbar {
+  display: none;
 }
 
 /* LEFT COLUMN STRUCTURE */
@@ -250,7 +274,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin: 0 0 0.85rem;
-  color: #0f172a; /* Slate 900 */
+  color: #ffffff; /* Brilliant White */
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
@@ -258,7 +282,7 @@
 .projectTagline {
   font-size: 0.88rem;
   line-height: 1.5;
-  color: #475569; /* Slate 600 */
+  color: #cbd5e1; /* Slate 300 */
   font-style: italic;
   margin: 1.1rem 0 1.35rem;
   padding-left: 0.85rem;
@@ -271,8 +295,8 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  background: rgba(15, 23, 42, 0.02);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 0.65rem 1.1rem;
   width: max-content;
@@ -287,7 +311,7 @@
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: #64748b; /* Slate 500 label */
+  color: #94a3b8; /* Slate 400 label */
   margin-bottom: 0.2rem;
   text-transform: uppercase;
 }
@@ -295,7 +319,7 @@
 .metaValue {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #1e293b; /* Slate 800 */
+  color: #f8fafc; /* Slate 50 */
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -303,13 +327,13 @@
 .metaDivider {
   width: 1px;
   height: 24px;
-  background-color: rgba(15, 23, 42, 0.08); /* Divider */
+  background-color: rgba(255, 255, 255, 0.12); /* Divider */
 }
 
 /* SCOPE OF WORK SECTORS */
 .scopeSection {
   margin-top: 1.5rem; /* Clean margin-top separation */
-  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1.25rem;
 }
 
@@ -317,7 +341,7 @@
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #64748b;
+  color: #94a3b8;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   display: block;
@@ -340,18 +364,18 @@
   border-radius: 8px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(15, 23, 42, 0.04);
-  color: #475569; /* Slate 600 text */
+  background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1; /* Slate 600 text */
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .serviceBadge:hover {
-  border-color: rgba(15, 23, 42, 0.15);
-  background: #ffffff;
-  color: #0f172a; /* Slate 900 */
+  border-color: rgba(56, 189, 248, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff; /* Brilliant White */
 }
 
 /* Dynamic Active Status Bullet Dot inside Badges */
@@ -381,8 +405,8 @@
   width: 1px;
   background: linear-gradient(to bottom, 
     rgba(15, 23, 42, 0.0) 0%, 
-    rgba(15, 23, 42, 0.08) 20%, 
-    rgba(15, 23, 42, 0.08) 80%, 
+    rgba(255, 255, 255, 0.15) 20%, 
+    rgba(255, 255, 255, 0.15) 80%, 
     rgba(15, 23, 42, 0.0) 100%
   );
 }
@@ -396,16 +420,14 @@
 
 .kpiCard {
   position: relative;
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 1.1rem 1.35rem; /* Compact card padding */
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 
-    0 4px 12px rgba(15, 23, 42, 0.02),
-    inset 0 1px 0 #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -427,11 +449,9 @@
 }
 
 .kpiCard:hover {
-  background: #ffffff;
-  border-color: rgba(14, 165, 233, 0.22);
-  box-shadow: 
-    0 12px 24px rgba(15, 23, 42, 0.04),
-    inset 0 1px 0 #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Business upward trend icon placeholder */
@@ -441,7 +461,7 @@
   right: 1.1rem;
   width: 0.9rem;
   height: 0.9rem;
-  color: #64748b;
+  color: #94a3b8;
   opacity: 0.4;
   transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
@@ -456,7 +476,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: clamp(1.35rem, 1.8vw, 1.7rem); /* Compact dimensions */
   font-weight: 700;
-  color: #0f172a;
+  color: #ffffff;
   letter-spacing: 0.02em;
   line-height: 1.2;
 }
@@ -465,7 +485,7 @@
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #64748b;
+  color: #94a3b8;
   margin-top: 0.25rem;
   text-transform: uppercase;
 }
@@ -476,11 +496,11 @@
   grid-template-columns: 130px 1fr; /* Sized for enlarged chart */
   gap: 1.5rem;
   align-items: center;
-  background: #f8fafc;
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
   padding: 1.25rem; /* Squeezed padding */
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.01);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .donutWrapper {
@@ -508,9 +528,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.95); /* Polished white glass center ring */
+  background: rgba(15, 23, 42, 0.85); /* Dark polished glass center ring */
   box-shadow: 
-    0 8px 24px rgba(15, 23, 42, 0.08),
+    0 8px 24px rgba(255, 255, 255, 0.15),
     inset 0 1px 0 #ffffff;
   border-radius: 50%;
   width: 76px;
@@ -524,7 +544,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: 1.45rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #ffffff;
   line-height: 1;
 }
 
@@ -532,7 +552,7 @@
   font-size: 0.55rem;
   font-weight: 800;
   letter-spacing: 0.03em;
-  color: #64748b;
+  color: #94a3b8;
   margin-top: 0.15rem;
   text-transform: uppercase;
   text-align: center;
@@ -563,7 +583,7 @@
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #64748b;
+  color: #94a3b8;
   text-transform: uppercase;
   margin-bottom: 0.15rem;
 }
@@ -592,7 +612,7 @@
 .outcomeText {
   font-size: 0.75rem; /* Highly readable compact outcomes text size */
   line-height: 1.3;
-  color: #334155; /* Slate 700 */
+  color: #e2e8f0; /* Slate 200 text */
 }
 
 /* Interactive Donut Graph Legend - Spanning across the bottom to save 110px of vertical height! */
@@ -604,7 +624,7 @@
   justify-content: center;
   gap: 0.75rem;
   margin-top: 1rem;
-  border-top: 1px solid rgba(15, 23, 42, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 0.75rem;
   width: 100%;
 }
@@ -616,10 +636,10 @@
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: #475569;
+  color: #cbd5e1;
   padding: 0.25rem 0.6rem;
-  background: rgba(15, 23, 42, 0.02);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
   text-transform: uppercase;
   cursor: pointer;
@@ -628,9 +648,9 @@
 }
 
 .legendItem:hover {
-  background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.12);
-  color: #0f172a;
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #ffffff;
 }
 
 .legendDot {
@@ -816,7 +836,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #64748b;
+  color: #94a3b8;
   z-index: 10;
   position: relative;
 }
@@ -833,7 +853,7 @@
    RESPONSIVE LAYOUT BREAKPOINTS & SPACE-SAVING MOBILE ADAPTERS
    ======================================= */
 @media (max-width: 1024px) {
-  .glassCard {
+  .desktopCard {
     gap: 0;
     padding: 2.25rem;
     max-width: 900px;
@@ -850,149 +870,58 @@
   .pageNavbar {
     padding: 1rem 1.5rem;
   }
-
   .navLogo {
     font-size: 1.2rem;
   }
-
   .phoneLink {
     width: 36px;
     height: 36px;
   }
-
   .stickyWrapper {
-    perspective: 1200px; /* Enable structural depth for 3D page fold entries */
+    perspective: 1200px;
     padding: 5.5rem 1rem 1.25rem;
   }
-
-  /* Deep space-saving and bounding constraints for mobile device viewports */
-  .glassCard {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding: 1.5rem; /* Spacious mobile padding */
-    border-radius: 32px;
-    
-    /* Bounded card height to prevent overflowing bottom screen boundaries */
-    max-height: calc(100vh - 130px);
-    overflow-y: auto;
-    
-    /* Hide scrollbars cleanly to convey original design intent perfectly */
-    scrollbar-width: none;  /* Firefox */
-    -ms-overflow-style: none;  /* IE/Edge */
-  }
-
-  .glassCard::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
-
-  .leftCol {
-    padding-right: 0;
-  }
-
-  .rightCol {
-    padding-left: 0;
-  }
-
-  .rightCol::before {
-    display: none;
-  }
-
-  .identityBlock {
-    margin-bottom: 1rem;
-  }
-
   .projectTitle {
     font-size: 1.7rem;
     margin-bottom: 0.5rem;
   }
-
-  .projectTagline {
-    display: none !important;
-  }
-
   .metaCapsule {
     gap: 1.25rem;
     padding: 0.6rem 1.1rem;
   }
-
   .metaValue {
     font-size: 0.85rem;
   }
-
   .locationBadge {
     padding: 0.3rem 0.75rem;
     font-size: 0.72rem;
     margin-bottom: 0.75rem;
   }
-
   .scopeSection {
     padding-top: 1rem;
   }
-
   .badgeContainer {
     gap: 0.4rem;
   }
-
   .serviceBadge {
     font-size: 0.68rem;
     padding: 0.35rem 0.65rem;
   }
-
   .kpiGrid {
     gap: 0.75rem;
   }
-
   .kpiCard {
     padding: 1.1rem;
     border-radius: 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
   }
-
   .kpiValue {
     font-size: 1.4rem;
   }
-
-  .analyticsSection {
-    grid-template-columns: 1fr; /* Center the interactive donut chart on mobile */
-    justify-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 1.25rem;
-  }
-
-  .outcomesWrapper {
-    display: none !important; /* Deliverables are hidden on mobile to maintain extreme spacing efficiency */
-  }
-
-  .donutWrapper {
-    width: 130px; /* Perfectly centered mobile size */
-    height: 130px;
-  }
-
-  .donutCenter {
-    top: 27px;
-    left: 27px;
-  }
-
-  .donutCenterValue {
-    font-size: 1.45rem;
-  }
-
-  .donutLegend {
-    justify-content: center;
-    gap: 0.4rem;
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-  }
-
-  .legendItem {
-    font-size: 0.6rem;
-    padding: 0.2rem 0.45rem;
-  }
-
   .floatingSidebar {
-    display: none; /* Hide scroll-dots on smaller viewports to make room */
+    display: none;
   }
-
   .filterDropdown {
     position: fixed;
     top: 4.25rem;
