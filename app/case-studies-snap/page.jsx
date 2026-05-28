@@ -279,115 +279,118 @@ export default function CaseStudiesSnapPage() {
                 key={project.id}
                 id={project.id}
                 className={styles.snapSection}
+                style={{ zIndex: idx + 1 }}
               >
-                {/* Diagonal Slanted background container */}
-                <div className={styles.diagonalBg}>
-                  {shouldRenderVideo && (
-                    <video
-                      className={styles.heroBgVideo}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    >
-                      <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
-                      <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
-                    </video>
-                  )}
-                  <div className={styles.heroVideoOverlay}></div>
-                </div>
-
-                {/* Glassmorphic Central Content Dashboard Dashboard card */}
-                <motion.div 
-                  className={styles.glassCard}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={isSlideActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                  transition={{ duration: 0.6, cubicBezier: [0.16, 1, 0.3, 1] }}
-                >
-                  {/* LEFT COLUMN: BRANDING AND IDENTITY */}
-                  <div className={styles.leftCol}>
-                    <div className={styles.identityBlock}>
-                      <div className={styles.locationBadge}>
-                        <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <span>{project.location}</span>
-                      </div>
-                      <h3 className={styles.projectTitle}>{project.title}</h3>
-                      
-                      <div className={styles.metaRow}>
-                        <div className={styles.metaItem}>
-                          <span className={styles.metaLabel}>PROPERTY TYPE</span>
-                          <span className={styles.metaValue}>{project.propertyType}</span>
-                        </div>
-                        <div className={styles.metaDivider} />
-                        <div className={styles.metaItem}>
-                          <span className={styles.metaLabel}>CAPACITY</span>
-                          <span className={styles.metaValue}>{project.capacity}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Scope of Work badges */}
-                    <div className={styles.scopeSection}>
-                      <span className={styles.sectionLabel}>SCOPE OF WORK</span>
-                      <div className={styles.badgeContainer}>
-                        {project.services.map((service, sIdx) => {
-                          const badgeStyles = [
-                            styles.badgeSky,
-                            styles.badgePurple,
-                            styles.badgeEmerald,
-                            styles.badgeAmber
-                          ];
-                          const badgeStyle = badgeStyles[sIdx % badgeStyles.length];
-                          return (
-                            <span key={service} className={`${styles.serviceBadge} ${badgeStyle}`}>
-                              {service}
-                            </span>
-                          );
-                        })}
-                      </div>
-                    </div>
+                <div className={styles.stickyWrapper}>
+                  {/* Diagonal Slanted background container */}
+                  <div className={styles.diagonalBg}>
+                    {shouldRenderVideo && (
+                      <video
+                        className={styles.heroBgVideo}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      >
+                        <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
+                        <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                      </video>
+                    )}
+                    <div className={styles.heroVideoOverlay}></div>
                   </div>
 
-                  {/* RIGHT COLUMN: NUMERICAL STATS AND interactive AUDITS */}
-                  <div className={styles.rightCol}>
-                    
-                    {/* Compact KPI Card Row */}
-                    <div className={styles.kpiGrid}>
-                      {project.kpis.map((kpi, kIdx) => (
-                        <div key={kIdx} className={styles.kpiCard}>
-                          <span className={styles.kpiValue}>{kpi.value}</span>
-                          <span className={styles.kpiLabel}>{kpi.label}</span>
+                  {/* Glassmorphic Central Content Dashboard Dashboard card */}
+                  <motion.div 
+                    className={styles.glassCard}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={isSlideActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                    transition={{ duration: 0.6, cubicBezier: [0.16, 1, 0.3, 1] }}
+                  >
+                    {/* LEFT COLUMN: BRANDING AND IDENTITY */}
+                    <div className={styles.leftCol}>
+                      <div className={styles.identityBlock}>
+                        <div className={styles.locationBadge}>
+                          <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          <span>{project.location}</span>
                         </div>
-                      ))}
+                        <h3 className={styles.projectTitle}>{project.title}</h3>
+                        
+                        <div className={styles.metaRow}>
+                          <div className={styles.metaItem}>
+                            <span className={styles.metaLabel}>PROPERTY TYPE</span>
+                            <span className={styles.metaValue}>{project.propertyType}</span>
+                          </div>
+                          <div className={styles.metaDivider} />
+                          <div className={styles.metaItem}>
+                            <span className={styles.metaLabel}>CAPACITY</span>
+                            <span className={styles.metaValue}>{project.capacity}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Scope of Work badges */}
+                      <div className={styles.scopeSection}>
+                        <span className={styles.sectionLabel}>SCOPE OF WORK</span>
+                        <div className={styles.badgeContainer}>
+                          {project.services.map((service, sIdx) => {
+                            const badgeStyles = [
+                              styles.badgeSky,
+                              styles.badgePurple,
+                              styles.badgeEmerald,
+                              styles.badgeAmber
+                            ];
+                            const badgeStyle = badgeStyles[sIdx % badgeStyles.length];
+                            return (
+                              <span key={service} className={`${styles.serviceBadge} ${badgeStyle}`}>
+                                {service}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </div>
 
-                    {/* interactive Analytics Split row */}
-                    <div className={styles.analyticsSection}>
-                      {isSlideActive ? (
-                        <GlassDonutChart data={project.pieData} />
-                      ) : (
-                        <div className={styles.donutWrapper} />
-                      )}
+                    {/* RIGHT COLUMN: NUMERICAL STATS AND interactive AUDITS */}
+                    <div className={styles.rightCol}>
                       
-                      {/* Compact outcomes list */}
-                      <div className={styles.outcomesWrapper}>
-                        <span className={styles.outcomeTitle}>WHAT WE DELIVERED</span>
-                        {project.bulletPoints.slice(0, 3).map((point, pIdx) => (
-                          <div key={pIdx} className={styles.outcomeItem}>
-                            <div className={styles.outcomeBullet}>
-                              <span>✓</span>
-                            </div>
-                            <span className={styles.outcomeText}>{point}</span>
+                      {/* Compact KPI Card Row */}
+                      <div className={styles.kpiGrid}>
+                        {project.kpis.map((kpi, kIdx) => (
+                          <div key={kIdx} className={styles.kpiCard}>
+                            <span className={styles.kpiValue}>{kpi.value}</span>
+                            <span className={styles.kpiLabel}>{kpi.label}</span>
                           </div>
                         ))}
                       </div>
-                    </div>
 
-                  </div>
-                </motion.div>
+                      {/* interactive Analytics Split row */}
+                      <div className={styles.analyticsSection}>
+                        {isSlideActive ? (
+                          <GlassDonutChart data={project.pieData} />
+                        ) : (
+                          <div className={styles.donutWrapper} />
+                        )}
+                        
+                        {/* Compact outcomes list */}
+                        <div className={styles.outcomesWrapper}>
+                          <span className={styles.outcomeTitle}>WHAT WE DELIVERED</span>
+                          {project.bulletPoints.slice(0, 3).map((point, pIdx) => (
+                            <div key={pIdx} className={styles.outcomeItem}>
+                              <div className={styles.outcomeBullet}>
+                                <span>✓</span>
+                              </div>
+                              <span className={styles.outcomeText}>{point}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                    </div>
+                  </motion.div>
+                </div>
               </section>
             );
           })
