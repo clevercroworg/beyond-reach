@@ -235,13 +235,13 @@ const donutPodVariants = {
 };
 
 const mediaVariants = {
-  initial: (isMobile) => ({ 
-    scale: isMobile ? 0.22 : 0.12, 
+  initial: { 
+    scale: 0.15, 
     opacity: 0, // initially pitch-black gap!
     border: '1px solid rgba(255, 255, 255, 0.25)',
     transformOrigin: 'center center',
     clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' // straight corners in mini mode
-  }),
+  },
   zoom: { 
     scale: 1, 
     opacity: 1, // blooms and fades in during zoom!
@@ -673,16 +673,16 @@ export default function CaseStudiesSnapPage() {
                 </motion.span>
                 <motion.span 
                   className={styles.preloaderWord}
-                  initial={{ width: 0, opacity: 0 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
                   animate={
                     introState === 'splitting' || introState === 'active'
                       ? { x: "-20vw", opacity: 0, scale: 0.8 }
-                      : { width: "auto", opacity: 1, x: 0 }
+                      : { opacity: 1, x: 0, scale: 1 }
                   }
                   transition={{ 
-                    width: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 },
                     x: { duration: 1.4, ease: [0.16, 1, 0.3, 1] },
-                    opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+                    opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 },
+                    scale: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }
                   }}
                 >
                   UR
@@ -693,7 +693,8 @@ export default function CaseStudiesSnapPage() {
               {isInitialLoad && (
                 <motion.div 
                   className={styles.preloaderGap}
-                  animate={introState === 'splitting' || introState === 'active' ? { width: 0, opacity: 0 } : { width: 'auto', opacity: 1 }}
+                  initial={{ scaleX: 1, opacity: 1 }}
+                  animate={introState === 'splitting' || introState === 'active' ? { scaleX: 0, opacity: 0 } : { scaleX: 1, opacity: 1 }}
                   transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                 />
               )}

@@ -1197,7 +1197,6 @@
   width: clamp(100px, 12vw, 150px);
   height: clamp(65px, 8vw, 100px);
   flex-shrink: 0;
-  transition: all 0.5s ease;
   pointer-events: none;
 }
 
