@@ -8,9 +8,9 @@ export const caseStudiesData = [
     "location": "Goa, India",
     "capacity": "100 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Riva Beach Resort in Goa, India, converting 35% bookings commission-free and securing a high ROAS on digital media campaigns.",
     "imgSrc": "https://www.rivaresorts.com/gallery/",
@@ -83,9 +83,9 @@ export const caseStudiesData = [
     "location": "Goa, India",
     "capacity": "20 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Anahata Retreat in Goa, India, converting 42% bookings commission-free and securing a high ROAS on digital media campaigns.",
     "imgSrc": "https://static.wixstatic.com/media/094a0d_8f8d7eff3154497b853322b4bb2238ff~mv2.jpg/v1/fill/w_1880",
@@ -158,9 +158,9 @@ export const caseStudiesData = [
     "location": "Goa, India",
     "capacity": "15 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Palma Goa in Goa, India, converting 45% bookings commission-free and securing a high ROAS on digital media campaigns.",
     "imgSrc": "https://palmagoa.com/wp-content/uploads/2024/09/external_37.webp",
@@ -233,9 +233,9 @@ export const caseStudiesData = [
     "location": "Manali, HP, India",
     "capacity": "85 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Manuallaya Resort in Manali, HP, India, converting 31% bookings commission-free and securing a 5.0x ROAS on digital media campaigns.",
     "imgSrc": "https://homesweb.staah.net/imagelibrary/big_1650533799_3701_A13I6370.jpg",
@@ -308,9 +308,9 @@ export const caseStudiesData = [
     "location": "Manali, HP, India",
     "capacity": "54 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for The Orchard Greens in Manali, HP, India, converting 36% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://www.theorchardgreens.com/resource/images/upload/meat-baked-with-carrots-in-the-oven-PB3WM5Z-1024x683.jpg",
@@ -383,9 +383,9 @@ export const caseStudiesData = [
     "location": "Manali, HP, India",
     "capacity": "41 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Woodrock Hotel in Manali, HP, India, converting 40% bookings commission-free and securing a 5.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
@@ -458,9 +458,9 @@ export const caseStudiesData = [
     "location": "Manali, HP, India",
     "capacity": "72 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Snow Valley Resorts in Manali, HP, India, converting 28% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
@@ -533,9 +533,9 @@ export const caseStudiesData = [
     "location": "Manali, HP, India",
     "capacity": "24 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for The Whispering Inn in Manali, HP, India, converting 46% bookings commission-free and securing a 4.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1486496146582-9ffcd0b2b2b7?auto=format&fit=crop&w=1200&q=80",
@@ -608,9 +608,9 @@ export const caseStudiesData = [
     "location": "Kashmir, India",
     "capacity": "35 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Kolahoi Green Resort in Kashmir, India, converting 33% bookings commission-free and securing a 6.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
@@ -683,9 +683,9 @@ export const caseStudiesData = [
     "location": "Kashmir, India",
     "capacity": "45 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Eden Resorts & Spa in Kashmir, India, converting 38% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
@@ -758,9 +758,9 @@ export const caseStudiesData = [
     "location": "Kashmir, India",
     "capacity": "10 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Hazaar Dastaan in Kashmir, India, converting 44% bookings commission-free and securing a 6.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
@@ -833,9 +833,9 @@ export const caseStudiesData = [
     "location": "Kerala, India",
     "capacity": "8 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Chembarathi Wayanad in Kerala, India, converting 45% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80",
@@ -908,9 +908,9 @@ export const caseStudiesData = [
     "location": "Kerala, India",
     "capacity": "25 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Mount Xanadu in Kerala, India, converting 30% bookings commission-free and securing a 6.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80",
@@ -983,10 +983,10 @@ export const caseStudiesData = [
     "location": "Kerala, India",
     "capacity": "12 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Willow Resorts in Kerala, India, converting 34% bookings commission-free and securing a 5.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
@@ -1059,10 +1059,10 @@ export const caseStudiesData = [
     "location": "Wayanad, Kerala, India",
     "capacity": "40 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Wayanad Silverwoods in Wayanad, Kerala, India, converting 41% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80",
@@ -1135,10 +1135,10 @@ export const caseStudiesData = [
     "location": "Wayanad, Kerala, India",
     "capacity": "10 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Pepper Trail in Wayanad, Kerala, India, converting 46% bookings commission-free and securing a 6.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80",
@@ -1211,11 +1211,11 @@ export const caseStudiesData = [
     "location": "Chikmagalur, India",
     "capacity": "42 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
       "TECH SUPPORT",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Siri Nature Roost in Chikmagalur, India, converting 39% bookings commission-free and securing a 6.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80",
@@ -1288,10 +1288,10 @@ export const caseStudiesData = [
     "location": "Chikmagalur, India",
     "capacity": "25 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Vismita County in Chikmagalur, India, converting 43% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80",
@@ -1364,10 +1364,10 @@ export const caseStudiesData = [
     "location": "Sakleshpur, India",
     "capacity": "22 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Mookanana Resort in Sakleshpur, India, converting 42% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
@@ -1440,10 +1440,10 @@ export const caseStudiesData = [
     "location": "Lakshadweep, India",
     "capacity": "18 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Sea Shells Agatti in Lakshadweep, India, converting 36% bookings commission-free and securing a 6.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80",
@@ -1516,9 +1516,9 @@ export const caseStudiesData = [
     "location": "Lonavala, India",
     "capacity": "29 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for The Machan in Lonavala, India, converting 40% bookings commission-free and securing a 6.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
@@ -1591,9 +1591,9 @@ export const caseStudiesData = [
     "location": "Rajasthan, India",
     "capacity": "60 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Via Lakhela Resort in Rajasthan, India, converting 44% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80",
@@ -1666,9 +1666,9 @@ export const caseStudiesData = [
     "location": "Rajasthan, India",
     "capacity": "10 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Anopura Jaipur in Rajasthan, India, converting 45% bookings commission-free and securing a 7.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1598977123418-45f04b615237?auto=format&fit=crop&w=1200&q=80",
@@ -1741,10 +1741,10 @@ export const caseStudiesData = [
     "location": "Udaipur, RJ, India",
     "capacity": "30 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Vasant Kunj Resort in Udaipur, RJ, India, converting 33% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1601999109332-542b18dbec57?auto=format&fit=crop&w=1200&q=80",
@@ -1817,10 +1817,10 @@ export const caseStudiesData = [
     "location": "Jaipur, RJ, India",
     "capacity": "65 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Shahpura Hotels in Jaipur, RJ, India, converting 34% bookings commission-free and securing a 6.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80",
@@ -1893,10 +1893,10 @@ export const caseStudiesData = [
     "location": "Tamil Nadu, India",
     "capacity": "6 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Vaikundam Legacy in Tamil Nadu, India, converting 43% bookings commission-free and securing a 6.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1598977123418-45f04b615237?auto=format&fit=crop&w=1200&q=80",
@@ -1969,11 +1969,11 @@ export const caseStudiesData = [
     "location": "Jaipur, Rajasthan",
     "capacity": "5 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
       "TECH SUPPORT",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for The Johri Jaipur in Jaipur, Rajasthan, converting 30% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80",
@@ -2046,10 +2046,10 @@ export const caseStudiesData = [
     "location": "Mayurbhanj, Odisha",
     "capacity": "11 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS",
       "TECH SUPPORT",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for The Belgadia Palace in Mayurbhanj, Odisha, converting 42% bookings commission-free and securing a 5.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
@@ -2122,11 +2122,11 @@ export const caseStudiesData = [
     "location": "Binsar, Uttarakhand",
     "capacity": "8 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
       "TECH SUPPORT",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Mary Budden Estate in Binsar, Uttarakhand, converting 28% bookings commission-free and securing a 4.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80",
@@ -2199,7 +2199,7 @@ export const caseStudiesData = [
     "location": "Himalayas, Nepal",
     "capacity": "15 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "META ADS"
     ],
     "tagline": "Deployed optimized direct booking channels for Elite Exped in Himalayas, Nepal, converting 38% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
@@ -2273,11 +2273,11 @@ export const caseStudiesData = [
     "location": "Dubai, UAE",
     "capacity": "20 Rooms",
     "services": [
-      "INSTAGRAM MARKETING",
+      "INSTAGRAM HANDLING",
       "GOOGLE ADS",
       "META ADS",
       "TECH SUPPORT",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Skydive Dubai VIP in Dubai, UAE, converting 41% bookings commission-free and securing a 7.0x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80",
@@ -2352,7 +2352,7 @@ export const caseStudiesData = [
     "services": [
       "GOOGLE ADS",
       "META ADS",
-      "OTA OPTIMIZATION"
+      "OTA PROFILE"
     ],
     "tagline": "Deployed optimized direct booking channels for Ahilya Fort in Maheshwar, Madhya Pradesh, converting 45% bookings commission-free and securing a 5.2x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80",
