@@ -204,9 +204,11 @@
 }
 
 .phoneLink {
-  color: #030508;
-  background: #ffffff;
-  border: 1px solid #ffffff;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -275,24 +277,27 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: #ffffff;
-  border: 1px solid #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 0.45rem 1.15rem;
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #030508;
+  color: #ffffff;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   box-shadow: 
     0 4px 15px rgba(0, 0, 0, 0.25),
-    0 1px 0 rgba(255, 255, 255, 0.1);
+    0 1px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
 }
 
 .locationBadge:hover {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
@@ -300,7 +305,7 @@
 .locationIcon {
   width: 0.85rem;
   height: 0.85rem;
-  color: #030508;
+  color: #ffffff;
 }
 
 /* Ultra premium editorial title */
@@ -334,8 +339,10 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  background: #ffffff;
-  border: 1px solid #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
   padding: 0.75rem 1.35rem;
   width: max-content;
@@ -359,7 +366,7 @@
 .metaValue {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #030508;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -367,7 +374,7 @@
 .metaDivider {
   width: 1px;
   height: 26px;
-  background-color: rgba(3, 5, 8, 0.15);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ==========================================================================
@@ -407,9 +414,11 @@
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  color: #030508;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -417,7 +426,7 @@
 
 .serviceBadge:hover {
   border-color: #38bdf8;
-  background: #ffffff;
+  background: rgba(56, 189, 248, 0.08);
   color: #38bdf8;
   transform: translateY(-2px);
 }
@@ -557,12 +566,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #ffffff; /* White background */
+  background: rgba(3, 5, 8, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow: 
-    0 12px 36px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    0 12px 36px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  border: 1px solid rgba(3, 5, 8, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   width: 84px;
   height: 84px;
   top: 28px;
@@ -574,7 +585,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: 1.55rem;
   font-weight: 700;
-  color: #030508;
+  color: #ffffff;
   line-height: 1;
 }
 
@@ -582,7 +593,7 @@
   font-size: 0.55rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: #64748b;
+  color: #94a3b8;
   margin-top: 0.2rem;
   text-transform: uppercase;
   text-align: center;
@@ -672,10 +683,12 @@
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #030508;
+  color: #ffffff;
   padding: 0.3rem 0.75rem;
-  background: #ffffff;
-  border: 1px solid #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0px;
   text-transform: uppercase;
   cursor: pointer;
@@ -684,7 +697,7 @@
 }
 
 .legendItem:hover {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
   border-color: #38bdf8;
   color: #38bdf8;
 }
@@ -707,9 +720,11 @@
 }
 
 .filterToggle {
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  color: #030508;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
   padding: 0.7rem 1.4rem;
   border-radius: 0px;
   font-size: 0.85rem;
@@ -724,34 +739,36 @@
 }
 
 .filterToggle:hover {
-  background: #ffffff;
-  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .filterChevron {
   width: 0.95rem;
   height: 0.95rem;
   transition: transform 0.3s ease;
-  color: #030508;
+  color: #ffffff;
 }
 
 .filterChevronOpen {
   transform: rotate(180deg);
-  color: #030508;
+  color: #ffffff;
 }
 
 .filterMenu {
   position: absolute;
   top: calc(100% + 0.6rem);
   right: 0;
-  background: #ffffff;
-  border: 1px solid rgba(3, 5, 8, 0.08);
+  background: rgba(5, 7, 12, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0px;
   width: 230px;
   padding: 0.5rem;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -761,7 +778,7 @@
 .filterOption {
   background: transparent;
   border: none;
-  color: #64748b;
+  color: #94a3b8;
   padding: 0.6rem 1rem;
   font-size: 0.82rem;
   font-weight: 500;
@@ -776,8 +793,8 @@
 }
 
 .filterOption:hover {
-  background: rgba(3, 5, 8, 0.04);
-  color: #030508;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
 }
 
 .filterOptionActive {
