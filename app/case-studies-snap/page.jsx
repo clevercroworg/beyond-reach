@@ -348,17 +348,22 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick, 
     >
       <div className={styles.leftCol}>
         <div className={styles.identityBlock}>
-          <motion.div className={styles.locationBadge} variants={itemDownVariants}>
+          <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
+            <span className={styles.logoMark}>✦</span>
+            <span className={styles.clientName}>{project.client}</span>
+          </motion.div>
+          
+          <motion.h3 className={styles.projectTitle} variants={titleVariants}>
+            {project.title}
+          </motion.h3>
+
+          <motion.div className={styles.locationBadge} variants={itemUpVariants}>
             <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
             <span>{project.location}</span>
           </motion.div>
-          
-          <motion.h3 className={styles.projectTitle} variants={titleVariants}>
-            {project.title}
-          </motion.h3>
           
           <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
             <div className={styles.metaItem}>
@@ -452,17 +457,22 @@ const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick, p
       animate={isSlideActive ? "visible" : "hidden"}
     >
       <div className={styles.identityBlock}>
-        <motion.div className={styles.locationBadge} variants={itemDownVariants}>
+        <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
+          <span className={styles.logoMark}>✦</span>
+          <span className={styles.clientName}>{project.client}</span>
+        </motion.div>
+        
+        <motion.h3 className={styles.projectTitle} variants={titleVariants}>
+          {project.title}
+        </motion.h3>
+
+        <motion.div className={styles.locationBadge} variants={itemUpVariants}>
           <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
           <span>{project.location}</span>
         </motion.div>
-        
-        <motion.h3 className={styles.projectTitle} variants={titleVariants}>
-          {project.title}
-        </motion.h3>
         
         <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
           <div className={styles.metaItem}>
@@ -777,8 +787,9 @@ export default function CaseStudiesSnapPage() {
           </div>
 
           <a href="tel:+919999999999" className={styles.phoneLink} title="Contact Support">
-            <svg className={styles.phoneIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            <svg className={styles.phoneIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              <path d="M14.05 2a9 9 0 0 1 7.95 7.95M14.05 6a5 5 0 0 1 3.95 3.95" />
             </svg>
           </a>
         </div>
