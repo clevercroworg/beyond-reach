@@ -4,47 +4,38 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './CaseStudiesSnap.module.css';
 import { caseStudiesData } from '../case-studies/caseStudiesData';
 
-// Renders a unique, highly premium, glowing geometric vector logomark for the client brand
-const CompanyLogo = ({ clientName }) => {
-  // Simple hash of clientName to generate a deterministic gradient and paths
+// Renders a highly polished, glowing interlocking dual-ring geometric SVG vector logomark
+const InterlockingCirclesLogo = ({ clientName }) => {
+  // Let's generate a beautiful glowing gradient based on the client name's hash to keep each logo distinct and colorful!
   let hash = 0;
   for (let i = 0; i < clientName.length; i++) {
     hash = clientName.charCodeAt(i) + ((hash << 5) - hash);
   }
-  
   const h1 = Math.abs(hash % 360);
   const h2 = (h1 + 60) % 360;
-  
-  // High-fidelity geometric logomark shapes
-  const logoPaths = [
-    // 0: Stylized nested triangles (delta)
-    "M12 2 L22 19 H2 Z M12 6 L6 16.5 H18 Z",
-    // 1: Interlocking infinity loops/concentric rings
-    "M12 2 C6.48 2 2 6.48 2 12 C2 17.52 6.48 22 12 22 C17.52 22 22 17.52 22 12 C22 6.48 17.52 2 12 2 Z M12 18 C8.69 18 6 15.31 6 12 C6 8.69 8.69 6 12 6 C15.31 6 18 8.69 18 12 C18 15.31 15.31 18 12 18 Z",
-    // 2: Stylized glowing geometric diamond/monogram
-    "M12 2 L22 12 L12 22 L2 12 Z M12 5.5 L5.5 12 L12 18.5 L18.5 12 Z",
-    // 3: Intersecting triple circles (flower of life node)
-    "M12 2 A5 5 0 0 0 7 10 A5 5 0 0 0 12 18 A5 5 0 0 0 17 10 A5 5 0 0 0 12 2 Z M12 4 A3 3 0 0 1 14.5 8.5 A3 3 0 0 1 12 13 A3 3 0 0 1 9.5 8.5 A3 3 0 0 1 12 4 Z"
-  ];
-  const selectedPath = logoPaths[Math.abs(hash) % logoPaths.length];
 
   return (
-    <div className={styles.graphicalLogoWrapper}>
-      <svg className={styles.graphicalLogoSvg} viewBox="0 0 24 24" fill="none">
-        <defs>
-          <linearGradient id={`logo-grad-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={`hsl(${h1}, 90%, 60%)`} />
-            <stop offset="100%" stopColor={`hsl(${h2}, 100%, 50%)`} />
-          </linearGradient>
-          <filter id="logo-glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="1.5" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
-        <path d={selectedPath} fill={`url(#logo-grad-${h1})`} filter="url(#logo-glow)" />
-      </svg>
-      <span className={styles.logoLabelText}>{clientName}</span>
-    </div>
+    <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
+      <defs>
+        <linearGradient id={`ring-grad-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor={`hsl(${h1}, 95%, 55%)`} />
+          <stop offset="100%" stopColor={`hsl(${h2}, 100%, 45%)`} />
+        </linearGradient>
+        <filter id="neon-glow" x="-25%" y="-25%" width="150%" height="150%">
+          <feGaussianBlur stdDeviation="2.2" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      {/* Upper ring */}
+      <circle cx="20" cy="15" r="8" stroke={`url(#ring-grad-${h1})`} strokeWidth="4.2" filter="url(#neon-glow)" />
+      {/* Lower ring */}
+      <circle cx="20" cy="25" r="8" stroke={`url(#ring-grad-${h1})`} strokeWidth="4.2" filter="url(#neon-glow)" />
+      {/* Inner interlocking highlight accent path */}
+      <path d="M20 7 C24.4 7 28 10.6 28 15 C28 18.5 25.8 21.5 22.8 22.6" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round" opacity="0.8" />
+    </svg>
   );
 };
 
@@ -393,34 +384,25 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick, 
       <div className={styles.leftCol}>
         <div className={styles.identityBlock}>
           <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
-            <span className={styles.logoMark}>✦</span>
-            <div className={styles.clientLogoInfo}>
-              <span className={styles.clientName}>{project.client}</span>
-            </div>
+            <InterlockingCirclesLogo clientName={project.client} />
           </motion.div>
           
           <motion.h3 className={styles.projectTitle} variants={titleVariants}>
             {project.title}
           </motion.h3>
 
-          <div className={styles.locationRow}>
-            <motion.div className={styles.locationBadge} variants={itemUpVariants}>
-              <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              <span>{project.location}</span>
-            </motion.div>
-            
-            <motion.div className={styles.typeBadge} variants={itemUpVariants}>
-              <span>{project.propertyType}</span>
-            </motion.div>
-          </div>
+          <motion.div className={styles.locationBadge} variants={itemUpVariants}>
+            <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>{project.location}</span>
+          </motion.div>
           
           <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
             <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>COMPANY LOGO</span>
-              <CompanyLogo clientName={project.client} />
+              <span className={styles.metaLabel}>PROPERTY TYPE</span>
+              <span className={styles.metaValue}>{project.propertyType}</span>
             </div>
             <div className={styles.metaDivider} />
             <div className={styles.metaItem}>
@@ -510,34 +492,25 @@ const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick, p
     >
       <div className={styles.identityBlock}>
         <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
-          <span className={styles.logoMark}>✦</span>
-          <div className={styles.clientLogoInfo}>
-            <span className={styles.clientName}>{project.client}</span>
-          </div>
+          <InterlockingCirclesLogo clientName={project.client} />
         </motion.div>
         
         <motion.h3 className={styles.projectTitle} variants={titleVariants}>
           {project.title}
         </motion.h3>
 
-        <div className={styles.locationRow}>
-          <motion.div className={styles.locationBadge} variants={itemUpVariants}>
-            <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>{project.location}</span>
-          </motion.div>
-          
-          <motion.div className={styles.typeBadge} variants={itemUpVariants}>
-            <span>{project.propertyType}</span>
-          </motion.div>
-        </div>
+        <motion.div className={styles.locationBadge} variants={itemUpVariants}>
+          <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>{project.location}</span>
+        </motion.div>
         
         <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
           <div className={styles.metaItem}>
-            <span className={styles.metaLabel}>COMPANY LOGO</span>
-            <CompanyLogo clientName={project.client} />
+            <span className={styles.metaLabel}>TYPE</span>
+            <span className={styles.metaValue}>{project.propertyType}</span>
           </div>
           <div className={styles.metaDivider} />
           <div className={styles.metaItem}>
