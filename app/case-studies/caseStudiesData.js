@@ -18,11 +18,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹60.83 Cr"
+        "value": "₹45.17 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "72,780"
+        "value": "28,678"
       }
     ],
     "gaugeScore": 98,
@@ -94,11 +94,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹11.52 Cr"
+        "value": "₹9.03 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "13,145"
+        "value": "5,736"
       }
     ],
     "gaugeScore": 98,
@@ -170,11 +170,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹7.37 Cr"
+        "value": "₹6.78 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "10,273"
+        "value": "4,302"
       }
     ],
     "gaugeScore": 98,
@@ -246,11 +246,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹38.42 Cr"
+        "value": "₹38.39 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "55,966"
+        "value": "24,376"
       }
     ],
     "gaugeScore": 90,
@@ -322,11 +322,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹20.17 Cr"
+        "value": "₹24.39 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "36,602"
+        "value": "15,486"
       }
     ],
     "gaugeScore": 91,
@@ -398,11 +398,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹13.59 Cr"
+        "value": "₹18.52 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "27,176"
+        "value": "11,758"
       }
     ],
     "gaugeScore": 92,
@@ -474,11 +474,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹30.34 Cr"
+        "value": "₹32.52 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "50,996"
+        "value": "20,648"
       }
     ],
     "gaugeScore": 93,
@@ -550,11 +550,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹7.61 Cr"
+        "value": "₹10.84 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "15,606"
+        "value": "6,883"
       }
     ],
     "gaugeScore": 94,
@@ -626,11 +626,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹22.30 Cr"
+        "value": "₹15.81 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "24,842"
+        "value": "10,037"
       }
     ],
     "gaugeScore": 95,
@@ -702,11 +702,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹25.99 Cr"
+        "value": "₹20.33 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "30,669"
+        "value": "12,905"
       }
     ],
     "gaugeScore": 96,
@@ -778,11 +778,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹3.87 Cr"
+        "value": "₹3.01 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "6,090"
+        "value": "2,868"
       }
     ],
     "gaugeScore": 97,
@@ -854,11 +854,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹3.70 Cr"
+        "value": "₹3.61 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "4,990"
+        "value": "2,294"
       }
     ],
     "gaugeScore": 98,
@@ -930,11 +930,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹17.67 Cr"
+        "value": "₹11.29 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "17,970"
+        "value": "7,169"
       }
     ],
     "gaugeScore": 90,
@@ -1007,11 +1007,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹4.58 Cr"
+        "value": "₹5.42 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "7,653"
+        "value": "3,441"
       }
     ],
     "gaugeScore": 91,
@@ -1084,11 +1084,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹26.81 Cr"
+        "value": "₹18.07 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "28,220"
+        "value": "11,471"
       }
     ],
     "gaugeScore": 92,
@@ -1161,11 +1161,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹10.27 Cr"
+        "value": "₹4.52 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "6,882"
+        "value": "2,868"
       }
     ],
     "gaugeScore": 93,
@@ -1239,11 +1239,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹45.66 Cr"
+        "value": "₹18.97 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "30,537"
+        "value": "12,045"
       }
     ],
     "gaugeScore": 96,
@@ -1316,11 +1316,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹18.68 Cr"
+        "value": "₹11.29 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "17,305"
+        "value": "7,169"
       }
     ],
     "gaugeScore": 97,
@@ -1393,11 +1393,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹12.97 Cr"
+        "value": "₹9.94 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "14,599"
+        "value": "6,309"
       }
     ],
     "gaugeScore": 90,
@@ -1470,11 +1470,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹16.34 Cr"
+        "value": "₹8.13 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "13,693"
+        "value": "5,162"
       }
     ],
     "gaugeScore": 92,
@@ -1546,11 +1546,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹34.13 Cr"
+        "value": "₹13.10 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "21,732"
+        "value": "8,317"
       }
     ],
     "gaugeScore": 94,
@@ -1622,11 +1622,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹25.75 Cr"
+        "value": "₹27.10 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "39,535"
+        "value": "17,207"
       }
     ],
     "gaugeScore": 96,
@@ -1698,11 +1698,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹11.22 Cr"
+        "value": "₹4.52 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "6,263"
+        "value": "2,868"
       }
     ],
     "gaugeScore": 97,
@@ -1775,11 +1775,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹11.92 Cr"
+        "value": "₹13.55 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "20,554"
+        "value": "8,603"
       }
     ],
     "gaugeScore": 98,
@@ -1852,11 +1852,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹33.30 Cr"
+        "value": "₹29.36 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "44,533"
+        "value": "18,641"
       }
     ],
     "gaugeScore": 91,
@@ -1929,11 +1929,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹4.36 Cr"
+        "value": "₹1.81 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "3,706"
+        "value": "1,721"
       }
     ],
     "gaugeScore": 92,
@@ -2007,11 +2007,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹6.03 Cr"
+        "value": "₹1.51 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "3,832"
+        "value": "1,434"
       }
     ],
     "gaugeScore": 94,
@@ -2084,11 +2084,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹12.01 Cr"
+        "value": "₹3.31 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "8,431"
+        "value": "3,155"
       }
     ],
     "gaugeScore": 96,
@@ -2162,11 +2162,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹15.02 Cr"
+        "value": "₹2.41 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "6,132"
+        "value": "2,294"
       }
     ],
     "gaugeScore": 97,
@@ -2237,11 +2237,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹67.66 Cr"
+        "value": "₹1.89 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "11,497"
+        "value": "2,250"
       }
     ],
     "gaugeScore": 91,
@@ -2315,11 +2315,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹29.95 Cr"
+        "value": "₹2.52 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "15,330"
+        "value": "3,000"
       }
     ],
     "gaugeScore": 92,
@@ -2391,11 +2391,11 @@ export const caseStudiesData = [
     "kpis": [
       {
         "label": "REVENUE GENERATED",
-        "value": "₹26.16 Cr"
+        "value": "₹4.52 Cr"
       },
       {
         "label": "BOOKINGS GENERATED",
-        "value": "11,497"
+        "value": "4,302"
       }
     ],
     "gaugeScore": 98,
