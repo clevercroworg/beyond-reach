@@ -830,45 +830,75 @@ export default function CaseStudiesSnapPage() {
                     animate={idx === 0 && isInitialLoad && introState !== 'loading' ? "zoom" : false}
                   >
                     {shouldRenderVideo && (
-                      <motion.video
-                        className={styles.heroBgVideo}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        poster={project.imgSrc}
-                        initial={
-                          idx === 0 && isInitialLoad
-                            ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' }
-                            : { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' }
-                        }
-                        animate={
-                          idx === 0 && isInitialLoad && introState !== 'active'
-                            ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' }
-                            : (isSlideActive
-                                ? { opacity: 0.95, filter: 'brightness(0.95) saturate(1.0)' }
-                                : { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' })
-                        }
-                        transition={{
-                          delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
-                          duration: 1.0,
-                          ease: "easeInOut"
-                        }}
-                        key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
-                      >
-                        {isMobile ? (
-                          <>
-                            <source src={`/case-studies/assets/${project.id}-mobile.mp4`} type="video/mp4" />
-                            <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
-                            <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
-                          </>
-                        ) : (
-                          <>
-                            <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
-                            <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
-                          </>
-                        )}
-                      </motion.video>
+                      (project.id === 'vismita-county' || project.id === 'mookanana-resort') ? (
+                        <motion.img
+                          src={project.imgSrc}
+                          alt={project.title}
+                          className={styles.heroBgVideo} // reuse video styling for sizing, filters, and positioning
+                          initial={
+                            idx === 0 && isInitialLoad
+                              ? { opacity: 1, scale: 1.1, filter: 'brightness(1.0) saturate(1.0)' }
+                              : { opacity: 0.45, scale: 1.0, filter: 'brightness(0.3) saturate(0.8)' }
+                          }
+                          animate={
+                            idx === 0 && isInitialLoad && introState !== 'active'
+                              ? { opacity: 1, scale: 1.1, filter: 'brightness(1.0) saturate(1.0)' }
+                              : (isSlideActive
+                                  ? { opacity: 0.95, scale: 1.05, filter: 'brightness(0.95) saturate(1.0)' }
+                                  : { opacity: 0.45, scale: 1.0, filter: 'brightness(0.3) saturate(0.8)' })
+                          }
+                          transition={{
+                            delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
+                            duration: 1.2,
+                            ease: "easeInOut"
+                          }}
+                          style={{
+                            pointerEvents: 'none',
+                            zIndex: 1
+                          }}
+                          key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
+                        />
+                      ) : (
+                        <motion.video
+                          className={styles.heroBgVideo}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          poster={project.imgSrc}
+                          initial={
+                            idx === 0 && isInitialLoad
+                              ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' }
+                              : { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' }
+                          }
+                          animate={
+                            idx === 0 && isInitialLoad && introState !== 'active'
+                              ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' }
+                              : (isSlideActive
+                                  ? { opacity: 0.95, filter: 'brightness(0.95) saturate(1.0)' }
+                                  : { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' })
+                          }
+                          transition={{
+                            delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
+                            duration: 1.0,
+                            ease: "easeInOut"
+                          }}
+                          key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
+                        >
+                          {isMobile ? (
+                            <>
+                              <source src={`/case-studies/assets/${project.id}-mobile.mp4`} type="video/mp4" />
+                              <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
+                              <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                            </>
+                          ) : (
+                            <>
+                              <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
+                              <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
+                            </>
+                          )}
+                        </motion.video>
+                      )
                     )}
                     <motion.div 
                       className={styles.heroVideoOverlay}
