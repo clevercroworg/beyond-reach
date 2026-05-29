@@ -1295,6 +1295,7 @@ export const caseStudiesData = [
     ],
     "tagline": "Deployed optimized direct booking channels for Vismita County in Chikmagalur, India, converting 43% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=2000&q=85",
+    "imgSrcMobile": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1000&h=1800&q=85",
     "kpis": [
       {
         "label": "CONSOLIDATED REVENUE",
@@ -1371,6 +1372,7 @@ export const caseStudiesData = [
     ],
     "tagline": "Deployed optimized direct booking channels for Mookanana Resort in Sakleshpur, India, converting 42% bookings commission-free and securing a 5.5x ROAS on digital media campaigns.",
     "imgSrc": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2000&q=85",
+    "imgSrcMobile": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&h=1800&q=85",
     "kpis": [
       {
         "label": "CONSOLIDATED REVENUE",

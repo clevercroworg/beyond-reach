@@ -832,7 +832,7 @@ export default function CaseStudiesSnapPage() {
                     {shouldRenderVideo && (
                       (project.id === 'vismita-county' || project.id === 'mookanana-resort') ? (
                         <motion.img
-                          src={project.imgSrc}
+                          src={isMobile && project.imgSrcMobile ? project.imgSrcMobile : project.imgSrc}
                           alt={project.title}
                           className={styles.heroBgVideo} // reuse video styling for sizing, filters, and positioning
                           initial={
