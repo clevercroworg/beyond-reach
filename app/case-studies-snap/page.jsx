@@ -798,6 +798,9 @@ export default function CaseStudiesSnapPage() {
 
   return (
     <div className={styles.pageContainer}>
+      {/* Global Viewport Cinematic Edge Shadow */}
+      <div className={styles.globalVignette} />
+
       {/* Cinematic Typographic Split Preloader */}
       <AnimatePresence>
         {isInitialLoad && (
