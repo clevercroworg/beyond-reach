@@ -514,7 +514,7 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick, 
         </motion.p>
 
         <motion.div className={styles.scopeSection} variants={itemUpVariants}>
-          <span className={styles.sectionLabel}>SCOPE OF WORK</span>
+          <span className={styles.sectionLabel}>SOLUTIONS DEPLOYED</span>
           <motion.div className={styles.badgeContainer} variants={badgeContainerVariants}>
             {project.services.map((service, sIdx) => {
               const dotColors = ['#38bdf8', '#34d399', '#a78bfa', '#fbbf24'];
@@ -618,7 +618,7 @@ const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick, p
       </div>
 
       <motion.div className={styles.scopeSection} variants={itemUpVariants}>
-        <span className={styles.sectionLabel}>SCOPE</span>
+        <span className={styles.sectionLabel}>SOLUTIONS DEPLOYED</span>
         <motion.div className={styles.badgeContainer} variants={badgeContainerVariants}>
           {project.services.slice(0, 3).map((service, sIdx) => {
             const dotColors = ['#38bdf8', '#34d399', '#a78bfa', '#fbbf24'];
