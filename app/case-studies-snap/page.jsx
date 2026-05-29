@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './CaseStudiesSnap.module.css';
 import { caseStudiesData } from '../case-studies/caseStudiesData';
 
-// Renders a highly polished, glowing interlocking dual-ring geometric SVG vector logomark
-const InterlockingCirclesLogo = ({ clientName }) => {
+// Renders a unique, highly premium, glowing geometric vector logomark for the client brand depending on its location and category
+const ClientBrandLogo = ({ clientName, category, location }) => {
   // Let's generate a beautiful glowing gradient based on the client name's hash to keep each logo distinct and colorful!
   let hash = 0;
   for (let i = 0; i < clientName.length; i++) {
@@ -14,14 +14,114 @@ const InterlockingCirclesLogo = ({ clientName }) => {
   const h1 = Math.abs(hash % 360);
   const h2 = (h1 + 60) % 360;
 
+  const type = (category || '').toLowerCase();
+  const loc = (location || '').toLowerCase();
+  const name = (clientName || '').toLowerCase();
+
+  // 1. Heritage / Palatial Living / Royal
+  if (name.includes('fort') || name.includes('palace') || name.includes('belgadia') || name.includes('johri') || name.includes('heritage') || name.includes('ahilya')) {
+    return (
+      <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
+        <defs>
+          <linearGradient id={`grad-royal-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#f59e0b" />
+            <stop offset="100%" stopColor="#d97706" />
+          </linearGradient>
+          <filter id={`logo-glow-royal-${h1}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path d="M20 5 L32 10 V22 C32 29 27 34 20 37 C13 34 8 29 8 22 V10 L20 5 Z" stroke={`url(#grad-royal-${h1})`} strokeWidth="3" filter={`url(#logo-glow-royal-${h1})`} />
+        <path d="M14 16 L20 12 L26 16 L23 25 H17 L14 16 Z" fill={`url(#grad-royal-${h1})`} />
+        <circle cx="20" cy="20" r="2" fill="#ffffff" />
+      </svg>
+    );
+  }
+
+  // 2. Adventure / Action
+  if (type.includes('activity') || type.includes('adventure') || type.includes('exped') || name.includes('sky') || name.includes('skydive') || name.includes('elite')) {
+    return (
+      <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
+        <defs>
+          <linearGradient id={`grad-adv-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ec4899" />
+            <stop offset="100%" stopColor="#f97316" />
+          </linearGradient>
+          <filter id={`logo-glow-adv-${h1}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path d="M8 26 L20 10 L32 26 L28 29 L20 18 L12 29 L8 26 Z" fill={`url(#grad-adv-${h1})`} filter={`url(#logo-glow-adv-${h1})`} />
+        <path d="M12 32 L20 22 L28 32 L25 34 L20 28 L15 34 L12 32 Z" fill={`url(#grad-adv-${h1})`} opacity="0.7" />
+      </svg>
+    );
+  }
+
+  // 3. Coastal / Seaside / Beach
+  if (loc.includes('goa') || loc.includes('kerala') || loc.includes('beach') || name.includes('riva') || name.includes('anahata') || name.includes('palma') || name.includes('sea') || name.includes('xanadu') || name.includes('mount')) {
+    return (
+      <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
+        <defs>
+          <linearGradient id={`grad-sea-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#06b6d4" />
+            <stop offset="100%" stopColor="#10b981" />
+          </linearGradient>
+          <filter id={`logo-glow-sea-${h1}`} x="-25%" y="-25%" width="150%" height="150%">
+            <feGaussianBlur stdDeviation="1.8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <circle cx="20" cy="14" r="6" fill={`url(#grad-sea-${h1})`} filter={`url(#logo-glow-sea-${h1})`} />
+        <path d="M6 26 C12 22, 16 28, 20 25 C24 22, 28 28, 34 25" stroke={`url(#grad-sea-${h1})`} strokeWidth="3.5" strokeLinecap="round" />
+        <path d="M8 32 C13 29, 17 34, 20 31 C23 28, 27 34, 32 31" stroke={`url(#grad-sea-${h1})`} strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
+      </svg>
+    );
+  }
+
+  // 4. Mountains / Hill Stations
+  if (loc.includes('manali') || loc.includes('kashmir') || loc.includes('himachal') || loc.includes('binsar') || name.includes('budden') || name.includes('snow') || name.includes('valley') || name.includes('whisper') || name.includes('wood') || name.includes('orchard') || name.includes('greens') || name.includes('manuallaya') || name.includes('kola') || name.includes('eden') || loc.includes('estate')) {
+    return (
+      <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
+        <defs>
+          <linearGradient id={`grad-mountain-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#6366f1" />
+            <stop offset="100%" stopColor="#3b82f6" />
+          </linearGradient>
+          <filter id={`logo-glow-mt-${h1}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="1.8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path d="M6 32 L17 14 L23 24 L29 12 L35 32 Z" stroke={`url(#grad-mountain-${h1})`} strokeWidth="3" strokeLinejoin="round" filter={`url(#logo-glow-mt-${h1})`} />
+        <path d="M12 32 L17 23 L22 32 Z" fill={`url(#grad-mountain-${h1})`} opacity="0.6" />
+        <circle cx="29" cy="8" r="2.5" fill="#ffffff" />
+      </svg>
+    );
+  }
+
+  // 5. Default: Interlocking circular loops
   return (
     <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
       <defs>
-        <linearGradient id={`ring-grad-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor={`hsl(${h1}, 95%, 55%)`} />
-          <stop offset="100%" stopColor={`hsl(${h2}, 100%, 45%)`} />
+        <linearGradient id={`grad-default-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#10b981" />
+          <stop offset="100%" stopColor="#0ea5e9" />
         </linearGradient>
-        <filter id="neon-glow" x="-25%" y="-25%" width="150%" height="150%">
+        <filter id={`logo-glow-def-${h1}`} x="-25%" y="-25%" width="150%" height="150%">
           <feGaussianBlur stdDeviation="2.2" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
@@ -29,11 +129,8 @@ const InterlockingCirclesLogo = ({ clientName }) => {
           </feMerge>
         </filter>
       </defs>
-      {/* Upper ring */}
-      <circle cx="20" cy="15" r="8" stroke={`url(#ring-grad-${h1})`} strokeWidth="4.2" filter="url(#neon-glow)" />
-      {/* Lower ring */}
-      <circle cx="20" cy="25" r="8" stroke={`url(#ring-grad-${h1})`} strokeWidth="4.2" filter="url(#neon-glow)" />
-      {/* Inner interlocking highlight accent path */}
+      <circle cx="20" cy="15" r="8" stroke={`url(#grad-default-${h1})`} strokeWidth="4.2" filter={`url(#logo-glow-def-${h1})`} />
+      <circle cx="20" cy="25" r="8" stroke={`url(#grad-default-${h1})`} strokeWidth="4.2" filter={`url(#logo-glow-def-${h1})`} />
       <path d="M20 7 C24.4 7 28 10.6 28 15 C28 18.5 25.8 21.5 22.8 22.6" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round" opacity="0.8" />
     </svg>
   );
@@ -384,7 +481,7 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick, 
       <div className={styles.leftCol}>
         <div className={styles.identityBlock}>
           <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
-            <InterlockingCirclesLogo clientName={project.client} />
+            <ClientBrandLogo clientName={project.client} category={project.propertyType} location={project.location} />
           </motion.div>
           
           <motion.h3 className={styles.projectTitle} variants={titleVariants}>
@@ -492,7 +589,7 @@ const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick, p
     >
       <div className={styles.identityBlock}>
         <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
-          <InterlockingCirclesLogo clientName={project.client} />
+          <ClientBrandLogo clientName={project.client} category={project.propertyType} location={project.location} />
         </motion.div>
         
         <motion.h3 className={styles.projectTitle} variants={titleVariants}>
