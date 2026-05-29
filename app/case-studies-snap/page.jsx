@@ -630,7 +630,7 @@ export default function CaseStudiesSnapPage() {
           navigateToSlide((activeIndex + 1) % filteredStudies.length);
           return 0;
         }
-        return prev + 1.25; // 80 steps over 6.4s (or adjust value to perfect 8s duration: ~1% per 80ms)
+        return prev + 0.625; // 160 steps over 12.8s (doubled the viewing duration per slide)
       });
     }, 80);
 

@@ -4,8 +4,8 @@ export const caseStudiesData = [
     "id": "riva-beach-resort",
     "title": "RIVA BEACH RESORT",
     "client": "RIVA BEACH RESORT",
-    "propertyType": "Luxury Resort",
-    "location": "Goa, India",
+    "propertyType": "Resort",
+    "location": "Goa",
     "capacity": "100 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -17,11 +17,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹60.83 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "72,780"
       }
     ],
@@ -80,8 +80,8 @@ export const caseStudiesData = [
     "id": "anahata-retreat",
     "title": "ANAHATA RETREAT",
     "client": "ANAHATA RETREAT",
-    "propertyType": "Luxury Resort",
-    "location": "Goa, India",
+    "propertyType": "Resort",
+    "location": "Goa",
     "capacity": "20 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -93,11 +93,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://static.wixstatic.com/media/094a0d_8f8d7eff3154497b853322b4bb2238ff~mv2.jpg/v1/fill/w_1000,h_1800,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_9289_JPG.jpg",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹11.52 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "13,145"
       }
     ],
@@ -156,8 +156,8 @@ export const caseStudiesData = [
     "id": "palma-goa",
     "title": "PALMA GOA",
     "client": "PALMA GOA",
-    "propertyType": "Luxury Resort",
-    "location": "Goa, India",
+    "propertyType": "Resort",
+    "location": "Goa",
     "capacity": "15 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -169,11 +169,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹7.37 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "10,273"
       }
     ],
@@ -232,8 +232,8 @@ export const caseStudiesData = [
     "id": "manuallaya-resort",
     "title": "MANUALLAYA RESORT",
     "client": "MANUALLAYA RESORT",
-    "propertyType": "Luxury Resort",
-    "location": "Manali, HP, India",
+    "propertyType": "Resort",
+    "location": "Manali, HP",
     "capacity": "85 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -245,11 +245,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹38.42 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "55,966"
       }
     ],
@@ -308,8 +308,8 @@ export const caseStudiesData = [
     "id": "the-orchard-greens",
     "title": "THE ORCHARD GREENS",
     "client": "THE ORCHARD GREENS",
-    "propertyType": "Luxury Resort",
-    "location": "Manali, HP, India",
+    "propertyType": "Resort",
+    "location": "Manali, HP",
     "capacity": "54 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -321,11 +321,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹20.17 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "36,602"
       }
     ],
@@ -384,8 +384,8 @@ export const caseStudiesData = [
     "id": "woodrock-hotel",
     "title": "WOODROCK HOTEL",
     "client": "WOODROCK HOTEL",
-    "propertyType": "Luxury Resort",
-    "location": "Manali, HP, India",
+    "propertyType": "Resort",
+    "location": "Manali, HP",
     "capacity": "41 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -397,11 +397,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹13.59 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "27,176"
       }
     ],
@@ -460,8 +460,8 @@ export const caseStudiesData = [
     "id": "snow-valley-resorts",
     "title": "SNOW VALLEY RESORTS",
     "client": "SNOW VALLEY RESORTS",
-    "propertyType": "Luxury Resort",
-    "location": "Manali, HP, India",
+    "propertyType": "Resort",
+    "location": "Manali, HP",
     "capacity": "72 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -473,11 +473,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹30.34 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "50,996"
       }
     ],
@@ -536,8 +536,8 @@ export const caseStudiesData = [
     "id": "the-whispering-inn",
     "title": "THE WHISPERING INN",
     "client": "THE WHISPERING INN",
-    "propertyType": "Luxury Resort",
-    "location": "Manali, HP, India",
+    "propertyType": "Resort",
+    "location": "Manali, HP",
     "capacity": "24 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -549,11 +549,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1486496146582-9ffcd0b2b2b7?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹7.61 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "15,606"
       }
     ],
@@ -612,8 +612,8 @@ export const caseStudiesData = [
     "id": "kolahoi-green-resort",
     "title": "KOLAHOI GREEN RESORT",
     "client": "KOLAHOI GREEN RESORT",
-    "propertyType": "Luxury Resort",
-    "location": "Kashmir, India",
+    "propertyType": "Resort",
+    "location": "Kashmir",
     "capacity": "35 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -625,11 +625,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹22.30 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "24,842"
       }
     ],
@@ -688,8 +688,8 @@ export const caseStudiesData = [
     "id": "eden-resorts-spa",
     "title": "EDEN RESORTS & SPA",
     "client": "EDEN RESORTS & SPA",
-    "propertyType": "Luxury Resort",
-    "location": "Kashmir, India",
+    "propertyType": "Resort",
+    "location": "Kashmir",
     "capacity": "45 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -701,11 +701,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹25.99 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "30,669"
       }
     ],
@@ -764,8 +764,8 @@ export const caseStudiesData = [
     "id": "hazaar-dastaan",
     "title": "HAZAAR DASTAAN",
     "client": "HAZAAR DASTAAN",
-    "propertyType": "Boutique Homestay",
-    "location": "Kashmir, India",
+    "propertyType": "Homestay",
+    "location": "Kashmir",
     "capacity": "10 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -777,11 +777,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹3.87 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "6,090"
       }
     ],
@@ -840,8 +840,8 @@ export const caseStudiesData = [
     "id": "chembarathi-wayanad",
     "title": "CHEMBARATHI WAYANAD",
     "client": "CHEMBARATHI WAYANAD",
-    "propertyType": "Luxury Resort",
-    "location": "Kerala, India",
+    "propertyType": "Resort",
+    "location": "Kerala",
     "capacity": "8 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -853,11 +853,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹3.70 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "4,990"
       }
     ],
@@ -916,8 +916,8 @@ export const caseStudiesData = [
     "id": "mount-xanadu",
     "title": "MOUNT XANADU",
     "client": "MOUNT XANADU",
-    "propertyType": "Luxury Resort",
-    "location": "Kerala, India",
+    "propertyType": "Resort",
+    "location": "Kerala",
     "capacity": "25 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -929,11 +929,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹17.67 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "17,970"
       }
     ],
@@ -992,8 +992,8 @@ export const caseStudiesData = [
     "id": "willow-resorts",
     "title": "WILLOW RESORTS",
     "client": "WILLOW RESORTS",
-    "propertyType": "Luxury Resort",
-    "location": "Kerala, India",
+    "propertyType": "Resort",
+    "location": "Kerala",
     "capacity": "12 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1006,11 +1006,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹4.58 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "7,653"
       }
     ],
@@ -1069,8 +1069,8 @@ export const caseStudiesData = [
     "id": "wayanad-silverwoods",
     "title": "WAYANAD SILVERWOODS",
     "client": "WAYANAD SILVERWOODS",
-    "propertyType": "Luxury Resort",
-    "location": "Wayanad, Kerala, India",
+    "propertyType": "Resort",
+    "location": "Wayanad, Kerala",
     "capacity": "40 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1083,11 +1083,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹26.81 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "28,220"
       }
     ],
@@ -1146,8 +1146,8 @@ export const caseStudiesData = [
     "id": "pepper-trail",
     "title": "PEPPER TRAIL",
     "client": "PEPPER TRAIL",
-    "propertyType": "Luxury Resort",
-    "location": "Wayanad, Kerala, India",
+    "propertyType": "Resort",
+    "location": "Wayanad, Kerala",
     "capacity": "10 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1160,11 +1160,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹10.27 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "6,882"
       }
     ],
@@ -1223,8 +1223,8 @@ export const caseStudiesData = [
     "id": "siri-nature-roost",
     "title": "SIRI NATURE ROOST",
     "client": "SIRI NATURE ROOST",
-    "propertyType": "Luxury Resort",
-    "location": "Chikmagalur, India",
+    "propertyType": "Resort",
+    "location": "Chikmagalur",
     "capacity": "42 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1238,11 +1238,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹45.66 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "30,537"
       }
     ],
@@ -1301,8 +1301,8 @@ export const caseStudiesData = [
     "id": "vismita-county",
     "title": "VISMITA COUNTY",
     "client": "VISMITA COUNTY",
-    "propertyType": "Luxury Resort",
-    "location": "Chikmagalur, India",
+    "propertyType": "Resort",
+    "location": "Chikmagalur",
     "capacity": "25 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1315,11 +1315,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=85",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹18.68 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "17,305"
       }
     ],
@@ -1378,8 +1378,8 @@ export const caseStudiesData = [
     "id": "mookanana-resort",
     "title": "MOOKANANA RESORT",
     "client": "MOOKANANA RESORT",
-    "propertyType": "Luxury Resort",
-    "location": "Sakleshpur, India",
+    "propertyType": "Resort",
+    "location": "Sakleshpur",
     "capacity": "22 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1392,11 +1392,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=85",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹12.97 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "14,599"
       }
     ],
@@ -1455,8 +1455,8 @@ export const caseStudiesData = [
     "id": "sea-shells-agatti",
     "title": "SEA SHELLS AGATTI",
     "client": "SEA SHELLS AGATTI",
-    "propertyType": "Luxury Resort",
-    "location": "Lakshadweep, India",
+    "propertyType": "Resort",
+    "location": "Lakshadweep",
     "capacity": "18 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1469,11 +1469,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹16.34 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "13,693"
       }
     ],
@@ -1532,8 +1532,8 @@ export const caseStudiesData = [
     "id": "the-machan",
     "title": "THE MACHAN",
     "client": "THE MACHAN",
-    "propertyType": "Luxury Resort",
-    "location": "Lonavala, India",
+    "propertyType": "Resort",
+    "location": "Lonavala",
     "capacity": "29 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1545,11 +1545,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹34.13 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "21,732"
       }
     ],
@@ -1608,8 +1608,8 @@ export const caseStudiesData = [
     "id": "via-lakhela-resort",
     "title": "VIA LAKHELA RESORT",
     "client": "VIA LAKHELA RESORT",
-    "propertyType": "Luxury Resort",
-    "location": "Rajasthan, India",
+    "propertyType": "Resort",
+    "location": "Rajasthan",
     "capacity": "60 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1621,11 +1621,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹25.75 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "39,535"
       }
     ],
@@ -1684,8 +1684,8 @@ export const caseStudiesData = [
     "id": "anopura-jaipur",
     "title": "ANOPURA JAIPUR",
     "client": "ANOPURA JAIPUR",
-    "propertyType": "Luxury Resort",
-    "location": "Rajasthan, India",
+    "propertyType": "Resort",
+    "location": "Rajasthan",
     "capacity": "10 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1697,11 +1697,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1598977123418-45f04b615237?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹11.22 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "6,263"
       }
     ],
@@ -1760,8 +1760,8 @@ export const caseStudiesData = [
     "id": "vasant-kunj-resort",
     "title": "VASANT KUNJ RESORT",
     "client": "VASANT KUNJ RESORT",
-    "propertyType": "Luxury Resort",
-    "location": "Udaipur, RJ, India",
+    "propertyType": "Resort",
+    "location": "Udaipur, RJ",
     "capacity": "30 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1774,11 +1774,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1601999109332-542b18dbec57?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹11.92 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "20,554"
       }
     ],
@@ -1837,8 +1837,8 @@ export const caseStudiesData = [
     "id": "shahpura-hotels",
     "title": "SHAHPURA HOTELS",
     "client": "SHAHPURA HOTELS",
-    "propertyType": "Luxury Resort",
-    "location": "Jaipur, RJ, India",
+    "propertyType": "Resort",
+    "location": "Jaipur, RJ",
     "capacity": "65 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1851,11 +1851,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹33.30 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "44,533"
       }
     ],
@@ -1914,8 +1914,8 @@ export const caseStudiesData = [
     "id": "vaikundam-legacy",
     "title": "VAIKUNDAM LEGACY",
     "client": "VAIKUNDAM LEGACY",
-    "propertyType": "Boutique Homestay",
-    "location": "Tamil Nadu, India",
+    "propertyType": "Homestay",
+    "location": "Tamil Nadu",
     "capacity": "6 Rooms",
     "services": [
       "INSTAGRAM HANDLING",
@@ -1928,11 +1928,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1598977123418-45f04b615237?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹4.36 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "3,706"
       }
     ],
@@ -1991,7 +1991,7 @@ export const caseStudiesData = [
     "id": "the-johri-jaipur",
     "title": "THE JOHRI JAIPUR",
     "client": "THE JOHRI JAIPUR",
-    "propertyType": "Boutique Homestay",
+    "propertyType": "Homestay",
     "location": "Jaipur, Rajasthan",
     "capacity": "5 Rooms",
     "services": [
@@ -2006,11 +2006,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹6.03 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "3,832"
       }
     ],
@@ -2069,7 +2069,7 @@ export const caseStudiesData = [
     "id": "the-belgadia-palace",
     "title": "THE BELGADIA PALACE",
     "client": "THE BELGADIA PALACE",
-    "propertyType": "Boutique Homestay",
+    "propertyType": "Homestay",
     "location": "Mayurbhanj, Odisha",
     "capacity": "11 Rooms",
     "services": [
@@ -2083,11 +2083,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹12.01 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "8,431"
       }
     ],
@@ -2146,7 +2146,7 @@ export const caseStudiesData = [
     "id": "mary-budden-estate",
     "title": "MARY BUDDEN ESTATE",
     "client": "MARY BUDDEN ESTATE",
-    "propertyType": "Boutique Homestay",
+    "propertyType": "Homestay",
     "location": "Binsar, Uttarakhand",
     "capacity": "8 Rooms",
     "services": [
@@ -2161,11 +2161,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹15.02 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "6,132"
       }
     ],
@@ -2236,11 +2236,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹67.66 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "11,497"
       }
     ],
@@ -2314,11 +2314,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹29.95 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "15,330"
       }
     ],
@@ -2377,7 +2377,7 @@ export const caseStudiesData = [
     "id": "ahilya-fort",
     "title": "AHILYA FORT",
     "client": "AHILYA FORT",
-    "propertyType": "Boutique Homestay",
+    "propertyType": "Homestay",
     "location": "Maheshwar, Madhya Pradesh",
     "capacity": "15 Rooms",
     "services": [
@@ -2390,11 +2390,11 @@ export const caseStudiesData = [
     "imgSrcMobile": "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&crop=faces,edges&w=800&h=1600&q=80",
     "kpis": [
       {
-        "label": "CONSOLIDATED REVENUE",
+        "label": "REVENUE GENERATED",
         "value": "₹26.16 Cr"
       },
       {
-        "label": "CONSOLIDATED BOOKINGS",
+        "label": "BOOKINGS GENERATED",
         "value": "11,497"
       }
     ],
