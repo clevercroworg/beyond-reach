@@ -308,9 +308,8 @@
 }
 
 .clientLogoInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  display: inline-flex;
+  align-items: center;
 }
 
 .clientName {
@@ -323,43 +322,13 @@
   line-height: 1.1;
 }
 
-.clientType {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.52rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.45);
-  text-transform: uppercase;
-  line-height: 1.0;
-}
-
-.companyLogoPlaceholder {
-  display: inline-flex;
+.locationRow {
+  display: flex;
   align-items: center;
-  gap: 0.45rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.25rem 0.65rem;
-  border-radius: 3px;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
   width: max-content;
-}
-
-.companyLogoIcon {
-  color: #38bdf8;
-  font-size: 0.65rem;
-  display: inline-flex;
-  align-items: center;
-}
-
-.companyLogoName {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.58rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: #ffffff;
-  text-transform: uppercase;
 }
 
 /* Minimalist elegant typography badge */
@@ -371,20 +340,71 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0.45rem 1.15rem;
-  border-radius: 4px;
+  padding: 0.45rem 1.05rem;
+  border-radius: 3px;
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.15em;
   color: #ffffff;
   text-transform: uppercase;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   width: max-content;
   box-shadow: 
     0 4px 15px rgba(0, 0, 0, 0.25),
     0 1px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
+}
+
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(56, 189, 248, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 0.45rem 1.05rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #38bdf8;
+  text-transform: uppercase;
+  width: max-content;
+  box-shadow: 
+    0 4px 15px rgba(56, 189, 248, 0.05),
+    0 1px 0 rgba(56, 189, 248, 0.1);
+  transition: all 0.3s ease;
+}
+
+.typeBadge:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-1px);
+}
+
+.graphicalLogoWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: max-content;
+}
+
+.graphicalLogoSvg {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.logoLabelText {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
 .locationBadge:hover {
