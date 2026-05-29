@@ -152,9 +152,9 @@ const cardVariants = {
       type: "spring",
       stiffness: 80,
       damping: 15,
-      delay: 2.0, // Delay the entire card entry by 2 seconds!
+      delay: 1.0, // Delay the entire card entry by 1 second!
       staggerChildren: 0.08,
-      delayChildren: 2.15 // Delay children stagger start by 2.15 seconds!
+      delayChildren: 1.15 // Delay children stagger start by 1.15 seconds!
     } 
   }
 };
@@ -846,7 +846,7 @@ export default function CaseStudiesSnapPage() {
                                 : { opacity: 0.45, scale: 1.0, filter: 'brightness(0.3) saturate(0.8)' })
                         }
                         transition={{
-                          delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
+                          delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 1.0 : 0),
                           duration: 1.2,
                           ease: "easeInOut"
                         }}
@@ -868,8 +868,8 @@ export default function CaseStudiesSnapPage() {
                               : { opacity: 0.9 })
                       }
                       transition={{ 
-                        times: [0, 0.66, 1],
-                        duration: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : 3.0,
+                        times: [0, 0.5, 1],
+                        duration: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : 2.0,
                         ease: "easeInOut"
                       }}
                     />
