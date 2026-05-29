@@ -120,12 +120,10 @@ const AnalyticsPod = ({ project, isSlideActive }) => {
             onMouseLeave={() => setHoveredIndex(null)}
             onClick={() => setSelectedIndex(index)}
             style={{
-              borderColor: activeIndex === index ? slice.color : 'rgba(255, 255, 255, 0.08)',
-              background: activeIndex === index ? 'rgba(255, 255, 255, 0.06)' : 'rgba(255, 255, 255, 0.02)',
-              color: activeIndex === index ? '#ffffff' : '#94a3b8',
-              boxShadow: activeIndex === index ? `0 4px 15px ${slice.color}20` : 'none',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)'
+              borderColor: activeIndex === index ? slice.color : 'rgba(3, 5, 8, 0.08)',
+              background: '#ffffff',
+              color: activeIndex === index ? slice.color : '#030508',
+              boxShadow: activeIndex === index ? `0 4px 12px ${slice.color}25` : 'none'
             }}
           >
             <span className={styles.legendDot} style={{ backgroundColor: slice.color }} />
@@ -154,8 +152,9 @@ const cardVariants = {
       type: "spring",
       stiffness: 80,
       damping: 15,
+      delay: 2.0, // Delay the entire card entry by 2 seconds!
       staggerChildren: 0.08,
-      delayChildren: 0.15
+      delayChildren: 2.15 // Delay children stagger start by 2.15 seconds!
     } 
   }
 };
@@ -830,75 +829,33 @@ export default function CaseStudiesSnapPage() {
                     animate={idx === 0 && isInitialLoad && introState !== 'loading' ? "zoom" : false}
                   >
                     {shouldRenderVideo && (
-                      (project.id === 'vismita-county' || project.id === 'mookanana-resort') ? (
-                        <motion.img
-                          src={isMobile && project.imgSrcMobile ? project.imgSrcMobile : project.imgSrc}
-                          alt={project.title}
-                          className={styles.heroBgVideo} // reuse video styling for sizing, filters, and positioning
-                          initial={
-                            idx === 0 && isInitialLoad
-                              ? { opacity: 1, scale: 1.1, filter: 'brightness(1.0) saturate(1.0)' }
-                              : { opacity: 0.45, scale: 1.0, filter: 'brightness(0.3) saturate(0.8)' }
-                          }
-                          animate={
-                            idx === 0 && isInitialLoad && introState !== 'active'
-                              ? { opacity: 1, scale: 1.1, filter: 'brightness(1.0) saturate(1.0)' }
-                              : (isSlideActive
-                                  ? { opacity: 0.95, scale: 1.05, filter: 'brightness(0.95) saturate(1.0)' }
-                                  : { opacity: 0.45, scale: 1.0, filter: 'brightness(0.3) saturate(0.8)' })
-                          }
-                          transition={{
-                            delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
-                            duration: 1.2,
-                            ease: "easeInOut"
-                          }}
-                          style={{
-                            pointerEvents: 'none',
-                            zIndex: 1
-                          }}
-                          key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
-                        />
-                      ) : (
-                        <motion.video
-                          className={styles.heroBgVideo}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          poster={project.imgSrc}
-                          initial={
-                            idx === 0 && isInitialLoad
-                              ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' }
-                              : { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' }
-                          }
-                          animate={
-                            idx === 0 && isInitialLoad && introState !== 'active'
-                              ? { opacity: 1, filter: 'brightness(1.0) saturate(1.0)' }
-                              : (isSlideActive
-                                  ? { opacity: 0.95, filter: 'brightness(0.95) saturate(1.0)' }
-                                  : { opacity: 0.45, filter: 'brightness(0.3) saturate(0.8)' })
-                          }
-                          transition={{
-                            delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
-                            duration: 1.0,
-                            ease: "easeInOut"
-                          }}
-                          key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
-                        >
-                          {isMobile ? (
-                            <>
-                              <source src={`/case-studies/assets/${project.id}-mobile.mp4`} type="video/mp4" />
-                              <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
-                              <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
-                            </>
-                          ) : (
-                            <>
-                              <source src={`/case-studies/assets/${project.id}.mp4`} type="video/mp4" />
-                              <source src="/case-studies/assets/venue-1-compressed.mp4" type="video/mp4" />
-                            </>
-                          )}
-                        </motion.video>
-                      )
+                      <motion.img
+                        src={isMobile && project.imgSrcMobile ? project.imgSrcMobile : project.imgSrc}
+                        alt={project.title}
+                        className={styles.heroBgVideo} // reuse video styling for sizing, filters, and positioning
+                        initial={
+                          idx === 0 && isInitialLoad
+                            ? { opacity: 1, scale: 1.1, filter: 'brightness(1.0) saturate(1.0)' }
+                            : { opacity: 0.45, scale: 1.0, filter: 'brightness(0.3) saturate(0.8)' }
+                        }
+                        animate={
+                          idx === 0 && isInitialLoad && introState !== 'active'
+                            ? { opacity: 1, scale: 1.1, filter: 'brightness(1.0) saturate(1.0)' }
+                            : (isSlideActive
+                                ? { opacity: 0.95, scale: 1.05, filter: 'brightness(0.95) saturate(1.0)' }
+                                : { opacity: 0.45, scale: 1.0, filter: 'brightness(0.3) saturate(0.8)' })
+                        }
+                        transition={{
+                          delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
+                          duration: 1.2,
+                          ease: "easeInOut"
+                        }}
+                        style={{
+                          pointerEvents: 'none',
+                          zIndex: 1
+                        }}
+                        key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
+                      />
                     )}
                     <motion.div 
                       className={styles.heroVideoOverlay}
@@ -906,11 +863,13 @@ export default function CaseStudiesSnapPage() {
                       animate={
                         idx === 0 && isInitialLoad && introState !== 'active'
                           ? { opacity: 0 }
-                          : (isSlideActive ? { opacity: 0 } : { opacity: 1 })
+                          : (isSlideActive 
+                              ? { opacity: [0, 0, 0.65] } 
+                              : { opacity: 0.9 })
                       }
                       transition={{ 
-                        delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 2.0 : 0),
-                        duration: 1.0,
+                        times: [0, 0.66, 1],
+                        duration: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : 3.0,
                         ease: "easeInOut"
                       }}
                     />
