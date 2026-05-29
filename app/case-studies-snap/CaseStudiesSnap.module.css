@@ -284,12 +284,12 @@
 .clientLogoBlock {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.65rem;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.45rem 1.15rem;
+  padding: 0.55rem 1.25rem;
   border-radius: 4px;
   margin-bottom: 1.25rem;
   box-shadow: 
@@ -301,18 +301,64 @@
 
 .logoMark {
   color: #38bdf8;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 800;
   display: inline-flex;
   align-items: center;
 }
 
+.clientLogoInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
 .clientName {
   font-family: 'Inter', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.clientType {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.52rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  line-height: 1.0;
+}
+
+.companyLogoPlaceholder {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.25rem 0.65rem;
+  border-radius: 3px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  width: max-content;
+}
+
+.companyLogoIcon {
+  color: #38bdf8;
+  font-size: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.companyLogoName {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #ffffff;
   text-transform: uppercase;
 }
 

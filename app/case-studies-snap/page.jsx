@@ -350,7 +350,10 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick, 
         <div className={styles.identityBlock}>
           <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
             <span className={styles.logoMark}>✦</span>
-            <span className={styles.clientName}>{project.client}</span>
+            <div className={styles.clientLogoInfo}>
+              <span className={styles.clientName}>{project.client}</span>
+              <span className={styles.clientType}>{project.propertyType}</span>
+            </div>
           </motion.div>
           
           <motion.h3 className={styles.projectTitle} variants={titleVariants}>
@@ -367,8 +370,11 @@ const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick, 
           
           <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
             <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>PROPERTY TYPE</span>
-              <span className={styles.metaValue}>{project.propertyType}</span>
+              <span className={styles.metaLabel}>COMPANY LOGO</span>
+              <div className={styles.companyLogoPlaceholder}>
+                <span className={styles.companyLogoIcon}>✦</span>
+                <span className={styles.companyLogoName}>{project.client}</span>
+              </div>
             </div>
             <div className={styles.metaDivider} />
             <div className={styles.metaItem}>
@@ -459,7 +465,10 @@ const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick, p
       <div className={styles.identityBlock}>
         <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
           <span className={styles.logoMark}>✦</span>
-          <span className={styles.clientName}>{project.client}</span>
+          <div className={styles.clientLogoInfo}>
+            <span className={styles.clientName}>{project.client}</span>
+            <span className={styles.clientType}>{project.propertyType}</span>
+          </div>
         </motion.div>
         
         <motion.h3 className={styles.projectTitle} variants={titleVariants}>
@@ -476,8 +485,11 @@ const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick, p
         
         <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
           <div className={styles.metaItem}>
-            <span className={styles.metaLabel}>TYPE</span>
-            <span className={styles.metaValue}>{project.propertyType}</span>
+            <span className={styles.metaLabel}>COMPANY LOGO</span>
+            <div className={styles.companyLogoPlaceholder}>
+              <span className={styles.companyLogoIcon}>✦</span>
+              <span className={styles.companyLogoName}>{project.client}</span>
+            </div>
           </div>
           <div className={styles.metaDivider} />
           <div className={styles.metaItem}>
