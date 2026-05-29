@@ -275,32 +275,34 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: #ffffff;
-  border: 1px solid #ffffff;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(56, 189, 248, 0.04) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
   padding: 0.45rem 1.15rem;
   border-radius: 4px;
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  color: #030508;
+  color: #38bdf8; /* Glowing Sky blue */
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.25),
+    0 4px 15px rgba(56, 189, 248, 0.1),
     0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
 .locationBadge:hover {
-  background: #ffffff;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.18) 0%, rgba(56, 189, 248, 0.08) 100%);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.15);
 }
 
 .locationIcon {
   width: 0.85rem;
   height: 0.85rem;
-  color: #030508;
+  color: #38bdf8;
 }
 
 /* Ultra premium editorial title */
@@ -334,8 +336,10 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  background: #ffffff;
-  border: 1px solid #ffffff;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
   padding: 0.75rem 1.35rem;
   width: max-content;
@@ -351,7 +355,7 @@
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: #64748b;
+  color: #94a3b8;
   margin-bottom: 0.25rem;
   text-transform: uppercase;
 }
@@ -359,7 +363,7 @@
 .metaValue {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #030508;
+  color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -367,7 +371,7 @@
 .metaDivider {
   width: 1px;
   height: 26px;
-  background-color: rgba(3, 5, 8, 0.15);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* ==========================================================================
@@ -407,17 +411,19 @@
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  color: #030508;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .serviceBadge:hover {
-  border-color: #38bdf8;
-  background: #ffffff;
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(255, 255, 255, 0.08);
   color: #38bdf8;
   transform: translateY(-2px);
 }
@@ -557,12 +563,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #ffffff; /* White background */
+  background: rgba(10, 15, 30, 0.6); /* dark transparent glass center ring */
   box-shadow: 
-    0 12px 36px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    0 12px 36px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   border-radius: 50%;
-  border: 1px solid rgba(3, 5, 8, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   width: 84px;
   height: 84px;
   top: 28px;
@@ -574,7 +580,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: 1.55rem;
   font-weight: 700;
-  color: #030508;
+  color: #ffffff;
   line-height: 1;
 }
 
@@ -582,7 +588,7 @@
   font-size: 0.55rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: #64748b;
+  color: #94a3b8;
   margin-top: 0.2rem;
   text-transform: uppercase;
   text-align: center;
@@ -672,10 +678,10 @@
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #030508;
+  color: #94a3b8;
   padding: 0.3rem 0.75rem;
-  background: #ffffff;
-  border: 1px solid #ffffff;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 0px;
   text-transform: uppercase;
   cursor: pointer;
@@ -684,8 +690,8 @@
 }
 
 .legendItem:hover {
-  background: #ffffff;
-  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.25);
   color: #38bdf8;
 }
 
@@ -707,9 +713,11 @@
 }
 
 .filterToggle {
-  background: #ffffff;
-  border: 1px solid #ffffff;
-  color: #030508;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
   padding: 0.7rem 1.4rem;
   border-radius: 0px;
   font-size: 0.85rem;
@@ -724,8 +732,8 @@
 }
 
 .filterToggle:hover {
-  background: #ffffff;
-  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -734,24 +742,26 @@
   width: 0.95rem;
   height: 0.95rem;
   transition: transform 0.3s ease;
-  color: #030508;
+  color: #94a3b8;
 }
 
 .filterChevronOpen {
   transform: rotate(180deg);
-  color: #030508;
+  color: #ffffff;
 }
 
 .filterMenu {
   position: absolute;
   top: calc(100% + 0.6rem);
   right: 0;
-  background: #ffffff;
-  border: 1px solid rgba(3, 5, 8, 0.08);
+  background: rgba(5, 8, 15, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 0px;
   width: 230px;
   padding: 0.5rem;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -761,7 +771,7 @@
 .filterOption {
   background: transparent;
   border: none;
-  color: #64748b;
+  color: #94a3b8;
   padding: 0.6rem 1rem;
   font-size: 0.82rem;
   font-weight: 500;
@@ -776,12 +786,12 @@
 }
 
 .filterOption:hover {
-  background: rgba(3, 5, 8, 0.04);
-  color: #030508;
+  background: rgba(255, 255, 255, 0.04);
+  color: #ffffff;
 }
 
 .filterOptionActive {
-  background: rgba(56, 189, 248, 0.08);
+  background: rgba(56, 189, 248, 0.12);
   color: #38bdf8;
   font-weight: 600;
 }
