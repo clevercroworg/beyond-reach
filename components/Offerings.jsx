@@ -179,8 +179,8 @@ const Offerings = () => {
   return (
     <section className={styles.sectionFluidMain} id="solution">
       <div className={styles.headerTitle}>
-        <span className={styles.subHeading}>Elite Expertise Verticals</span>
-        <h2>OUR OFFERINGS</h2>
+        <span className={styles.subHeading}>Growth systems for premium hospitality and experience-led brands.</span>
+        <h2>Who We Help</h2>
       </div>
 
       {/* Directory-style Horizontal Panel Catalog */}

@@ -118,7 +118,10 @@ const Hero = () => {
             ))}
           </div>
         </h1>
-        <p className={styles.subtitle}>Data-Driven Hospitality Marketing</p>
+        <p className={styles.subtitle}>Hospitality Growth Partner</p>
+        <p className={styles.description}>
+          We build brand, marketing and booking growth systems for premium hotels, resorts, villas, wellness spaces, event venues and private experiences.
+        </p>
       </div>
 
       <div className={styles.heroFooter} ref={footerRef}>

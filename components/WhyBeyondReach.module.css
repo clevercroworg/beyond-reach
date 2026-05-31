@@ -1,0 +1,259 @@
+.whySection {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 140px 80px;
+  background-color: var(--bg-primary);
+  background-image: url('/bg/why-beyond-reach-bg.png');
+  background-size: cover;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  gap: 6rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left Content Styles */
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.subHeading {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 1.2rem;
+  display: inline-block;
+}
+
+.mainHeading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 4.5vw, 4rem);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.neonAccent {
+  color: var(--accent-color);
+}
+
+.headingLine {
+  width: 60px;
+  height: 2px;
+  background-color: var(--accent-color);
+  margin: 2.2rem 0;
+}
+
+.description {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  font-weight: 400;
+  max-width: 390px;
+}
+
+/* Right Grid (5 Cards) Layout */
+.rightGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem;
+  align-content: start;
+}
+
+/* Base Card Styles */
+.card {
+  position: relative;
+  background: rgba(19, 25, 21, 0.35); /* Elegant translucent forest-black shade */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(209, 255, 54, 0.12); /* Signature brand neon-lime border */
+  border-radius: 12px;
+  padding: 3rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  transition: border-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Custom Spanning for Wide and Narrow Rows */
+.card01,
+.card02 {
+  grid-column: span 3;
+}
+
+.card03,
+.card04,
+.card05 {
+  grid-column: span 2;
+}
+
+/* Inside Card Styles */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2.2rem;
+}
+
+.cardNum {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  letter-spacing: 0.1em;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(209, 255, 54, 0.2);
+  color: var(--accent-color);
+  background: rgba(209, 255, 54, 0.04);
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cardIcon {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.2px;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.cardText {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* =========================================
+   LUXURY HOVER SPOTLIGHT INTERACTIONS (Desktop)
+   ========================================= */
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--accent-color);
+    background-color: rgba(19, 25, 21, 0.65);
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(209, 255, 54, 0.06);
+  }
+
+  .card:hover .iconWrapper {
+    background-color: var(--accent-color);
+    color: #000000;
+    border-color: var(--accent-color);
+    transform: scale(1.06);
+    box-shadow: 0 0 15px rgba(209, 255, 54, 0.4);
+  }
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT BREAKPOINTS
+   ========================================= */
+@media (max-width: 1280px) {
+  .whySection {
+    padding: 100px 40px;
+  }
+  
+  .container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    max-width: 900px;
+  }
+  
+  .leftContent {
+    max-width: 100%;
+  }
+  
+  .description {
+    max-width: 100%;
+  }
+
+  .rightGrid {
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 991px) {
+  /* On medium screens, convert bottom row of 3 cards into columns */
+  .card03,
+  .card04,
+  .card05 {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .whySection {
+    padding: 80px 20px;
+  }
+  
+  .container {
+    gap: 3rem;
+  }
+  
+  .mainHeading {
+    font-size: 2.8rem;
+  }
+  
+  .headingLine {
+    margin: 1.5rem 0;
+  }
+
+  .rightGrid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .card {
+    grid-column: span 1 !important;
+    padding: 2.5rem 1.8rem;
+  }
+
+  .cardTitle {
+    font-size: 1.5rem;
+  }
+
+  /* Enhanced mobile state defaults since hovers don't apply */
+  .iconWrapper {
+    background-color: rgba(209, 255, 54, 0.08);
+    border-color: var(--accent-color);
+  }
+}

@@ -76,10 +76,21 @@
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 1.4rem; /* Balanced size for primary tag */
   letter-spacing: 0.2em;
   color: var(--accent-color);
   text-transform: uppercase;
+}
+
+.description {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78); /* High contrast readable light grey */
+  max-width: 680px;
+  margin: 1.5rem auto 0 auto;
+  font-weight: 400;
+  text-align: center;
 }
 
 /* Mobile Responsive */
@@ -105,6 +116,13 @@
   .subtitle {
     font-size: 0.95rem;
     margin-top: 0.5rem;
+  }
+
+  .description {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-top: 1rem;
+    max-width: 100%;
   }
 }
 
