@@ -199,8 +199,7 @@ export default function CaseStudiesSnapPage() {
         <div className={styles.navLogo}>
           <a href="/">
             <span className={styles.logoBold}>BEYOND</span>{" "}
-            <span className={styles.logoLight}>REACH</span>{" "}
-            <span className={styles.logoWaves}>≈</span>
+            <span className={styles.logoLight}>REACH</span>
           </a>
         </div>
         
@@ -390,14 +389,6 @@ export default function CaseStudiesSnapPage() {
                       <DynamicBookingGauge pieData={project.pieData} />
                     </div>
 
-                    {/* Solid Neon-Lime green CTA Button */}
-                    <a
-                      href={`/case-studies/${project.id}`}
-                      className={styles.ctaButton}
-                    >
-                      <span>VIEW GROWTH STORY</span>
-                      <span className={styles.ctaArrow}>➔</span>
-                    </a>
 
                   </div>
                 </motion.article>
