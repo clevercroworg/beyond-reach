@@ -26,10 +26,10 @@
   align-items: center;
   padding: 1.8rem 4rem;
   z-index: 100;
-  background: linear-gradient(to bottom, rgba(5, 6, 5, 0.8) 0%, transparent 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
 }
 
 .navLogo a {
@@ -275,12 +275,12 @@
 }
 
 /* ==========================================================================
-   VERTICAL CARDS STREAM (800PX GRID)
+   VERTICAL CARDS STREAM (MOBILE-LIKE 600PX GRID)
    ========================================================================== */
 
 .cardsStream {
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 1.5rem 10rem;
   display: flex;
@@ -306,7 +306,7 @@
 .cardImageBlock {
   position: relative;
   width: 100%;
-  height: 420px;
+  height: 340px;
   overflow: hidden;
 }
 
@@ -792,11 +792,11 @@
     height: 38px;
   }
   
-  /* Donut gauge stacking on small devices */
+  /* Donut gauge side-by-side on small devices */
   .gaugeBlock {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 1.5rem;
+    grid-template-columns: 110px 1fr;
+    gap: 1.2rem;
+    align-items: center;
   }
   
   .legendList {
