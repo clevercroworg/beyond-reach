@@ -4,1081 +4,414 @@ import { motion, AnimatePresence } from 'framer-motion';
 import styles from './CaseStudiesSnap.module.css';
 import { caseStudiesData } from '../case-studies/caseStudiesData';
 
-// Renders a unique, highly premium, glowing geometric vector logomark for the client brand depending on its location and category
-const ClientBrandLogo = ({ clientName, category, location }) => {
-  // Let's generate a beautiful glowing gradient based on the client name's hash to keep each logo distinct and colorful!
-  let hash = 0;
-  for (let i = 0; i < clientName.length; i++) {
-    hash = clientName.charCodeAt(i) + ((hash << 5) - hash);
+// Custom inline SVG Vector Icons
+const LocationIcon = () => (
+  <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+    <circle cx="12" cy="10" r="3" />
+  </svg>
+);
+
+const ResortIcon = () => (
+  <svg className={styles.badgeIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+  </svg>
+);
+
+const BedIcon = () => (
+  <svg className={styles.cardMetaIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2 4v16M2 8h18M2 12h20M22 4v16M11 8H6a2 2 0 0 0-2 2v2h7" />
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg className={styles.serviceIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
+const MetaAdsIcon = () => (
+  <svg className={styles.serviceIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16.5 8C14.7 8 13.1 9.2 12.3 10.8L11.7 12c-.8 1.6-2.4 2.8-4.2 2.8C4.5 14.8 2.5 12.8 2.5 10.5S4.5 6.2 7.5 6.2c1.8 0 3.4 1.2 4.2 2.8l.6 1.2c.8 1.6 2.4 2.8 4.2 2.8c3 0 5-2 5-4.3S19.5 8 16.5 8z" />
+  </svg>
+);
+
+const GlobeIcon = () => (
+  <svg className={styles.serviceIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <line x1="2" y1="12" x2="22" y2="12" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
+// Helper function to dynamically map propertyType to categories in caseStudiesData
+const getCategoryForProject = (propertyType) => {
+  const type = (propertyType || '').toLowerCase();
+  if (type.includes('resort') || type.includes('retreat') || type.includes('palace') || type.includes('fort') || type.includes('heritage')) {
+    return 'resorts';
   }
-  const h1 = Math.abs(hash % 360);
-  const h2 = (h1 + 60) % 360;
-
-  const type = (category || '').toLowerCase();
-  const loc = (location || '').toLowerCase();
-  const name = (clientName || '').toLowerCase();
-
-  // 1. Heritage / Palatial Living / Royal
-  if (name.includes('fort') || name.includes('palace') || name.includes('belgadia') || name.includes('johri') || name.includes('heritage') || name.includes('ahilya')) {
-    return (
-      <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
-        <defs>
-          <linearGradient id={`grad-royal-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#f59e0b" />
-            <stop offset="100%" stopColor="#d97706" />
-          </linearGradient>
-          <filter id={`logo-glow-royal-${h1}`} x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="1.5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <path d="M20 5 L32 10 V22 C32 29 27 34 20 37 C13 34 8 29 8 22 V10 L20 5 Z" stroke={`url(#grad-royal-${h1})`} strokeWidth="3" filter={`url(#logo-glow-royal-${h1})`} />
-        <path d="M14 16 L20 12 L26 16 L23 25 H17 L14 16 Z" fill={`url(#grad-royal-${h1})`} />
-        <circle cx="20" cy="20" r="2" fill="#ffffff" />
-      </svg>
-    );
+  if (type.includes('villa') || type.includes('homestay') || type.includes('home stay') || type.includes('estate') || type.includes('cabin')) {
+    return 'villas';
   }
-
-  // 2. Adventure / Action
-  if (type.includes('activity') || type.includes('adventure') || type.includes('exped') || name.includes('sky') || name.includes('skydive') || name.includes('elite')) {
-    return (
-      <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
-        <defs>
-          <linearGradient id={`grad-adv-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ec4899" />
-            <stop offset="100%" stopColor="#f97316" />
-          </linearGradient>
-          <filter id={`logo-glow-adv-${h1}`} x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="2" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <path d="M8 26 L20 10 L32 26 L28 29 L20 18 L12 29 L8 26 Z" fill={`url(#grad-adv-${h1})`} filter={`url(#logo-glow-adv-${h1})`} />
-        <path d="M12 32 L20 22 L28 32 L25 34 L20 28 L15 34 L12 32 Z" fill={`url(#grad-adv-${h1})`} opacity="0.7" />
-      </svg>
-    );
+  if (type.includes('hotel') || type.includes('inn') || type.includes('boutique') || type.includes('lodge')) {
+    return 'hotels';
   }
-
-  // 3. Coastal / Seaside / Beach
-  if (loc.includes('goa') || loc.includes('kerala') || loc.includes('beach') || name.includes('riva') || name.includes('anahata') || name.includes('palma') || name.includes('sea') || name.includes('xanadu') || name.includes('mount')) {
-    return (
-      <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
-        <defs>
-          <linearGradient id={`grad-sea-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#06b6d4" />
-            <stop offset="100%" stopColor="#10b981" />
-          </linearGradient>
-          <filter id={`logo-glow-sea-${h1}`} x="-25%" y="-25%" width="150%" height="150%">
-            <feGaussianBlur stdDeviation="1.8" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <circle cx="20" cy="14" r="6" fill={`url(#grad-sea-${h1})`} filter={`url(#logo-glow-sea-${h1})`} />
-        <path d="M6 26 C12 22, 16 28, 20 25 C24 22, 28 28, 34 25" stroke={`url(#grad-sea-${h1})`} strokeWidth="3.5" strokeLinecap="round" />
-        <path d="M8 32 C13 29, 17 34, 20 31 C23 28, 27 34, 32 31" stroke={`url(#grad-sea-${h1})`} strokeWidth="2.5" strokeLinecap="round" opacity="0.8" />
-      </svg>
-    );
+  if (type.includes('wellness') || type.includes('spa') || type.includes('yoga') || type.includes('ayurveda')) {
+    return 'wellness';
   }
-
-  // 4. Mountains / Hill Stations
-  if (loc.includes('manali') || loc.includes('kashmir') || loc.includes('himachal') || loc.includes('binsar') || name.includes('budden') || name.includes('snow') || name.includes('valley') || name.includes('whisper') || name.includes('wood') || name.includes('orchard') || name.includes('greens') || name.includes('manuallaya') || name.includes('kola') || name.includes('eden') || loc.includes('estate')) {
-    return (
-      <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
-        <defs>
-          <linearGradient id={`grad-mountain-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#6366f1" />
-            <stop offset="100%" stopColor="#3b82f6" />
-          </linearGradient>
-          <filter id={`logo-glow-mt-${h1}`} x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="1.8" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <path d="M6 32 L17 14 L23 24 L29 12 L35 32 Z" stroke={`url(#grad-mountain-${h1})`} strokeWidth="3" strokeLinejoin="round" filter={`url(#logo-glow-mt-${h1})`} />
-        <path d="M12 32 L17 23 L22 32 Z" fill={`url(#grad-mountain-${h1})`} opacity="0.6" />
-        <circle cx="29" cy="8" r="2.5" fill="#ffffff" />
-      </svg>
-    );
-  }
-
-  // 5. Default: Interlocking circular loops
-  return (
-    <svg className={styles.premiumClientLogo} viewBox="0 0 40 40" fill="none">
-      <defs>
-        <linearGradient id={`grad-default-${h1}`} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#10b981" />
-          <stop offset="100%" stopColor="#0ea5e9" />
-        </linearGradient>
-        <filter id={`logo-glow-def-${h1}`} x="-25%" y="-25%" width="150%" height="150%">
-          <feGaussianBlur stdDeviation="2.2" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <circle cx="20" cy="15" r="8" stroke={`url(#grad-default-${h1})`} strokeWidth="4.2" filter={`url(#logo-glow-def-${h1})`} />
-      <circle cx="20" cy="25" r="8" stroke={`url(#grad-default-${h1})`} strokeWidth="4.2" filter={`url(#logo-glow-def-${h1})`} />
-      <path d="M20 7 C24.4 7 28 10.6 28 15 C28 18.5 25.8 21.5 22.8 22.6" stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round" opacity="0.8" />
-    </svg>
-  );
+  return 'resorts'; // default fallback
 };
 
-// Custom fully interactive Analytics Pod containing SVG Donut Chart, Outcomes list and spanning Legend
-const AnalyticsPod = ({ project, isSlideActive }) => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+// Custom interactive SVG Donut Gauge ring with dynamic legend breakdown
+const DynamicBookingGauge = ({ pieData }) => {
+  if (!pieData || pieData.length === 0) return null;
 
-  if (!isSlideActive) {
-    return (
-      <div className={styles.analyticsSection}>
-        <div className={styles.donutWrapper} />
-        <div className={styles.outcomesWrapper}>
-          <span className={styles.outcomeTitle}>WHAT WE DELIVERED</span>
-        </div>
-      </div>
-    );
-  }
+  // Extract rates, matching the default mockup parameters if missing
+  const directVal = pieData[0]?.value || 0;
+  const otaVal = pieData[1]?.value || 0;
+  const offlineVal = pieData[2]?.value || 0;
+  const total = directVal + otaVal + offlineVal || 100;
 
-  const data = project.pieData;
-  const total = data.reduce((sum, item) => sum + item.value, 0);
-  const radius = 50;
-  const circumference = 2 * Math.PI * radius;
+  // Normalize percentages so they map to 100% of a circle
+  const dPct = (directVal / total) * 100;
+  const oPct = (otaVal / total) * 100;
+  const gPct = (offlineVal / total) * 100;
 
-  let accumulatedPercent = 0;
-  const activeIndex = hoveredIndex !== null ? hoveredIndex : selectedIndex;
+  const radius = 35;
+  const strokeWidth = 10;
+  const circumference = 2 * Math.PI * radius; // ~219.91
+
+  const dLength = (dPct / 100) * circumference;
+  const oLength = (oPct / 100) * circumference;
+  const gLength = (gPct / 100) * circumference;
+
+  // Offsets for stacked dash values (negative dashoffset rotates forward clockwise)
+  const dOffset = 0;
+  const oOffset = -dLength;
+  const gOffset = -(dLength + oLength);
 
   return (
-    <motion.div className={styles.analyticsSection} variants={donutPodVariants}>
-      {/* 1. DONUT WRAPPER (occupies first grid column) */}
+    <div className={styles.gaugeBlock}>
       <div className={styles.donutWrapper}>
-        <svg className={styles.donutSvg} viewBox="0 0 140 140">
-          <g transform="translate(70, 70)">
-            {/* Track background circle */}
+        <svg viewBox="0 0 100 100" className={styles.donutSvg}>
+          {/* Base Empty Circle Track */}
+          <circle
+            cx="50"
+            cy="50"
+            r={radius}
+            fill="none"
+            stroke="rgba(255, 255, 255, 0.06)"
+            strokeWidth={strokeWidth}
+          />
+          {/* Direct segment (Lime Green) */}
+          {dLength > 0 && (
             <circle
-              cx="0"
-              cy="0"
+              cx="50"
+              cy="50"
               r={radius}
               fill="none"
-              stroke="rgba(255, 255, 255, 0.08)"
-              strokeWidth="18"
+              stroke="#caff33"
+              strokeWidth={strokeWidth}
+              strokeDasharray={`${dLength} ${circumference}`}
+              strokeDashoffset={dOffset}
+              transform="rotate(-90 50 50)"
+              strokeLinecap={oLength === 0 && gLength === 0 ? "round" : "butt"}
             />
-            {data.map((slice, index) => {
-              const percentage = (slice.value / total) * 100;
-              const strokeDashoffset = circumference - (percentage / 100) * circumference;
-              const rotation = (accumulatedPercent / 100) * 360;
-              accumulatedPercent += percentage;
-
-              const isSegmentActive = activeIndex === index;
-
-              return (
-                <motion.circle
-                  key={slice.name}
-                  className={styles.donutSegment}
-                  r={radius}
-                  cx="0"
-                  cy="0"
-                  fill="none"
-                  stroke={slice.color}
-                  strokeWidth={isSegmentActive ? 22 : 18}
-                  strokeDasharray={circumference}
-                  initial={{ strokeDashoffset: circumference }}
-                  animate={{ strokeDashoffset: strokeDashoffset }}
-                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                  transform={`rotate(${rotation})`}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  onClick={() => setSelectedIndex(index)}
-                  onTouchStart={() => setSelectedIndex(index)}
-                  style={{
-                    opacity: isSegmentActive ? 1 : 0.65,
-                    cursor: 'pointer',
-                    transformOrigin: '0px 0px'
-                  }}
-                />
-              );
-            })}
-          </g>
+          )}
+          {/* OTA segment (Teal Blue) */}
+          {oLength > 0 && (
+            <circle
+              cx="50"
+              cy="50"
+              r={radius}
+              fill="none"
+              stroke="#06b6d4"
+              strokeWidth={strokeWidth}
+              strokeDasharray={`${oLength} ${circumference}`}
+              strokeDashoffset={oOffset}
+              transform="rotate(-90 50 50)"
+            />
+          )}
+          {/* Offline segment (Dark Slate Gray) */}
+          {gLength > 0 && (
+            <circle
+              cx="50"
+              cy="50"
+              r={radius}
+              fill="none"
+              stroke="#374151"
+              strokeWidth={strokeWidth}
+              strokeDasharray={`${gLength} ${circumference}`}
+              strokeDashoffset={gOffset}
+              transform="rotate(-90 50 50)"
+            />
+          )}
         </svg>
-        {/* Center text indicating share */}
         <div className={styles.donutCenter}>
-          <span className={styles.donutCenterValue}>
-            {`${Math.round((data[activeIndex].value / total) * 100)}%`}
-          </span>
-          <span className={styles.donutCenterLabel} title={data[activeIndex].name}>
-            {data[activeIndex].name}
-          </span>
+          <span className={styles.donutCenterPct}>{directVal}%</span>
+          <span className={styles.donutCenterLbl}>DIRECT</span>
         </div>
       </div>
 
-      {/* 2. OUTCOMES WRAPPER (occupies second grid column) */}
-      <div className={styles.outcomesWrapper}>
-        <span className={styles.outcomeTitle}>WHAT WE DELIVERED</span>
-        <motion.div className={styles.outcomesList} variants={badgeContainerVariants}>
-          {project.bulletPoints.slice(0, 2).map((point, pIdx) => (
-            <motion.div 
-              key={pIdx} 
-              className={styles.outcomeItem}
-              variants={outcomeItemVariants}
-            >
-              <div className={styles.outcomeBullet}>
-                <span>✓</span>
-              </div>
-              <span className={styles.outcomeText}>{point}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* 3. DONUT LEGEND (spans columns 1 and 2 at the bottom) */}
-      <div className={styles.donutLegend}>
-        {data.map((slice, index) => (
-          <div 
-            key={slice.name} 
-            className={styles.legendItem}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => setSelectedIndex(index)}
-            style={{
-              borderColor: activeIndex === index ? slice.color : 'rgba(255, 255, 255, 0.12)',
-              background: activeIndex === index ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.06)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              color: activeIndex === index ? '#ffffff' : 'rgba(255, 255, 255, 0.85)',
-              boxShadow: activeIndex === index ? `0 4px 15px rgba(255, 255, 255, 0.08)` : 'none'
-            }}
-          >
-            <span className={styles.legendDot} style={{ backgroundColor: slice.color }} />
-            <span>{slice.name}</span>
+      <div className={styles.legendList}>
+        <div className={styles.legendItem}>
+          <div className={styles.legendLabelGroup}>
+            <span className={styles.legendDot} style={{ backgroundColor: '#caff33' }} />
+            <span className={styles.legendLabelText}>Direct Bookings</span>
           </div>
-        ))}
-      </div>
-    </motion.div>
-  );
-};
-
-// Premium, high-fidelity 3D perspective fold entrance variants for central dashboard cards
-const cardVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 80, 
-    rotateX: 14, // 3D structural perspective fold entries!
-    scale: 0.95 
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    rotateX: 0, 
-    scale: 1,
-    transition: { 
-      type: "spring",
-      stiffness: 80,
-      damping: 15,
-      delay: 1.0, // Delay the entire card entry by 1 second!
-      staggerChildren: 0.08,
-      delayChildren: 1.15 // Delay children stagger start by 1.15 seconds!
-    } 
-  }
-};
-
-const itemDownVariants = {
-  hidden: { opacity: 0, y: -20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { type: "spring", stiffness: 300, damping: 25 } 
-  }
-};
-
-const itemUpVariants = {
-  hidden: { opacity: 0, y: 25 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { type: "spring", stiffness: 260, damping: 26 } 
-  }
-};
-
-const titleVariants = {
-  hidden: { opacity: 0, letterSpacing: "0.22em", y: 15 },
-  visible: { 
-    opacity: 1, 
-    letterSpacing: "0.10em", 
-    y: 0,
-    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
-  }
-};
-
-const badgeContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: { 
-    opacity: 1,
-    transition: { 
-      staggerChildren: 0.05 
-    }
-  }
-};
-
-const badgeVariants = {
-  hidden: { opacity: 0, scale: 0.88, y: 5 },
-  visible: { 
-    opacity: 1, 
-    scale: 1, 
-    y: 0,
-    transition: { type: "spring", stiffness: 350, damping: 22 } 
-  }
-};
-
-const kpiGridVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-};
-
-const kpiCardVariants = {
-  hidden: { opacity: 0, x: 25, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    x: 0, 
-    scale: 1,
-    transition: { type: "spring", stiffness: 220, damping: 22 } 
-  }
-};
-
-const donutPodVariants = {
-  hidden: { opacity: 0, scale: 0.92, rotate: 3 },
-  visible: { 
-    opacity: 1, 
-    scale: 1, 
-    rotate: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } 
-  }
-};
-
-const mediaVariants = {
-  initial: { 
-    scale: 0.07, 
-    opacity: 0, // initially pitch-black gap!
-    border: '1px solid rgba(255, 255, 255, 0.25)',
-    transformOrigin: '50% 56.5%',
-    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' // straight corners in mini mode
-  },
-  zoom: { 
-    scale: 1, 
-    opacity: 1, // blooms and fades in during zoom!
-    border: '1px solid rgba(255, 255, 255, 0)',
-    transition: { 
-      duration: 3.5, // slower and smoother cinematic reveal!
-      ease: [0.42, 0, 0.58, 1] 
-    } 
-  }
-};
-
-const outcomeItemVariants = {
-  hidden: { opacity: 0, x: -12 },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: { type: "spring", stiffness: 200, damping: 22 }
-  }
-};
-
-const filterCategories = [
-  'All',
-  'Resort & Venue',
-  'Home Stay',
-  'Activities'
-];
-
-const getCategoryForProject = (propertyType) => {
-  const type = propertyType.toLowerCase();
-
-  // Resort & Venue
-  if (
-    type.includes('resort') ||
-    type.includes('venue') ||
-    type.includes('hotel') ||
-    type.includes('retreat') ||
-    type.includes('palace') ||
-    type.includes('fort') ||
-    type.includes('heritage') ||
-    type.includes('royal')
-  ) {
-    return 'Resort & Venue';
-  }
-
-  // Home Stay
-  if (
-    type.includes('homestay') ||
-    type.includes('villa') ||
-    type.includes('estate') ||
-    type.includes('farm') ||
-    type.includes('home stay') ||
-    type.includes('house')
-  ) {
-    return 'Home Stay';
-  }
-
-  // Activities
-  if (
-    type.includes('activity') ||
-    type.includes('adventure') ||
-    type.includes('exped') ||
-    type.includes('ski') ||
-    type.includes('skydive') ||
-    type.includes('experience')
-  ) {
-    return 'Activities';
-  }
-
-  return 'Resort & Venue';
-};
-
-// Splits title into main sans-serif part and beautiful serif italic last word (e.g. "AHILYA FORT" -> "AHILYA Fort.")
-const renderSplitTitle = (title) => {
-  if (!title) return '';
-  const words = title.split(' ');
-  if (words.length <= 1) {
-    return <span className={styles.titleSerifItalic}>{title}</span>;
-  }
-  const lastWord = words[words.length - 1];
-  const mainPart = words.slice(0, words.length - 1).join(' ');
-  
-  // Format last word elegantly (e.g. FORT -> Fort.)
-  const formattedLast = lastWord.charAt(0).toUpperCase() + lastWord.slice(1).toLowerCase();
-  
-  return (
-    <>
-      <span className={styles.titleSans}>{mainPart} </span>
-      <span className={styles.titleSerifItalic}>{formattedLast}.</span>
-    </>
-  );
-};
-
-// --- PREMIUM DESKTOP CARD ---
-const DesktopPremiumCard = ({ project, isSlideActive, nextProject, onNextClick, progress }) => {
-  return (
-    <motion.div 
-      className={styles.desktopCard}
-      variants={cardVariants}
-      initial="hidden"
-      animate={isSlideActive ? "visible" : "hidden"}
-    >
-      <div className={styles.leftCol}>
-        <div className={styles.identityBlock}>
-          <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
-            <ClientBrandLogo clientName={project.client} category={project.propertyType} location={project.location} />
-          </motion.div>
-          
-          <motion.h3 className={styles.projectTitle} variants={titleVariants}>
-            {project.title}
-          </motion.h3>
-
-          <motion.div className={styles.locationBadge} variants={itemUpVariants}>
-            <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-            <span>{project.location}</span>
-          </motion.div>
-          
-          <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
-            <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>PROPERTY TYPE</span>
-              <span className={styles.metaValue}>{project.propertyType}</span>
-            </div>
-            <div className={styles.metaDivider} />
-            <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>CAPACITY</span>
-              <span className={styles.metaValue}>{project.capacity}</span>
-            </div>
-          </motion.div>
+          <span className={styles.legendValueText}>{directVal}%</span>
         </div>
-
-        <motion.p className={styles.projectTagline} variants={itemUpVariants}>
-          {project.tagline}
-        </motion.p>
-
-        <motion.div className={styles.scopeSection} variants={itemUpVariants}>
-          <span className={styles.sectionLabel}>SOLUTIONS DEPLOYED</span>
-          <motion.div className={styles.badgeContainer} variants={badgeContainerVariants}>
-            {project.services.map((service, sIdx) => {
-              const dotColors = ['#38bdf8', '#34d399', '#a78bfa', '#fbbf24'];
-              const activeColor = dotColors[sIdx % dotColors.length];
-              return (
-                <motion.span 
-                  key={service} 
-                  className={styles.serviceBadge}
-                  variants={badgeVariants}
-                  whileHover={{ y: -2, scale: 1.04, boxShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <span className={styles.badgeBullet} style={{ backgroundColor: activeColor }} />
-                  {service}
-                </motion.span>
-              );
-            })}
-          </motion.div>
-        </motion.div>
-
-        {/* Looping indicator footer inside left column */}
-        {nextProject && (
-          <div 
-            className={styles.projectLoopIndicator}
-            onClick={onNextClick}
-          >
-            <div className={styles.loopInfo}>
-              <span className={styles.loopLabel}>Next Project</span>
-              <span className={styles.loopTitle}>{nextProject.title}</span>
-            </div>
-            <div className={styles.loopLineContainer}>
-              <motion.div 
-                className={styles.loopLine}
-                style={{ width: `${progress}%` }}
-              />
-            </div>
+        <div className={styles.legendItem}>
+          <div className={styles.legendLabelGroup}>
+            <span className={styles.legendDot} style={{ backgroundColor: '#06b6d4' }} />
+            <span className={styles.legendLabelText}>OTA Portals</span>
           </div>
-        )}
-      </div>
-
-      <div className={styles.rightCol}>
-        <motion.div className={styles.kpiGrid} variants={kpiGridVariants}>
-          {project.kpis.map((kpi, kIdx) => (
-            <motion.div 
-              key={kIdx} 
-              className={styles.kpiCard}
-              variants={kpiCardVariants}
-              whileHover={{ y: -3, scale: 1.03 }}
-            >
-              <svg className={styles.kpiTrendIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-              <span className={styles.kpiValue}>{kpi.value}</span>
-              <span className={styles.kpiLabel}>{kpi.label}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-        <AnalyticsPod project={project} isSlideActive={isSlideActive} />
-      </div>
-    </motion.div>
-  );
-};
-
-// --- PREMIUM MOBILE CARD ---
-const MobilePremiumCard = ({ project, isSlideActive, nextProject, onNextClick, progress }) => {
-  return (
-    <motion.div 
-      className={styles.mobileCard}
-      variants={cardVariants}
-      initial="hidden"
-      animate={isSlideActive ? "visible" : "hidden"}
-    >
-      <div className={styles.identityBlock}>
-        <motion.div className={styles.clientLogoBlock} variants={itemDownVariants}>
-          <ClientBrandLogo clientName={project.client} category={project.propertyType} location={project.location} />
-        </motion.div>
-        
-        <motion.h3 className={styles.projectTitle} variants={titleVariants}>
-          {project.title}
-        </motion.h3>
-
-        <motion.div className={styles.locationBadge} variants={itemUpVariants}>
-          <svg className={styles.locationIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-          <span>{project.location}</span>
-        </motion.div>
-        
-        <motion.div className={styles.metaCapsule} variants={itemUpVariants}>
-          <div className={styles.metaItem}>
-            <span className={styles.metaLabel}>TYPE</span>
-            <span className={styles.metaValue}>{project.propertyType}</span>
-          </div>
-          <div className={styles.metaDivider} />
-          <div className={styles.metaItem}>
-            <span className={styles.metaLabel}>CAPACITY</span>
-            <span className={styles.metaValue}>{project.capacity}</span>
-          </div>
-        </motion.div>
-      </div>
-
-      <motion.div className={styles.scopeSection} variants={itemUpVariants}>
-        <span className={styles.sectionLabel}>SOLUTIONS DEPLOYED</span>
-        <motion.div className={styles.badgeContainer} variants={badgeContainerVariants}>
-          {project.services.slice(0, 3).map((service, sIdx) => {
-            const dotColors = ['#38bdf8', '#34d399', '#a78bfa', '#fbbf24'];
-            const activeColor = dotColors[sIdx % dotColors.length];
-            return (
-              <motion.span 
-                key={service} 
-                className={styles.serviceBadge}
-                variants={badgeVariants}
-              >
-                <span className={styles.badgeBullet} style={{ backgroundColor: activeColor }} />
-                {service}
-              </motion.span>
-            );
-          })}
-        </motion.div>
-      </motion.div>
-
-      <motion.div className={styles.kpiGrid} variants={kpiGridVariants}>
-        {project.kpis.map((kpi, kIdx) => (
-          <motion.div key={kIdx} className={styles.kpiCard} variants={kpiCardVariants}>
-            <svg className={styles.kpiTrendIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-            <span className={styles.kpiValue}>{kpi.value}</span>
-            <span className={styles.kpiLabel}>{kpi.label}</span>
-          </motion.div>
-        ))}
-      </motion.div>
-      <AnalyticsPod project={project} isSlideActive={isSlideActive} />
-
-      {/* Looping indicator footer */}
-      {nextProject && (
-        <div 
-          className={styles.projectLoopIndicator}
-          onClick={onNextClick}
-        >
-          <div className={styles.loopInfo}>
-            <span className={styles.loopLabel}>Next Project</span>
-            <span className={styles.loopTitle}>{nextProject.title}</span>
-          </div>
-          <div className={styles.loopLineContainer}>
-            <motion.div 
-              className={styles.loopLine}
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+          <span className={styles.legendValueText}>{otaVal}%</span>
         </div>
-      )}
-    </motion.div>
+        <div className={styles.legendItem}>
+          <div className={styles.legendLabelGroup}>
+            <span className={styles.legendDot} style={{ backgroundColor: '#374151' }} />
+            <span className={styles.legendLabelText}>Offline / Groups</span>
+          </div>
+          <span className={styles.legendValueText}>{offlineVal}%</span>
+        </div>
+      </div>
+    </div>
   );
 };
 
 export default function CaseStudiesSnapPage() {
-  const containerRef = useRef(null);
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [filterOpen, setFilterOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const filterRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const [introState, setIntroState] = useState('loading'); // 'loading' | 'splitting' | 'active'
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [activeFilter, setActiveFilter] = useState('ALL');
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    // Stage 2: Trigger the text split & center-zooming media at 2.0s
-    const splitTimer = setTimeout(() => {
-      setIntroState('splitting');
-    }, 2000);
-
-    // Stage 3: Reveal overlays at t = 4.8s (exactly when media hits ~85% scale of a 3.5s zoom!)
-    const activeTimer = setTimeout(() => {
-      setIntroState('active');
-    }, 4800);
-
-    // Stage 4: Unmount preloader logic entirely and trigger cycling at t = 5.5s (full zoom completion)
-    const doneTimer = setTimeout(() => {
-      setIsInitialLoad(false);
-    }, 5500);
-
-    return () => {
-      clearTimeout(splitTimer);
-      clearTimeout(activeTimer);
-      clearTimeout(doneTimer);
-    };
-  }, []);
-
-  // Filter 51 data projects sorted alphabetically
-  const filteredStudies = activeFilter === 'All'
+  // Filter 51 projects based on the active dynamic category pill
+  const filteredStudies = activeFilter === 'ALL'
     ? caseStudiesData
-    : caseStudiesData.filter(p => getCategoryForProject(p.propertyType) === activeFilter);
-
-  // Clickable sidebar dots navigation helper
-  const navigateToSlide = (index) => {
-    const container = containerRef.current;
-    if (!container) return;
-    const slideHeight = container.clientHeight;
-    
-    container.scrollTo({
-      top: index * slideHeight,
-      behavior: 'smooth'
-    });
-    setActiveIndex(index);
-    setProgress(0); // Reset timer immediately on navigation!
-  };
-
-  // Handle active slide tracking via container scrolling
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      const scrollPos = container.scrollTop;
-      const slideHeight = container.clientHeight;
-      if (slideHeight > 0) {
-        const index = Math.round(scrollPos / slideHeight);
-        if (index !== activeIndex && index >= 0 && index < filteredStudies.length) {
-          setActiveIndex(index);
-          setProgress(0); // Reset progress on scroll shift!
-        }
-      }
-    };
-
-    container.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Adjust index if filtered list size changes to avoid out of bounds
-    if (activeIndex >= filteredStudies.length) {
-      setActiveIndex(0);
-      container.scrollTop = 0;
-    }
-
-    return () => container.removeEventListener('scroll', handleScroll);
-  }, [activeIndex, filteredStudies.length]);
-
-  // Stately Auto-Cycle Slideshow Timer
-  useEffect(() => {
-    if (isInitialLoad || filteredStudies.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          navigateToSlide((activeIndex + 1) % filteredStudies.length);
-          return 0;
-        }
-        return prev + 0.625; // 160 steps over 12.8s (doubled the viewing duration per slide)
-      });
-    }, 80);
-
-    return () => clearInterval(interval);
-  }, [activeIndex, filteredStudies.length, isInitialLoad]);
-
-  // Close filter dropdown on outside clicks
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (filterRef.current && !filterRef.current.contains(e.target)) {
-        setFilterOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  // Automatically scroll the active dot wrapper into view within the hidden scroll container
-  useEffect(() => {
-    const activeDotEl = document.getElementById(`dot-${activeIndex}`);
-    if (activeDotEl) {
-      activeDotEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  }, [activeIndex]);
+    : caseStudiesData.filter(p => getCategoryForProject(p.propertyType) === activeFilter.toLowerCase());
 
   return (
     <div className={styles.pageContainer}>
-      {/* Global Viewport Cinematic Edge Shadow */}
-      <div className={styles.globalVignette} />
-
-      {/* Cinematic Typographic Split Preloader */}
-      <AnimatePresence>
-        {isInitialLoad && (
-          <motion.div 
-            className={styles.preloaderContainer}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            style={{ pointerEvents: introState === 'active' ? 'none' : 'auto' }}
-          >
-            <div className={styles.preloaderContent}>
-              <motion.div 
-                style={{ display: 'flex', alignItems: 'center', gap: '0.15em' }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={
-                  introState === 'splitting' || introState === 'active'
-                    ? { x: "-50vw", opacity: 0, scale: 0.8 }
-                    : { opacity: 1, x: 0, scale: 1 }
-                }
-                transition={{ 
-                  x: { duration: 3.5, ease: [0.42, 0, 0.58, 1] },
-                  opacity: { duration: 3.5, ease: [0.42, 0, 0.58, 1] },
-                  scale: { duration: 3.5, ease: [0.42, 0, 0.58, 1] }
-                }}
-              >
-                <span className={styles.preloaderLogo}>O</span>
-                <span className={styles.preloaderWord}>UR</span>
-              </motion.div>
-
-              {/* Center Gap for the Centered Expanding Mini Square */}
-              {isInitialLoad && (
-                <motion.div 
-                  className={styles.preloaderGap}
-                  initial={{ scaleX: 1, opacity: 1 }}
-                  animate={introState === 'splitting' || introState === 'active' ? { scaleX: 0, opacity: 0 } : { scaleX: 1, opacity: 1 }}
-                  transition={{ duration: 3.5, ease: [0.42, 0, 0.58, 1] }}
-                />
-              )}
-
-              <motion.span 
-                className={styles.preloaderWordRight}
-                initial={{ opacity: 0, x: 40 }}
-                animate={
-                  introState === 'splitting' || introState === 'active'
-                    ? { x: "50vw", opacity: 0, scale: 0.8 }
-                    : { opacity: 1, x: 0, scale: 1 }
-                }
-                transition={{ 
-                  x: { duration: 3.5, ease: [0.42, 0, 0.58, 1] },
-                  opacity: { duration: 3.5, ease: [0.42, 0, 0.58, 1] },
-                  scale: { duration: 3.5, ease: [0.42, 0, 0.58, 1] }
-                }}
-              >
-                <span className={styles.titleSerifItalic} style={{ textTransform: 'none', color: '#38bdf8' }}>Work.</span>
-              </motion.span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Top Floating Global Navigation controls */}
-      <motion.nav 
-        className={styles.pageNavbar}
-        initial={{ opacity: 0 }}
-        animate={!isInitialLoad || introState === 'active' ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8 }}
-        style={{ pointerEvents: !isInitialLoad || introState === 'active' ? 'auto' : 'none' }}
-      >
+      
+      {/* Floating Header Navbar matching mockup layout */}
+      <nav className={styles.pageNavbar}>
         <div className={styles.navLogo}>
           <a href="/">
-            <span className={styles.logoBold}>BEYOND</span> <span className={styles.logoLight}>REACH</span>
+            <span className={styles.logoBold}>BEYOND</span>{" "}
+            <span className={styles.logoLight}>REACH</span>{" "}
+            <span className={styles.logoWaves}>≈</span>
           </a>
         </div>
         
         <div className={styles.navbarRight}>
-          {/* Glassmorphic Property Type Filter */}
-          <div className={styles.filterDropdown} ref={filterRef}>
-            <button
-              className={styles.filterToggle}
-              onClick={() => setFilterOpen(!filterOpen)}
-            >
-              <span>{activeFilter}</span>
-              <svg className={`${styles.filterChevron} ${filterOpen ? styles.filterChevronOpen : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <AnimatePresence>
-              {filterOpen && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
-                  className={styles.filterMenu}
-                >
-                  {filterCategories.map((cat) => (
-                    <button
-                      key={cat}
-                      className={`${styles.filterOption} ${activeFilter === cat ? styles.filterOptionActive : ''}`}
-                      onClick={() => {
-                        setActiveFilter(cat);
-                        setFilterOpen(false);
-                        setActiveIndex(0);
-                        if (containerRef.current) containerRef.current.scrollTop = 0;
-                      }}
-                    >
-                      {cat}
-                      {activeFilter === cat && (
-                        <svg className={styles.filterCheckIcon} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                        </svg>
-                      )}
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <a href="tel:+919999999999" className={styles.phoneLink} title="Contact Support">
-            <svg className={styles.phoneIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+          <a href="tel:+919999999999" className={styles.phoneLink} title="Call Support">
+            <svg className={styles.phoneIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-              <path d="M14.05 2a9 9 0 0 1 7.95 7.95M14.05 6a5 5 0 0 1 3.95 3.95" />
             </svg>
           </a>
+          
+          <button className={styles.menuBtn} onClick={() => {
+            // Anchor to main menu triggers if available in layout wrapper
+            const globalMenuBtn = document.querySelector('button[class*="menuBtn"]');
+            if (globalMenuBtn) {
+              globalMenuBtn.click();
+            } else {
+              window.location.href = '/contact';
+            }
+          }}>
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
+            <span className={styles.hamburgerLine}></span>
+          </button>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Floating Vertical Navigation Dots (Right Edge) */}
-      {filteredStudies.length > 0 && (
-        <motion.div 
-          className={styles.floatingSidebar}
-          initial={{ opacity: 0 }}
-          animate={!isInitialLoad || introState === 'active' ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          style={{ pointerEvents: !isInitialLoad || introState === 'active' ? 'auto' : 'none' }}
-        >
-          {filteredStudies.map((project, idx) => (
-            <div 
-              key={project.id} 
-              id={`dot-${idx}`}
-              className={styles.dotWrapper} 
-              onClick={() => navigateToSlide(idx)}
-            >
-              <span className={styles.dotLabel}>{project.title}</span>
-              <div className={`${styles.dot} ${activeIndex === idx ? styles.dotActive : ''}`} />
-            </div>
-          ))}
-        </motion.div>
-      )}
+      {/* Scenic Drone Beach Forest Road Header banner */}
+      <header className={styles.scenicHeader}>
+        <div className={styles.scenicHeaderBg} />
+        <div className={styles.scenicHeaderOverlay} />
+        
+        <div className={styles.headerContent}>
+          <div className={styles.workSubheading}>
+            <span>OUR WORK</span>
+            <span className={styles.subheadingLine} />
+          </div>
+          
+          <h1 className={styles.mainHeading}>
+            GROWTH <span className={styles.accentText}>STORIES</span>
+          </h1>
+          
+          <p className={styles.description}>
+            Real hospitality growth work across resorts, villas, wellness spaces & experience brands.
+          </p>
 
-      {/* Main Snap Scroll Container */}
-      <div className={styles.snapContainer} ref={containerRef}>
-        {filteredStudies.length > 0 ? (
-          filteredStudies.map((project, idx) => {
-            const isSlideActive = activeIndex === idx;
-            // Cinematic Rendering Guard: Only render background video loops for active & neighbor slides
-            const shouldRenderVideo = Math.abs(idx - activeIndex) <= 1;
-
-            return (
-              <section 
-                key={project.id}
-                id={project.id}
-                className={styles.snapSection}
-                style={{ zIndex: idx + 1 }}
-              >
-                <div className={styles.stickyWrapper}>
-                  {/* Diagonal Slanted background container */}
-                  <motion.div 
-                    className={styles.diagonalBg}
-                    variants={mediaVariants}
-                    initial={idx === 0 && isInitialLoad ? "initial" : false}
-                    animate={idx === 0 && isInitialLoad && introState !== 'loading' ? "zoom" : false}
+          {/* Interactive filter pills container */}
+          <div className={styles.filterPillsContainer}>
+            {['ALL', 'RESORTS', 'VILLAS', 'HOTELS', 'WELLNESS'].map((category) => {
+              const isActive = activeFilter === category;
+              return (
+                <div key={category} className={styles.pillWrapper}>
+                  <button
+                    className={`${styles.filterPill} ${isActive ? styles.pillActive : ''}`}
+                    onClick={() => setActiveFilter(category)}
                   >
-                    {shouldRenderVideo && (
-                      <motion.img
-                        src={isMobile && project.imgSrcMobile ? project.imgSrcMobile : project.imgSrc}
-                        alt={project.title}
-                        className={styles.heroBgVideo} // reuse video styling for sizing, filters, and positioning
-                        initial={
-                          idx === 0 && isInitialLoad
-                            ? { opacity: 1, scale: 1.1, filter: 'brightness(1.0) saturate(1.0)' }
-                            : { opacity: 0.45, scale: 1.0, filter: 'brightness(0.3) saturate(0.8)' }
-                        }
-                        animate={
-                          idx === 0 && isInitialLoad && introState !== 'active'
-                            ? { opacity: 1, scale: 1.1, filter: 'brightness(1.0) saturate(1.0)' }
-                            : (isSlideActive
-                                ? { opacity: 0.95, scale: 1.05, filter: 'brightness(0.95) saturate(1.0)' }
-                                : { opacity: 0.45, scale: 1.0, filter: 'brightness(0.3) saturate(0.8)' })
-                        }
-                        transition={{
-                          delay: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : (isSlideActive ? 1.0 : 0),
-                          duration: 1.2,
-                          ease: "easeInOut"
-                        }}
-                        style={{
-                          pointerEvents: 'none',
-                          zIndex: 1
-                        }}
-                        key={`${isMobile ? 'mobile' : 'desktop'}-${project.id}`}
-                      />
-                    )}
-                    <motion.div 
-                      className={styles.heroVideoOverlay}
-                      initial={{ opacity: 0 }}
-                      animate={
-                        idx === 0 && isInitialLoad && introState !== 'active'
-                          ? { opacity: 0 }
-                          : (isSlideActive 
-                              ? { opacity: [0, 0, 0.65] } 
-                              : { opacity: 0.9 })
-                      }
-                      transition={{ 
-                        times: [0, 0.5, 1],
-                        duration: (idx === 0 && isInitialLoad && introState !== 'active') ? 0 : 2.0,
-                        ease: "easeInOut"
-                      }}
-                    />
-                    <div className={styles.orb1} />
-                    <div className={styles.orb2} />
-                    <div className={styles.orb3} />
-                    
-                    {/* Editorial wireframe corner markers during zoom reveal */}
-                    {idx === 0 && isInitialLoad && (
-                      <>
-                        <motion.div 
-                          className={`${styles.wireframeCorner} ${styles.topLeftCorner}`}
-                          animate={introState === 'active' ? { opacity: 0 } : { opacity: 0.7 }}
-                          transition={{ duration: 0.6 }}
-                        >+</motion.div>
-                        <motion.div 
-                          className={`${styles.wireframeCorner} ${styles.topRightCorner}`}
-                          animate={introState === 'active' ? { opacity: 0 } : { opacity: 0.7 }}
-                          transition={{ duration: 0.6 }}
-                        >+</motion.div>
-                        <motion.div 
-                          className={`${styles.wireframeCorner} ${styles.bottomLeftCorner}`}
-                          animate={introState === 'active' ? { opacity: 0 } : { opacity: 0.7 }}
-                          transition={{ duration: 0.6 }}
-                        >+</motion.div>
-                        <motion.div 
-                          className={`${styles.wireframeCorner} ${styles.bottomRightCorner}`}
-                          animate={introState === 'active' ? { opacity: 0 } : { opacity: 0.7 }}
-                          transition={{ duration: 0.6 }}
-                        >+</motion.div>
-                      </>
-                    )}
-                  </motion.div>
-
-                  {/* Render tailored Premium Card based on Viewport */}
-                  {isMobile ? (
-                    <MobilePremiumCard 
-                      project={project} 
-                      isSlideActive={isSlideActive && (!isInitialLoad || introState === 'active')} 
-                      nextProject={filteredStudies[(idx + 1) % filteredStudies.length]}
-                      onNextClick={() => navigateToSlide((idx + 1) % filteredStudies.length)}
-                      progress={isSlideActive ? progress : 0}
-                    />
-                  ) : (
-                    <DesktopPremiumCard 
-                      project={project} 
-                      isSlideActive={isSlideActive && (!isInitialLoad || introState === 'active')} 
-                      nextProject={filteredStudies[(idx + 1) % filteredStudies.length]}
-                      onNextClick={() => navigateToSlide((idx + 1) % filteredStudies.length)}
-                      progress={isSlideActive ? progress : 0}
+                    {category}
+                  </button>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeFilterIndicator"
+                      className={styles.activePillIndicator}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
                 </div>
-              </section>
-            );
-          })
-        ) : (
-          <div className={styles.emptyContainer}>
-            <h3 className={styles.emptyTitle}>NO PROPERTIES FOUND</h3>
-            <span>No case studies match your active selection filters.</span>
+              );
+            })}
           </div>
-        )}
-      </div>
+        </div>
+      </header>
+
+      {/* Dynamic Stream of OLED Dark Green-Black Cards */}
+      <main className={styles.cardsStream}>
+        <AnimatePresence mode="popLayout">
+          {filteredStudies.length > 0 ? (
+            filteredStudies.map((project) => {
+              const directShare = project.pieData?.[0]?.value || 0;
+              return (
+                <motion.article
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className={styles.caseCard}
+                >
+                  {/* Card Property Photo Header */}
+                  <div className={styles.cardImageBlock}>
+                    <img
+                      src={project.imgSrc}
+                      alt={project.title}
+                      className={styles.cardImage}
+                      loading="lazy"
+                    />
+                    <div className={styles.cardImageOverlay} />
+                    
+                    {/* Location and Category badges overlaid on top corners */}
+                    <div className={styles.imageOverlayTop}>
+                      <div className={styles.badgeOutline}>
+                        <LocationIcon />
+                        <span>{project.location.toUpperCase()}</span>
+                      </div>
+                      <div className={styles.badgeOutline}>
+                        <ResortIcon />
+                        <span>{project.propertyType.toUpperCase()}</span>
+                      </div>
+                    </div>
+
+                    {/* Property title and room count at bottom of photo overlay */}
+                    <div className={styles.imageOverlayBottom}>
+                      <h2 className={styles.cardTitle}>{project.title.toUpperCase()}</h2>
+                      <div className={styles.cardMetaRow}>
+                        <BedIcon />
+                        <span>{project.capacity.toUpperCase()}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card details body content */}
+                  <div className={styles.cardBody}>
+                    
+                    {/* 1. GROWTH WORK DELIVERED section */}
+                    <div className={styles.cardSection}>
+                      <h3 className={styles.sectionLabel}>GROWTH WORK DELIVERED</h3>
+                      <div className={styles.servicesGrid}>
+                        <div className={styles.serviceCol}>
+                          <div className={styles.serviceIconFrame}>
+                            <InstagramIcon />
+                          </div>
+                          <span className={styles.serviceText}>Instagram<br />Handling</span>
+                        </div>
+                        
+                        <div className={styles.colDivider} />
+                        
+                        <div className={styles.serviceCol}>
+                          <div className={styles.serviceIconFrame}>
+                            <MetaAdsIcon />
+                          </div>
+                          <span className={styles.serviceText}>Meta Ads<br />Campaigns</span>
+                        </div>
+                        
+                        <div className={styles.colDivider} />
+                        
+                        <div className={styles.serviceCol}>
+                          <div className={styles.serviceIconFrame}>
+                            <GlobeIcon />
+                          </div>
+                          <span className={styles.serviceText}>OTA Profile<br />Optimisation</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Divider Rule */}
+                    <div className={styles.sectionDivider} />
+
+                    {/* 2. RESULTS INFLUENCED section */}
+                    <div className={styles.cardSection}>
+                      <h3 className={styles.sectionLabel}>RESULTS INFLUENCED</h3>
+                      <div className={styles.statsGrid}>
+                        <div className={styles.statCol}>
+                          <span className={styles.statValue}>{project.kpis?.[0]?.value || '—'}</span>
+                          <span className={styles.statLabel}>REVENUE INFLUENCED</span>
+                        </div>
+                        
+                        <div className={styles.colDivider} />
+                        
+                        <div className={styles.statCol}>
+                          <span className={styles.statValue}>{project.kpis?.[1]?.value || '—'}</span>
+                          <span className={styles.statLabel}>BOOKINGS SUPPORTED</span>
+                        </div>
+                        
+                        <div className={styles.colDivider} />
+                        
+                        <div className={styles.statCol}>
+                          <span className={styles.statValue}>{directShare}%</span>
+                          <span className={styles.statLabel}>DIRECT BOOKING SHARE</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Divider Rule */}
+                    <div className={styles.sectionDivider} />
+
+                    {/* 3. Donut Gauge circular progress ring breakdown */}
+                    <div className={styles.cardSection}>
+                      <DynamicBookingGauge pieData={project.pieData} />
+                    </div>
+
+                    {/* Solid Neon-Lime green CTA Button */}
+                    <a
+                      href={`/case-studies/${project.id}`}
+                      className={styles.ctaButton}
+                    >
+                      <span>VIEW GROWTH STORY</span>
+                      <span className={styles.ctaArrow}>➔</span>
+                    </a>
+
+                  </div>
+                </motion.article>
+              );
+            })
+          ) : (
+            <div className={styles.emptyState}>
+              <h3>NO CASE STORIES FOUND</h3>
+              <p>No growth work matches your selected category filter at this time.</p>
+            </div>
+          )}
+        </AnimatePresence>
+      </main>
+      
     </div>
   );
 }
