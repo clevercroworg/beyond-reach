@@ -33,6 +33,8 @@
   width: 100%;
   height: 100%;
   background: rgba(10, 14, 11, 0.6); /* Dark tint */
+  box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.95); /* Edge vignette shadow */
+  pointer-events: none;
 }
 
 .content {

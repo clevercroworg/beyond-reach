@@ -266,7 +266,7 @@ export default function CaseStudiesSnapPage() {
               return (
                 <motion.article
                   key={project.id}
-                  layout
+                  layout="position"
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
