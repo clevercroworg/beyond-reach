@@ -313,8 +313,8 @@
 }
 
 .cardsCol {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -323,14 +323,15 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 2rem;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   backdrop-filter: blur(10px);
+  will-change: transform, opacity;
 }
 
 .problemCard:hover {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(209, 255, 54, 0.35);
-  transform: translateX(6px);
+  transform: translateY(-6px);
 }
 
 .cardTitle {
@@ -361,8 +362,8 @@
 
 .solutionsGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
 }
 
 .solutionCard {
@@ -370,8 +371,9 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 2rem;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   backdrop-filter: blur(10px);
+  will-change: transform, opacity;
 }
 
 .solutionCard:hover {
@@ -406,11 +408,11 @@
   background-color: var(--bg-primary);
 }
 
-.processHorizontalList {
+.processTimelineCol {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
 }
 
@@ -421,6 +423,8 @@
   align-items: center;
   text-align: center;
   gap: 1rem;
+  transition: transform 0.3s ease;
+  will-change: transform, opacity;
 }
 
 .stepHeader {
@@ -990,10 +994,13 @@
     position: relative;
     top: 0;
   }
+  .cardsCol {
+    grid-template-columns: 1fr;
+  }
   .solutionsGrid {
     grid-template-columns: 1fr;
   }
-  .processHorizontalList {
+  .processTimelineCol {
     flex-direction: column;
     align-items: center;
     gap: 2rem;

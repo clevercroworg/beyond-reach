@@ -24,7 +24,7 @@ const GoogleAdsIcon = () => (
 );
 
 const MetaAdsIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0064E0" strokeWidth="3.2" style={{ marginRight: '8px', flexShrink: 0 }}>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3.2" style={{ marginRight: '8px', flexShrink: 0 }}>
     <path d="M16.5 7c-1.6 0-3.1 1.2-3.8 2.5-.7-1.3-2.2-2.5-3.8-2.5C5.8 7 3 9.2 3 12s2.8 5 5.9 5c1.6 0 3.1-1.2 3.8-2.5.7 1.3 2.2 2.5 3.8 2.5 3.1 0 5.9-2.2 5.9-5s-2.8-5-5.9-5z" />
   </svg>
 );
@@ -547,7 +547,7 @@ const Hotels = () => {
               <h2 className={styles.splitSectionTitle}>A SIMPLE<br />GROWTH<br />PROCESS.</h2>
             </div>
 
-            <div className={styles.processHorizontalList}>
+            <div className={styles.processTimelineCol}>
               <div className={styles.processStepNode}>
                 <div className={styles.stepHeader}>
                   <span className={styles.stepNum}>01</span>
