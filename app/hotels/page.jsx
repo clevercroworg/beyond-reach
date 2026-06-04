@@ -332,33 +332,40 @@ const Hotels = () => {
         x: 50, opacity: 0, duration: 1.2, ease: 'power4.out', delay: transitionDelay + 0.2
       });
 
+      // Helper function for scroll animations
+      const animateOnScroll = (targets, trigger, startOffset = 'top 90%') => {
+        gsap.from(targets, {
+          scrollTrigger: {
+            trigger: trigger,
+            start: startOffset,
+            once: true
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out'
+        });
+      };
+
       // Scroll triggers
-      gsap.from(`.${styles.problemCard}`, {
-        scrollTrigger: { trigger: `.${styles.problemSection}`, start: 'top 80%' },
-        y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
-      });
+      animateOnScroll(`.${styles.problemCard}`, `.${styles.problemSection}`);
+      animateOnScroll(`.${styles.solutionCard}`, `.${styles.solutionSection}`);
+      animateOnScroll(`.${styles.processStepNode}`, `.${styles.processSection}`);
+      animateOnScroll(`.${styles.resultsCard}`, `.${styles.resultsSection}`);
+      animateOnScroll(`.${styles.pCard}`, `.${styles.portfolioSection}`);
 
-      gsap.from(`.${styles.solutionCard}`, {
-        scrollTrigger: { trigger: `.${styles.solutionSection}`, start: 'top 80%' },
-        y: 50, opacity: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out'
-      });
-
-      gsap.from(`.${styles.processStepNode}`, {
-        scrollTrigger: { trigger: `.${styles.processSection}`, start: 'top 80%' },
-        y: 40, opacity: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out'
-      });
-
-      gsap.from(`.${styles.resultsCard}`, {
-        scrollTrigger: { trigger: `.${styles.resultsSection}`, start: 'top 80%' },
-        y: 60, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
-      });
-
-      gsap.from(`.${styles.pCard}`, {
-        scrollTrigger: { trigger: `.${styles.portfolioSection}`, start: 'top 80%' },
-        y: 60, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
-      });
-
-      setTimeout(() => ScrollTrigger.refresh(), transitionDelay * 1000 + 200);
+      // Setup delayed layout refreshes to handle font/layout rendering shifts
+      const refreshST = () => ScrollTrigger.refresh();
+      window.addEventListener('load', refreshST);
+      const timer1 = setTimeout(refreshST, 200);
+      const timer2 = setTimeout(refreshST, 1000);
+      
+      return () => {
+        window.removeEventListener('load', refreshST);
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
     }, pageRef);
 
     return () => ctx.revert();
@@ -381,7 +388,7 @@ const Hotels = () => {
           <div className={styles.heroLeft}>
             <span className={styles.heroLabel}>HOTEL GROWTH SYSTEM</span>
             <h1 className={styles.heroTitle}>
-              MORE DIRECT<br />BOOKINGS<br />
+              MORE DIRECT BOOKINGS<br />
               <span className={styles.glowingText}>FOR HOTELS.</span>
             </h1>
             <p className={styles.heroSubtitle}>
