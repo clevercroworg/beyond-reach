@@ -24,7 +24,7 @@ const GoogleAdsIcon = () => (
 );
 
 const MetaAdsIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3.2" style={{ marginRight: '8px', flexShrink: 0 }}>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0064E0" strokeWidth="3.2" style={{ marginRight: '8px', flexShrink: 0 }}>
     <path d="M16.5 7c-1.6 0-3.1 1.2-3.8 2.5-.7-1.3-2.2-2.5-3.8-2.5C5.8 7 3 9.2 3 12s2.8 5 5.9 5c1.6 0 3.1-1.2 3.8-2.5.7 1.3 2.2 2.5 3.8 2.5 3.1 0 5.9-2.2 5.9-5s-2.8-5-5.9-5z" />
   </svg>
 );
@@ -59,7 +59,7 @@ const BookingFlowIcon = () => (
 );
 
 const TrackingIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#eab308" strokeWidth="2.2" style={{ marginRight: '8px', flexShrink: 0 }}>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ca8a04" strokeWidth="2.2" style={{ marginRight: '8px', flexShrink: 0 }}>
     <line x1="18" y1="20" x2="18" y2="10" />
     <line x1="12" y1="20" x2="12" y2="4" />
     <line x1="6" y1="20" x2="6" y2="14" />
@@ -124,14 +124,14 @@ const SolutionTrackingIcon = () => (
 );
 
 const ProcessAuditIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--text-primary)' }}>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <circle cx="11" cy="11" r="8" />
     <line x1="21" y1="21" x2="16.65" y2="16.65" />
   </svg>
 );
 
 const ProcessStrategyIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--text-primary)' }}>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <rect x="3" y="4" width="18" height="18" rx="2" />
     <line x1="3" y1="10" x2="21" y2="10" />
     <line x1="8" y1="14" x2="16" y2="14" />
@@ -140,7 +140,7 @@ const ProcessStrategyIcon = () => (
 );
 
 const ProcessBuildIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--text-primary)' }}>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M12 2L2 22h20L12 2z" />
     <line x1="12" y1="9" x2="12" y2="13" />
     <circle cx="12" cy="17" r="1" fill="currentColor" />
@@ -148,7 +148,7 @@ const ProcessBuildIcon = () => (
 );
 
 const ProcessScaleIcon = () => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--text-primary)' }}>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
     <polyline points="17 6 23 6 23 12" />
   </svg>
@@ -248,6 +248,48 @@ const AnimatedSparkline = () => {
         fill="var(--accent-color)"
         filter="drop-shadow(0 0 6px var(--accent-color))"
       />
+    </svg>
+  );
+};
+
+const ResultsSparkline = ({ id, points, fillPoints, color = "#10b981" }) => {
+  const pathRef = useRef(null);
+  const fillRef = useRef(null);
+  const dotRef = useRef(null);
+
+  useEffect(() => {
+    if (!pathRef.current) return;
+    const path = pathRef.current;
+    const length = path.getTotalLength();
+
+    gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+    if (fillRef.current) gsap.set(fillRef.current, { opacity: 0 });
+    if (dotRef.current) gsap.set(dotRef.current, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+
+    ScrollTrigger.create({
+      trigger: path,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => {
+        const tl = gsap.timeline();
+        tl.to(path, { strokeDashoffset: 0, duration: 1.6, ease: 'power2.out' })
+          .to(fillRef.current, { opacity: 1, duration: 0.6, ease: 'power1.out' }, '-=1.0')
+          .to(dotRef.current, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, '-=0.2');
+      }
+    });
+  }, []);
+
+  return (
+    <svg viewBox="0 0 160 40" width="100%" height="32" fill="none" style={{ overflow: 'visible' }}>
+      <defs>
+        <linearGradient id={`grad-${id}`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.2" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path ref={fillRef} d={fillPoints} fill={`url(#grad-${id})`} />
+      <path ref={pathRef} d={points} stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+      <circle ref={dotRef} cx="155" cy="10" r="3" fill={color} filter={`drop-shadow(0 1px 3px ${color})`} />
     </svg>
   );
 };
@@ -454,6 +496,49 @@ const Hotels = () => {
       animateOnScroll(`.${styles.resultsCard}`, `.${styles.resultsSection}`);
       animateOnScroll(`.${styles.pCard}`, `.${styles.portfolioSection}`);
 
+      // Dashboard SVG line animation scroll trigger
+      const dbPath = pageRef.current.querySelector(`.${styles.dbChartPath}`);
+      const dbGradient = pageRef.current.querySelector(`.${styles.dbChartGradientPath}`);
+      const dbDots = pageRef.current.querySelectorAll('.dbDotPoint');
+      
+      if (dbPath) {
+        const length = dbPath.getTotalLength();
+        gsap.set(dbPath, { strokeDasharray: length, strokeDashoffset: length });
+        if (dbGradient) gsap.set(dbGradient, { opacity: 0 });
+        if (dbDots.length) {
+          gsap.set(dbDots, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+        }
+        
+        ScrollTrigger.create({
+          trigger: `.${styles.insightsSection}`,
+          start: 'top 75%',
+          once: true,
+          onEnter: () => {
+            const tl = gsap.timeline();
+            tl.to(dbPath, {
+              strokeDashoffset: 0,
+              duration: 2.2,
+              ease: 'power1.inOut'
+            })
+            .to(dbGradient, {
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power1.out'
+            }, '-=1.5');
+            
+            if (dbDots.length) {
+              tl.to(dbDots, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.4,
+                stagger: 0.15,
+                ease: 'back.out(2.5)'
+              }, '-=2.1');
+            }
+          }
+        });
+      }
+
       // Setup delayed layout refreshes to handle font/layout rendering shifts
       const refreshST = () => ScrollTrigger.refresh();
       window.addEventListener('load', refreshST);
@@ -537,7 +622,7 @@ const Hotels = () => {
             <span>Meta Ads</span>
           </div>
           <div className={styles.serviceBarItem}>
-            <WebsiteIcon stroke="rgba(255,255,255,0.7)" />
+            <WebsiteIcon stroke="#2563eb" />
             <span>Hotel Websites</span>
           </div>
           <div className={styles.serviceBarItem}>
@@ -595,7 +680,7 @@ const Hotels = () => {
       {/* 4. THE SOLUTION SECTION */}
       <section className={styles.solutionSection}>
         <div className={styles.sectionInner}>
-          <div className={styles.gridSplit}>
+          <div className={styles.solutionGridSplit}>
             <div className={styles.stickyCol}>
               <span className={styles.miniLabel}>OUR SOLUTION</span>
               <h2 className={styles.splitSectionTitle}>WHAT WE<br />IMPROVE.</h2>
@@ -639,7 +724,7 @@ const Hotels = () => {
       {/* 5. PROCESS SECTION */}
       <section className={styles.processSection}>
         <div className={styles.sectionInner}>
-          <div className={styles.gridSplit}>
+          <div className={styles.processGridSplit}>
             <div className={styles.stickyCol}>
               <span className={styles.miniLabel}>OUR PROCESS</span>
               <h2 className={styles.splitSectionTitle}>A SIMPLE<br />GROWTH<br />PROCESS.</h2>
@@ -698,96 +783,156 @@ const Hotels = () => {
               <span className={styles.miniLabel}>REAL-TIME INSIGHTS</span>
               <h2 className={styles.insightsTitle}>See what drives your growth.</h2>
               <p className={styles.insightsDesc}>Live dashboards that turn data into decisions.</p>
-              <Link href="/contact" className={styles.btnOutline}>
-                EXPLORE DASHBOARD &rarr;
-              </Link>
             </div>
 
             {/* Dashboard Mock Container */}
             <div className={styles.dashboardContainer}>
-              <div className={styles.dbHeader}>
-                <span className={styles.dbTitle}>Direct Booking Performance</span>
-              </div>
-              <div className={styles.dbOverviewStats}>
-                <div className={styles.dbStatBlock}>
-                  <span className={styles.dbStatLabel}>Direct Bookings</span>
-                  <div className={styles.dbStatValGroup}>
-                    <span className={styles.dbStatValue}>1,248</span>
-                    <span className={styles.dbStatChangePos}>+23%</span>
-                  </div>
+              <div className={styles.dashboardLeft}>
+                <div className={styles.dbHeader}>
+                  <span className={styles.dbTitle}>Direct Booking Performance</span>
                 </div>
-                <div className={styles.dbStatBlock}>
-                  <span className={styles.dbStatLabel}>Revenue</span>
-                  <div className={styles.dbStatValGroup}>
-                    <span className={styles.dbStatValue}>$642K</span>
-                    <span className={styles.dbStatChangePos}>+31%</span>
+                <div className={styles.dbOverviewStats}>
+                  <div className={styles.dbStatBlock}>
+                    <span className={styles.dbStatLabel}>Direct Bookings</span>
+                    <div className={styles.dbStatValGroup}>
+                      <span className={styles.dbStatValue}>1,248</span>
+                      <span className={styles.dbStatChangePos}>+23%</span>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.dbStatBlock}>
-                  <span className={styles.dbStatLabel}>Conversion Rate</span>
-                  <div className={styles.dbStatValGroup}>
-                    <span className={styles.dbStatValue}>3.72%</span>
-                    <span className={styles.dbStatChangeNeg}>-18%</span>
+                  <div className={styles.dbStatBlock}>
+                    <span className={styles.dbStatLabel}>Revenue</span>
+                    <div className={styles.dbStatValGroup}>
+                      <span className={styles.dbStatValue}>$642K</span>
+                      <span className={styles.dbStatChangePos}>+31%</span>
+                    </div>
                   </div>
-                </div>
-                <div className={styles.dbStatBlock}>
-                  <span className={styles.dbStatLabel}>Avg. Booking Value</span>
-                  <div className={styles.dbStatValGroup}>
-                    <span className={styles.dbStatValue}>$538</span>
-                    <span className={styles.dbStatChangePos}>+16%</span>
+                  <div className={styles.dbStatBlock}>
+                    <span className={styles.dbStatLabel}>Conversion Rate</span>
+                    <div className={styles.dbStatValGroup}>
+                      <span className={styles.dbStatValue}>3.72%</span>
+                      <span className={styles.dbStatChangePos}>+18%</span>
+                    </div>
                   </div>
-                </div>
-              </div>
-
-              <div className={styles.dbGraphRow}>
-                <div className={styles.dbChartBlock}>
-                  <span className={styles.dbBlockTitle}>Last 12 Months</span>
-                  <div className={styles.dbChartSvgBox}>
-                    <svg viewBox="0 0 400 120" width="100%" height="100%" fill="none" style={{ overflow: 'visible' }}>
-                      <path d="M10 100c30-5 60-35 90-25s60-40 90-20 60-35 90-10 20-30 30-20" stroke="#d1ff36" strokeWidth="3.5" strokeLinecap="round" />
-                      <circle cx="390" cy="5" r="4.5" fill="#d1ff36" filter="drop-shadow(0 0 6px #d1ff36)" />
-                      {/* Grid lines */}
-                      <line x1="10" y1="110" x2="390" y2="110" stroke="rgba(255,255,255,0.06)" />
-                      <line x1="10" y1="80" x2="390" y2="80" stroke="rgba(255,255,255,0.06)" />
-                      <line x1="10" y1="50" x2="390" y2="50" stroke="rgba(255,255,255,0.06)" />
-                      {/* Axis Labels */}
-                      <text x="10" y="118" fill="rgba(255,255,255,0.3)" fontSize="8">Jan</text>
-                      <text x="75" y="118" fill="rgba(255,255,255,0.3)" fontSize="8">Mar</text>
-                      <text x="140" y="118" fill="rgba(255,255,255,0.3)" fontSize="8">May</text>
-                      <text x="205" y="118" fill="rgba(255,255,255,0.3)" fontSize="8">Jul</text>
-                      <text x="270" y="118" fill="rgba(255,255,255,0.3)" fontSize="8">Sep</text>
-                      <text x="335" y="118" fill="rgba(255,255,255,0.3)" fontSize="8">Nov</text>
-                    </svg>
+                  <div className={styles.dbStatBlock}>
+                    <span className={styles.dbStatLabel}>Avg. Booking Value</span>
+                    <div className={styles.dbStatValGroup}>
+                      <span className={styles.dbStatValue}>$538</span>
+                      <span className={styles.dbStatChangePos}>+16%</span>
+                    </div>
                   </div>
                 </div>
 
-                <div className={styles.dbChannelBlock}>
-                  <span className={styles.dbBlockTitle}>Bookings by Channel</span>
-                  <div className={styles.dbChannelsGrid}>
-                    <div className={styles.donutPlaceholder}>
-                      <svg width="64" height="64" viewBox="0 0 36 36">
-                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="4" />
-                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#d1ff36" strokeWidth="4" strokeDasharray="48 100" strokeDashoffset="25" />
-                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#ffffff" strokeWidth="4" strokeDasharray="27 100" strokeDashoffset="77" />
-                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f9ab00" strokeWidth="4" strokeDasharray="17 100" strokeDashoffset="4" />
-                        <circle cx="18" cy="18" r="15.9" fill="none" stroke="#1a73e8" strokeWidth="4" strokeDasharray="8 100" strokeDashoffset="21" />
+                <div className={styles.dbGraphRow}>
+                  <div className={styles.dbChartBlock}>
+                    <span className={styles.dbBlockTitle}>Last 12 Months</span>
+                    <div className={styles.dbChartSvgBox}>
+                      <svg viewBox="0 0 400 150" width="100%" height="100%" fill="none" style={{ overflow: 'visible' }}>
+                        <defs>
+                          <linearGradient id="dbChartGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#10b981" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+                          </linearGradient>
+                        </defs>
+                        {/* Grid lines */}
+                        <line x1="15" y1="135" x2="378" y2="135" stroke="#e5e7eb" strokeWidth="1" />
+                        <line x1="15" y1="100" x2="378" y2="100" stroke="#f3f4f6" strokeWidth="1" />
+                        <line x1="15" y1="65" x2="378" y2="65" stroke="#f3f4f6" strokeWidth="1" />
+                        <line x1="15" y1="30" x2="378" y2="30" stroke="#f3f4f6" strokeWidth="1" />
+                        
+                        {/* Gradient Fill under Path */}
+                        <path 
+                          className={styles.dbChartGradientPath} 
+                          d="M 15 125 L 48 115 L 81 95 L 114 102 L 147 88 L 180 78 L 213 85 L 246 65 L 279 50 L 312 62 L 345 40 L 378 25 L 378 135 L 15 135 Z" 
+                          fill="url(#dbChartGradient)" 
+                        />
+                        
+                        {/* Main Stroke Path */}
+                        <path 
+                          className={styles.dbChartPath} 
+                          d="M 15 125 L 48 115 L 81 95 L 114 102 L 147 88 L 180 78 L 213 85 L 246 65 L 279 50 L 312 62 L 345 40 L 378 25" 
+                          stroke="#10b981" 
+                          strokeWidth="3.2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                        />
+                        
+                        {/* 12 Growth Points (Dots) */}
+                        <circle className="dbDotPoint" cx="15" cy="125" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="48" cy="115" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="81" cy="95" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="114" cy="102" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="147" cy="88" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="180" cy="78" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="213" cy="85" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="246" cy="65" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="279" cy="50" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="312" cy="62" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="345" cy="40" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="378" cy="25" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        
+                        {/* Axis Labels */}
+                        <text x="15" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Jan</text>
+                        <text x="81" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Mar</text>
+                        <text x="147" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">May</text>
+                        <text x="213" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Jul</text>
+                        <text x="279" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Sep</text>
+                        <text x="345" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Nov</text>
                       </svg>
                     </div>
-                    <div className={styles.dbChannelsLegend}>
-                      <div className={styles.legendRow}><span className={styles.dotDirect}></span><span>Direct</span><strong>48%</strong></div>
-                      <div className={styles.legendRow}><span className={styles.dotOrganic}></span><span>Organic</span><strong>27%</strong></div>
-                      <div className={styles.legendRow}><span className={styles.dotPaid}></span><span>Paid</span><strong>17%</strong></div>
-                      <div className={styles.legendRow}><span className={styles.dotReferral}></span><span>Referral</span><strong>8%</strong></div>
+                  </div>
+
+                  <div className={styles.dbChannelBlock}>
+                    <span className={styles.dbBlockTitle}>Bookings by Channel</span>
+                    <div className={styles.dbChannelsGrid}>
+                      <div className={styles.donutPlaceholder}>
+                        <svg width="64" height="64" viewBox="0 0 36 36">
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#e5e7eb" strokeWidth="5" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#10b981" strokeWidth="5" strokeDasharray="48 100" strokeDashoffset="25" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#3b82f6" strokeWidth="5" strokeDasharray="27 100" strokeDashoffset="77" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" strokeWidth="5" strokeDasharray="17 100" strokeDashoffset="50" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#8b5cf6" strokeWidth="5" strokeDasharray="8 100" strokeDashoffset="33" />
+                        </svg>
+                      </div>
+                      <div className={styles.dbChannelsLegend}>
+                        <div className={styles.legendRow}>
+                          <span className={styles.legendLabelGroup}>
+                            <span className={styles.dotDirect}></span>
+                            <span>Direct</span>
+                          </span>
+                          <strong>48%</strong>
+                        </div>
+                        <div className={styles.legendRow}>
+                          <span className={styles.legendLabelGroup}>
+                            <span className={styles.dotOrganic}></span>
+                            <span>Organic</span>
+                          </span>
+                          <strong>27%</strong>
+                        </div>
+                        <div className={styles.legendRow}>
+                          <span className={styles.legendLabelGroup}>
+                            <span className={styles.dotPaid}></span>
+                            <span>Paid</span>
+                          </span>
+                          <strong>17%</strong>
+                        </div>
+                        <div className={styles.legendRow}>
+                          <span className={styles.legendLabelGroup}>
+                            <span className={styles.dotReferral}></span>
+                            <span>Referral</span>
+                          </span>
+                          <strong>8%</strong>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div className={styles.dbImagePreview}>
-                  <img
-                    src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=300&q=80"
-                    alt="Luxury hotel room mockup inside dashboard"
-                  />
-                </div>
+              <div className={styles.dashboardRight}>
+                <img
+                  src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80"
+                  alt="Luxury hotel room view inside dashboard"
+                />
               </div>
             </div>
           </div>
@@ -882,22 +1027,7 @@ const Hotels = () => {
         </div>
       </section>
 
-      {/* 8. CALL TO ACTION & FOOTER BANNER */}
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaInner}>
-          <h2 className={styles.ctaTitle}>LET'S GROW YOUR DIRECT REVENUE.</h2>
-          <p className={styles.ctaDesc}>Request a tailored review of your hotel's growth potential.</p>
-          <div className={styles.ctaBtnGroup}>
-            <Link href="/contact" className={styles.btnPrimary}>
-              REQUEST GROWTH REVIEW &rarr;
-            </Link>
-            <a href="https://wa.me/#" target="_blank" rel="noopener noreferrer" className={styles.btnWhatsApp}>
-              <WhatsAppIcon />
-              WHATSAPP US
-            </a>
-          </div>
-        </div>
-      </section>
+
 
       {/* 9. FAQ ACCORDION SECTION */}
       <section className={styles.faqSection}>
