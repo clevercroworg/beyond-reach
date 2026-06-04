@@ -1223,21 +1223,31 @@
 
 /* Portfolio Card */
 .pCard {
+  background-color: #0f1411; /* dark luxury background */
+  border: 2px solid rgba(193, 120, 31, 0.35); /* copper tint border */
+  border-radius: 1.5rem;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
-  cursor: pointer;
+  height: 100%;
   text-decoration: none;
+  transition: border-color 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  will-change: transform, box-shadow;
 }
 
+.pCard:hover {
+  border-color: #c1781f; /* brand accent */
+  transform: scale(1.01);
+  box-shadow: 0 20px 40px rgba(193, 120, 31, 0.12);
+}
+
+/* pMedia Container */
 .pMedia {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10.5;
-  border-radius: 8px;
+  height: 220px;
   overflow: hidden;
-  background-color: #1a1f1c;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background-color: #0c0f0d;
 }
 
 .pImg {
@@ -1246,8 +1256,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.4s ease;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
   z-index: 2;
+}
+
+.pCard:hover .pImg {
+  transform: scale(1.05);
 }
 
 .pVid {
@@ -1259,45 +1273,164 @@
   z-index: 1;
 }
 
-.pOverlay {
+.pMediaOverlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  letter-spacing: 2px;
-  color: #fff;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 14, 11, 0.95) 0%, rgba(10, 14, 11, 0.4) 60%, transparent 100%);
   z-index: 3;
-  opacity: 0;
-  transition: opacity 0.4s ease;
   pointer-events: none;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
 }
 
-.pInfo {
+/* Badges Row */
+.pBadgesRow {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  padding: 0 0.2rem;
+  align-items: center;
+  z-index: 4;
+  pointer-events: none;
 }
 
-.pTitle {
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  text-transform: uppercase;
-  margin: 0;
-  letter-spacing: 1px;
-  color: #111111;
-}
-
-.pCategory {
+.pLocationBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(12, 15, 13, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
   font-family: var(--font-body);
   font-size: 0.72rem;
-  font-weight: 600;
-  color: #888888;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.pinIcon {
+  color: #c1781f; /* copper brand accent */
+}
+
+.pCategoryBadge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(12, 15, 13, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #c1781f;
+}
+
+/* Title Overlay */
+.pTitleOverlay {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.pSubCategory {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #a3a3a3;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.pCardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* pDetailsBody */
+.pDetailsBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  background-color: #0f1411;
+}
+
+.pHeadline {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #c1781f;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.pDescription {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #a3a3a3;
+  line-height: 1.6;
+  font-weight: 300;
+  margin: 0 0 1.5rem 0;
+}
+
+.pDivider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.25rem;
+}
+
+/* Metrics Grid */
+.pMetricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.pMetricBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.pMetricValue {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.pMetricLabel {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #737373;
   text-transform: uppercase;
   letter-spacing: 1px;
+  line-height: 1.2;
 }
 
 @media (max-width: 1024px) {

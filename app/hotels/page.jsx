@@ -355,46 +355,100 @@ const portfolioProjects = [
     client: 'LUXURY RESORTS',
     category: 'BRANDING · WEBSITE · SEO',
     imgSrc: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80',
-    vidSrc: '/sample-vid.mp4'
+    vidSrc: '/sample-vid.mp4',
+    location: 'Goa, India',
+    subCategory: 'Luxury Resort • 100 Rooms',
+    headline: '+310% Booking Surge',
+    description: 'Scaled luxury guests acquisition with highly targeted Google Search & Meta Retargeting, bypassing commission-heavy OTA channels.',
+    metrics: [
+      { value: '8.4x', label: 'Ads ROAS' },
+      { value: '$940K', label: 'Revenue' },
+      { value: '35%', label: 'Direct Share' }
+    ]
   },
   {
     title: 'OCEANIC VOYAGES',
     client: 'AZURE CHARTERS',
     category: 'CAMPAIGN · CONTENT',
     imgSrc: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    location: 'Maldives',
+    subCategory: 'Luxury Yacht • 8 Charters',
+    headline: '+185% Inbound Sales',
+    description: 'Deployed geo-targeted lookalike campaigns for high-spending international wellness travelers, driving direct boat charters.',
+    metrics: [
+      { value: '6.2x', label: 'Campaign ROI' },
+      { value: '$190K', label: 'Ad Bookings' },
+      { value: '42%', label: 'Direct Share' }
+    ]
   },
   {
     title: 'ZEN WELLNESS',
     client: 'VITALITY SPA',
     category: 'BRANDING · DIGITAL',
     imgSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    location: 'Kerala, India',
+    subCategory: 'Eco-Retreat • 20 Rooms',
+    headline: '+120% Occupancy Rate',
+    description: 'Sustained high off-season occupancy through contextual local search campaigns and exclusive dynamic package landing pages.',
+    metrics: [
+      { value: '5.0x', label: 'Search ROAS' },
+      { value: '$420K', label: 'Ad Revenue' },
+      { value: '31%', label: 'Direct Share' }
+    ]
   },
   {
     title: 'ALPINE PEAKS',
     client: 'NORDIC STAYS',
     category: 'WEBSITE · SEO · ADS',
     imgSrc: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    location: 'Manali, HP',
+    subCategory: 'Heritage Stay • 10 Rooms',
+    headline: '+420% Organic Leads',
+    description: 'Leveraged storytelling and local culture content to build a cult aesthetic following, filling inventory months in advance.',
+    metrics: [
+      { value: '920k+', label: 'Organic Reach' },
+      { value: '44%', label: 'Direct Share' },
+      { value: '$280K', label: 'Direct Sales' }
+    ]
   },
   {
     title: 'NOCTURNAL EVENTS',
     client: 'LUMIERE NIGHTS',
     category: 'CONTENT · SOCIAL',
     imgSrc: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    location: 'Mumbai, India',
+    subCategory: 'Boutique Event • 15 Events',
+    headline: '+240% Inbound Inquiries',
+    description: 'Positioned as the city\'s premier private luxury event hosts, scaling direct reservations using premium visual branding.',
+    metrics: [
+      { value: '7.8x', label: 'Social ROAS' },
+      { value: '1.2M+', label: 'Reel Views' },
+      { value: '55%', label: 'Direct Share' }
+    ]
   },
   {
     title: 'URBAN SANCTUARY',
     client: 'THE METRO HOTEL',
     category: 'STRATEGY · BOOKING',
     imgSrc: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    location: 'Singapore',
+    subCategory: 'Boutique Hotel • 41 Rooms',
+    headline: '+175% Dynamic Bookings',
+    description: 'Designed responsive mobile booking interfaces for high-converting social media travelers seeking urban staycations.',
+    metrics: [
+      { value: '6.5x', label: 'Mobile ROI' },
+      { value: '$610K', label: 'Direct Revenue' },
+      { value: '48%', label: 'Direct Share' }
+    ]
   }
 ];
 
-const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
+const PortfolioCard = ({ title, client, category, imgSrc, vidSrc, location, subCategory, headline, description, metrics }) => {
   const videoRef = useRef(null);
   const cardRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -435,15 +489,49 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
   return (
     <Link href={`/work/${slug}`} className={styles.pCard} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={styles.pMedia}>
-        <img src={imgSrc} alt={title} className={styles.pImg} style={{ opacity: isPlaying ? 0 : 1 }} />
+        <img src={imgSrc} alt={title} className={styles.pImg} style={{ opacity: isPlaying ? 0.35 : 1 }} />
         <video ref={videoRef} src={vidSrc} className={styles.pVid} muted loop playsInline />
-        <div className={styles.pOverlay} style={{ opacity: isPlaying ? 1 : 0 }}>
-          <span>{client}</span>
+        <div className={styles.pMediaOverlay}></div>
+        
+        {/* Top Badges */}
+        <div className={styles.pBadgesRow}>
+          <div className={styles.pLocationBadge}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={styles.pinIcon}>
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>{location.toUpperCase()}</span>
+          </div>
+          <div className={styles.pCategoryBadge}>
+            <span>{category.split(' · ')[0]}</span>
+          </div>
+        </div>
+
+        {/* Title Overlay */}
+        <div className={styles.pTitleOverlay}>
+          <span className={styles.pSubCategory}>{subCategory}</span>
+          <h4 className={styles.pCardTitle}>{title}</h4>
         </div>
       </div>
-      <div className={styles.pInfo}>
-        <h4 className={styles.pTitle}>{title}</h4>
-        <span className={styles.pCategory}>{category}</span>
+
+      {/* Card Details Body */}
+      <div className={styles.pDetailsBody}>
+        <div>
+          <h5 className={styles.pHeadline}>{headline}</h5>
+          <p className={styles.pDescription}>{description}</p>
+        </div>
+
+        <div>
+          <div className={styles.pDivider} />
+          <div className={styles.pMetricsGrid}>
+            {metrics.map((metric, idx) => (
+              <div key={idx} className={styles.pMetricBlock}>
+                <span className={styles.pMetricValue}>{metric.value}</span>
+                <span className={styles.pMetricLabel}>{metric.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </Link>
   );
