@@ -7,6 +7,7 @@ import Preloader from './Preloader';
 import PageTransition from './PageTransition';
 import { AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import StickyContactBar from '@/app/lp/hospitality-marketing/components/StickyContactBar';
 
 export default function ClientLayoutWrapper({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -82,6 +83,7 @@ export default function ClientLayoutWrapper({ children }) {
           {children}
         </PageTransition>
       </AnimatePresence>
+      {pathname === '/lp/hospitality-marketing' && <StickyContactBar />}
       {!isAuditRoute && <Footer />}
     </>
   );

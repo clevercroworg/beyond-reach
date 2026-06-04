@@ -21,7 +21,7 @@ const FinalCTASection = () => {
   const trackCallClick = () => {};
 
   return (
-    <footer className="relative py-16 px-6 bg-brand-dark overflow-hidden border-t border-brand-border/40 text-center">
+    <footer className="relative pt-16 pb-32 px-6 bg-brand-dark overflow-hidden border-t border-brand-border/40 text-center">
       {/* Background radial glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
@@ -67,10 +67,10 @@ const FinalCTASection = () => {
 
         {/* Footer Brand Info */}
         <div className="w-full border-t border-brand-border/40 pt-8 flex flex-col items-center justify-center gap-4">
-          <p className="font-body text-[11px] text-neutral-400/50 uppercase tracking-[0.2em] text-center font-bold">
+          <p className="font-body text-[11px] text-neutral-500 uppercase tracking-[0.2em] text-center font-bold">
             &copy; 2026 BEYOND REACH. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex gap-6 text-[10px] font-body text-neutral-400/60 uppercase tracking-[0.2em] font-bold">
+          <div className="flex gap-6 text-[10px] font-body text-neutral-500 uppercase tracking-[0.2em] font-bold">
             <Link href="/lp/hospitality-marketing/privacy-policy" className="hover:text-brand-accent transition-colors duration-300">
               Privacy Policy
             </Link>
