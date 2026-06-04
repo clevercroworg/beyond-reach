@@ -56,10 +56,10 @@
 .heroSection {
   position: relative;
   width: 100%;
-  min-height: 70vh;
-  max-height: 750px;
-  padding-top: 8.5rem; /* clear top navbar */
-  padding-bottom: 4.5rem;
+  min-height: 58vh;
+  max-height: 600px;
+  padding-top: 7.5rem; /* clear top navbar */
+  padding-bottom: 3.5rem;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -99,7 +99,7 @@
   padding: 0 4rem;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 4rem;
+  gap: 3rem;
   align-items: center;
 }
 
@@ -115,15 +115,15 @@
   letter-spacing: 3px;
   color: var(--accent-color);
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .heroTitle {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  font-size: clamp(2.2rem, 5.2vw, 4.2rem);
   line-height: 1.05;
   color: var(--text-primary);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .glowingText {
@@ -137,7 +137,7 @@
   color: var(--text-secondary);
   max-width: 520px;
   line-height: 1.6;
-  margin: 0 0 2.5rem 0;
+  margin: 0 0 1.8rem 0;
 }
 
 .heroBtnGroup {
@@ -198,12 +198,12 @@
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
-  padding: 2.2rem;
+  padding: 1.8rem;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.2rem;
   width: 100%;
   max-width: 440px;
   margin-left: auto;
@@ -995,11 +995,15 @@
   }
   .processHorizontalList {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 2.5rem;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
   }
   .processStepNode {
     width: 100%;
+    max-width: 400px;
+    align-items: center;
+    text-align: center;
   }
   .stepArrow {
     display: none;
@@ -1023,19 +1027,16 @@
     height: auto;
     min-height: 0;
     max-height: none;
-    padding: 7rem 0 4rem;
+    padding: 7rem 0 3.5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .heroSection {
-    padding: 8rem 0 4rem;
-  }
   .heroInner, .sectionInner, .servicesBarInner, .faqInner {
     padding: 0 1.5rem;
   }
   .heroTitle {
-    font-size: clamp(2.2rem, 9vw, 3rem);
+    font-size: clamp(2rem, 8vw, 2.8rem);
   }
   .heroBtnGroup, .ctaBtnGroup {
     flex-direction: column;
@@ -1050,7 +1051,12 @@
     gap: 1.5rem;
   }
   .heroSection {
-    padding: 6.5rem 0 3.5rem;
+    padding: 6.5rem 0 3rem;
+  }
+  .resultsWidget {
+    padding: 1.5rem;
+    gap: 1rem;
+    max-width: 100%;
   }
 }
 

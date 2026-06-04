@@ -324,28 +324,36 @@ const Hotels = () => {
     const ctx = gsap.context(() => {
       const transitionDelay = 0.4;
 
-      // Entrances
-      gsap.from(`.${styles.heroLeft}`, {
-        x: -50, opacity: 0, duration: 1.2, ease: 'power4.out', delay: transitionDelay
-      });
-      gsap.from(`.${styles.resultsWidget}`, {
-        x: 50, opacity: 0, duration: 1.2, ease: 'power4.out', delay: transitionDelay + 0.2
-      });
+      // Entrances using fromTo to avoid React Strict Mode double-render opacity issues
+      gsap.fromTo(`.${styles.heroLeft}`, 
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.2, ease: 'power4.out', delay: transitionDelay }
+      );
+      gsap.fromTo(`.${styles.resultsWidget}`, 
+        { x: 50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.2, ease: 'power4.out', delay: transitionDelay + 0.2 }
+      );
 
-      // Helper function for scroll animations
-      const animateOnScroll = (targets, trigger, startOffset = 'top 90%') => {
-        gsap.from(targets, {
-          scrollTrigger: {
-            trigger: trigger,
-            start: startOffset,
-            once: true
+      // Helper function for scroll animations using fromTo
+      const animateOnScroll = (targets, trigger, startOffset = 'top 92%') => {
+        gsap.fromTo(targets,
+          {
+            opacity: 0,
+            y: 30
           },
-          y: 30,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out'
-        });
+          {
+            scrollTrigger: {
+              trigger: trigger,
+              start: startOffset,
+              once: true
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out'
+          }
+        );
       };
 
       // Scroll triggers
