@@ -944,7 +944,7 @@ const Hotels = () => {
       {/* 7. PROVEN RESULTS SECTION */}
       <section className={styles.resultsSection}>
         <div className={styles.sectionInner}>
-          <div className={styles.gridSplit}>
+          <div className={styles.resultsGridSplit}>
             <div className={styles.stickyCol}>
               <span className={styles.miniLabel}>PROVEN RESULTS</span>
               <h2 className={styles.splitSectionTitle}>Real hotels.<br />Real growth.</h2>
@@ -952,10 +952,9 @@ const Hotels = () => {
 
             <div className={styles.resultsGrid}>
               <div className={styles.resultsCard}>
-                <div className={styles.resultsCardLeft}>
-                  <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80" alt="City Beach Hotel pool" className={styles.resultsCardThumb} />
-                </div>
-                <div className={styles.resultsCardRight}>
+                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80" alt="City Beach Hotel pool" className={styles.resultsCardBgImg} />
+                <div className={styles.resultsCardOverlay}></div>
+                <div className={styles.resultsCardContent}>
                   <span className={styles.resultHotelName}>CITY BEACH HOTEL</span>
                   <div className={styles.resultStatGroup}>
                     <div className={styles.resultStatBlock}>
@@ -971,10 +970,9 @@ const Hotels = () => {
               </div>
 
               <div className={styles.resultsCard}>
-                <div className={styles.resultsCardLeft}>
-                  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Monterra Suites exterior" className={styles.resultsCardThumb} />
-                </div>
-                <div className={styles.resultsCardRight}>
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Monterra Suites exterior" className={styles.resultsCardBgImg} />
+                <div className={styles.resultsCardOverlay}></div>
+                <div className={styles.resultsCardContent}>
                   <span className={styles.resultHotelName}>MONTERRA SUITES</span>
                   <div className={styles.resultStatGroup}>
                     <div className={styles.resultStatBlock}>
@@ -990,10 +988,9 @@ const Hotels = () => {
               </div>
 
               <div className={styles.resultsCard}>
-                <div className={styles.resultsCardLeft}>
-                  <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="Pacifica Resort beachfront" className={styles.resultsCardThumb} />
-                </div>
-                <div className={styles.resultsCardRight}>
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="Pacifica Resort beachfront" className={styles.resultsCardBgImg} />
+                <div className={styles.resultsCardOverlay}></div>
+                <div className={styles.resultsCardContent}>
                   <span className={styles.resultHotelName}>PACIFICA RESORT</span>
                   <div className={styles.resultStatGroup}>
                     <div className={styles.resultStatBlock}>
