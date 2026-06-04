@@ -1,10 +1,11 @@
 "use client";
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useIsPresent } from 'framer-motion';
 
 const PageTransition = ({ children }) => {
   const isPresent = useIsPresent();
   const savedChildren = useRef(children);
+  const [animationComplete, setAnimationComplete] = useState(false);
 
   if (isPresent) {
     savedChildren.current = children;
@@ -23,6 +24,8 @@ const PageTransition = ({ children }) => {
         initial={{ opacity: 0, filter: 'blur(10px)', y: 20 }}
         animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
+        onAnimationComplete={() => setAnimationComplete(true)}
+        style={animationComplete ? { transform: 'none', filter: 'none' } : {}}
       >
         {savedChildren.current}
       </motion.div>
