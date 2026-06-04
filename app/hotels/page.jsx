@@ -154,12 +154,103 @@ const ProcessScaleIcon = () => (
   </svg>
 );
 
-const SparklineSVG = () => (
-  <svg width="100%" height="50" viewBox="0 0 200 50" fill="none">
-    <path d="M10 42c20-5 35-18 55-12s30-22 50-10 40-20 70-15" stroke="var(--accent-color)" strokeWidth="3" strokeLinecap="round" />
-    <circle cx="185" cy="5" r="4.5" fill="var(--accent-color)" filter="drop-shadow(0 0 6px var(--accent-color))" />
-  </svg>
-);
+const AnimatedSparkline = () => {
+  const pathRef = useRef(null);
+  const fillRef = useRef(null);
+  const dotRef = useRef(null);
+  const pulseRef = useRef(null);
+
+  useEffect(() => {
+    if (!pathRef.current) return;
+    const path = pathRef.current;
+    const length = path.getTotalLength();
+
+    // Set up initial hidden state
+    gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+    if (fillRef.current) gsap.set(fillRef.current, { opacity: 0 });
+    if (dotRef.current) gsap.set(dotRef.current, { scale: 0, opacity: 0 });
+    if (pulseRef.current) {
+      gsap.set(pulseRef.current, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+    }
+
+    // Timeline for slow build animation
+    const tl = gsap.timeline({ delay: 1.2 });
+    tl.to(path, {
+      strokeDashoffset: 0,
+      duration: 2.2,
+      ease: 'power2.out'
+    })
+    .to(fillRef.current, {
+      opacity: 1,
+      duration: 1.0,
+      ease: 'power1.out'
+    }, '-=1.2')
+    .to(dotRef.current, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.5,
+      ease: 'back.out(2)'
+    }, '-=0.3')
+    .to(pulseRef.current, {
+      scale: 2.2,
+      opacity: 0,
+      duration: 1.6,
+      repeat: -1,
+      ease: 'power1.out'
+    }, '-=0.1');
+  }, []);
+
+  return (
+    <svg width="100%" height="80" viewBox="0 0 200 80" fill="none" style={{ overflow: 'visible' }}>
+      <defs>
+        <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="var(--accent-color)" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="var(--accent-color)" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+
+      {/* Grid Lines */}
+      <line x1="5" y1="15" x2="195" y2="15" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
+      <line x1="5" y1="40" x2="195" y2="40" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
+      <line x1="5" y1="65" x2="195" y2="65" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
+
+      {/* Gradient Area Fill */}
+      <path
+        ref={fillRef}
+        d="M 5 80 L 5 70 C 25 65 45 40 65 45 C 85 50 105 20 125 35 C 145 50 165 15 190 20 L 190 80 Z"
+        fill="url(#chartGradient)"
+      />
+
+      {/* Main Sparkline Path */}
+      <path
+        ref={pathRef}
+        d="M 5 70 C 25 65 45 40 65 45 C 85 50 105 20 125 35 C 145 50 165 15 190 20"
+        stroke="var(--accent-color)"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+
+      {/* Pulsing Ripple Dot */}
+      <circle
+        ref={pulseRef}
+        cx="190"
+        cy="20"
+        r="8"
+        fill="none"
+        stroke="var(--accent-color)"
+        strokeWidth="1.5"
+      />
+      <circle
+        ref={dotRef}
+        cx="190"
+        cy="20"
+        r="4.5"
+        fill="var(--accent-color)"
+        filter="drop-shadow(0 0 6px var(--accent-color))"
+      />
+    </svg>
+  );
+};
 
 /* ─── DATA ─── */
 const hotelFaqs = [
@@ -424,7 +515,7 @@ const Hotels = () => {
                 <div className={styles.widgetSublabel}>Average increase in direct revenue</div>
               </div>
               <div className={styles.widgetChartWrapper}>
-                <SparklineSVG />
+                <AnimatedSparkline />
               </div>
               <div className={styles.widgetFooter}>
                 <span>Last 90 days</span>
