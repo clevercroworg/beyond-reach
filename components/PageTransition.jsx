@@ -1,8 +1,15 @@
 "use client";
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useIsPresent } from 'framer-motion';
 
 const PageTransition = ({ children }) => {
+  const isPresent = useIsPresent();
+  const savedChildren = useRef(children);
+
+  if (isPresent) {
+    savedChildren.current = children;
+  }
+
   // Snappy, premium Awwwards ease
   const transitionEase = [0.76, 0, 0.24, 1];
   
@@ -20,7 +27,7 @@ const PageTransition = ({ children }) => {
         exit={{ opacity: 0, filter: 'blur(10px)', y: -20 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        {children}
+        {savedChildren.current}
       </motion.div>
 
       {/* --- EXIT PHASE (Wiping up to COVER the screen) --- */}
