@@ -532,7 +532,7 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc, location, subC
             ))}
           </div>
           <div className={styles.pCardLinkWrapper}>
-            <span className={styles.pCardLinkText}>VIEW CASE STUDY &rarr;</span>
+            <span className={styles.pCardLinkText}>EXPLORE PERFORMANCE &rarr;</span>
           </div>
         </div>
       </div>
