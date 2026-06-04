@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap");
+
+/* Scoped styling overrides for hospitality-marketing funnel */
+.hospitality-funnel {
+  --color-brand-accent: #c1781f; /* Warm, rich metallic copper */
+  --color-brand-border: rgba(193, 120, 31, 0.2); /* elegant copper tint border */
+  --font-heading: 'Poppins', sans-serif;
+  --color-brand-card: #0f1411; /* dark luxury background for card components */
+}
+
+/* Scoped Copper Accents & Translucent Overrides */
+.hospitality-funnel .text-brand-accent {
+  color: #c1781f !important; /* Solid copper fallback for small text */
+}
+
+/* Premium Metallic Copper Text Gradient for Large Headings */
+.hospitality-funnel h1 .text-brand-accent,
+.hospitality-funnel h2 .text-brand-accent,
+.hospitality-funnel h3 .text-brand-accent,
+.hospitality-funnel h4 .text-brand-accent {
+  background: linear-gradient(135deg, #ffc98a 0%, #c1781f 55%, #8a5a12 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  display: inline-block;
+}
+
+.hospitality-funnel .bg-brand-accent {
+  background-color: #c1781f !important;
+}
+.hospitality-funnel .border-brand-accent {
+  border-color: #c1781f !important;
+}
+.hospitality-funnel .hover\:text-brand-accent:hover {
+  color: #c1781f !important;
+}
+.hospitality-funnel .hover\:bg-brand-accent:hover {
+  background-color: #c1781f !important;
+}
+.hospitality-funnel .hover\:border-brand-accent:hover {
+  border-color: #c1781f !important;
+}
+
+/* Translucent Scoped Copper Overrides for Overlays & Borders */
+.hospitality-funnel .bg-brand-accent\/5 {
+  background-color: rgba(193, 120, 31, 0.05) !important;
+}
+.hospitality-funnel .bg-brand-accent\/10 {
+  background-color: rgba(193, 120, 31, 0.1) !important;
+}
+.hospitality-funnel .bg-brand-accent\/15 {
+  background-color: rgba(193, 120, 31, 0.15) !important;
+}
+.hospitality-funnel .border-brand-accent\/20 {
+  border-color: rgba(193, 120, 31, 0.2) !important;
+}
+.hospitality-funnel .border-brand-accent\/25 {
+  border-color: rgba(193, 120, 31, 0.25) !important;
+}
+.hospitality-funnel .border-brand-accent\/30 {
+  border-color: rgba(193, 120, 31, 0.3) !important;
+}
+.hospitality-funnel .border-brand-accent\/35 {
+  border-color: rgba(193, 120, 31, 0.35) !important;
+}
+.hospitality-funnel .border-brand-accent\/40 {
+  border-color: rgba(193, 120, 31, 0.4) !important;
+}
+.hospitality-funnel .border-brand-accent\/60 {
+  border-color: rgba(193, 120, 31, 0.15) !important; /* elegant soft copper grid lines */
+}
+
+/* Custom styles for our landing page */
+.accent-gradient-text {
+  background: linear-gradient(135deg, #ffffff 40%, var(--color-brand-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Premium Brushed Copper Metallic Buttons */
+.glow-btn {
+  background-color: var(--color-brand-accent) !important;
+  color: #0a0e0b !important;
+  border: none !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 18px rgba(193, 120, 31, 0.35) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@media (hover: hover) {
+  .glow-btn:hover {
+    background-color: #ffffff !important;
+    color: #0a0e0b !important;
+    box-shadow: 0 0 30px rgba(193, 120, 31, 0.65) !important;
+    transform: translateY(-1px);
+  }
+}
+
+.border-glow:hover {
+  border-color: var(--color-brand-accent);
+  box-shadow: 0 0 15px rgba(193, 120, 31, 0.15);
+}
+
+.card-glass {
+  background: rgba(15, 20, 17, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-brand-border);
+}
+
+.timeline-dot {
+  position: relative;
+}
+
+.timeline-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: calc(100% - 24px);
+  height: 1px;
+  border-bottom: 1px dashed var(--color-brand-border);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+@media (max-width: 1024px) {
+  .timeline-dot::after {
+    display: none;
+  }
+}
+
+.hero-heading {
+  letter-spacing: 0.02em !important;
+  line-height: 1.05 !important;
+}
+
+/* Scoped headings override to preserve landing page design settings */
+.hospitality-funnel h1,
+.hospitality-funnel h2,
+.hospitality-funnel h3 {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  text-transform: uppercase !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.01em !important;
+  font-weight: 700 !important; /* Bold headings matching home page */
+}
+
+.hospitality-funnel h4,
+.hospitality-funnel h5,
+.hospitality-funnel h6 {
+  font-family: var(--font-heading) !important;
+  text-transform: uppercase !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 700 !important;
+}
+
+/* Specific heading overrides to preserve bold accents where absolutely required */
+.hospitality-funnel .font-bold-important {
+  font-weight: 700 !important;
+}
+
+/* Infinite client logo scroll */
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-marquee {
+  animation: scrollMarquee 35s linear infinite;
+}
+
+.animate-scroll-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* WhatsApp Floating button pulsating glow animation */
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp-pulsate {
+  animation: whatsappPulse 2s infinite;
+}
+
+/* Hide scrollbar while maintaining scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Custom Barlow Condensed font override for hero main tagline only */
+.hospitality-funnel .hero-tagline,
+.hospitality-funnel .hero-tagline span {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
+}
+
+@media (min-width: 1024px) {
+  .hospitality-funnel .hero-tagline,
+  .hospitality-funnel .hero-tagline span {
+    font-weight: 700 !important;
+  }
+}
+
+/* Premium vignette edge shadow overlay for hero section */
+.hospitality-funnel .hero-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 
+    inset 0 0 160px rgba(0, 0, 0, 0.95),
+    inset 0 0 80px rgba(0, 0, 0, 0.85),
+    inset 0 0 40px rgba(0, 0, 0, 0.75) !important;
+  pointer-events: none;
+}
