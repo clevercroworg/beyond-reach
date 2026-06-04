@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './ClubsLounges.module.css';
@@ -132,6 +133,7 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
   const videoRef = useRef(null);
   const cardRef = useRef(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const slug = title.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
 
   const handleMouseEnter = () => {
     if (window.innerWidth > 768) {
@@ -166,7 +168,7 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
   }, []);
 
   return (
-    <div className={styles.pCard} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <Link href={`/work/${slug}`} className={styles.pCard} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={styles.pMedia}>
         <img src={imgSrc} alt={title} className={styles.pImg} style={{ opacity: isPlaying ? 0 : 1 }} />
         <video ref={videoRef} src={vidSrc} className={styles.pVid} muted loop playsInline />
@@ -178,7 +180,7 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
         <h4 className={styles.pTitle}>{title}</h4>
         <span className={styles.pCategory}>{category}</span>
       </div>
-    </div>
+    </Link>
   );
 };
 

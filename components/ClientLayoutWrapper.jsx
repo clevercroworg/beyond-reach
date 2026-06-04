@@ -67,7 +67,7 @@ export default function ClientLayoutWrapper({ children }) {
   }
 
   const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities', '/privacy-policy', '/terms-conditions', '/case-studies', '/case-study', '/case-studies-snap', '/case-study-snap'];
-  const isAuditRoute = !staticRoutes.includes(pathname) && !pathname.startsWith('/api');
+  const isAuditRoute = !staticRoutes.includes(pathname) && !pathname.startsWith('/work/') && !pathname.startsWith('/api');
 
   // Pages with their own custom navbar — hide the global one
   const hasOwnNavbar = pathname === '/case-studies' || pathname === '/case-study' || pathname === '/case-studies-snap' || pathname === '/case-study-snap';
