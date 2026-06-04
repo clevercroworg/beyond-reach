@@ -647,49 +647,41 @@ const Hotels = () => {
 
             <div className={styles.processTimelineCol}>
               <div className={styles.processStepNode}>
-                <div className={styles.stepHeader}>
-                  <span className={styles.stepNum}>01</span>
-                  <div className={styles.stepIconWrapper}>
-                    <ProcessAuditIcon />
-                  </div>
+                <span className={styles.stepNum}>01</span>
+                <div className={styles.stepIconWrapper}>
+                  <ProcessAuditIcon />
                 </div>
-                <h3 className={styles.stepName}>DISCOVER & AUDIT</h3>
+                <h3 className={styles.stepName}>DISCOVER &<br />AUDIT</h3>
               </div>
 
               <div className={styles.stepArrow}>&rarr;</div>
 
               <div className={styles.processStepNode}>
-                <div className={styles.stepHeader}>
-                  <span className={styles.stepNum}>02</span>
-                  <div className={styles.stepIconWrapper}>
-                    <ProcessStrategyIcon />
-                  </div>
+                <span className={styles.stepNum}>02</span>
+                <div className={styles.stepIconWrapper}>
+                  <ProcessStrategyIcon />
                 </div>
-                <h3 className={styles.stepName}>STRATEGY & PLAN</h3>
+                <h3 className={styles.stepName}>STRATEGY<br />& PLAN</h3>
               </div>
 
               <div className={styles.stepArrow}>&rarr;</div>
 
               <div className={styles.processStepNode}>
-                <div className={styles.stepHeader}>
-                  <span className={styles.stepNum}>03</span>
-                  <div className={styles.stepIconWrapper}>
-                    <ProcessBuildIcon />
-                  </div>
+                <span className={styles.stepNum}>03</span>
+                <div className={styles.stepIconWrapper}>
+                  <ProcessBuildIcon />
                 </div>
-                <h3 className={styles.stepName}>BUILD & EXECUTE</h3>
+                <h3 className={styles.stepName}>BUILD &<br />EXECUTE</h3>
               </div>
 
               <div className={styles.stepArrow}>&rarr;</div>
 
               <div className={styles.processStepNode}>
-                <div className={styles.stepHeader}>
-                  <span className={styles.stepNum}>04</span>
-                  <div className={styles.stepIconWrapper}>
-                    <ProcessScaleIcon />
-                  </div>
+                <span className={styles.stepNum}>04</span>
+                <div className={styles.stepIconWrapper}>
+                  <ProcessScaleIcon />
                 </div>
-                <h3 className={styles.stepName}>OPTIMIZE & SCALE</h3>
+                <h3 className={styles.stepName}>OPTIMIZE<br />& SCALE</h3>
               </div>
             </div>
           </div>
@@ -815,55 +807,58 @@ const Hotels = () => {
 
             <div className={styles.resultsGrid}>
               <div className={styles.resultsCard}>
-                <div className={styles.resultsCardBg}>
-                  <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80" alt="City Beach Hotel pool" />
-                  <div className={styles.resultsCardOverlay}></div>
+                <div className={styles.resultsCardLeft}>
+                  <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80" alt="City Beach Hotel pool" className={styles.resultsCardThumb} />
                 </div>
-                <div className={styles.resultsCardInfo}>
+                <div className={styles.resultsCardRight}>
                   <span className={styles.resultHotelName}>CITY BEACH HOTEL</span>
-                  <div className={styles.resultStatBlock}>
-                    <div className={styles.resultStatVal}>+52%</div>
-                    <div className={styles.resultStatLbl}>Direct Bookings</div>
-                  </div>
-                  <div className={styles.resultStatBlock}>
-                    <div className={styles.resultStatVal}>+31%</div>
-                    <div className={styles.resultStatLbl}>Direct Revenue</div>
+                  <div className={styles.resultStatGroup}>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+52%</div>
+                      <div className={styles.resultStatLbl}>Direct Bookings</div>
+                    </div>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+31%</div>
+                      <div className={styles.resultStatLbl}>Direct Revenue</div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className={styles.resultsCard}>
-                <div className={styles.resultsCardBg}>
-                  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Monterra Suites exterior" />
-                  <div className={styles.resultsCardOverlay}></div>
+                <div className={styles.resultsCardLeft}>
+                  <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Monterra Suites exterior" className={styles.resultsCardThumb} />
                 </div>
-                <div className={styles.resultsCardInfo}>
+                <div className={styles.resultsCardRight}>
                   <span className={styles.resultHotelName}>MONTERRA SUITES</span>
-                  <div className={styles.resultStatBlock}>
-                    <div className={styles.resultStatVal}>+64%</div>
-                    <div className={styles.resultStatLbl}>Direct Bookings</div>
-                  </div>
-                  <div className={styles.resultStatBlock}>
-                    <div className={styles.resultStatVal}>+41%</div>
-                    <div className={styles.resultStatLbl}>Direct Revenue</div>
+                  <div className={styles.resultStatGroup}>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+64%</div>
+                      <div className={styles.resultStatLbl}>Direct Bookings</div>
+                    </div>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+41%</div>
+                      <div className={styles.resultStatLbl}>Direct Revenue</div>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className={styles.resultsCard}>
-                <div className={styles.resultsCardBg}>
-                  <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="Pacifica Resort beachfront" />
-                  <div className={styles.resultsCardOverlay}></div>
+                <div className={styles.resultsCardLeft}>
+                  <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="Pacifica Resort beachfront" className={styles.resultsCardThumb} />
                 </div>
-                <div className={styles.resultsCardInfo}>
+                <div className={styles.resultsCardRight}>
                   <span className={styles.resultHotelName}>PACIFICA RESORT</span>
-                  <div className={styles.resultStatBlock}>
-                    <div className={styles.resultStatVal}>+68%</div>
-                    <div className={styles.resultStatLbl}>Direct Bookings</div>
-                  </div>
-                  <div className={styles.resultStatBlock}>
-                    <div className={styles.resultStatVal}>+45%</div>
-                    <div className={styles.resultStatLbl}>Direct Revenue</div>
+                  <div className={styles.resultStatGroup}>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+68%</div>
+                      <div className={styles.resultStatLbl}>Direct Bookings</div>
+                    </div>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+45%</div>
+                      <div className={styles.resultStatLbl}>Direct Revenue</div>
+                    </div>
                   </div>
                 </div>
               </div>
