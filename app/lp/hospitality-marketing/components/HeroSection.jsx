@@ -166,15 +166,11 @@ const HeroSection = () => {
       {/* Top Header Bar */}
       <header className="relative z-20 w-full max-w-[95rem] mx-auto px-6 pt-4 pb-2 lg:py-4 flex justify-between items-center bg-transparent">
         {/* Logo Branding */}
-        <div className="bg-white/95 px-4.5 py-2.5 rounded-full shadow-md flex items-center justify-center border border-white/10 backdrop-blur-md">
-          <Link href="/" className="flex items-center transition-transform hover:scale-105 active:scale-95 shrink-0">
-            <img 
-              src="/logo-dark.svg" 
-              alt="Beyond Reach" 
-              className="h-6 md:h-6.5 w-auto object-contain"
-            />
-          </Link>
-        </div>
+        <Link href="/lp/hospitality-marketing" className="flex items-center gap-2 transition-transform hover:scale-101 active:scale-98">
+          <span className="font-heading font-black text-2xl tracking-[0.05em] text-white">
+            BEYOND <span className="text-[#8ea800]">REACH</span>
+          </span>
+        </Link>
 
         {/* Right WhatsApp Us Capsule Button */}
         <a 
@@ -182,10 +178,10 @@ const HeroSection = () => {
           onClick={trackWhatsAppClick}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 bg-[#0a0e0b]/70 hover:bg-[#0a0e0b]/90 border border-[#c1781f]/50 hover:border-[#c1781f] text-white px-4.5 py-2.5 rounded-full transition-all duration-300 shadow-md backdrop-blur-md cursor-pointer"
+          className="flex items-center justify-center gap-2 bg-[#0a0e0b]/70 hover:bg-[#0a0e0b]/90 border border-[#c1781f]/50 hover:border-[#c1781f] text-white px-5 py-2.5 rounded-full transition-all duration-300 shadow-md backdrop-blur-md cursor-pointer"
           title="WhatsApp Us"
         >
-          <FaWhatsapp className="w-4.5 h-4.5 text-[#25d366]" />
+          <FaWhatsapp className="w-5 h-5 text-[#25d366]" />
           <span className="font-heading text-xs sm:text-sm font-bold tracking-wider uppercase">WhatsApp Us</span>
         </a>
       </header>
@@ -253,9 +249,9 @@ const HeroSection = () => {
           {/* Request a Call Back — Copper Outlined */}
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center justify-center gap-3.5 border-2 border-[#c1781f]/40 hover:border-[#c1781f] bg-[#0a0e0b]/50 hover:bg-[#0a0e0b]/70 text-white font-heading text-[13px] xs:text-sm sm:text-base font-bold py-4 sm:py-4.5 px-8 sm:px-10 rounded-xl transition-all duration-300 shadow-md hover:shadow-[#c1781f]/10 tracking-wider uppercase w-full sm:w-auto shrink-0 cursor-pointer"
+            className="flex items-center justify-center gap-3.5 border-2 border-[#c1781f]/40 hover:border-[#c1781f] bg-[#0a0e0b]/50 hover:bg-[#0a0e0b]/70 text-white font-heading text-[13px] xs:text-sm sm:text-base font-bold py-4 sm:py-4 px-8 sm:px-10 rounded-xl transition-all duration-300 shadow-md hover:shadow-[#c1781f]/10 tracking-wider uppercase w-full sm:w-auto shrink-0 cursor-pointer"
           >
-            <Phone className="w-4.5 h-4.5 stroke-[2.5] shrink-0" />
+            <Phone className="w-5 h-5 stroke-[2.5] shrink-0" />
             <span>Request a Call Back</span>
           </button>
         </motion.div>
@@ -402,7 +398,7 @@ const HeroSection = () => {
                     <button
                       type="submit"
                       disabled={status.loading}
-                      className="w-full bg-brand-accent text-white font-body font-bold text-sm uppercase py-4.5 rounded-xl flex items-center justify-center gap-2 hover:bg-[#9a6118] transition-all duration-300 cursor-pointer disabled:opacity-50 tracking-[0.05em] shadow-md hover:shadow-lg"
+                      className="w-full bg-brand-accent text-white font-body font-bold text-sm uppercase py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-[#9a6118] transition-all duration-300 cursor-pointer disabled:opacity-50 tracking-[0.05em] shadow-md hover:shadow-lg"
                     >
                       {status.loading ? (
                         <>

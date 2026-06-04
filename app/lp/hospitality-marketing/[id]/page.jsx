@@ -80,7 +80,7 @@ export default function ProjectDetailsPage({ params }) {
         <header className="relative z-20 w-full max-w-[95rem] mx-auto px-6 lg:px-12 py-6 flex justify-between items-center bg-transparent">
           {/* Logo Branding */}
           <Link href="/lp/hospitality-marketing" className="flex items-center gap-2 transition-transform hover:scale-101 active:scale-98">
-            <span className="font-heading font-black text-2.5xl tracking-[0.05em] text-white">
+            <span className="font-heading font-black text-2xl tracking-[0.05em] text-white">
               BEYOND <span className="text-[#8ea800]">REACH</span>
             </span>
           </Link>

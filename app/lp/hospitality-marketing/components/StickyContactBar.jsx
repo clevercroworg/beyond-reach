@@ -66,7 +66,7 @@ const StickyContactBar = () => {
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-2 bg-[#25d366] hover:bg-[#20ba5a] text-white py-3 px-4 rounded-full font-heading font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 active:scale-95 shadow-md shadow-[#25d366]/25 shrink-0"
           >
-            <FaWhatsapp className="w-4.5 h-4.5" />
+            <FaWhatsapp className="w-4 h-4" />
             <span>WhatsApp</span>
           </a>
         </motion.div>

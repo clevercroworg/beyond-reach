@@ -38,7 +38,7 @@ const FinalCTASection = () => {
         </p>
 
         {/* Call CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4.5 w-full sm:w-auto mb-10 items-center justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mb-10 items-center justify-center">
           <a 
             href="tel:09986389444"
             onClick={trackCallClick}
