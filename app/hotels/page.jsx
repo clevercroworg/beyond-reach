@@ -216,6 +216,106 @@ const FaqAccordion = ({ faqs }) => {
   );
 };
 
+const portfolioProjects = [
+  {
+    title: 'THE GRAND ESCAPE',
+    client: 'LUXURY RESORTS',
+    category: 'BRANDING · WEBSITE · SEO',
+    imgSrc: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80',
+    vidSrc: '/sample-vid.mp4'
+  },
+  {
+    title: 'OCEANIC VOYAGES',
+    client: 'AZURE CHARTERS',
+    category: 'CAMPAIGN · CONTENT',
+    imgSrc: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'
+  },
+  {
+    title: 'ZEN WELLNESS',
+    client: 'VITALITY SPA',
+    category: 'BRANDING · DIGITAL',
+    imgSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+  },
+  {
+    title: 'ALPINE PEAKS',
+    client: 'NORDIC STAYS',
+    category: 'WEBSITE · SEO · ADS',
+    imgSrc: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
+  },
+  {
+    title: 'NOCTURNAL EVENTS',
+    client: 'LUMIERE NIGHTS',
+    category: 'CONTENT · SOCIAL',
+    imgSrc: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'
+  },
+  {
+    title: 'URBAN SANCTUARY',
+    client: 'THE METRO HOTEL',
+    category: 'STRATEGY · BOOKING',
+    imgSrc: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+  }
+];
+
+const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
+  const videoRef = useRef(null);
+  const cardRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const slug = title.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
+
+  const handleMouseEnter = () => {
+    if (window.innerWidth > 768) {
+      setIsPlaying(true);
+      videoRef.current?.play().catch(() => {});
+    }
+  };
+  const handleMouseLeave = () => {
+    if (window.innerWidth > 768) {
+      setIsPlaying(false);
+      videoRef.current?.pause();
+    }
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (window.innerWidth <= 768) {
+          if (entry.isIntersecting) {
+            setIsPlaying(true);
+            videoRef.current?.play().catch(() => {});
+          } else {
+            setIsPlaying(false);
+            videoRef.current?.pause();
+          }
+        }
+      },
+      { threshold: 0.7 }
+    );
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <Link href={`/work/${slug}`} className={styles.pCard} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div className={styles.pMedia}>
+        <img src={imgSrc} alt={title} className={styles.pImg} style={{ opacity: isPlaying ? 0 : 1 }} />
+        <video ref={videoRef} src={vidSrc} className={styles.pVid} muted loop playsInline />
+        <div className={styles.pOverlay} style={{ opacity: isPlaying ? 1 : 0 }}>
+          <span>{client}</span>
+        </div>
+      </div>
+      <div className={styles.pInfo}>
+        <h4 className={styles.pTitle}>{title}</h4>
+        <span className={styles.pCategory}>{category}</span>
+      </div>
+    </Link>
+  );
+};
+
 /* ─── MAIN REDESIGNED HOTELS COMPONENT ─── */
 const Hotels = () => {
   const pageRef = useRef(null);
@@ -250,6 +350,11 @@ const Hotels = () => {
 
       gsap.from(`.${styles.resultsCard}`, {
         scrollTrigger: { trigger: `.${styles.resultsSection}`, start: 'top 80%' },
+        y: 60, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
+      });
+
+      gsap.from(`.${styles.pCard}`, {
+        scrollTrigger: { trigger: `.${styles.portfolioSection}`, start: 'top 80%' },
         y: 60, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
       });
 
@@ -650,6 +755,21 @@ const Hotels = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Restored: OUR PORTFOLIO SECTION */}
+      <section className={styles.portfolioSection}>
+        <div className={styles.sectionInner}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.portfolioLabel}>SELECTED WORK</span>
+            <h2 className={styles.portfolioTitle}>OUR PORTFOLIO</h2>
+          </div>
+          <div className={styles.portfolioGrid}>
+            {portfolioProjects.map((proj, idx) => (
+              <PortfolioCard key={idx} {...proj} />
+            ))}
           </div>
         </div>
       </section>

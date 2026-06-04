@@ -56,10 +56,12 @@
 .heroSection {
   position: relative;
   width: 100%;
-  padding: 10rem 0 6rem;
-  overflow: hidden;
+  height: 60vh;
+  min-height: 480px;
+  max-height: 620px;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .heroBg {
@@ -72,8 +74,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.25;
-  filter: saturate(0.6) brightness(0.8);
+  opacity: 0.55;
+  filter: saturate(0.7) brightness(0.85);
 }
 
 .heroOverlay {
@@ -81,8 +83,8 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(10, 14, 11, 0.5) 0%,
-    rgba(10, 14, 11, 0.85) 60%,
+    rgba(10, 14, 11, 0.3) 0%,
+    rgba(10, 14, 11, 0.7) 65%,
     var(--bg-primary) 100%
   );
 }
@@ -1002,6 +1004,12 @@
     justify-content: center;
     gap: 1.5rem 2rem;
   }
+  .heroSection {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 7rem 0 4rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1025,5 +1033,138 @@
   .dbOverviewStats {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+  }
+  .heroSection {
+    padding: 6.5rem 0 3.5rem;
+  }
+}
+
+/* ========================================
+   PORTFOLIO SECTION (WHITE BACKROUND)
+   ======================================== */
+.portfolioSection {
+  background-color: #f8f8f6;
+  padding: 8rem 0;
+}
+
+.portfolioLabel {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #888888;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.portfolioTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: #111111;
+  line-height: 1;
+  margin: 0 0 4rem 0;
+  text-transform: uppercase;
+}
+
+.portfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+}
+
+/* Portfolio Card */
+.pCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.pMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10.5;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1a1f1c;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.pImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.pVid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.pOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: #fff;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
+}
+
+.pInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 0.2rem;
+}
+
+.pTitle {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 1px;
+  color: #111111;
+}
+
+.pCategory {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 1024px) {
+  .portfolioGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolioSection {
+    padding: 5rem 0;
+  }
+  .portfolioGrid {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
   }
 }
