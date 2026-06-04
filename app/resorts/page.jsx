@@ -4,111 +4,244 @@ import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Resorts.module.css';
-import ServicesMarquee from '@/components/ServicesMarquee';
-
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+/* ─── CUSTOM INLINE SVG ICONS ─── */
+const WhatsAppIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{ marginRight: '8px', flexShrink: 0 }}>
+    <path d="M12.004 2c-5.518 0-9.996 4.477-9.996 9.995 0 1.763.459 3.486 1.332 5.006L2 22l5.126-1.345c1.468.802 3.125 1.226 4.872 1.226.002 0 .004 0 .006 0 5.517 0 9.996-4.478 9.996-9.995C22 6.477 17.521 2 12.004 2zm5.728 14.33c-.25.707-1.458 1.37-2.007 1.436-.5.062-1.15.086-1.844-.136-.44-.14-1.025-.36-1.748-.682-3.08-1.37-5.07-4.512-5.223-4.717-.153-.205-1.237-1.65-1.237-3.15 0-1.502.784-2.24 1.063-2.541.278-.3.606-.375.808-.375.203 0 .405.002.582.01.183.007.426-.07.666.51.248.6.848 2.072.923 2.223.076.15.127.327.026.53-.102.203-.153.33-.304.507-.153.18-.32.402-.457.54-.153.15-.313.315-.135.623.178.307.79 1.303 1.693 2.11.164.147.336.27.508.384.606.398.96.347 1.316.035.152-.135.656-.763.832-1.024.178-.262.355-.22.607-.127.254.093 1.61.76 1.889.897.278.136.464.204.53.317.067.114.067.66-.183 1.367z" />
+  </svg>
+);
+
+const GoogleAdsIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ marginRight: '8px', flexShrink: 0 }}>
+    <path d="M16.6 3.6c-.6-.6-1.5-.6-2.1 0l-9.8 16c-.6.6-.6 1.5 0 2.1.6.6 1.5.6 2.1 0l9.8-16c.6-.6.6-1.5 0-2.1z" fill="#F9BC05" />
+    <path d="M21.3 12.3c-.6-.6-1.5-.6-2.1 0l-4.9 8c-.6.6-.6 1.5 0 2.1.6.6 1.5.6 2.1 0l4.9-8c.6-.6.6-1.5 0-2.1z" fill="#1A73E8" />
+  </svg>
+);
+
+const MetaAdsIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0064E0" strokeWidth="3.2" style={{ marginRight: '8px', flexShrink: 0 }}>
+    <path d="M16.5 7c-1.6 0-3.1 1.2-3.8 2.5-.7-1.3-2.2-2.5-3.8-2.5C5.8 7 3 9.2 3 12s2.8 5 5.9 5c1.6 0 3.1-1.2 3.8-2.5.7 1.3 2.2 2.5 3.8 2.5 3.1 0 5.9-2.2 5.9-5s-2.8-5-5.9-5z" />
+  </svg>
+);
+
+const WebsiteIcon = ({ stroke = "#2563eb" }) => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth="2.2" style={{ marginRight: '8px', flexShrink: 0 }}>
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <line x1="3" y1="9" x2="21" y2="9" />
+    <circle cx="6" cy="6" r="0.6" fill={stroke} stroke="none" />
+    <circle cx="9" cy="6" r="0.6" fill={stroke} stroke="none" />
+    <circle cx="12" cy="6" r="0.6" fill={stroke} stroke="none" />
+    <line x1="9" y1="9" x2="9" y2="21" />
+  </svg>
+);
+
+const SeoIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" strokeWidth="2.2" style={{ marginRight: '8px', flexShrink: 0 }}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="M21 21l-4.35-4.35" />
+    <path d="M8 12.5l2-2 1.5 1.5 2.5-2.5" strokeWidth="1.8" />
+  </svg>
+);
+
+const BookingFlowIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ec4899" strokeWidth="2.2" style={{ marginRight: '8px', flexShrink: 0 }}>
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+    <polyline points="8 15 11 18 17 11" strokeWidth="1.8" />
+  </svg>
+);
+
+const TrackingIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ca8a04" strokeWidth="2.2" style={{ marginRight: '8px', flexShrink: 0 }}>
+    <line x1="18" y1="20" x2="18" y2="10" />
+    <line x1="12" y1="20" x2="12" y2="4" />
+    <line x1="6" y1="20" x2="6" y2="14" />
+  </svg>
+);
+
+const ProblemWebsiteIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" strokeWidth="2" style={{ marginBottom: '1rem' }}>
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <line x1="3" y1="9" x2="21" y2="9" />
+    <line x1="10" y1="12" x2="14" y2="16" />
+    <line x1="14" y1="12" x2="10" y2="16" />
+  </svg>
+);
+
+const ProblemOtaIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" strokeWidth="2" style={{ marginBottom: '1rem' }}>
+    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+    <line x1="7" y1="7" x2="7.01" y2="7" strokeWidth="3" />
+  </svg>
+);
+
+const ProblemInquiryIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" strokeWidth="2" style={{ marginBottom: '1rem' }}>
+    <circle cx="18" cy="5" r="3" />
+    <circle cx="6" cy="12" r="3" />
+    <circle cx="18" cy="19" r="3" />
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+  </svg>
+);
+
+const SolutionWebsiteIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d1ff36" strokeWidth="2" style={{ marginBottom: '0.8rem' }}>
+    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+    <line x1="8" y1="21" x2="16" y2="21" />
+    <line x1="12" y1="17" x2="12" y2="21" />
+  </svg>
+);
+
+const SolutionAdIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d1ff36" strokeWidth="2" style={{ marginBottom: '0.8rem' }}>
+    <circle cx="12" cy="12" r="10" />
+    <circle cx="12" cy="12" r="6" />
+    <circle cx="12" cy="12" r="2" />
+  </svg>
+);
+
+const SolutionAutomationIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d1ff36" strokeWidth="2" style={{ marginBottom: '0.8rem' }}>
+    <path d="M16.5 9.5c-1.1 0-2 .6-2.5 1.4-.5-.8-1.4-1.4-2.5-1.4C9.1 8.5 7.5 10 7.5 12s1.6 3.5 3.7 3.5c1.1 0 2-.6 2.5-1.4.5.8 1.4 1.4 2.5 1.4 2.1 0 3.7-1.5 3.7-3.5s-1.6-3.5-3.7-3.5zm-5 5.5c-1.2 0-2.2-.9-2.2-2s1-2 2.2-2 2.2.9 2.2 2-1 2-2.2 2zm5 0c-1.2 0-2.2-.9-2.2-2s1-2 2.2-2 2.2.9 2.2 2-1 2-2.2 2z" fill="none" />
+  </svg>
+);
+
+const SolutionTrackingIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d1ff36" strokeWidth="2" style={{ marginBottom: '0.8rem' }}>
+    <line x1="18" y1="20" x2="18" y2="10" />
+    <line x1="12" y1="20" x2="12" y2="4" />
+    <line x1="6" y1="20" x2="6" y2="14" />
+  </svg>
+);
+
+const ProcessAuditIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+  </svg>
+);
+
+const ProcessStrategyIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <rect x="3" y="4" width="18" height="18" rx="2" />
+    <line x1="3" y1="10" x2="21" y2="10" />
+    <line x1="8" y1="14" x2="16" y2="14" />
+    <line x1="8" y1="18" x2="13" y2="18" />
+  </svg>
+);
+
+const ProcessBuildIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M12 2L2 22h20L12 2z" />
+    <line x1="12" y1="9" x2="12" y2="13" />
+    <circle cx="12" cy="17" r="1" fill="currentColor" />
+  </svg>
+);
+
+const ProcessScaleIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+    <polyline points="17 6 23 6 23 12" />
+  </svg>
+);
+
+const AnimatedSparkline = () => {
+  const pathRef = useRef(null);
+  const fillRef = useRef(null);
+  const dotRef = useRef(null);
+  const pulseRef = useRef(null);
+
+  useEffect(() => {
+    if (!pathRef.current) return;
+    const path = pathRef.current;
+    const length = path.getTotalLength();
+
+    gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
+    if (fillRef.current) gsap.set(fillRef.current, { opacity: 0 });
+    if (dotRef.current) gsap.set(dotRef.current, { scale: 0, opacity: 0 });
+    if (pulseRef.current) {
+      gsap.set(pulseRef.current, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+    }
+
+    const tl = gsap.timeline({ delay: 1.2 });
+    tl.to(path, {
+      strokeDashoffset: 0,
+      duration: 2.2,
+      ease: 'power2.out'
+    })
+    .to(fillRef.current, {
+      opacity: 1,
+      duration: 1.0,
+      ease: 'power1.out'
+    }, '-=1.2')
+    .to(dotRef.current, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.5,
+      ease: 'back.out(2)'
+    }, '-=0.3')
+    .to(pulseRef.current, {
+      scale: 2.2,
+      opacity: 0,
+      duration: 1.6,
+      repeat: -1,
+      ease: 'power1.out'
+    }, '-=0.1');
+  }, []);
+
+  return (
+    <svg width="100%" height="80" viewBox="0 0 200 80" fill="none" style={{ overflow: 'visible' }}>
+      <defs>
+        <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="var(--accent-color)" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="var(--accent-color)" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <line x1="5" y1="15" x2="195" y2="15" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
+      <line x1="5" y1="40" x2="195" y2="40" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
+      <line x1="5" y1="65" x2="195" y2="65" stroke="rgba(255, 255, 255, 0.05)" strokeWidth="1" />
+      <path
+        ref={fillRef}
+        d="M 5 80 L 5 70 C 25 65 45 40 65 45 C 85 50 105 20 125 35 C 145 50 165 15 190 20 L 190 80 Z"
+        fill="url(#chartGradient)"
+      />
+      <path
+        ref={pathRef}
+        d="M 5 70 C 25 65 45 40 65 45 C 85 50 105 20 125 35 C 145 50 165 15 190 20"
+        stroke="var(--accent-color)"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <circle
+        ref={pulseRef}
+        cx="190"
+        cy="20"
+        r="8"
+        fill="none"
+        stroke="var(--accent-color)"
+        strokeWidth="1.5"
+      />
+      <circle
+        ref={dotRef}
+        cx="190"
+        cy="20"
+        r="4.5"
+        fill="var(--accent-color)"
+        filter="drop-shadow(0 0 6px var(--accent-color))"
+      />
+    </svg>
+  );
+};
+
 /* ─── DATA ─── */
-const processSteps = [
-  {
-    number: '01',
-    title: 'Discovery & Audit',
-    desc: "We dive deep into your resort\u2019s digital presence \u2014 analyzing your current OTA dependency, booking funnels, brand positioning, and competitive landscape to uncover hidden growth levers."
-  },
-  {
-    number: '02',
-    title: 'Strategy Blueprint',
-    desc: "A tailored roadmap covering SEO, paid media, content marketing, and direct booking optimization \u2014 designed specifically for luxury hospitality."
-  },
-  {
-    number: '03',
-    title: 'Creative & Content',
-    desc: 'From cinematic videography to immersive virtual tours, we craft visual storytelling that captures the essence of your resort and compels travelers to book direct.'
-  },
-  {
-    number: '04',
-    title: 'Launch & Optimize',
-    desc: 'We go live with precision campaigns, continuously A/B testing creatives, landing pages, and booking flows to maximize revenue per visitor.'
-  },
-  {
-    number: '05',
-    title: 'Scale & Sustain',
-    desc: "Long-term growth through reputation management, loyalty programs, retargeting, and seasonal campaign strategies that keep occupancy consistently high."
-  }
-];
-
-const handlePoints = [
-  {
-    icon: '◈',
-    title: 'Revenue Management',
-    desc: 'Dynamic pricing strategies paired with demand forecasting to optimize ADR and RevPAR across all seasons.'
-  },
-  {
-    icon: '◈',
-    title: 'Direct Booking Engine',
-    desc: "Custom-built booking experiences that outperform OTAs \u2014 with rate parity, urgency triggers, and zero commission."
-  },
-  {
-    icon: '◈',
-    title: 'Brand Storytelling',
-    desc: "Cinematic content and editorial narratives that position your resort as the destination, not just accommodation."
-  },
-  {
-    icon: '◈',
-    title: 'Guest Experience Tech',
-    desc: 'Pre-arrival personalization, in-stay digital concierge, and post-stay re-engagement funnels.'
-  }
-];
-
-const portfolioProjects = [
-  {
-    title: 'THE GRAND ESCAPE',
-    client: 'LUXURY RESORTS',
-    category: 'BRANDING · WEBSITE · SEO',
-    imgSrc: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80',
-    vidSrc: '/sample-vid.mp4'
-  },
-  {
-    title: 'OCEANIC VOYAGES',
-    client: 'AZURE CHARTERS',
-    category: 'CAMPAIGN · CONTENT',
-    imgSrc: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'
-  },
-  {
-    title: 'ZEN WELLNESS',
-    client: 'VITALITY SPA',
-    category: 'BRANDING · DIGITAL',
-    imgSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
-  },
-  {
-    title: 'ALPINE PEAKS',
-    client: 'NORDIC STAYS',
-    category: 'WEBSITE · SEO · ADS',
-    imgSrc: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
-  },
-  {
-    title: 'NOCTURNAL EVENTS',
-    client: 'LUMIERE NIGHTS',
-    category: 'CONTENT · SOCIAL',
-    imgSrc: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'
-  },
-  {
-    title: 'URBAN SANCTUARY',
-    client: 'THE METRO HOTEL',
-    category: 'STRATEGY · BOOKING',
-    imgSrc: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80',
-    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
-  }
-];
-
-/* ─── FAQ DATA ─── */
 const resortFaqs = [
   {
     question: 'How do you reduce our reliance on Online Travel Agencies (OTAs)?',
@@ -128,12 +261,109 @@ const resortFaqs = [
   }
 ];
 
-/* ─── PORTFOLIO CARD ─── */
-const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
+const portfolioProjects = [
+  {
+    title: 'THE GRAND ESCAPE',
+    client: 'LUXURY RESORTS',
+    category: 'BRANDING · WEBSITE · SEO',
+    imgSrc: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80',
+    vidSrc: '/sample-vid.mp4',
+    location: 'Goa, India',
+    subCategory: 'Luxury Resort • 100 Rooms',
+    headline: '+310% Booking Surge',
+    description: 'Scaled luxury guests acquisition with highly targeted Google Search & Meta Retargeting, bypassing commission-heavy OTA channels.',
+    metrics: [
+      { value: '8.4x', label: 'Ads ROAS' },
+      { value: '$940K', label: 'Revenue' },
+      { value: '35%', label: 'Direct Share' }
+    ]
+  },
+  {
+    title: 'OCEANIC VOYAGES',
+    client: 'AZURE CHARTERS',
+    category: 'CAMPAIGN · CONTENT',
+    imgSrc: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    location: 'Maldives',
+    subCategory: 'Luxury Yacht • 8 Charters',
+    headline: '+185% Inbound Sales',
+    description: 'Deployed geo-targeted lookalike campaigns for high-spending international wellness travelers, driving direct boat charters.',
+    metrics: [
+      { value: '6.2x', label: 'Campaign ROI' },
+      { value: '$190K', label: 'Ad Bookings' },
+      { value: '42%', label: 'Direct Share' }
+    ]
+  },
+  {
+    title: 'ZEN WELLNESS',
+    client: 'VITALITY SPA',
+    category: 'BRANDING · DIGITAL',
+    imgSrc: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    location: 'Kerala, India',
+    subCategory: 'Eco-Retreat • 20 Rooms',
+    headline: '+120% Occupancy Rate',
+    description: 'Sustained high off-season occupancy through contextual local search campaigns and exclusive dynamic package landing pages.',
+    metrics: [
+      { value: '5.0x', label: 'Search ROAS' },
+      { value: '$420K', label: 'Ad Revenue' },
+      { value: '31%', label: 'Direct Share' }
+    ]
+  },
+  {
+    title: 'ALPINE PEAKS',
+    client: 'NORDIC STAYS',
+    category: 'WEBSITE · SEO · ADS',
+    imgSrc: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    location: 'Manali, HP',
+    subCategory: 'Heritage Stay • 10 Rooms',
+    headline: '+420% Organic Leads',
+    description: 'Leveraged storytelling and local culture content to build a cult aesthetic following, filling inventory months in advance.',
+    metrics: [
+      { value: '920k+', label: 'Organic Reach' },
+      { value: '44%', label: 'Direct Share' },
+      { value: '$280K', label: 'Direct Sales' }
+    ]
+  },
+  {
+    title: 'NOCTURNAL EVENTS',
+    client: 'LUMIERE NIGHTS',
+    category: 'CONTENT · SOCIAL',
+    imgSrc: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    location: 'Mumbai, India',
+    subCategory: 'Boutique Event • 15 Events',
+    headline: '+240% Inbound Inquiries',
+    description: 'Positioned as the city\'s premier private luxury event hosts, scaling direct reservations using premium visual branding.',
+    metrics: [
+      { value: '7.8x', label: 'Social ROAS' },
+      { value: '1.2M+', label: 'Reel Views' },
+      { value: '55%', label: 'Direct Share' }
+    ]
+  },
+  {
+    title: 'URBAN SANCTUARY',
+    client: 'THE METRO HOTEL',
+    category: 'STRATEGY · BOOKING',
+    imgSrc: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80',
+    vidSrc: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    location: 'Singapore',
+    subCategory: 'Boutique Hotel • 41 Rooms',
+    headline: '+175% Dynamic Bookings',
+    description: 'Designed responsive mobile booking interfaces for high-converting social media travelers seeking urban staycations.',
+    metrics: [
+      { value: '6.5x', label: 'Mobile ROI' },
+      { value: '$610K', label: 'Direct Revenue' },
+      { value: '48%', label: 'Direct Share' }
+    ]
+  }
+];
+
+const PortfolioCard = ({ title, client, category, imgSrc, vidSrc, location, subCategory, headline, description, metrics }) => {
   const videoRef = useRef(null);
   const cardRef = useRef(null);
-  const [isPlaying, setIsPlaying] = React.useState(false);
-  const slug = title.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleMouseEnter = () => {
     if (window.innerWidth > 768) {
@@ -170,21 +400,54 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc }) => {
   return (
     <Link href="/case-study-snap" className={styles.pCard} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={styles.pMedia}>
-        <img src={imgSrc} alt={title} className={styles.pImg} style={{ opacity: isPlaying ? 0 : 1 }} />
+        <img src={imgSrc} alt={title} className={styles.pImg} style={{ opacity: isPlaying ? 0.35 : 1 }} />
         <video ref={videoRef} src={vidSrc} className={styles.pVid} muted loop playsInline />
-        <div className={styles.pOverlay} style={{ opacity: isPlaying ? 1 : 0 }}>
-          <span>{client}</span>
+        <div className={styles.pMediaOverlay}></div>
+        
+        <div className={styles.pBadgesRow}>
+          <div className={styles.pLocationBadge}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={styles.pinIcon}>
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>{location.toUpperCase()}</span>
+          </div>
+          <div className={styles.pCategoryBadge}>
+            <span>{category.split(' · ')[0]}</span>
+          </div>
+        </div>
+
+        <div className={styles.pTitleOverlay}>
+          <span className={styles.pSubCategory}>{subCategory}</span>
+          <h4 className={styles.pCardTitle}>{title}</h4>
         </div>
       </div>
-      <div className={styles.pInfo}>
-        <h4 className={styles.pTitle}>{title}</h4>
-        <span className={styles.pCategory}>{category}</span>
+
+      <div className={styles.pDetailsBody}>
+        <div>
+          <h5 className={styles.pHeadline}>{headline}</h5>
+          <p className={styles.pDescription}>{description}</p>
+        </div>
+
+        <div>
+          <div className={styles.pDivider} />
+          <div className={styles.pMetricsGrid}>
+            {metrics.map((metric, idx) => (
+              <div key={idx} className={styles.pMetricBlock}>
+                <span className={styles.pMetricValue}>{metric.value}</span>
+                <span className={styles.pMetricLabel}>{metric.label}</span>
+              </div>
+            ))}
+          </div>
+          <div className={styles.pCardLinkWrapper}>
+            <span className={styles.pCardLinkText}>VIEW CASE STUDY &rarr;</span>
+          </div>
+        </div>
       </div>
     </Link>
   );
 };
 
-/* ─── FAQ COMPONENT ─── */
 const FaqAccordion = ({ faqs }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -219,178 +482,552 @@ const FaqAccordion = ({ faqs }) => {
   );
 };
 
-/* ─── MAIN PAGE ─── */
 const Resorts = () => {
   const pageRef = useRef(null);
-  const refSectionRef = useRef(null);
-  
-  const words = ['STRATEGY', 'WEBSITES', 'MARKETING', 'TECHNOLOGY', 'GROWTH'];
-  const [wordIndex, setWordIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setWordIndex((prev) => (prev + 1) % words.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* Wait for page transition to finish before any animations */
-      const transitionDelay = 1;
+      const transitionDelay = 0.4;
 
-      /* Header entrance — plays right after transition */
-      gsap.from(`.${styles.headerContent}`, {
-        y: 60, opacity: 0, duration: 1.2, ease: 'power4.out', delay: transitionDelay
-      });
-      gsap.from(`.${styles.headerBadge}`, {
-        scale: 0.8, opacity: 0, duration: 1, ease: 'power3.out', delay: transitionDelay + 0.3
-      });
+      gsap.fromTo(`.${styles.heroLeft}`, 
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.2, ease: 'power4.out', delay: transitionDelay }
+      );
+      gsap.fromTo(`.${styles.resultsWidget}`, 
+        { x: 50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.2, ease: 'power4.out', delay: transitionDelay + 0.2 }
+      );
 
-      /* Process steps stagger */
-      gsap.from(`.${styles.processStep}`, {
-        scrollTrigger: { trigger: `.${styles.processSection}`, start: 'top 75%' },
-        y: 60, opacity: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out'
-      });
+      const animateOnScroll = (targets, trigger, startOffset = 'top 92%') => {
+        gsap.fromTo(targets,
+          { opacity: 0, y: 30 },
+          {
+            scrollTrigger: {
+              trigger: trigger,
+              start: startOffset,
+              once: true
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power3.out'
+          }
+        );
+      };
 
-      /* ── Services section — scroll-triggered entrance ── */
-      /* Temporarily disabled GSAP on word cloud to debug visibility issue */
+      animateOnScroll(`.${styles.problemCard}`, `.${styles.problemSection}`);
+      animateOnScroll(`.${styles.solutionCard}`, `.${styles.solutionSection}`);
+      animateOnScroll(`.${styles.processStepNode}`, `.${styles.processSection}`);
+      animateOnScroll(`.${styles.resultsCard}`, `.${styles.resultsSection}`);
+      animateOnScroll(`.${styles.pCard}`, `.${styles.portfolioSection}`);
 
-      /* Handle section */
-      gsap.from(`.${styles.handleContent}`, {
-        scrollTrigger: { trigger: `.${styles.handleSection}`, start: 'top 70%' },
-        x: -60, opacity: 0, duration: 1, ease: 'power3.out'
-      });
-      gsap.from(`.${styles.handleVideoCard}`, {
-        scrollTrigger: { trigger: `.${styles.handleSection}`, start: 'top 70%' },
-        x: 60, opacity: 0, duration: 1, ease: 'power3.out', delay: 0.2
-      });
+      const dbPath = pageRef.current.querySelector(`.${styles.dbChartPath}`);
+      const dbGradient = pageRef.current.querySelector(`.${styles.dbChartGradientPath}`);
+      const dbDots = pageRef.current.querySelectorAll('.dbDotPoint');
+      
+      if (dbPath) {
+        const length = dbPath.getTotalLength();
+        gsap.set(dbPath, { strokeDasharray: length, strokeDashoffset: length });
+        if (dbGradient) gsap.set(dbGradient, { opacity: 0 });
+        if (dbDots.length) {
+          gsap.set(dbDots, { scale: 0, opacity: 0, transformOrigin: 'center center' });
+        }
+        
+        ScrollTrigger.create({
+          trigger: `.${styles.insightsSection}`,
+          start: 'top 75%',
+          once: true,
+          onEnter: () => {
+            const tl = gsap.timeline();
+            tl.to(dbPath, {
+              strokeDashoffset: 0,
+              duration: 2.2,
+              ease: 'power1.inOut'
+            })
+            .to(dbGradient, {
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power1.out'
+            }, '-=1.5');
+            
+            if (dbDots.length) {
+              tl.to(dbDots, {
+                scale: 1,
+                opacity: 1,
+                duration: 0.4,
+                stagger: 0.15,
+                ease: 'back.out(2.5)'
+              }, '-=2.1');
+            }
+          }
+        });
+      }
 
-      /* Portfolio cards */
-      gsap.from(`.${styles.pCard}`, {
-        scrollTrigger: { trigger: `.${styles.portfolioSection}`, start: 'top 75%' },
-        y: 80, opacity: 0, duration: 1, stagger: 0.15, ease: 'power3.out'
-      });
-
-      /* Refresh ScrollTrigger after transition settles */
-      setTimeout(() => ScrollTrigger.refresh(), transitionDelay * 1000 + 200);
+      const refreshST = () => ScrollTrigger.refresh();
+      window.addEventListener('load', refreshST);
+      const timer1 = setTimeout(refreshST, 200);
+      const timer2 = setTimeout(refreshST, 1000);
+      
+      return () => {
+        window.removeEventListener('load', refreshST);
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+      };
     }, pageRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={pageRef}>
-      {/* ═══════════════════════════════════
-          SECTION 1: COMPACT HEADER (DARK)
-         ═══════════════════════════════════ */}
-      <section className={styles.headerSection}>
-        <div className={styles.headerBg}>
+    <div ref={pageRef} className={styles.pageWrapper}>
+      
+      {/* 1. HERO HEADER SECTION */}
+      <section className={styles.heroSection}>
+        <div className={styles.heroBg}>
           <img
             src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1600&q=80"
-            alt="Resort aerial view"
+            alt="Luxury resort aerial view"
           />
-          <div className={styles.headerOverlay}></div>
+          <div className={styles.heroOverlay}></div>
         </div>
-        <div className={styles.headerInner}>
-          <div className={styles.headerContent}>
-            <span className={styles.headerLabel}>OUR OFFERING</span>
-            <h1 className={styles.headerTitle}>
-              <span className={styles.titlePrefix}>We help Resorts with</span>
-              <span className={styles.dynamicWordWrap}>
-                <span key={words[wordIndex]} className={styles.dynamicWord}>
-                  {words[wordIndex]}
-                </span>
-              </span>
+
+        <div className={styles.heroInner}>
+          <div className={styles.heroLeft}>
+            <span className={styles.heroLabel}>RESORT GROWTH SYSTEM</span>
+            <h1 className={styles.heroTitle}>
+              MORE DIRECT BOOKINGS<br />
+              <span className={styles.glowingText}>FOR RESORTS.</span>
             </h1>
-            <p className={styles.headerSub}>
-              Elevating luxury hospitality through strategy, storytelling, and technology — 
-              driving direct bookings beyond OTA dependency.
+            <p className={styles.heroSubtitle}>
+              Marketing, websites and booking engines drive more direct revenue — sustainably.
             </p>
+            <div className={styles.heroBtnGroup}>
+              <Link href="/contact" className={styles.btnPrimary}>
+                REQUEST GROWTH REVIEW &rarr;
+              </Link>
+              <a href="https://wa.me/#" target="_blank" rel="noopener noreferrer" className={styles.btnWhatsApp}>
+                <WhatsAppIcon />
+                WHATSAPP US
+              </a>
+            </div>
           </div>
-          <div className={styles.headerBadge}>
-            <div className={styles.badgeInner}>
-              <span className={styles.badgeNumber}>40%</span>
-              <span className={styles.badgeText}>AVG INCREASE IN<br/>DIRECT BOOKINGS</span>
+
+          <div className={styles.heroRight}>
+            <div className={styles.resultsWidget}>
+              <div className={styles.widgetHeader}>
+                <span className={styles.widgetBadge}>RESULTS THAT COMPOUND</span>
+                <span className={styles.widgetLabel}>Direct bookings increase</span>
+              </div>
+              <div className={styles.widgetValueGroup}>
+                <div className={styles.widgetValue}>+74%</div>
+                <div className={styles.widgetSublabel}>Average increase in direct resort bookings</div>
+              </div>
+              <div className={styles.widgetChartWrapper}>
+                <AnimatedSparkline />
+              </div>
+              <div className={styles.widgetFooter}>
+                <span>Last 90 days</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          SECTION 2: OUR PROCESS (DARK)
-         ═══════════════════════════════════ */}
+      {/* 2. SUB-HERO DEPLOYED CHANNELS BAR */}
+      <div className={styles.servicesBar}>
+        <div className={styles.servicesBarInner}>
+          <div className={styles.serviceBarItem}>
+            <GoogleAdsIcon />
+            <span>Google Ads</span>
+          </div>
+          <div className={styles.serviceBarItem}>
+            <MetaAdsIcon />
+            <span>Meta Ads</span>
+          </div>
+          <div className={styles.serviceBarItem}>
+            <WebsiteIcon stroke="#2563eb" />
+            <span>Resort Websites</span>
+          </div>
+          <div className={styles.serviceBarItem}>
+            <SeoIcon />
+            <span>SEO</span>
+          </div>
+          <div className={styles.serviceBarItem}>
+            <BookingFlowIcon />
+            <span>Booking Flow</span>
+          </div>
+          <div className={styles.serviceBarItem}>
+            <TrackingIcon />
+            <span>Lead Tracking</span>
+          </div>
+        </div>
+      </div>
+
+      {/* 3. THE PROBLEM SECTION */}
+      <section className={styles.problemSection}>
+        <div className={styles.sectionInner}>
+          <div className={styles.gridSplit}>
+            <div className={styles.stickyCol}>
+              <span className={`${styles.miniLabel} ${styles.problemLabel}`}>THE PROBLEM</span>
+              <h2 className={styles.splitSectionTitle}>WHY RESORTS <br />LOSE DIRECT <br />BOOKINGS.</h2>
+            </div>
+            
+            <div className={styles.cardsCol}>
+              <div className={styles.problemCard}>
+                <span className={styles.problemNum}>01</span>
+                <ProblemWebsiteIcon />
+                <h3 className={styles.cardTitle}>POOR WEBSITE EXPERIENCE</h3>
+                <p className={styles.cardDesc}>Slow sites and unclear booking paths lose guests.</p>
+              </div>
+
+              <div className={styles.problemCard}>
+                <span className={styles.problemNum}>02</span>
+                <ProblemOtaIcon />
+                <h3 className={styles.cardTitle}>TOO MUCH OTA DEPENDENCE</h3>
+                <p className={styles.cardDesc}>High commissions reduce profitability and brand control.</p>
+              </div>
+
+              <div className={styles.problemCard}>
+                <span className={styles.problemNum}>03</span>
+                <ProblemInquiryIcon />
+                <h3 className={styles.cardTitle}>POOR INQUIRY FLOW</h3>
+                <p className={styles.cardDesc}>Unstructured enquiries and slow follow-ups mean lost revenue.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className={styles.sectionSeparator}></div>
+
+      {/* 4. THE SOLUTION SECTION */}
+      <section className={styles.solutionSection}>
+        <div className={styles.sectionInner}>
+          <div className={styles.solutionGridSplit}>
+            <div className={styles.stickyCol}>
+              <span className={styles.miniLabel}>OUR SOLUTION</span>
+              <h2 className={styles.splitSectionTitle}>WHAT WE <br />IMPROVE.</h2>
+            </div>
+
+            <div className={styles.solutionsGrid}>
+              <div className={styles.solutionCard}>
+                <span className={styles.solutionNum}>01</span>
+                <SolutionWebsiteIcon />
+                <h3 className={styles.solutionCardTitle}>HIGH-CONVERTING WEBSITES</h3>
+                <p className={styles.solutionCardDesc}>Built for clarity and designed for guests.</p>
+              </div>
+
+              <div className={styles.solutionCard}>
+                <span className={styles.solutionNum}>02</span>
+                <SolutionAdIcon />
+                <h3 className={styles.solutionCardTitle}>AD STRATEGY & PERFORMANCE</h3>
+                <p className={styles.solutionCardDesc}>Targeted campaigns that drive quality traffic and lower CAC.</p>
+              </div>
+
+              <div className={styles.solutionCard}>
+                <span className={styles.solutionNum}>03</span>
+                <SolutionAutomationIcon />
+                <h3 className={styles.solutionCardTitle}>BOOKING FLOW & AUTOMATION</h3>
+                <p className={styles.solutionCardDesc}>Streamlined forms, automations and follow-ups that convert more stays.</p>
+              </div>
+
+              <div className={styles.solutionCard}>
+                <span className={styles.solutionNum}>04</span>
+                <SolutionTrackingIcon />
+                <h3 className={styles.solutionCardTitle}>TRACKING & ATTRIBUTION</h3>
+                <p className={styles.solutionCardDesc}>Clear data visibility to scale what works and cut waste.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className={styles.sectionSeparator}></div>
+
+      {/* 5. PROCESS SECTION */}
       <section className={styles.processSection}>
         <div className={styles.sectionInner}>
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>HOW WE WORK</span>
-            <h2 className={styles.sectionTitle}>OUR PROCESS</h2>
-            <p className={styles.sectionDesc}>
-              A proven five-phase methodology refined across 50+ resort partnerships worldwide.
-            </p>
-          </div>
-          <div className={styles.processGrid}>
-            {processSteps.map((step, i) => (
-              <div key={i} className={styles.processStep}>
-                <div className={styles.stepTop}>
-                  <span className={styles.stepNumber}>{step.number}</span>
-                  <div className={styles.stepLine}></div>
+          <div className={styles.processGridSplit}>
+            <div className={styles.stickyCol}>
+              <span className={styles.miniLabel}>OUR PROCESS</span>
+              <h2 className={styles.splitSectionTitle}>A SIMPLE <br />GROWTH <br />PROCESS.</h2>
+            </div>
+
+            <div className={styles.processTimelineCol}>
+              <div className={styles.processStepNode}>
+                <span className={styles.stepNum}>01</span>
+                <div className={styles.stepIconWrapper}>
+                  <ProcessAuditIcon />
                 </div>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepDesc}>{step.desc}</p>
+                <h3 className={styles.stepName}>DISCOVER &<br />AUDIT</h3>
               </div>
-            ))}
+
+              <div className={styles.stepArrow}>&rarr;</div>
+
+              <div className={styles.processStepNode}>
+                <span className={styles.stepNum}>02</span>
+                <div className={styles.stepIconWrapper}>
+                  <ProcessStrategyIcon />
+                </div>
+                <h3 className={styles.stepName}>STRATEGY<br />& PLAN</h3>
+              </div>
+
+              <div className={styles.stepArrow}>&rarr;</div>
+
+              <div className={styles.processStepNode}>
+                <span className={styles.stepNum}>03</span>
+                <div className={styles.stepIconWrapper}>
+                  <ProcessBuildIcon />
+                </div>
+                <h3 className={styles.stepName}>BUILD &<br />EXECUTE</h3>
+              </div>
+
+              <div className={styles.stepArrow}>&rarr;</div>
+
+              <div className={styles.processStepNode}>
+                <span className={styles.stepNum}>04</span>
+                <div className={styles.stepIconWrapper}>
+                  <ProcessScaleIcon />
+                </div>
+                <h3 className={styles.stepName}>OPTIMIZE<br />& SCALE</h3>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          SECTION 3: SERVICES (MARQUEE)
-         ═══════════════════════════════════ */}
-      <ServicesMarquee />
+      <div className={styles.sectionSeparator}></div>
 
-      {/* ═══════════════════════════════════
-          SECTION 4: HOW WE HANDLE (DARK)
-         ═══════════════════════════════════ */}
-      <section className={styles.handleSection}>
+      {/* 6. ANALYTICS & INSIGHTS (LIVE DASHBOARD MOCK) */}
+      <section className={styles.insightsSection}>
         <div className={styles.sectionInner}>
-          <div className={styles.handleTop}>
-            <div className={styles.handleContent}>
-              <span className={styles.sectionLabel}>WHAT SETS US APART</span>
-              <h2 className={styles.handleSectionTitle}>HOW WE HANDLE<br/>RESORT MARKETING</h2>
-              <p className={styles.handleDesc}>
-                We don't just run ads. We architect full-funnel ecosystems that turn 
-                lookers into bookers — from initial inspiration to post-stay advocacy.
-              </p>
-              <div className={styles.handleHighlights}>
-                <div className={styles.handleHighlight}>
-                  Full-spectrum campaigns across search, social, and programmatic — tailored to seasonal demand.
+          <div className={styles.insightsGrid}>
+            <div className={styles.insightsText}>
+              <span className={styles.miniLabel}>REAL-TIME INSIGHTS</span>
+              <h2 className={styles.insightsTitle}>See what drives your growth.</h2>
+              <p className={styles.insightsDesc}>Live dashboards that turn data into decisions.</p>
+            </div>
+
+            <div className={styles.dashboardContainer}>
+              <div className={styles.dashboardLeft}>
+                <div className={styles.dbHeader}>
+                  <span className={styles.dbTitle}>Direct Booking Performance</span>
                 </div>
-                <div className={styles.handleHighlight}>
-                  Conversion-optimized booking flows that reduce drop-off by up to 60%.
+                <div className={styles.dbOverviewStats}>
+                  <div className={styles.dbStatBlock}>
+                    <span className={styles.dbStatLabel}>Direct Bookings</span>
+                    <div className={styles.dbStatValGroup}>
+                      <span className={styles.dbStatValue}>1,482</span>
+                      <span className={styles.dbStatChangePos}>+28%</span>
+                    </div>
+                  </div>
+                  <div className={styles.dbStatBlock}>
+                    <span className={styles.dbStatLabel}>Revenue</span>
+                    <div className={styles.dbStatValGroup}>
+                      <span className={styles.dbStatValue}>$780K</span>
+                      <span className={styles.dbStatChangePos}>+34%</span>
+                    </div>
+                  </div>
+                  <div className={styles.dbStatBlock}>
+                    <span className={styles.dbStatLabel}>Conversion Rate</span>
+                    <div className={styles.dbStatValGroup}>
+                      <span className={styles.dbStatValue}>3.95%</span>
+                      <span className={styles.dbStatChangePos}>+20%</span>
+                    </div>
+                  </div>
+                  <div className={styles.dbStatBlock}>
+                    <span className={styles.dbStatLabel}>Avg. Booking Value</span>
+                    <div className={styles.dbStatValGroup}>
+                      <span className={styles.dbStatValue}>$640</span>
+                      <span className={styles.dbStatChangePos}>+15%</span>
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.handleHighlight}>
-                  Real-time analytics dashboards giving you complete visibility into ROI.
+
+                <div className={styles.dbGraphRow}>
+                  <div className={styles.dbChartBlock}>
+                    <span className={styles.dbBlockTitle}>Last 12 Months</span>
+                    <div className={styles.dbChartSvgBox}>
+                      <svg viewBox="0 0 400 150" width="100%" height="100%" fill="none" style={{ overflow: 'visible' }}>
+                        <defs>
+                          <linearGradient id="dbChartGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="#10b981" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+                          </linearGradient>
+                        </defs>
+                        <line x1="15" y1="135" x2="378" y2="135" stroke="#e5e7eb" strokeWidth="1" />
+                        <line x1="15" y1="100" x2="378" y2="100" stroke="#f3f4f6" strokeWidth="1" />
+                        <line x1="15" y1="65" x2="378" y2="65" stroke="#f3f4f6" strokeWidth="1" />
+                        <line x1="15" y1="30" x2="378" y2="30" stroke="#f3f4f6" strokeWidth="1" />
+                        
+                        <path 
+                          className={styles.dbChartGradientPath} 
+                          d="M 15 125 L 48 115 L 81 95 L 114 102 L 147 88 L 180 78 L 213 85 L 246 65 L 279 50 L 312 62 L 345 40 L 378 25 L 378 135 L 15 135 Z" 
+                          fill="url(#dbChartGradient)" 
+                        />
+                        
+                        <path 
+                          className={styles.dbChartPath} 
+                          d="M 15 125 L 48 115 L 81 95 L 114 102 L 147 88 L 180 78 L 213 85 L 246 65 L 279 50 L 312 62 L 345 40 L 378 25" 
+                          stroke="#10b981" 
+                          strokeWidth="3.2" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                        />
+                        
+                        <circle className="dbDotPoint" cx="15" cy="125" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="48" cy="115" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="81" cy="95" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="114" cy="102" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="147" cy="88" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="180" cy="78" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="213" cy="85" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="246" cy="65" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="279" cy="50" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="312" cy="62" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="345" cy="40" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        <circle className="dbDotPoint" cx="378" cy="25" r="5" fill="#10b981" stroke="#ffffff" strokeWidth="2" />
+                        
+                        <text x="15" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Jan</text>
+                        <text x="81" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Mar</text>
+                        <text x="147" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">May</text>
+                        <text x="213" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Jul</text>
+                        <text x="279" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Sep</text>
+                        <text x="345" y="146" fill="#4b5563" fontSize="10" textAnchor="middle">Nov</text>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className={styles.dbChannelBlock}>
+                    <span className={styles.dbBlockTitle}>Bookings by Channel</span>
+                    <div className={styles.dbChannelsGrid}>
+                      <div className={styles.donutPlaceholder}>
+                        <svg width="64" height="64" viewBox="0 0 36 36">
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#e5e7eb" strokeWidth="5" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#10b981" strokeWidth="5" strokeDasharray="48 100" strokeDashoffset="25" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#3b82f6" strokeWidth="5" strokeDasharray="27 100" strokeDashoffset="77" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#f59e0b" strokeWidth="5" strokeDasharray="17 100" strokeDashoffset="50" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#8b5cf6" strokeWidth="5" strokeDasharray="8 100" strokeDashoffset="33" />
+                        </svg>
+                      </div>
+                      <div className={styles.dbChannelsLegend}>
+                        <div className={styles.legendRow}>
+                          <span className={styles.legendLabelGroup}>
+                            <span className={styles.dotDirect}></span>
+                            <span>Direct</span>
+                          </span>
+                          <strong>48%</strong>
+                        </div>
+                        <div className={styles.legendRow}>
+                          <span className={styles.legendLabelGroup}>
+                            <span className={styles.dotOrganic}></span>
+                            <span>Organic</span>
+                          </span>
+                          <strong>27%</strong>
+                        </div>
+                        <div className={styles.legendRow}>
+                          <span className={styles.legendLabelGroup}>
+                            <span className={styles.dotPaid}></span>
+                            <span>Paid</span>
+                          </span>
+                          <strong>17%</strong>
+                        </div>
+                        <div className={styles.legendRow}>
+                          <span className={styles.legendLabelGroup}>
+                            <span className={styles.dotReferral}></span>
+                            <span>Referral</span>
+                          </span>
+                          <strong>8%</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.handleVideoCard}>
-              <video
-                src="/sample-vid.mp4"
-                autoPlay loop muted playsInline
-                className={styles.handleVideo}
-              />
-              <div className={styles.handleVideoOverlay}>
-                <span className={styles.handleVideoTag}>STRATEGY IN ACTION</span>
+
+              <div className={styles.dashboardRight}>
+                <img
+                  src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=600&q=80"
+                  alt="Luxury resort room view inside dashboard"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          SECTION 5: PORTFOLIO (WHITE - GLOBAL)
-         ═══════════════════════════════════ */}
+      <div className={styles.sectionSeparator}></div>
+
+      {/* 7. PROVEN RESULTS SECTION */}
+      <section className={styles.resultsSection}>
+        <div className={styles.sectionInner}>
+          <div className={styles.resultsGridSplit}>
+            <div className={styles.stickyCol}>
+              <span className={styles.miniLabel}>PROVEN RESULTS</span>
+              <h2 className={styles.splitSectionTitle}>Real resorts. <br />Real growth.</h2>
+            </div>
+
+            <div className={styles.resultsGrid}>
+              <div className={styles.resultsCard}>
+                <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=400&q=80" alt="Pacifica Resort" className={styles.resultsCardBgImg} />
+                <div className={styles.resultsCardOverlay}></div>
+                <div className={styles.resultsCardContent}>
+                  <span className={styles.resultHotelName}>PACIFICA RESORT</span>
+                  <div className={styles.resultStatGroup}>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+72%</div>
+                      <div className={styles.resultStatLbl}>Direct Bookings</div>
+                    </div>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+45%</div>
+                      <div className={styles.resultStatLbl}>Direct Revenue</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.resultsCard}>
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Monterra Resort" className={styles.resultsCardBgImg} />
+                <div className={styles.resultsCardOverlay}></div>
+                <div className={styles.resultsCardContent}>
+                  <span className={styles.resultHotelName}>MONTERRA RESORT</span>
+                  <div className={styles.resultStatGroup}>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+68%</div>
+                      <div className={styles.resultStatLbl}>Direct Bookings</div>
+                    </div>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+41%</div>
+                      <div className={styles.resultStatLbl}>Direct Revenue</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.resultsCard}>
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="The Grand Exotica" className={styles.resultsCardBgImg} />
+                <div className={styles.resultsCardOverlay}></div>
+                <div className={styles.resultsCardContent}>
+                  <span className={styles.resultHotelName}>THE GRAND EXOTICA</span>
+                  <div className={styles.resultStatGroup}>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+84%</div>
+                      <div className={styles.resultStatLbl}>Direct Bookings</div>
+                    </div>
+                    <div className={styles.resultStatBlock}>
+                      <div className={styles.resultStatVal}>+52%</div>
+                      <div className={styles.resultStatLbl}>Direct Revenue</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. OUR PORTFOLIO SECTION */}
       <section className={styles.portfolioSection}>
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
@@ -405,9 +1042,7 @@ const Resorts = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          SECTION 6: FAQ (DARK)
-         ═══════════════════════════════════ */}
+      {/* 9. FAQ ACCORDION SECTION */}
       <section className={styles.faqSection}>
         <div className={styles.faqInner}>
           <div className={styles.faqHeader}>
@@ -417,6 +1052,7 @@ const Resorts = () => {
           <FaqAccordion faqs={resortFaqs} />
         </div>
       </section>
+
     </div>
   );
 };
