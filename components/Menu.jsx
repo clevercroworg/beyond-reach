@@ -12,7 +12,7 @@ const Menu = ({ isOpen, onClose }) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const menuItems = [
-    { name: "WORK", path: "/work", image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" },
+    { name: "WORK", path: "/case-study-snap", image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80" },
     { 
       name: "SOLUTION", 
       path: "/#solution",

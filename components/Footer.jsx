@@ -50,7 +50,7 @@ const Footer = () => {
             <h3 className={styles.colHeader}>NAVIGATION</h3>
             <div className={styles.colHeaderLine}></div>
             <ul className={styles.linkList}>
-              <li><Link href="/work" className={styles.footerLink}>WORK</Link></li>
+              <li><Link href="/case-study-snap" className={styles.footerLink}>WORK</Link></li>
               <li><Link href="/#growth-system" className={styles.footerLink}>WHO WE HELP</Link></li>
               <li><Link href="/#about" className={styles.footerLink}>ABOUT</Link></li>
               <li><Link href="/#testimonials" className={styles.footerLink}>INSIGHTS</Link></li>

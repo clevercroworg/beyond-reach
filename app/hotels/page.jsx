@@ -487,7 +487,7 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc, location, subC
   }, []);
 
   return (
-    <Link href={`/work/${slug}`} className={styles.pCard} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <Link href="/case-study-snap" className={styles.pCard} ref={cardRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={styles.pMedia}>
         <img src={imgSrc} alt={title} className={styles.pImg} style={{ opacity: isPlaying ? 0.35 : 1 }} />
         <video ref={videoRef} src={vidSrc} className={styles.pVid} muted loop playsInline />
@@ -530,6 +530,9 @@ const PortfolioCard = ({ title, client, category, imgSrc, vidSrc, location, subC
                 <span className={styles.pMetricLabel}>{metric.label}</span>
               </div>
             ))}
+          </div>
+          <div className={styles.pCardLinkWrapper}>
+            <span className={styles.pCardLinkText}>VIEW CASE STUDY &rarr;</span>
           </div>
         </div>
       </div>

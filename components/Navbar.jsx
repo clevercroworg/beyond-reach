@@ -30,7 +30,7 @@ const Navbar = ({ onMenuClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities', '/privacy-policy', '/terms-conditions'];
+  const staticRoutes = ['/', '/work', '/admin', '/contact', '/hotels', '/resorts', '/homestays-villas', '/spas-wellness', '/clubs-lounges', '/event-venues', '/yachts-boats', '/tours-activities', '/privacy-policy', '/terms-conditions', '/case-study-snap', '/case-study'];
   const isAuditRoute = !staticRoutes.includes(pathname) && !pathname.startsWith('/work/') && !pathname.startsWith('/api');
   const hideMenuBtn = pathname === '/admin' || isAuditRoute;
 
@@ -40,7 +40,7 @@ const Navbar = ({ onMenuClick }) => {
         className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${!visible ? styles.navbarHidden : ''}`} 
         style={isAuditRoute ? { position: 'absolute' } : {}}
       >
-        {!isAuditRoute && <Link href="/work" className={styles.navLink}>Work</Link>}
+        {!isAuditRoute && <Link href="/case-study-snap" className={styles.navLink}>Work</Link>}
         <div className={styles.logo}>
           <Link href="/" className={styles.logoLink} style={isAuditRoute ? { color: '#111827' } : {}}>
             <span style={{ fontWeight: 'bold' }}>BEYOND</span> <span style={{ fontWeight: 'normal' }}>REACH</span>

@@ -1433,6 +1433,30 @@
   line-height: 1.2;
 }
 
+.pCardLinkWrapper {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pCardLinkText {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #c1781f;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pCard:hover .pCardLinkText {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
 @media (max-width: 1024px) {
   .portfolioGrid {
     grid-template-columns: repeat(2, 1fr);
