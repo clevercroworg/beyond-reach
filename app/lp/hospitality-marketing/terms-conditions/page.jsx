@@ -13,7 +13,7 @@ export default function TermsConditions() {
         {/* Back Button */}
         <Link 
           href="/lp/hospitality-marketing" 
-          className="inline-flex items-center gap-2 text-brand-textSecondary hover:text-brand-accent font-body font-bold text-xs uppercase tracking-[0.1em] mb-12 transition-all duration-300 hover:-translate-x-1"
+          className="inline-flex items-center gap-2 text-neutral-400 hover:text-brand-accent font-body font-bold text-xs uppercase tracking-[0.1em] mb-12 transition-all duration-300 hover:-translate-x-1"
         >
           ← Back to Home
         </Link>
@@ -23,13 +23,13 @@ export default function TermsConditions() {
           <h1 className="font-heading text-5xl md:text-6xl font-bold tracking-[0.015em] mb-4 text-white uppercase" style={{ wordSpacing: '0.06em' }}>
             General Terms
           </h1>
-          <p className="font-body text-xs tracking-wider text-brand-textSecondary uppercase">
+          <p className="font-body text-xs tracking-wider text-neutral-400 uppercase">
             Last Updated: May 2026
           </p>
         </header>
 
         {/* Content */}
-        <div className="space-y-10 font-body text-brand-textSecondary leading-relaxed text-sm md:text-base">
+        <div className="space-y-10 font-body text-neutral-400 leading-relaxed text-sm md:text-base">
           
           <section className="space-y-4">
             <h2 className="font-heading text-2xl font-bold text-white tracking-wide uppercase">

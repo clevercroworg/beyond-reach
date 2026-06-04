@@ -119,7 +119,7 @@ const IndustryCategories = () => {
               <h4 className="font-heading text-[22px] md:text-[26px] font-bold text-white uppercase tracking-wide group-hover:text-brand-accent transition-colors duration-300 font-bold-important leading-none">
                 {cat.title}
               </h4>
-              <span className="font-body text-[11px] font-bold uppercase text-brand-textSecondary group-hover:text-brand-accent transition-colors duration-300 tracking-[0.12em]">
+              <span className="font-body text-[11px] font-bold uppercase text-neutral-400 group-hover:text-brand-accent transition-colors duration-300 tracking-[0.12em]">
                 {cat.subtag}
               </span>
             </div>

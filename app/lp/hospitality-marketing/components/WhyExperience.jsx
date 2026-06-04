@@ -47,7 +47,7 @@ const WhyExperience = () => {
               <span className="text-brand-accent font-bold-important">Growth Oriented.</span>
             </h3>
             
-            <p className="font-body text-[15.8px] md:text-[16px] text-brand-textSecondary max-w-xl mb-10 leading-[1.7] font-normal">
+            <p className="font-body text-[15.8px] md:text-[16px] text-neutral-400 max-w-xl mb-10 leading-[1.7] font-normal">
               Beyond Reach is engineered exclusively for hospitality growth, not generic marketing. We understand stays, guest behavior, and what triggers direct bookings.
             </p>
 
@@ -71,7 +71,7 @@ const WhyExperience = () => {
                       <h4 className="font-heading text-[22px] sm:text-[24px] md:text-[26px] font-bold text-white uppercase tracking-[0.02em] mb-2 font-bold-important">
                         {diff.title}
                       </h4>
-                      <p className="font-body text-[13px] md:text-[14.7px] text-brand-textSecondary leading-[1.6] font-normal">
+                      <p className="font-body text-[13px] md:text-[14.7px] text-neutral-400 leading-[1.6] font-normal">
                         {diff.desc}
                       </p>
                     </div>
@@ -105,7 +105,7 @@ const WhyExperience = () => {
                 <h4 className="font-heading text-lg font-bold text-white uppercase leading-none mb-1.5">
                   Driven by <span className="text-brand-accent font-bold-important">Data & Insights</span>
                 </h4>
-                <p className="font-body text-[11px] text-brand-textSecondary leading-relaxed font-normal">
+                <p className="font-body text-[11px] text-neutral-400 leading-relaxed font-normal">
                   We focus exclusively on direct bookings, higher margins, and measurable growth.
                 </p>
               </div>

@@ -54,7 +54,7 @@ export default function ClientLayoutWrapper({ children }) {
   }, [pathname, mounted]);
 
   // Server-side & initial client hydration: render standard static layout
-  const ssrHasOwnNavbar = pathname === '/case-studies' || pathname === '/case-study' || pathname === '/case-studies-snap' || pathname === '/case-study-snap';
+  const ssrHasOwnNavbar = pathname === '/case-studies' || pathname === '/case-study' || pathname === '/case-studies-snap' || pathname === '/case-study-snap' || pathname.startsWith('/lp/');
   if (!mounted) {
     return (
       <>
@@ -70,7 +70,7 @@ export default function ClientLayoutWrapper({ children }) {
   const isAuditRoute = !staticRoutes.includes(pathname) && !pathname.startsWith('/work/') && !pathname.startsWith('/api');
 
   // Pages with their own custom navbar — hide the global one
-  const hasOwnNavbar = pathname === '/case-studies' || pathname === '/case-study' || pathname === '/case-studies-snap' || pathname === '/case-study-snap';
+  const hasOwnNavbar = pathname === '/case-studies' || pathname === '/case-study' || pathname === '/case-studies-snap' || pathname === '/case-study-snap' || pathname.startsWith('/lp/');
 
   return (
     <>

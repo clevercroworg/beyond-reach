@@ -33,7 +33,7 @@ const FinalCTASection = () => {
           <span className="text-brand-accent">Property Growth Review</span>
         </h2>
         
-        <p className="font-body text-sm md:text-base text-brand-textSecondary max-w-xl mb-8 font-normal leading-[1.7]">
+        <p className="font-body text-sm md:text-base text-neutral-400 max-w-xl mb-8 font-normal leading-[1.7]">
           Share your property details and our hospitality marketing team will review your online visibility, brand positioning, photos/videos, ads readiness, and booking flow.
         </p>
 
@@ -67,10 +67,10 @@ const FinalCTASection = () => {
 
         {/* Footer Brand Info */}
         <div className="w-full border-t border-brand-border/40 pt-8 flex flex-col items-center justify-center gap-4">
-          <p className="font-body text-[11px] text-brand-textSecondary/50 uppercase tracking-[0.2em] text-center font-bold">
+          <p className="font-body text-[11px] text-neutral-400/50 uppercase tracking-[0.2em] text-center font-bold">
             &copy; 2026 BEYOND REACH. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex gap-6 text-[10px] font-body text-brand-textSecondary/40 uppercase tracking-[0.2em] font-bold">
+          <div className="flex gap-6 text-[10px] font-body text-neutral-400/60 uppercase tracking-[0.2em] font-bold">
             <Link href="/lp/hospitality-marketing/privacy-policy" className="hover:text-brand-accent transition-colors duration-300">
               Privacy Policy
             </Link>

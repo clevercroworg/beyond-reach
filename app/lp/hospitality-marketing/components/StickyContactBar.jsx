@@ -19,8 +19,8 @@ const StickyContactBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show bar as soon as user starts scrolling down (past 100px)
-      const threshold = 100;
+      // Show bar when user scrolls past the Hero section (about 90% of screen height)
+      const threshold = window.innerHeight * 0.9;
       if (window.scrollY > threshold) {
         setIsVisible(true);
       } else {

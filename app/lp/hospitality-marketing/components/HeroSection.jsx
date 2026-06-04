@@ -167,8 +167,8 @@ const HeroSection = () => {
       <header className="relative z-20 w-full max-w-[95rem] mx-auto px-6 pt-4 pb-2 lg:py-4 flex justify-between items-center bg-transparent">
         {/* Logo Branding */}
         <Link href="/lp/hospitality-marketing" className="flex items-center gap-2 transition-transform hover:scale-101 active:scale-98">
-          <span className="font-heading font-black text-2xl tracking-[0.05em] text-white">
-            BEYOND <span className="text-[#8ea800]">REACH</span>
+          <span className="font-heading text-2xl tracking-[0.05em] text-white">
+            <span className="font-bold">BEYOND</span> <span className="font-normal">REACH</span>
           </span>
         </Link>
 
