@@ -1,0 +1,1032 @@
+.pageContainer {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow orbs */
+.bgGlow {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(209, 255, 54, 0.03) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bgGlow2 {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(209, 255, 54, 0.02) 0%, transparent 75%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.innerContent {
+  position: relative;
+  z-index: 10;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 4rem 6rem;
+}
+
+@media (max-width: 768px) {
+  .innerContent {
+    padding: 0 1.5rem 4rem;
+  }
+}
+
+/* ========================================
+   1. CINEMA HEADER SECTION
+   ======================================== */
+.cinemaHeader {
+  position: relative;
+  min-height: 420px;
+  padding: 110px 4rem 50px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #060907;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.headerBgWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.headerBgImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+  filter: blur(2px) saturate(1.3);
+  transform: scale(1.02) translate3d(0, 0, 0);
+}
+
+.headerBgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 14, 11, 0.0) 0%,
+    rgba(10, 14, 11, 0.2) 65%,
+    var(--bg-primary) 100%
+  );
+}
+
+.headerContentGrid {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.headerLeftCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 1.8rem;
+  width: fit-content;
+}
+
+.backBtn:hover {
+  color: var(--accent-color);
+  transform: translateX(-4px);
+}
+
+.headerMetaRow {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.categoryBadge {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 1px solid rgba(209, 255, 54, 0.35);
+  padding: 0.25rem 0.75rem;
+  border-radius: 3px;
+  background: rgba(209, 255, 54, 0.06);
+}
+
+.metaYear {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.projectTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0 0 1.4rem 0;
+}
+
+.clientTagLine {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.clientLabel {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.clientValue {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.headerRightCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.featuredCardFrame {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 16 / 11;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(209, 255, 54, 0.2);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255,255,255,0.03);
+  background: #090d0b;
+}
+
+.featuredCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.featuredCardFrame:hover .featuredCardImg {
+  transform: scale(1.05);
+}
+
+.featuredCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 14, 11, 0.35) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+@media (max-width: 968px) {
+  .cinemaHeader {
+    padding: 90px 1.5rem 40px;
+  }
+  .headerContentGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ========================================
+   2. WHAT WE DID BADGE BAR
+   ======================================== */
+.badgeBar {
+  margin-top: 3.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+}
+
+.badgeBarLabel {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.badgeList {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.projectTypeBadge {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  background: rgba(209, 255, 54, 0.05);
+  border: 1px solid rgba(209, 255, 54, 0.25);
+  padding: 0.4rem 1.1rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: default;
+}
+
+.projectTypeBadge:hover {
+  background: rgba(209, 255, 54, 0.12);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 12px rgba(209, 255, 54, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   3. PROPERTY VITALS GRID
+   ======================================== */
+.propertyVitalsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.propertyVitalCard {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1.4rem 1.8rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.propertyVitalCard:hover {
+  border-color: rgba(209, 255, 54, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(209, 255, 54, 0.06);
+}
+
+.propertyVitalIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(209, 255, 54, 0.06);
+  border: 1px solid rgba(209, 255, 54, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(209, 255, 54, 0.05);
+}
+
+.pIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-color);
+}
+
+.propertyVitalText {
+  display: flex;
+  flex-direction: column;
+}
+
+.propertyVitalLabel {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.2rem;
+}
+
+.propertyVitalValue {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+@media (max-width: 968px) {
+  .propertyVitalsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* ========================================
+   4. PROJECT OVERVIEW & KPI SECTION
+   ======================================== */
+.overviewSection {
+  margin-bottom: 0;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 3.5rem;
+  align-items: stretch;
+}
+
+.overviewTextCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sectionLabel {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.overviewTitle {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+.overviewText {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.overviewImpactCol {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Glassmorphic KPI result widget */
+.impactMetricCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impactMetricCard:hover {
+  border-color: rgba(209, 255, 54, 0.25);
+  box-shadow: 0 15px 35px rgba(209, 255, 54, 0.04);
+}
+
+.impactLabel {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.impactValueGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.impactValue {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  color: var(--accent-color);
+  line-height: 1;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(209, 255, 54, 0.25);
+}
+
+.impactArrow {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 8px var(--accent-color));
+}
+
+.impactDesc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.metaDuo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.metaDuoBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.metaDuoLabel {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 1.5px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.metaDuoVal {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 968px) {
+  .overviewGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ========================================
+   5. SECTION HEADER (Shared)
+   ======================================== */
+.sectionHeader {
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ========================================
+   6. PERFORMANCE & CHARTS (White Adaptive Cards)
+   ======================================== */
+.analyticsSection {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  padding: 3rem 3.5rem;
+  margin-bottom: 0;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.analyticsSection .sectionTitle {
+  color: #111827;
+}
+
+.analyticsSection .sectionLabel {
+  color: #0284c7;
+}
+
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Line / Area Chart Block */
+.chartBlock {
+  display: flex;
+  flex-direction: column;
+}
+
+.chartBlockTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.2rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.6rem;
+}
+
+.chartContainer {
+  width: 100%;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.4rem;
+}
+
+.chartSvg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chartPointGroup {
+  cursor: pointer;
+}
+
+.chartPointLabel {
+  fill: #1e293b;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: var(--font-body);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.chartPointGroup:hover .chartPointLabel {
+  opacity: 1;
+}
+
+.chartAxisLabel {
+  fill: #475569;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Share progress meters */
+.shareMetersBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.8rem;
+}
+
+.metersList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.meterRow {
+  display: flex;
+  flex-direction: column;
+}
+
+.meterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.meterNameGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.meterDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.meterName {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.meterPercentage {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.meterTrack {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.meterFill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Growth Cards block */
+.growthBlock {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.growthCard {
+  background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.8rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.growthCard:hover {
+  border-color: #93c5fd;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.08);
+}
+
+.growthIconWrapper {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(2, 132, 199, 0.1);
+  border: 1.5px solid rgba(2, 132, 199, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.growthIcon {
+  width: 22px;
+  height: 22px;
+  color: #0284c7;
+}
+
+.growthInfo {
+  flex-grow: 1;
+}
+
+.growthValue {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: #0f172a;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.growthLabel {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 0.35rem;
+}
+
+@media (max-width: 1024px) {
+  .analyticsGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .analyticsSection {
+    padding: 2rem 1.5rem;
+  }
+  .growthBlock {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
+/* ========================================
+   7. REELS SHOWCASE SECTION
+   ======================================== */
+.reelsSection {
+  margin-bottom: 0;
+}
+
+.reelsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.reelCardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.4s ease;
+}
+
+.reelCardWrapper:hover {
+  transform: translateY(-6px);
+}
+
+/* Custom Smartphone Bezel Mockup */
+.phoneBezel {
+  width: 100%;
+  aspect-ratio: 9 / 18.5;
+  border-radius: 36px;
+  border: 8px solid #1a1f1c;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.reelCardWrapper:hover .phoneBezel {
+  border-color: rgba(209, 255, 54, 0.4);
+  box-shadow:
+    0 25px 50px rgba(209, 255, 54, 0.1),
+    0 0 0 1px rgba(209, 255, 54, 0.15);
+}
+
+.phoneSpeaker {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 4px;
+  background: #111;
+  border-radius: 2px;
+  z-index: 15;
+}
+
+.phoneScreen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #080d09;
+}
+
+.reelVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reelOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 14, 11, 0.4) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.reelLabel {
+  margin-top: 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.reelCardWrapper:hover .reelLabel {
+  color: var(--accent-color);
+}
+
+@media (max-width: 968px) {
+  .reelsGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 280px;
+  }
+}
+
+/* ========================================
+   8. DELIVERABLES & SERVICES SECTION
+   ======================================== */
+.deliverablesSection {
+  margin-bottom: 0;
+}
+
+.deliverablesGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.deliverablesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.deliverableItem {
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.deliverableItem:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  transform: translateX(4px);
+}
+
+.numberCircle {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-color);
+  background: rgba(209, 255, 54, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  line-height: 1;
+}
+
+.deliverableText {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Services Deployed Panel */
+.techPanel {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 100px;
+}
+
+.techTitle {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.techList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.techItem {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.techBullet {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+@media (max-width: 968px) {
+  .deliverablesGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ========================================
+   9. LOCATION MAP SECTION — COLORFUL, NO DARK OVERLAY
+   ======================================== */
+.mapSection {
+  margin-top: 0;
+  margin-bottom: 4rem;
+}
+
+.mapFrameWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  height: 420px;
+  background: var(--bg-secondary);
+}
+
+/* Normal, colorful Google Maps — no invert, no grayscale */
+.mapIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Subtle vignette to blend edges — no dark overlay */
+.mapGlowOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 30px rgba(10, 14, 11, 0.25);
+  border-radius: 14px;
+  z-index: 5;
+}
+
+/* ========================================
+   10. VISUAL SEPARATORS
+   ======================================== */
+.sectionDivider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-color) 15%, var(--border-color) 85%, transparent);
+  margin: 4rem 0;
+}
+
+@media (max-width: 768px) {
+  .sectionDivider {
+    margin: 3rem 0;
+  }
+}
