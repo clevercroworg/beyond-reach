@@ -68,7 +68,7 @@ const TrackingIcon = () => (
 );
 
 const ProblemWebsiteIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d1ff36" strokeWidth="2" style={{ marginBottom: '1rem' }}>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" strokeWidth="2" style={{ marginBottom: '1rem' }}>
     <rect x="3" y="3" width="18" height="18" rx="2" />
     <line x1="3" y1="9" x2="21" y2="9" />
     <line x1="10" y1="12" x2="14" y2="16" />
@@ -77,14 +77,14 @@ const ProblemWebsiteIcon = () => (
 );
 
 const ProblemOtaIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d1ff36" strokeWidth="2" style={{ marginBottom: '1rem' }}>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" strokeWidth="2" style={{ marginBottom: '1rem' }}>
     <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
     <line x1="7" y1="7" x2="7.01" y2="7" strokeWidth="3" />
   </svg>
 );
 
 const ProblemInquiryIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d1ff36" strokeWidth="2" style={{ marginBottom: '1rem' }}>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" strokeWidth="2" style={{ marginBottom: '1rem' }}>
     <circle cx="18" cy="5" r="3" />
     <circle cx="6" cy="12" r="3" />
     <circle cx="18" cy="19" r="3" />
@@ -560,24 +560,27 @@ const Hotels = () => {
         <div className={styles.sectionInner}>
           <div className={styles.gridSplit}>
             <div className={styles.stickyCol}>
-              <span className={styles.miniLabel}>THE PROBLEM</span>
+              <span className={`${styles.miniLabel} ${styles.problemLabel}`}>THE PROBLEM</span>
               <h2 className={styles.splitSectionTitle}>WHY HOTELS<br />LOSE DIRECT<br />BOOKINGS.</h2>
             </div>
             
             <div className={styles.cardsCol}>
               <div className={styles.problemCard}>
+                <span className={styles.problemNum}>01</span>
                 <ProblemWebsiteIcon />
                 <h3 className={styles.cardTitle}>POOR WEBSITE EXPERIENCE</h3>
                 <p className={styles.cardDesc}>Slow sites and unclear booking paths lose guests.</p>
               </div>
 
               <div className={styles.problemCard}>
+                <span className={styles.problemNum}>02</span>
                 <ProblemOtaIcon />
                 <h3 className={styles.cardTitle}>TOO MUCH OTA DEPENDENCE</h3>
                 <p className={styles.cardDesc}>High commissions reduce profitability and brand control.</p>
               </div>
 
               <div className={styles.problemCard}>
+                <span className={styles.problemNum}>03</span>
                 <ProblemInquiryIcon />
                 <h3 className={styles.cardTitle}>POOR INQUIRY FLOW</h3>
                 <p className={styles.cardDesc}>Unstructured enquiries and slow follow-ups mean lost revenue.</p>
@@ -600,24 +603,28 @@ const Hotels = () => {
 
             <div className={styles.solutionsGrid}>
               <div className={styles.solutionCard}>
+                <span className={styles.solutionNum}>01</span>
                 <SolutionWebsiteIcon />
                 <h3 className={styles.solutionCardTitle}>HIGH-CONVERTING WEBSITES</h3>
                 <p className={styles.solutionCardDesc}>Built for clarity and designed for guests.</p>
               </div>
 
               <div className={styles.solutionCard}>
+                <span className={styles.solutionNum}>02</span>
                 <SolutionAdIcon />
                 <h3 className={styles.solutionCardTitle}>AD STRATEGY & PERFORMANCE</h3>
                 <p className={styles.solutionCardDesc}>Targeted campaigns that drive quality traffic and lower CAC.</p>
               </div>
 
               <div className={styles.solutionCard}>
+                <span className={styles.solutionNum}>03</span>
                 <SolutionAutomationIcon />
                 <h3 className={styles.solutionCardTitle}>BOOKING FLOW & AUTOMATION</h3>
                 <p className={styles.solutionCardDesc}>Streamlined forms, automations and follow-ups that convert more stays.</p>
               </div>
 
               <div className={styles.solutionCard}>
+                <span className={styles.solutionNum}>04</span>
                 <SolutionTrackingIcon />
                 <h3 className={styles.solutionCardTitle}>TRACKING & ATTRIBUTION</h3>
                 <p className={styles.solutionCardDesc}>Clear data visibility to scale what works and cut waste.</p>
