@@ -646,7 +646,7 @@ const Hotels = () => {
           <div className={styles.gridSplit}>
             <div className={styles.stickyCol}>
               <span className={`${styles.miniLabel} ${styles.problemLabel}`}>THE PROBLEM</span>
-              <h2 className={styles.splitSectionTitle}>WHY HOTELS<br />LOSE DIRECT<br />BOOKINGS.</h2>
+              <h2 className={styles.splitSectionTitle}>WHY HOTELS <br />LOSE DIRECT <br />BOOKINGS.</h2>
             </div>
             
             <div className={styles.cardsCol}>
@@ -683,7 +683,7 @@ const Hotels = () => {
           <div className={styles.solutionGridSplit}>
             <div className={styles.stickyCol}>
               <span className={styles.miniLabel}>OUR SOLUTION</span>
-              <h2 className={styles.splitSectionTitle}>WHAT WE<br />IMPROVE.</h2>
+              <h2 className={styles.splitSectionTitle}>WHAT WE <br />IMPROVE.</h2>
             </div>
 
             <div className={styles.solutionsGrid}>
@@ -727,7 +727,7 @@ const Hotels = () => {
           <div className={styles.processGridSplit}>
             <div className={styles.stickyCol}>
               <span className={styles.miniLabel}>OUR PROCESS</span>
-              <h2 className={styles.splitSectionTitle}>A SIMPLE<br />GROWTH<br />PROCESS.</h2>
+              <h2 className={styles.splitSectionTitle}>A SIMPLE <br />GROWTH <br />PROCESS.</h2>
             </div>
 
             <div className={styles.processTimelineCol}>
@@ -947,7 +947,7 @@ const Hotels = () => {
           <div className={styles.resultsGridSplit}>
             <div className={styles.stickyCol}>
               <span className={styles.miniLabel}>PROVEN RESULTS</span>
-              <h2 className={styles.splitSectionTitle}>Real hotels.<br />Real growth.</h2>
+              <h2 className={styles.splitSectionTitle}>Real hotels. <br />Real growth.</h2>
             </div>
 
             <div className={styles.resultsGrid}>
