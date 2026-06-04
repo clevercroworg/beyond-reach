@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { gsap } from 'gsap';
@@ -18,6 +18,213 @@ const AwardIcon = () => (
   </svg>
 );
 
+const ServiceIcon = ({ name }) => {
+  const norm = name ? name.toLowerCase().trim() : '';
+
+  const props = {
+    width: 16,
+    height: 16,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    strokeWidth: 2.2,
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    style: { marginRight: '8px', flexShrink: 0 }
+  };
+
+  switch (norm) {
+    case 'seo':
+      return (
+        <svg {...props} stroke="#14b8a6">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M21 21l-4.35-4.35" />
+          <path d="M8 12.5l2-2 1.5 1.5 2.5-2.5" strokeWidth="1.8" />
+        </svg>
+      );
+    case 'website design':
+      return (
+        <svg {...props} stroke="#2563eb">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <line x1="3" y1="9" x2="21" y2="9" />
+          <circle cx="6" cy="6" r="0.6" fill="#2563eb" stroke="none" />
+          <circle cx="9" cy="6" r="0.6" fill="#2563eb" stroke="none" />
+          <circle cx="12" cy="6" r="0.6" fill="#2563eb" stroke="none" />
+          <line x1="9" y1="9" x2="9" y2="21" />
+        </svg>
+      );
+    case 'website dev':
+      return (
+        <svg {...props} stroke="#d946ef">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+          <line x1="10" y1="20" x2="14" y2="4" />
+        </svg>
+      );
+    case 'digital marketing':
+      return (
+        <svg {...props} stroke="#ea580c">
+          <path d="M12 18h-2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h2m0 0l6-3v14l-6-3" />
+          <path d="M19 10c1 0 2 1 2 2s-1 2-2 2" />
+        </svg>
+      );
+    case 'social media':
+      return (
+        <svg {...props} stroke="#ec4899">
+          <circle cx="18" cy="5" r="3" />
+          <circle cx="6" cy="12" r="3" />
+          <circle cx="18" cy="19" r="3" />
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+        </svg>
+      );
+    case 'meta ads':
+      return (
+        <svg {...props} viewBox="0 0 24 24" fill="none">
+          <path d="M16.2 8.5c-1.1 0-2 .6-2.5 1.4-.5-.8-1.4-1.4-2.5-1.4C9.1 8.5 7.5 10 7.5 12s1.6 3.5 3.7 3.5c1.1 0 2-.6 2.5-1.4.5.8 1.4 1.4 2.5 1.4 2.1 0 3.7-1.5 3.7-3.5s-1.6-3.5-3.7-3.5zm-5 5.5c-1.2 0-2.2-.9-2.2-2s1-2 2.2-2 2.2.9 2.2 2-1 2-2.2 2zm5 0c-1.2 0-2.2-.9-2.2-2s1-2 2.2-2 2.2.9 2.2 2-1 2-2.2 2z" fill="#0064E0" />
+        </svg>
+      );
+    case 'google ads':
+      return (
+        <svg {...props} viewBox="0 0 24 24" fill="none">
+          <path d="M16.6 3.6c-.6-.6-1.5-.6-2.1 0l-9.8 16c-.6.6-.6 1.5 0 2.1.6.6 1.5.6 2.1 0l9.8-16c.6-.6.6-1.5 0-2.1z" fill="#F9BC05" />
+          <path d="M21.3 12.3c-.6-.6-1.5-.6-2.1 0l-4.9 8c-.6.6-.6 1.5 0 2.1.6.6 1.5.6 2.1 0l4.9-8c.6-.6.6-1.5 0-2.1z" fill="#1A73E8" />
+        </svg>
+      );
+    case 'content strategy':
+      return (
+        <svg {...props} stroke="#d97706">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          <line x1="9" y1="7" x2="15" y2="7" />
+          <line x1="9" y1="11" x2="15" y2="11" />
+        </svg>
+      );
+    case 'brand identity':
+      return (
+        <svg {...props} stroke="#7c3aed">
+          <path d="M12 22C17.52 22 22 17.52 22 12S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z" />
+          <circle cx="7.5" cy="10.5" r="1.5" fill="#7c3aed" stroke="none" />
+          <circle cx="11.5" cy="7.5" r="1.5" fill="#7c3aed" stroke="none" />
+          <circle cx="16.5" cy="9.5" r="1.5" fill="#7c3aed" stroke="none" />
+          <circle cx="15.5" cy="14.5" r="1.5" fill="#7c3aed" stroke="none" />
+        </svg>
+      );
+    case 'video production':
+      return (
+        <svg {...props} stroke="#ef4444">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+          <path d="M22 10l2-2v8l-2-2" />
+          <circle cx="9" cy="10" r="2" />
+        </svg>
+      );
+    case 'retargeting':
+      return (
+        <svg {...props} stroke="#475569">
+          <path d="M21.5 2v6h-6" />
+          <path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+        </svg>
+      );
+    case 'content curation':
+      return (
+        <svg {...props} stroke="#84cc16">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+          <circle cx="12" cy="9" r="2" />
+        </svg>
+      );
+    case 'google maps':
+      return (
+        <svg {...props} viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C8.1 2 5 5.1 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.9-3.1-7-7-7z" fill="#EA4335" />
+          <circle cx="12" cy="9" r="3" fill="#FFFFFF" />
+        </svg>
+      );
+    case 'reputation mgmt':
+      return (
+        <svg {...props} stroke="#f59e0b">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <path d="M12 8v5" />
+          <circle cx="12" cy="16" r="0.5" fill="#f59e0b" />
+        </svg>
+      );
+    case 'email marketing':
+      return (
+        <svg {...props} stroke="#06b6d4">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+          <polyline points="22,6 12,13 2,6" />
+        </svg>
+      );
+    case 'ux audit':
+      return (
+        <svg {...props} stroke="#10b981">
+          <circle cx="11" cy="11" r="8" />
+          <polyline points="8 11 10 13 14 9" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      );
+    case 'crm integration':
+      return (
+        <svg {...props} stroke="#b45309">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+        </svg>
+      );
+    case 'performance max':
+      return (
+        <svg {...props} stroke="#f43f5e">
+          <path d="M12 2a10 10 0 0 0-7.07 17.07" />
+          <path d="M19.07 19.07A10 10 0 0 0 12 2" />
+          <path d="M12 13l4-4" />
+          <circle cx="12" cy="13" r="1.5" fill="#f43f5e" stroke="none" />
+        </svg>
+      );
+    case 'influencer marketing':
+      return (
+        <svg {...props} stroke="#eab308">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      );
+    case 'event branding':
+      return (
+        <svg {...props} stroke="#9333ea">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+          <path d="M8 14h.01M12 14h.01" />
+        </svg>
+      );
+    case 'revenue strategy':
+      return (
+        <svg {...props} stroke="#059669">
+          <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+      );
+    case 'crm dashboard':
+      return (
+        <svg {...props} stroke="#4f46e5">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M9 17V9M15 17v-4M21 12H3" />
+        </svg>
+      );
+    case 'loyalty programs':
+      return (
+        <svg {...props} stroke="#f43f5e">
+          <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z" />
+          <path d="M3 20h18" />
+        </svg>
+      );
+    default:
+      return (
+        <svg {...props} stroke="#10b981">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      );
+  }
+};
+
+
 const projectDetails = {
   "the-grand-escape": {
     title: "THE GRAND ESCAPE",
@@ -33,6 +240,9 @@ const projectDetails = {
       "Bespoke Responsive Website Design",
       "Direct Booking Engine Integration",
       "Technical & Local SEO Implementation"
+    ],
+    whatWeDid: [
+      "SEO", "Website Design", "Digital Marketing", "Social Media", "Meta Ads", "Content Strategy", "Brand Identity"
     ],
     deliverables: [
       "Engineered rate parity synchronization modules, eliminating direct-booking pricing friction.",
@@ -78,6 +288,9 @@ const projectDetails = {
       "Google Search & Meta Ad Strategy",
       "High-Intent Retargeting Funnels"
     ],
+    whatWeDid: [
+      "Meta Ads", "Google Ads", "Video Production", "Social Media", "Retargeting", "Content Curation"
+    ],
     deliverables: [
       "Produced cinematic promotional reel generating over 5 million collective views.",
       "Optimized target cost-per-lead (CPL) by 32% using custom lookalike models.",
@@ -119,6 +332,9 @@ const projectDetails = {
       "Custom Spa Reservation Flow",
       "Local Map Visibility Optimization",
       "Reputation Management & Review Loops"
+    ],
+    whatWeDid: [
+      "SEO", "Website Design", "Digital Marketing", "Social Media", "Google Maps", "Reputation Mgmt", "Email Marketing"
     ],
     deliverables: [
       "Redesigned the booking path, reducing treatment booking steps from 6 down to 2.",
@@ -162,6 +378,9 @@ const projectDetails = {
       "Off-Season Direct Email Marketing",
       "UX/UI Booking Friction Audits"
     ],
+    whatWeDid: [
+      "Website Dev", "Google Ads", "Email Marketing", "SEO", "UX Audit", "CRM Integration", "Performance Max"
+    ],
     deliverables: [
       "Engineered responsive booking interface decreasing cart abandonment by 40%.",
       "Ranked #1 for regional winter-sports luxury lodging keywords.",
@@ -203,6 +422,9 @@ const projectDetails = {
       "Experiential Event Branding",
       "Dynamic Social Ticket Funnels",
       "Local Influencer Partnership Sourcing"
+    ],
+    whatWeDid: [
+      "Social Media", "Video Production", "Influencer Marketing", "Event Branding", "Meta Ads", "Content Strategy"
     ],
     deliverables: [
       "Crafted promotional campaigns resulting in 2.5x growth in profile engagement.",
@@ -247,6 +469,9 @@ const projectDetails = {
       "Custom Sales Dashboard Integrations",
       "Corporate Guest Loyalty Modules"
     ],
+    whatWeDid: [
+      "Revenue Strategy", "Website Design", "Digital Marketing", "CRM Dashboard", "SEO", "Meta Ads", "Loyalty Programs"
+    ],
     deliverables: [
       "Decreased commission payouts to third-party OTA sites by 50%.",
       "Optimized average daily rate (ADR) leading to an 18% growth in RevPAR.",
@@ -280,7 +505,11 @@ const projectDetails = {
 const projectAssets = {
   "the-grand-escape": {
     bgImage: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80"
+    ],
     reels: [
       "/case-studies/assets/amanzoe-mobile.mp4",
       "/case-studies/assets/ahilya-fort-mobile.mp4",
@@ -289,7 +518,11 @@ const projectAssets = {
   },
   "oceanic-voyages": {
     bgImage: "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=800&q=80"
+    ],
     reels: [
       "/projects/sailo-club.mp4",
       "/projects/yacht-club-india.mp4",
@@ -298,7 +531,11 @@ const projectAssets = {
   },
   "zen-wellness": {
     bgImage: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80"
+    ],
     reels: [
       "/case-studies/assets/anopura-jaipur-mobile.mp4",
       "/case-studies/assets/chembarathi-wayanad-mobile.mp4",
@@ -307,7 +544,11 @@ const projectAssets = {
   },
   "alpine-peaks": {
     bgImage: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=1600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80"
+    ],
     reels: [
       "/case-studies/assets/venue-1-compressed.mp4",
       "/case-studies/assets/bangaram-island-resort-mobile.mp4",
@@ -316,7 +557,11 @@ const projectAssets = {
   },
   "nocturnal-events": {
     bgImage: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80"
+    ],
     reels: [
       "/projects/ashtitva.mp4",
       "/case-studies/assets/venue-1-compressed.mp4",
@@ -325,7 +570,11 @@ const projectAssets = {
   },
   "urban-sanctuary": {
     bgImage: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1600&q=80",
-    heroImage: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+    ],
     reels: [
       "/case-studies/assets/the-zuri-white-sands.mp4",
       "/case-studies/assets/amanzoe-mobile.mp4",
@@ -509,9 +758,12 @@ export default function WorkDetailPage() {
   const { id } = useParams();
   const router = useRouter();
   const containerRef = useRef(null);
+  const [activeGalleryIdx, setActiveGalleryIdx] = useState(0);
 
   const project = projectDetails[id];
   const assets = projectAssets[id];
+  const galleryImages = assets?.gallery || [];
+  const activeHeroImage = galleryImages[activeGalleryIdx] || galleryImages[0];
 
   useEffect(() => {
     if (!project) {
@@ -526,9 +778,8 @@ export default function WorkDetailPage() {
       tl.fromTo(`.${styles.backBtn}`, { x: 10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6, ease: 'power3.out' })
         .fromTo(`.${styles.categoryBadge}`, { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.4')
         .fromTo(`.${styles.projectTitle}`, { y: 25, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power4.out' }, '-=0.4')
-        .fromTo(`.${styles.featuredCardFrame}`, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-        .fromTo(`.${styles.badgeBar}`, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, '-=0.5')
-        .fromTo(`.${styles.propertyVitalsGrid} > *`, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }, '-=0.5')
+        .fromTo(`.${styles.galleryDetailsSection}`, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, '-=0.5')
+        .fromTo(`.${styles.whatWeDidSection}`, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, '-=0.5')
         .fromTo(`.${styles.overviewGrid} > *`, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: 'power3.out' }, '-=0.6')
         .fromTo(`.${styles.analyticsSection}`, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, '-=0.6')
         .fromTo(`.${styles.reelsGrid} > *`, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }, '-=0.6')
@@ -564,72 +815,120 @@ export default function WorkDetailPage() {
             </div>
             <h1 className={styles.projectTitle}>{project.title}</h1>
             <div className={styles.clientTagLine}>
-              <span className={styles.clientLabel}>CLIENT:</span>
-              <span className={styles.clientValue}>{project.client}</span>
-            </div>
-          </div>
-
-          <div className={styles.headerRightCol}>
-            <div className={styles.featuredCardFrame}>
-              <img src={assets?.heroImage} alt={project.title} className={styles.featuredCardImg} />
-              <div className={styles.featuredCardOverlay} />
+              <span className={styles.clientLabel}>PROPERTY TYPE:</span>
+              <span className={styles.clientValue}>{project.propertyType}</span>
             </div>
           </div>
         </div>
       </header>
 
-      <div className={styles.innerContent}>
-        {/* 2. What We Did Badge Bar */}
-        <div className={styles.badgeBar}>
-          <span className={styles.badgeBarLabel}>WHAT WE DID:</span>
-          <div className={styles.badgeList}>
-            {project.category.split('·').map((cat, idx) => (
-              <span key={idx} className={styles.projectTypeBadge}>
-                {cat.trim()}
+      {/* 2. Gallery + Details Section */}
+      <section className={styles.galleryDetailsSection}>
+        <div className={styles.galleryDetailsGrid}>
+          {/* Left: Image Gallery */}
+          <div className={styles.galleryCol}>
+            <div className={styles.mainImageFrame}>
+              <img
+                src={activeHeroImage}
+                alt={project.title}
+                className={styles.mainImage}
+                key={activeGalleryIdx}
+              />
+            </div>
+            <div className={styles.thumbRow}>
+              {galleryImages.map((img, idx) => (
+                <button
+                  key={idx}
+                  className={`${styles.thumbBtn} ${idx === activeGalleryIdx ? styles.thumbActive : ''}`}
+                  onClick={() => setActiveGalleryIdx(idx)}
+                >
+                  <img src={img} alt={`Preview ${idx + 1}`} className={styles.thumbImg} />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: Property Details */}
+          <div className={styles.detailsCol}>
+            <div className={styles.detailItem}>
+              <span className={styles.detailIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" className={styles.pIcon}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
               </span>
-            ))}
+              <div className={styles.detailText}>
+                <span className={styles.detailLabel}>Location</span>
+                <span className={styles.detailValue}>{project.location}</span>
+              </div>
+            </div>
+
+            <div className={styles.detailItem}>
+              <span className={styles.detailIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" className={styles.pIcon}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </span>
+              <div className={styles.detailText}>
+                <span className={styles.detailLabel}>Property Type</span>
+                <span className={styles.detailValue}>{project.propertyType}</span>
+              </div>
+            </div>
+
+            <div className={styles.detailItem}>
+              <span className={styles.detailIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" className={styles.pIcon}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </span>
+              <div className={styles.detailText}>
+                <span className={styles.detailLabel}>Keys / Capacity</span>
+                <span className={styles.detailValue}>{project.rooms}</span>
+              </div>
+            </div>
+
+            <div className={styles.detailItem}>
+              <span className={styles.detailIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" className={styles.pIcon}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </span>
+              <div className={styles.detailText}>
+                <span className={styles.detailLabel}>Duration</span>
+                <span className={styles.detailValue}>{project.duration}</span>
+              </div>
+            </div>
+
+            <div className={styles.detailItem}>
+              <span className={styles.detailIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" className={styles.pIcon}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              <div className={styles.detailText}>
+                <span className={styles.detailLabel}>Year</span>
+                <span className={styles.detailValue}>{project.year}</span>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* 3. Property Details Horizontal Vitals Grid */}
-        <div className={styles.propertyVitalsGrid}>
-          <div className={styles.propertyVitalCard}>
-            <div className={styles.propertyVitalIcon}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" className={styles.pIcon}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <div className={styles.propertyVitalText}>
-              <span className={styles.propertyVitalLabel}>Location</span>
-              <span className={styles.propertyVitalValue}>{project.location}</span>
-            </div>
-          </div>
-
-          <div className={styles.propertyVitalCard}>
-            <div className={styles.propertyVitalIcon}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" className={styles.pIcon}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-            </div>
-            <div className={styles.propertyVitalText}>
-              <span className={styles.propertyVitalLabel}>Property Type</span>
-              <span className={styles.propertyVitalValue}>{project.propertyType}</span>
-            </div>
-          </div>
-
-          <div className={styles.propertyVitalCard}>
-            <div className={styles.propertyVitalIcon}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-color)" strokeWidth="2" className={styles.pIcon}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-            </div>
-            <div className={styles.propertyVitalText}>
-              <span className={styles.propertyVitalLabel}>Keys / Capacity</span>
-              <span className={styles.propertyVitalValue}>{project.rooms}</span>
-            </div>
-          </div>
+      {/* 3. What We Did - Service Badges */}
+      <section className={styles.whatWeDidSection}>
+        <span className={styles.sectionLabel}>OUR SCOPE</span>
+        <h2 className={styles.whatWeDidTitle}>What We Did</h2>
+        <div className={styles.whatWeDidGrid}>
+          {project.whatWeDid?.map((item, idx) => (
+            <span key={idx} className={styles.whatWeDidBadge}>
+              <ServiceIcon name={item} />
+              {item}
+            </span>
+          ))}
         </div>
+      </section>
+
+      <div className={styles.innerContent}>
 
         {/* 4. Project Overview and Impact Metric */}
         <section className={styles.overviewSection}>

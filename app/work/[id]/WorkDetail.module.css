@@ -48,10 +48,10 @@
    ======================================== */
 .cinemaHeader {
   position: relative;
-  min-height: 420px;
-  padding: 110px 4rem 50px;
+  min-height: 280px;
+  padding: 100px 4rem 40px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   overflow: hidden;
   background: #060907;
   border-bottom: 1px solid var(--border-color);
@@ -90,10 +90,6 @@
   width: 100%;
   max-width: 1360px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.4fr 0.6fr;
-  gap: 5rem;
-  align-items: center;
 }
 
 .headerLeftCol {
@@ -218,140 +214,230 @@
 
 @media (max-width: 968px) {
   .cinemaHeader {
-    padding: 90px 1.5rem 40px;
-  }
-  .headerContentGrid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    padding: 90px 1.5rem 30px;
+    min-height: 220px;
   }
 }
 
 /* ========================================
-   2. WHAT WE DID BADGE BAR
+   GALLERY + DETAILS SECTION (Below Header)
    ======================================== */
-.badgeBar {
-  margin-top: 3.5rem;
-  margin-bottom: 2.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1.5rem;
+.galleryDetailsSection {
+  position: relative;
+  z-index: 10;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 3rem 4rem 0;
 }
 
-.badgeBarLabel {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-secondary);
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.galleryDetailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 0.75fr;
+  gap: 2.5rem;
+  align-items: start;
 }
 
-.badgeList {
+/* Left: Image Gallery */
+.galleryCol {
   display: flex;
+  flex-direction: column;
   gap: 0.8rem;
-  flex-wrap: wrap;
 }
 
-.projectTypeBadge {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  background: rgba(209, 255, 54, 0.05);
-  border: 1px solid rgba(209, 255, 54, 0.25);
-  padding: 0.4rem 1.1rem;
-  border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.mainImageFrame {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.4s ease;
+}
+
+.thumbRow {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.thumbBtn {
+  flex: 1;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  background: var(--bg-secondary);
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  cursor: default;
+  opacity: 0.5;
 }
 
-.projectTypeBadge:hover {
-  background: rgba(209, 255, 54, 0.12);
-  border-color: var(--accent-color);
-  box-shadow: 0 0 12px rgba(209, 255, 54, 0.25);
+.thumbBtn:hover {
+  opacity: 0.8;
+  border-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
 
-/* ========================================
-   3. PROPERTY VITALS GRID
-   ======================================== */
-.propertyVitalsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 3rem;
+.thumbActive {
+  opacity: 1;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 12px rgba(209, 255, 54, 0.2);
 }
 
-.propertyVitalCard {
+.thumbActive:hover {
+  opacity: 1;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right: Property Details */
+.detailsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.detailItem {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 1.4rem 1.8rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  gap: 1.2rem;
+  padding: 1.2rem 1.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.2s ease;
 }
 
-.propertyVitalCard:hover {
-  border-color: rgba(209, 255, 54, 0.35);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(209, 255, 54, 0.06);
+.detailItem:last-child {
+  border-bottom: none;
 }
 
-.propertyVitalIcon {
-  width: 44px;
-  height: 44px;
+.detailItem:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.detailIcon {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: rgba(209, 255, 54, 0.06);
-  border: 1px solid rgba(209, 255, 54, 0.25);
+  border: 1px solid rgba(209, 255, 54, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(209, 255, 54, 0.05);
 }
 
-.pIcon {
-  width: 18px;
-  height: 18px;
-  color: var(--accent-color);
-}
-
-.propertyVitalText {
+.detailText {
   display: flex;
   flex-direction: column;
 }
 
-.propertyVitalLabel {
+.detailLabel {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 600;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
-.propertyVitalValue {
+.detailValue {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 @media (max-width: 968px) {
-  .propertyVitalsGrid {
+  .galleryDetailsSection {
+    padding: 2rem 1.5rem 0;
+  }
+  .galleryDetailsGrid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 2rem;
+  }
+}
+
+/* ========================================
+   WHAT WE DID — SERVICE BADGES
+   ======================================== */
+.whatWeDidSection {
+  position: relative;
+  z-index: 10;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 4.5rem 4rem 4.5rem;
+}
+
+.whatWeDidTitle {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 1.5rem 0;
+}
+
+.whatWeDidGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.whatWeDidBadge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #111827; /* Solid dark text on white bg */
+  background: #ffffff; /* White background */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.6rem 1.3rem;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  cursor: default;
+}
+
+.whatWeDidBadge svg {
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.whatWeDidBadge:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 24px rgba(209, 255, 54, 0.4);
+  transform: translateY(-3px);
+}
+
+.whatWeDidBadge:hover svg {
+  transform: scale(1.15) rotate(3deg);
+}
+
+@media (max-width: 768px) {
+  .whatWeDidSection {
+    padding: 3.5rem 1.5rem 3.5rem;
   }
 }
 
@@ -876,45 +962,45 @@
 .deliverablesGrid {
   display: grid;
   grid-template-columns: 1.4fr 0.6fr;
-  gap: 3.5rem;
+  gap: 2.2rem;
   align-items: start;
 }
 
 .deliverablesList {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.75rem;
 }
 
 .deliverableItem {
   display: flex;
-  gap: 1.4rem;
-  align-items: flex-start;
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  padding: 1.5rem;
-  border-radius: 10px;
+  gap: 1.1rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.012);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 0.95rem 1.25rem;
+  border-radius: 8px;
   transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .deliverableItem:hover {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+  border-color: rgba(209, 255, 54, 0.15);
   transform: translateX(4px);
 }
 
 .numberCircle {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  border: 1px solid var(--accent-color);
-  background: rgba(209, 255, 54, 0.06);
+  border: 1px solid rgba(209, 255, 54, 0.5);
+  background: rgba(209, 255, 54, 0.05);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--accent-color);
   line-height: 1;
@@ -922,9 +1008,9 @@
 
 .deliverableText {
   font-family: var(--font-body);
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.75;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -932,8 +1018,8 @@
 .techPanel {
   background: rgba(255, 255, 255, 0.015);
   border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 2rem;
+  border-radius: 8px;
+  padding: 1.3rem 1.6rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 100px;
@@ -941,9 +1027,9 @@
 
 .techTitle {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -951,12 +1037,12 @@
 .techList {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .techItem {
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: var(--text-primary);
   display: flex;
   align-items: center;
